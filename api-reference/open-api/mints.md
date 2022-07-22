@@ -1,16 +1,36 @@
+---
+description: >-
+  The Mints APIs provide users the entries to mint the NFTs by calling the
+  method in the ERC721 contract.
+---
+
 # Mints
+
+## Mint NFTs
+
+The Mints APIs provides three methods to help users mint NFTs, including the custom minting, minting with a file and minting with  a metada.
+
+The `Mint a nft` provides users with the entry to call the ERC721 contract to mint the NFT.
 
 {% swagger src="../../.gitbook/assets/swagger.yaml" path="/v1/mints" method="post" %}
 [swagger.yaml](../../.gitbook/assets/swagger.yaml)
 {% endswagger %}
 
+The `Mint a nft by uploading a file` provides users with the entry to call the ERC721 contract to mint the NFT with uploading files.
+
 {% swagger src="../../.gitbook/assets/swagger.yaml" path="/v1/mints/files" method="post" %}
 [swagger.yaml](../../.gitbook/assets/swagger.yaml)
 {% endswagger %}
 
+The `Mint a nft by creating a metadata` provides users with the entry to call the ERC721 contract to mint the NFT with creating metadata.
+
 {% swagger src="../../.gitbook/assets/swagger.yaml" path="/v1/mints/urls" method="post" %}
 [swagger.yaml](../../.gitbook/assets/swagger.yaml)
 {% endswagger %}
+
+## Query NFTs
+
+The `Get a nft list of a specific app` API provide users with the entry to query the NFTs information created on a spcific app.
 
 {% swagger src="../../.gitbook/assets/swagger.yaml" path="/v1/mints" method="get" %}
 [swagger.yaml](../../.gitbook/assets/swagger.yaml)
