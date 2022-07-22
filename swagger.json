@@ -1,0 +1,1195 @@
+{
+  "swagger": "2.0",
+  "x-stoplight": {
+    "id": "oghbkv2mpfrc8"
+  },
+  "info": {
+    "description": "## Overview\nRabinbow-API probides several open-apis to help users to interact with the nft in conlflux.\n\n## Note\nThe responses of the open api in swagger focus on the data field rather than the code and the message fields\n",
+    "title": "Rainbow-API",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "paths": {
+    "/v1/contracts": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Contract"
+        ],
+        "summary": "Get the contracts list",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer Open_JWT",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "page",
+            "name": "page",
+            "in": "formData"
+          },
+          {
+            "type": "integer",
+            "description": "size",
+            "name": "size",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/models.Contract"
+              }
+            }
+          },
+          "500": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "Returns the information of the pre-deployed contracts including the `address`, `hash`, `name` and so on in a specific app.\n\n#### Used for:\n- Managing the deployed contracts\n- Big data analysis or analytics with all the NFTs.\n\n#### Related:\n- To get the sponsor of a specific contract, see [Get the sponsor of a contract](swagger.json/paths/~1v1~1contracts~1:address~1sponsor/get)\n\n"
+      },
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Contract"
+        ],
+        "summary": "Deploy contract",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer Open_JWT",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "description": "contract_info",
+            "name": "contract_info",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/services.ContractDeployDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.Contract"
+            }
+          },
+          "400": {
+            "description": "invalid request",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "422": {
+            "description": "invalid address",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "Deploy a ERC721 contract\n\n#### Useful for:\n- \n- Big data analysis or analytics with all the NFTs.\n\n#### Related:\n- To get the sponsor of a specific contract, see []"
+      }
+    },
+    "/v1/contracts/:address/sponsor": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Contract"
+        ],
+        "summary": "Get the sponsor of a contract",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer Open_JWT",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "address",
+            "name": "address",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "chain",
+            "name": "chain",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/services.SponsorInfo"
+              }
+            }
+          },
+          "422": {
+            "description": "invalid address",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Contract"
+        ],
+        "summary": "Set the sponsor for a contract",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer Open_JWT",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "address",
+            "name": "address",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "422": {
+            "description": "invalid address",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/v1/login": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Login"
+        ],
+        "summary": "App login",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer openapi_token",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "app_id",
+            "name": "app_id",
+            "in": "formData"
+          },
+          {
+            "type": "string",
+            "description": "app_secret",
+            "name": "app_secret",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "correct response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/v1/metadata/": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "Query metadata list",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer openapi_token",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "nft_address",
+            "name": "nft_address",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/services.QueryMetadataResponse"
+              }
+            }
+          },
+          "500": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "Create nft metadata",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer openapi_token",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "description": "metadata_info",
+            "name": "metadata_info",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/models.Metadata"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/services.CreateMetadataResponse"
+            }
+          },
+          "400": {
+            "description": "invalid request",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/v1/metadata/:metadata_id": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "Query metadata",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer openapi_token",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "metadata_id",
+            "name": "metadata_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.ExposedMetadata"
+            }
+          },
+          "400": {
+            "description": "invalid request",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/v1/metadata/files": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "Query File list",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer openapi_token",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/models.ExposedFile"
+              }
+            }
+          },
+          "500": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "post": {
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "Upload File",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer openapi_token",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "file",
+            "description": "uploaded file",
+            "name": "file",
+            "in": "formData",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/services.UploadFilesResponse"
+            }
+          },
+          "500": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/v1/mints": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Mints"
+        ],
+        "summary": "Get a nft list of a specified app",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer Open_JWT",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "page",
+            "name": "page",
+            "in": "formData"
+          },
+          {
+            "type": "integer",
+            "description": "limit",
+            "name": "size",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/models.MintTask"
+              }
+            }
+          },
+          "500": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Mints"
+        ],
+        "summary": "Mint a nft by creating a metadata",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer Open_JWT",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "description": "custom_mint_info",
+            "name": "custom_mint_info",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/services.CustomMintDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/services.EasyMintFileDto"
+              }
+            }
+          },
+          "400": {
+            "description": "invalid request",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "422": {
+            "description": "invalid address",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/v1/mints/files": {
+      "post": {
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Mints"
+        ],
+        "summary": "Mint a nft by uploading a file",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer Open_JWT",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "file",
+            "description": "uploaded file",
+            "name": "file",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "description": "easy_mint_file_info",
+            "name": "easy_mint_file_info",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/services.EasyMintFileDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/services.EasyMintFileDto"
+              }
+            }
+          },
+          "400": {
+            "description": "invalid request",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "422": {
+            "description": "invalid address",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/v1/mints/urls": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Mints"
+        ],
+        "summary": "Mint a nft by creating a metadata",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer Open_JWT",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "description": "easy_mint_meta_info",
+            "name": "easy_mint_meta_info",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/services.EasyMintMetaDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/services.EasyMintFileDto"
+              }
+            }
+          },
+          "400": {
+            "description": "invalid request",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "422": {
+            "description": "invalid address",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/v1/refresh_token": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Login"
+        ],
+        "summary": "Refresh open api token",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Bearer openapi_token",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "correct response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "internal error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "big.Int": {
+      "type": "object"
+    },
+    "cfxaddress.Address": {
+      "type": "object"
+    },
+    "gorm.DeletedAt": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string"
+        },
+        "valid": {
+          "description": "Valid is true if Time is not NULL",
+          "type": "boolean"
+        }
+      }
+    },
+    "models.Attributes": {
+      "type": "object",
+      "properties": {
+        "attribute_name": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "$ref": "#/definitions/gorm.DeletedAt"
+        },
+        "display_type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "metadataId": {
+          "type": "integer"
+        },
+        "trait_type": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "models.Contract": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "app_id": {
+          "type": "integer"
+        },
+        "base_uri": {
+          "type": "string"
+        },
+        "chain_id": {
+          "type": "integer"
+        },
+        "chain_type": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "deleted_at": {
+          "$ref": "#/definitions/gorm.DeletedAt"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "owner_address": {
+          "type": "string"
+        },
+        "status": {
+          "description": "0-pending, 1-success, 2-failed",
+          "type": "integer"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "tx_id": {
+          "type": "integer"
+        },
+        "type": {
+          "description": "1-ERC721, 2-ERC1155",
+          "type": "integer"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      }
+    },
+    "models.ExposedAttributes": {
+      "type": "object",
+      "properties": {
+        "attribute_name": {
+          "type": "string"
+        },
+        "display_type": {
+          "type": "string"
+        },
+        "trait_type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "models.ExposedFile": {
+      "type": "object",
+      "properties": {
+        "file_name": {
+          "type": "string"
+        },
+        "file_size": {
+          "type": "string"
+        },
+        "file_type": {
+          "type": "string"
+        },
+        "file_url": {
+          "type": "string"
+        }
+      }
+    },
+    "models.ExposedMetadata": {
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/models.ExposedAttributes"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "external_link": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "models.Metadata": {
+      "type": "object",
+      "properties": {
+        "app_id": {
+          "type": "integer"
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/models.Attributes"
+          }
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "$ref": "#/definitions/gorm.DeletedAt"
+        },
+        "description": {
+          "type": "string"
+        },
+        "external_link": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "image": {
+          "type": "string"
+        },
+        "metadata_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nft_address": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        }
+      }
+    },
+    "models.MintTask": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer"
+        },
+        "app_id": {
+          "type": "integer"
+        },
+        "chain_id": {
+          "type": "integer"
+        },
+        "chain_type": {
+          "type": "integer"
+        },
+        "contract": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "deleted_at": {
+          "$ref": "#/definitions/gorm.DeletedAt"
+        },
+        "error": {
+          "type": "string"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "mint_to": {
+          "type": "string"
+        },
+        "status": {
+          "description": "0-pending, 1-success, 2-failed",
+          "type": "integer"
+        },
+        "token_id": {
+          "type": "integer"
+        },
+        "token_uri": {
+          "type": "string"
+        },
+        "tx_id": {
+          "type": "integer"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      }
+    },
+    "services.ContractDeployDto": {
+      "type": "object",
+      "required": [
+        "chain",
+        "name",
+        "owner_address",
+        "symbol",
+        "type"
+      ],
+      "properties": {
+        "base_uri": {
+          "type": "string"
+        },
+        "chain": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "owner_address": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "services.CreateMetadataResponse": {
+      "type": "object",
+      "properties": {
+        "metadata_uri": {
+          "type": "string"
+        }
+      }
+    },
+    "services.CustomMintDto": {
+      "type": "object",
+      "required": [
+        "chain",
+        "contract_address",
+        "metadata_uri",
+        "mint_to_address"
+      ],
+      "properties": {
+        "chain": {
+          "type": "string"
+        },
+        "contract_address": {
+          "type": "string"
+        },
+        "metadata_uri": {
+          "type": "string"
+        },
+        "mint_to_address": {
+          "type": "string"
+        },
+        "token_id": {
+          "type": "string"
+        }
+      }
+    },
+    "services.EasyMintFileDto": {
+      "type": "object",
+      "required": [
+        "chain",
+        "description",
+        "mint_to_address",
+        "name"
+      ],
+      "properties": {
+        "chain": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "mint_to_address": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "services.EasyMintMetaDto": {
+      "type": "object",
+      "required": [
+        "chain",
+        "description",
+        "file_url",
+        "mint_to_address",
+        "name"
+      ],
+      "properties": {
+        "chain": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "file_url": {
+          "type": "string"
+        },
+        "mint_to_address": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "services.QueryMetadataResponse": {
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/models.ExposedMetadata"
+        },
+        "uri": {
+          "type": "string"
+        }
+      }
+    },
+    "services.SponsorInfo": {
+      "type": "object",
+      "properties": {
+        "collateral_sponsor": {
+          "$ref": "#/definitions/cfxaddress.Address"
+        },
+        "collateral_sponsor_balance": {
+          "$ref": "#/definitions/big.Int"
+        },
+        "gas_sponsor": {
+          "$ref": "#/definitions/cfxaddress.Address"
+        },
+        "gas_sponsor_balance": {
+          "$ref": "#/definitions/big.Int"
+        },
+        "gas_upper_bound": {
+          "description": "Admin                    cfxaddress.Address `json:\"admin\"`",
+          "$ref": "#/definitions/big.Int"
+        },
+        "is_all_white_listed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "services.UploadFilesResponse": {
+      "type": "object",
+      "properties": {
+        "file_name": {
+          "type": "string"
+        },
+        "file_size": {
+          "type": "integer"
+        },
+        "file_type": {
+          "type": "string"
+        },
+        "file_url": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "produces": [
+    "application/json",
+    "multipart/form-data"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "securityDefinitions": {},
+  "x-extension-2": null
+}
