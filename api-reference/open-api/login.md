@@ -8,16 +8,83 @@ description: >-
 
 ## Login actions
 
-Login actions provide users the entries to call the open APIs including [metadata.md](metadata.md "mention"), [mints.md](mints.md "mention"), [contract.md](contract.md "mention"). Firstly, users have to call the `App Login` inferface to get the JWT.
+Login actions provide users the entries to call the open APIs including [metadata.md](metadata.md "mention"), [mints.md](mints.md "mention"), [contract.md](contract.md "mention").&#x20;
 
-{% swagger src="../../.gitbook/assets/swagger.yaml" path="/v1/login" method="post" %}
-[swagger.yaml](../../.gitbook/assets/swagger.yaml)
+### App Login
+
+Firstly, users have to call the `App Login` inferface to get the JWT.
+
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/login" method="post" %}
+[swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
-{% hint style="info" %}
-**Good to know:** The JWT is valid for one hour. If the token is expired, users have to call the [#v1-refresh\_token](login.md#v1-refresh\_token "mention") to get the new token.
-{% endhint %}
+{% tabs %}
+{% tab title="Parameters" %}
+| Name          | Meaning    | Type   |
+| ------------- | ---------- | ------ |
+| Authorization | Bear Token | string |
+{% endtab %}
 
-{% swagger src="../../.gitbook/assets/swagger.yaml" path="/v1/refresh_token" method="post" %}
-[swagger.yaml](../../.gitbook/assets/swagger.yaml)
+{% tab title="Response" %}
+| Name  | Meaning   | Type   |
+| ----- | --------- | ------ |
+| Token | JWT token | String |
+{% endtab %}
+
+{% tab title="Response Example" %}
+
+
+```
+string
+```
+
+
+{% endtab %}
+
+{% tab title="Request Sample" %}
+```
+
+curl --request POST \
+  --url https://localhost:8080/v1/login \
+  --header 'Authorization: ' \
+  --header 'Content-Type: application/json'
+```
+{% endtab %}
+{% endtabs %}
+
+### Refresh Open API Token
+
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/refresh_token" method="get" %}
+[swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
+
+{% tabs %}
+{% tab title="Parameters" %}
+| Name          | Meaning    | Type   |
+| ------------- | ---------- | ------ |
+| Authorization | Bear Token | string |
+{% endtab %}
+
+{% tab title="Response" %}
+| Name  | Meaning   | Type   |
+| ----- | --------- | ------ |
+| Toekn | JWT token | String |
+|       |           |        |
+|       |           |        |
+{% endtab %}
+
+{% tab title="Response Example" %}
+```
+string
+```
+{% endtab %}
+
+{% tab title="Request Sample" %}
+```
+curl --request GET \
+  --url https://stoplight.io/mocks/xqyang/test/2579772/v1/refresh_token \
+  --header 'Authorization: ' \
+  --header 'Content-Type: application/json'
+```
+{% endtab %}
+{% endtabs %}
