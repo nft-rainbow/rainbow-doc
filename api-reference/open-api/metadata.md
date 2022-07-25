@@ -20,7 +20,7 @@ The APIs provide users to upload files to get the urls for creating nft metadata
 {% tab title="Parameters" %}
 | Name          | Meaning       | Type                |
 | ------------- | ------------- | ------------------- |
-| Authorization | Bear JWT      | String              |
+| Authorization | Bear JWT      | string              |
 | file          | uploaded file | multipart/form-data |
 {% endtab %}
 
@@ -66,25 +66,26 @@ After obtaining the file urls, users can create the nft metadata by calling the 
 
 {% tabs %}
 {% tab title="Parameters" %}
-| Name           | Meaning                            | Type   |
-| -------------- | ---------------------------------- | ------ |
-| name           | The name of the metadata           | string |
-| file           | The file url of the metadata       | string |
-| external\_link | The externanl link of the metadata | string |
-| description    | The description of the metadata    | string |
-| attributes     | The attributes of the metadata     |        |
+| Name           | Meaning                            | Type            |
+| -------------- | ---------------------------------- | --------------- |
+| Authorization  | Bear JWT                           | Header / string |
+| name           | The name of the metadata           | string          |
+| file           | The file url of the metadata       | string          |
+| external\_link | The externanl link of the metadata | string          |
+| description    | The description of the metadata    | string          |
+| attributes     | The attributes of the metadata     |                 |
 
 The struct of the attributes is listed as bellow.
 
-| Name            | Meaning                           | Type |
-| --------------- | --------------------------------- | ---- |
-| attribute\_name | The name of the attribute         |      |
-| display\_type   | The display type of the attribute |      |
-| trait\_type     | The trait type of the attribute   |      |
-| value           | The value of the attribute        |      |
+| Name            | Meaning                           | Type   |
+| --------------- | --------------------------------- | ------ |
+| attribute\_name | The name of the attribute         | string |
+| display\_type   | The display type of the attribute | string |
+| trait\_type     | The trait type of the attribute   | string |
+| value           | The value of the attribute        | string |
 {% endtab %}
 
-{% tab title="Untitled" %}
+{% tab title="Parameter Example" %}
 ```
 {
   "attributes": [
@@ -129,7 +130,7 @@ curl --request POST\
 
 ## Get the related metadata information&#x20;
 
-### Metadata
+### Query Metadata
 
 After metadata is created, users can call this api to query the detailed information of the specific metadata. This api returns the `name`, `description`, `external link`, `file` and `attributes` of the quired metada.
 
@@ -137,11 +138,120 @@ After metadata is created, users can call this api to query the detailed informa
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
+{% tabs %}
+{% tab title="Parameters" %}
+| Name          | Meaning                | Type            |
+| ------------- | ---------------------- | --------------- |
+| metadata\_id  | The id of the metadata | Path / integer  |
+| Authorization | Bear JWT               | Header / string |
+|               |                        |                 |
+{% endtab %}
+
+{% tab title="Parameter Example" %}
+
+{% endtab %}
+
+{% tab title="Response" %}
+| Name            | Meaning                          | Type   |
+| --------------- | -------------------------------- | ------ |
+| attribute\_name | The name of the attribute        | string |
+| display\_type   | The display type of the attribut | string |
+| trait\_type     | The trait type of the attribute  | string |
+| value           | The value of the attribute       | string |
+{% endtab %}
+
+{% tab title="Response Example" %}
+```
+{
+  "attributes": [
+    {
+      "attribute_name": "string",
+      "display_type": "string",
+      "trait_type": "string",
+      "value": "string"
+    }
+  ],
+  "description": "string",
+  "external_link": "string",
+  "file": "string",
+  "name": "string"
+}
+```
+{% endtab %}
+
+{% tab title="Request Sample" %}
+```
+curl --request GET \
+  --url https://localhost:8080/v1/metadata/:metadata_id \
+  --header 'Authorization: ' \
+  --header 'Content-Type: application/json'
+```
+{% endtab %}
+{% endtabs %}
+
+### Query Metadata List
+
 Users can call the api to get the metadata list. The results are the array of the result of [#v1-metadata-metadata\_id](metadata.md#v1-metadata-metadata\_id "mention").sers can call the api to get the metadata list. The results are the array of the result of [#v1-metadata-metadata\_id](metadata.md#v1-metadata-metadata\_id "mention").
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
+
+{% tabs %}
+{% tab title="Parameters" %}
+| Name          | Meaning                     | Type            |
+| ------------- | --------------------------- | --------------- |
+| nft\_address  | The address of the contract | string(option)  |
+| Authorization | Bear JWT                    | Header / string |
+|               |                             |                 |
+{% endtab %}
+
+{% tab title="Parameter Example" %}
+
+{% endtab %}
+
+{% tab title="Response" %}
+| Name            | Meaning                          | Type   |
+| --------------- | -------------------------------- | ------ |
+| attribute\_name | The name of the attribute        | string |
+| display\_type   | The display type of the attribut | string |
+| trait\_type     | The trait type of the attribute  | string |
+| value           | The value of the attribute       | string |
+{% endtab %}
+
+{% tab title="Response Example" %}
+```
+[
+  {
+    "metadata": {
+      "attributes": [
+        {
+          "attribute_name": "string",
+          "display_type": "string",
+          "trait_type": "string",
+          "value": "string"
+        }
+      ],
+      "description": "string",
+      "external_link": "string",
+      "file": "string",
+      "name": "string"
+    },
+    "uri": "string"
+  }
+]
+```
+{% endtab %}
+
+{% tab title="Request Sample" %}
+```
+curl --request GET \
+  --url https://localhost:8080/v1/metadata/ \
+  --header 'Authorization: ' \
+  --header 'Content-Type: application/json'
+```
+{% endtab %}
+{% endtabs %}
 
 ### File
 
@@ -150,3 +260,48 @@ After files are uploaded, users can call this api to query the files information
 {% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/files" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
+
+{% tabs %}
+{% tab title="Parameter" %}
+|               |          |                 |
+| ------------- | -------- | --------------- |
+| Authorization | Bear JWT | Header / string |
+|               |          |                 |
+|               |          |                 |
+{% endtab %}
+
+{% tab title="Parameter Example" %}
+
+{% endtab %}
+
+{% tab title="Response" %}
+| Name       | Meaning                      | Type    |
+| ---------- | ---------------------------- | ------- |
+| file\_name | The name of the uploaed file | string  |
+| file\_size | The size of the uploaed file | integer |
+| file\_type | The type of the uploaed file | string  |
+| file\_url  | The url of the uploaed file  | string  |
+{% endtab %}
+
+{% tab title="Response Example" %}
+```
+[
+  {
+    "file_name": "string",
+    "file_size": "string",
+    "file_type": "string",
+    "file_url": "string"
+  }
+]
+```
+{% endtab %}
+
+{% tab title="Request Sample" %}
+```
+curl --request GET \
+  --url https://localhost:8080/v1/metadata/files \
+  --header 'Authorization: ' \
+  --header 'Content-Type: application/json'
+```
+{% endtab %}
+{% endtabs %}
