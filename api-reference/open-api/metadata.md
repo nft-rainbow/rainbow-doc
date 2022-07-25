@@ -12,7 +12,7 @@ description: >-
 
 The APIs provide users to upload files to get the urls for creating nft metadata.&#x20;
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/metadata/files" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/files" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -60,7 +60,7 @@ curl --request POST \
 
 After obtaining the file urls, users can create the nft metadata by calling the [#v1-metadata](metadata.md#v1-metadata "mention").&#x20;
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/metadata/" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -133,13 +133,13 @@ curl --request POST\
 
 After metadata is created, users can call this api to query the detailed information of the specific metadata. This api returns the `name`, `description`, `external link`, `file` and `attributes` of the quired metada.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/metadata/:metadata_id" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/:metadata_id" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
 Users can call the api to get the metadata list. The results are the array of the result of [#v1-metadata-metadata\_id](metadata.md#v1-metadata-metadata\_id "mention").sers can call the api to get the metadata list. The results are the array of the result of [#v1-metadata-metadata\_id](metadata.md#v1-metadata-metadata\_id "mention").
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/metadata/" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -147,6 +147,6 @@ Users can call the api to get the metadata list. The results are the array of th
 
 After files are uploaded, users can call this api to query the files information including the `file_url`, `file_size`, `file_type` and `file_name.`
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/metadata/files" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/files" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}

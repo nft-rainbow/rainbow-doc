@@ -14,7 +14,7 @@ Login actions provide users the entries to call the open APIs including [metadat
 
 Firstly, users have to call the `App Login` inferface to get the JWT.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/login" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/login" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -54,7 +54,7 @@ curl --request POST \
 
 ### Refresh Open API Token
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/refresh_token" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/refresh_token" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
