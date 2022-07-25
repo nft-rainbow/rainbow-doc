@@ -18,10 +18,10 @@ The APIs provide users to upload files to get the urls for creating nft metadata
 
 {% tabs %}
 {% tab title="Parameters" %}
-| Name          | Meaning       | Type                |
-| ------------- | ------------- | ------------------- |
-| Authorization | Bear JWT      | string              |
-| file          | uploaded file | multipart/form-data |
+| Name          | Meaning       | Param Type          | Type   |
+| ------------- | ------------- | ------------------- | ------ |
+| Authorization | Bear JWT      | Header              | string |
+| file          | uploaded file | multipart/form-data |        |
 {% endtab %}
 
 {% tab title="Responses" %}
@@ -66,23 +66,23 @@ After obtaining the file urls, users can create the nft metadata by calling the 
 
 {% tabs %}
 {% tab title="Parameters" %}
-| Name           | Meaning                            | Type            |
-| -------------- | ---------------------------------- | --------------- |
-| Authorization  | Bear JWT                           | Header / string |
-| name           | The name of the metadata           | string          |
-| file           | The file url of the metadata       | string          |
-| external\_link | The externanl link of the metadata | string          |
-| description    | The description of the metadata    | string          |
-| attributes     | The attributes of the metadata     |                 |
+| Name           | Meaning                            | Param Type | Data Type       |
+| -------------- | ---------------------------------- | ---------- | --------------- |
+| Authorization  | Bear JWT                           | Header     | Header / string |
+| name           | The name of the metadata           | body       | string          |
+| file           | The file url of the metadata       | body       | string          |
+| external\_link | The externanl link of the metadata | body       | string          |
+| description    | The description of the metadata    | body       | string          |
+| attributes     | The attributes of the metadata     | array      | attribute       |
 
 The struct of the attributes is listed as bellow.
 
-| Name            | Meaning                           | Type   |
-| --------------- | --------------------------------- | ------ |
-| attribute\_name | The name of the attribute         | string |
-| display\_type   | The display type of the attribute | string |
-| trait\_type     | The trait type of the attribute   | string |
-| value           | The value of the attribute        | string |
+| Name            | Meaning                           | Param Type | Type   |
+| --------------- | --------------------------------- | ---------- | ------ |
+| attribute\_name | The name of the attribute         | body       | string |
+| display\_type   | The display type of the attribute | body       | string |
+| trait\_type     | The trait type of the attribute   | body       | string |
+| value           | The value of the attribute        | body       | string |
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -140,18 +140,24 @@ After metadata is created, users can call this api to query the detailed informa
 
 {% tabs %}
 {% tab title="Parameters" %}
-| Name          | Meaning                | Type            |
-| ------------- | ---------------------- | --------------- |
-| metadata\_id  | The id of the metadata | Path / integer  |
-| Authorization | Bear JWT               | Header / string |
-|               |                        |                 |
-{% endtab %}
-
-{% tab title="Parameter Example" %}
-
+| Name          | Meaning                | Param Type | Data Type |
+| ------------- | ---------------------- | ---------- | --------- |
+| metadata\_id  | The id of the metadata | Path       | Integer   |
+| Authorization | Bear JWT               | Header     | string    |
+|               |                        |            |           |
 {% endtab %}
 
 {% tab title="Response" %}
+| Name           | Meaning                           | Param Type     | Data Type   |
+| -------------- | --------------------------------- | -------------- | ----------- |
+| attributes     | The attribute of the              | array\[object] | attributes  |
+| description    | The description of the metadata   | body           | string      |
+| external\_link | The external link of the metadata | body           | string      |
+| file           | The file url of the metadata      | body           | string      |
+| name           | The name of the metadata          | body           | string      |
+
+The struct of the attributes is listed as bellow.
+
 | Name            | Meaning                          | Type   |
 | --------------- | -------------------------------- | ------ |
 | attribute\_name | The name of the attribute        | string |
@@ -199,18 +205,24 @@ Users can call the api to get the metadata list. The results are the array of th
 
 {% tabs %}
 {% tab title="Parameters" %}
-| Name          | Meaning                     | Type            |
-| ------------- | --------------------------- | --------------- |
-| nft\_address  | The address of the contract | string(option)  |
-| Authorization | Bear JWT                    | Header / string |
-|               |                             |                 |
-{% endtab %}
-
-{% tab title="Parameter Example" %}
-
+| Name          | Meaning                     | Param Type | Type           |
+| ------------- | --------------------------- | ---------- | -------------- |
+| nft\_address  | The address of the contract | query      | string(option) |
+| Authorization | Bear JWT                    | Header     | string         |
+|               |                             |            |                |
 {% endtab %}
 
 {% tab title="Response" %}
+| Name           | Meaning                           | Param Type     | Data Type   |
+| -------------- | --------------------------------- | -------------- | ----------- |
+| attributes     | The attribute of the              | array\[object] | attributes  |
+| description    | The description of the metadata   | body           | string      |
+| external\_link | The external link of the metadata | body           | string      |
+| file           | The file url of the metadata      | body           | string      |
+| name           | The name of the metadata          | body           | string      |
+
+The struct of the attributes is listed as bellow.
+
 | Name            | Meaning                          | Type   |
 | --------------- | -------------------------------- | ------ |
 | attribute\_name | The name of the attribute        | string |
@@ -263,15 +275,11 @@ After files are uploaded, users can call this api to query the files information
 
 {% tabs %}
 {% tab title="Parameter" %}
-|               |          |                 |
-| ------------- | -------- | --------------- |
-| Authorization | Bear JWT | Header / string |
-|               |          |                 |
-|               |          |                 |
-{% endtab %}
-
-{% tab title="Parameter Example" %}
-
+| Name          | Meanning | Param Type | Data Type |
+| ------------- | -------- | ---------- | --------- |
+| Authorization | Bear JWT | Header     | string    |
+|               |          |            |           |
+|               |          |            |           |
 {% endtab %}
 
 {% tab title="Response" %}

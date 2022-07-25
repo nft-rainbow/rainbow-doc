@@ -20,9 +20,19 @@ Firstly, users have to call the `App Login` inferface to get the JWT.
 
 {% tabs %}
 {% tab title="Parameters" %}
-| Name          | Meaning    | Type   |
-| ------------- | ---------- | ------ |
-| Authorization | Bear Token | string |
+| Name        | Meaning               | Param Type | Data Type |
+| ----------- | --------------------- | ---------- | --------- |
+| app\_id     | The id of the app     | body       | string    |
+| app\_secret | The secret of the app | body       | string    |
+{% endtab %}
+
+{% tab title="Parameter Example" %}
+```
+{
+    "app_id": "qUUcdueA",
+    "app_secret": "zGCaP8kAFEmwanqo"
+}
+```
 {% endtab %}
 
 {% tab title="Response" %}
@@ -46,7 +56,6 @@ string
 
 curl --request POST \
   --url https://localhost:8080/v1/login \
-  --header 'Authorization: ' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}
@@ -60,9 +69,9 @@ curl --request POST \
 
 {% tabs %}
 {% tab title="Parameters" %}
-| Name          | Meaning    | Type   |
-| ------------- | ---------- | ------ |
-| Authorization | Bear Token | string |
+| Name          | Meaning    | Param Type | Data Type |
+| ------------- | ---------- | ---------- | --------- |
+| Authorization | Bear Token | Header     | string    |
 {% endtab %}
 
 {% tab title="Response" %}
@@ -82,7 +91,7 @@ string
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://stoplight.io/mocks/xqyang/test/2579772/v1/refresh_token \
+  --url https://localhost:8080/v1/refresh_token \
   --header 'Authorization: ' \
   --header 'Content-Type: application/json'
 ```
