@@ -223,3 +223,4 @@ curl --location --request POST 'http://localhost:8080/v1/mints' \
     "metadata_uri": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
 }'
 ```
+The response is the minted NFT information. Please query mint status by [Query mint](#query-mint)
