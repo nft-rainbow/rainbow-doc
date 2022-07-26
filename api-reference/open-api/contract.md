@@ -43,8 +43,6 @@ The `Deploy contract` API helps users to deploy a ERC721 contract.
 {% endtab %}
 
 {% tab title="Response" %}
-
-
 | Name           | Meaning                                                        | Type    |
 | -------------- | -------------------------------------------------------------- | ------- |
 | address        | The address of the contract                                    | string  |
@@ -160,8 +158,8 @@ The `Get the contarct list` API provides users the entry to get the deployed con
 {% tab title="Parameter" %}
 | Name          | Meaning      | Param Type | Data Type |
 | ------------- | ------------ | ---------- | --------- |
-| address       | Page Request | query      | integer   |
-| app\_id       | Page Request | query      | integer   |
+| page          | Page Request | query      | integer   |
+| limit         | Page Request | query      | integer   |
 | Authorization | Bear JWT     | Header     | string    |
 {% endtab %}
 

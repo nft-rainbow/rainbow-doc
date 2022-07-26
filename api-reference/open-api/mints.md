@@ -85,23 +85,50 @@ The `Mint a nft by uploading a file` provides users with the entry to call the E
 
 {% tabs %}
 {% tab title="Parameter" %}
-
-{% endtab %}
-
-{% tab title="Parameter Example" %}
-
+| Name              | Meaning                         | Param Type | Type   |
+| ----------------- | ------------------------------- | ---------- | ------ |
+| name              | The name of the nft             | body       | string |
+| chain             | The chain type                  | body       | string |
+| mint\_to\_address | The creater of the contract     | body       | string |
+| description       | The description of the contract | body       | string |
+| file              | The uploaded file               | body       |        |
+| Authorization     | Bear JWT                        | Header     | string |
 {% endtab %}
 
 {% tab title="Response" %}
-
+| Name              | Meaning                    | Type   |
+| ----------------- | -------------------------- | ------ |
+| chain             | The type of the chain      | string |
+| description       | The description of the nft | string |
+| mint\_to\_address | The creator of the address | string |
+| name              | The name of the nft        | string |
 {% endtab %}
 
 {% tab title="Response Example" %}
-
+```
+[
+  {
+    "chain": "string",
+    "description": "string",
+    "mint_to_address": "string",
+    "name": "string"
+  }
+]
+```
 {% endtab %}
 
 {% tab title="Request Sample" %}
-
+```
+curl --request POST \
+  --url https://localhost:8080/v1/mints/files \
+  --header 'Authorization: ' \
+  --header 'Content-Type: multipart/form-data' \
+  --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
+  --form chain= \
+  --form description= \
+  --form mint_to_address= \
+  --form name=
+```
 {% endtab %}
 {% endtabs %}
 
@@ -115,23 +142,57 @@ The `Mint a nft by creating a metadata` provides users with the entry to call th
 
 {% tabs %}
 {% tab title="Parameter" %}
-
+| Name              | Meaning                         | Param Type | Type   |
+| ----------------- | ------------------------------- | ---------- | ------ |
+| name              | The name of the nft             | body       | string |
+| chain             | The chain type                  | body       | string |
+| mint\_to\_address | The creater of the contract     | body       | string |
+| description       | The description of the contract | body       | string |
+| file\_url         | The url of the file             | body       | string |
+| Authorization     | Bear JWT                        | Header     | string |
 {% endtab %}
 
 {% tab title="Parameter Example" %}
-
+```
+{
+    "chain": "conflux_test",
+    "name": "123",
+    "description": "123",
+    "mint_to_address": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
+    "file_url": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+}
+```
 {% endtab %}
 
 {% tab title="Response" %}
-
+| Name              | Meaning                    | Type   |
+| ----------------- | -------------------------- | ------ |
+| chain             | The type of the chain      | string |
+| description       | The description of the nft | string |
+| mint\_to\_address | The creator of the address | string |
+| name              | The name of the nft        | string |
 {% endtab %}
 
 {% tab title="Response Example" %}
-
+```
+[
+  {
+    "chain": "string",
+    "description": "string",
+    "mint_to_address": "string",
+    "name": "string"
+  }
+]
+```
 {% endtab %}
 
 {% tab title="Request Sample" %}
-
+```
+curl --request POST \
+  --url https://localhost:8080/mints/urls \
+  --header 'Authorization: ' \
+  --header 'Content-Type: application/json'
+```
 {% endtab %}
 {% endtabs %}
 
@@ -145,22 +206,65 @@ The `Get a nft list of a specific app` API provide users with the entry to query
 
 {% tabs %}
 {% tab title="Parameter" %}
-
-{% endtab %}
-
-{% tab title="Parameter Example" %}
-
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| page          | Page Request | query      | integer   |
+| limit         | Page Request | query      | integer   |
+| Authorization | Bear JWT     | Header     | string    |
 {% endtab %}
 
 {% tab title="Response" %}
-
+| Name        | Meaning                                                       | Type    |
+| ----------- | ------------------------------------------------------------- | ------- |
+| amount      | The amount of the nft                                         | integer |
+| app\_id     | The id of the app                                             | integer |
+| chain\_id   | The id of the chain                                           | integer |
+| chain\_type | The type of the chain                                         | integer |
+| contract    | The address of the nft                                        | string  |
+| error       | The error during executing tx                                 | string  |
+| hash        | The hash of the transaction                                   | string  |
+| id          |                                                               | integer |
+| mint\_to    | The creater of the contract                                   | string  |
+| status      | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
+| token\_id   | The id of the token                                           | integer |
+| token\_uri  | The uri of the token                                          | string  |
+| tx\_id      | The id of the transaction                                     | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
-
+```
+[
+  {
+    "amount": 0,
+    "app_id": 0,
+    "chain_id": 0,
+    "chain_type": 0,
+    "contract": "string",
+    "created_at": "string",
+    "deleted_at": {
+      "time": "string",
+      "valid": true
+    },
+    "error": "string",
+    "hash": "string",
+    "id": 0,
+    "mint_to": "string",
+    "status": 0,
+    "token_id": 0,
+    "token_uri": "string",
+    "tx_id": 0,
+    "updated_at": "string"
+  }
+]
+```
 {% endtab %}
 
 {% tab title="Request Sample" %}
-
+```
+curl --request GET \
+  --url https://localhost:8080/v1/mints \
+  --header 'Authorization: ' \
+  --header 'Content-Type: application/json'
+```
 {% endtab %}
 {% endtabs %}
