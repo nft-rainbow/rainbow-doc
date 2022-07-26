@@ -590,7 +590,7 @@
                 }
             }
         },
-        "/mints/files": {
+        "/mints/easy/files": {
             "post": {
                 "description": "Mint a NFT by uploading a file which can be a video, image and so on",
                 "consumes": [
@@ -659,7 +659,7 @@
                 }
             }
         },
-        "/mints/urls": {
+        "/mints/easy/urls": {
             "post": {
                 "description": "Mint a nft by providing a file url to create the metadata",
                 "produces": [
@@ -720,6 +720,11 @@
         },
         "/refresh_token": {
             "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "description": "Obtain a new JWT",
                 "produces": [
                     "application/json"

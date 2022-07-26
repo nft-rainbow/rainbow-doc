@@ -77,8 +77,6 @@ curl --request POST \
 | Name          | Meaning      | Param Type | Data Type |
 | ------------- | ------------ | ---------- | --------- |
 | Authorization | Bearer Token | Header     | string    |
-|               |              |            |           |
-|               |              |            |           |
 {% endtab %}
 
 {% tab title="Parameters" %}

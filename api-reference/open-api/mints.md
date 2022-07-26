@@ -19,15 +19,14 @@ The `Mint NFT` provides users with the entry to call the ERC721 contract to mint
 {% endswagger %}
 
 {% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
 {% tab title="Parameter" %}
-| Name              | Meaning                     | Param Type | Type    |
-| ----------------- | --------------------------- | ---------- | ------- |
-| name              | The name of the nft         | body       | string  |
-| chain             | The chain type              | body       | string  |
-| mint\_to\_address | The creater of the contract | body       | string  |
-| contract\_address | The address of the contract | body       | integer |
-| metadata\_uri     | The uri of the metadata     | body       | string  |
-| Authorization     | Bear JWT                    | Header     | string  |
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Optional</th></tr></thead><tbody><tr><td>name</td><td>The name of the nft</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type</td><td>body</td><td>string</td><td>false</td></tr><tr><td>mint_to_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>false</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>integer</td><td>false</td></tr><tr><td>metadata_uri</td><td>The uri of the metadata</td><td>body</td><td>string</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -79,20 +78,19 @@ curl --request POST \
 
 The `Mint NFT with file` provides users with the entry to call the ERC721 contract to mint the NFT with uploading files. The uploaded files can be images, video and so on.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/files" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/easy/files" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
 {% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
 {% tab title="Parameter" %}
-| Name              | Meaning                         | Param Type | Type   |
-| ----------------- | ------------------------------- | ---------- | ------ |
-| name              | The name of the nft             | body       | string |
-| chain             | The chain type                  | body       | string |
-| mint\_to\_address | The creater of the contract     | body       | string |
-| description       | The description of the contract | body       | string |
-| file              | The uploaded file               | body       |        |
-| Authorization     | Bear JWT                        | Header     | string |
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">optional</th></tr></thead><tbody><tr><td>name</td><td>The name of the nft</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type</td><td>body</td><td>string</td><td>false</td></tr><tr><td>mint_to_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the contract</td><td>body</td><td>string</td><td>false</td></tr><tr><td>file</td><td>The uploaded file</td><td>body</td><td></td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
@@ -136,20 +134,19 @@ curl --request POST \
 
 The `Mint NFT with metadata` provides users with the entry to call the ERC721 or ERC1155 contract to mint the NFT with creating metadata by providing a file url.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/urls" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/easy/urls" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
 {% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
 {% tab title="Parameter" %}
-| Name              | Meaning                         | Param Type | Type   |
-| ----------------- | ------------------------------- | ---------- | ------ |
-| name              | The name of the nft             | body       | string |
-| chain             | The chain type                  | body       | string |
-| mint\_to\_address | The creater of the contract     | body       | string |
-| description       | The description of the contract | body       | string |
-| file\_url         | The url of the file             | body       | string |
-| Authorization     | Bear JWT                        | Header     | string |
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Optional</th></tr></thead><tbody><tr><td>name</td><td>The name of the nft</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type</td><td>body</td><td>string</td><td>false</td></tr><tr><td>mint_to_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the contract</td><td>body</td><td>string</td><td>false</td></tr><tr><td>file_url</td><td>The url of the file</td><td>body</td><td>string</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -205,12 +202,14 @@ The `Obtain NFT list` API provide users with the entry to query the NFTs informa
 {% endswagger %}
 
 {% tabs %}
-{% tab title="Parameter" %}
+{% tab title="Auth" %}
 | Name          | Meaning      | Param Type | Data Type |
 | ------------- | ------------ | ---------- | --------- |
-| page          | Page Request | query      | integer   |
-| limit         | Page Request | query      | integer   |
-| Authorization | Bear JWT     | Header     | string    |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
+{% tab title="Parameter" %}
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Optional</th></tr></thead><tbody><tr><td>page</td><td>Page Request</td><td>query</td><td>integer</td><td>true</td></tr><tr><td>limit</td><td>Page Request</td><td>query</td><td>integer</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}

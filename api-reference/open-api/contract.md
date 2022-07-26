@@ -18,15 +18,14 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 {% endswagger %}
 
 {% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
 {% tab title="Parameter" %}
-| Name           | Meaning                                         | Param Type | Type    |
-| -------------- | ----------------------------------------------- | ---------- | ------- |
-| name           | The name of the nft                             | body       | string  |
-| symbol         | The symbol of the nft                           | body       | string  |
-| owner\_address | The creater of the contract                     | body       | string  |
-| type           | The type of the contract, e.g., ERC721, ERC1155 | body       | integer |
-| base\_uri      | The uri of the nft                              | body       | string  |
-| Authorization  | Bear JWT                                        | Header     | string  |
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Optional</th></tr></thead><tbody><tr><td>name</td><td>The name of the nft</td><td>body</td><td>string</td><td>false</td></tr><tr><td>symbol</td><td>The symbol of the nft</td><td>body</td><td>string</td><td>false</td></tr><tr><td>owner_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>false</td></tr><tr><td>type</td><td>The type of the contract, e.g., ERC721, ERC1155</td><td>body</td><td>integer</td><td>false</td></tr><tr><td>base_uri</td><td>The uri of the nft</td><td>body</td><td>string</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -104,14 +103,14 @@ The `Set sponsor` API provides users to set a sponser for a specific contract ac
 {% endswagger %}
 
 {% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
 {% tab title="Parameter" %}
-
-
-| Name          | Meaning                     | Param Type | Data Type |
-| ------------- | --------------------------- | ---------- | --------- |
-| address       | The address of the sponsor  | formData   | string    |
-| address       | The address of the contract | Path       | string    |
-| Authorization | Bear JWT                    | Header     | string    |
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Optional</th></tr></thead><tbody><tr><td>address</td><td>The address of the sponsor</td><td>formData</td><td>string</td><td>false</td></tr><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -155,12 +154,14 @@ The `Obtain contarct list` API provides users the entry to get the inforamtion o
 {% endswagger %}
 
 {% tabs %}
-{% tab title="Parameter" %}
+{% tab title="Auth" %}
 | Name          | Meaning      | Param Type | Data Type |
 | ------------- | ------------ | ---------- | --------- |
-| page          | Page Request | query      | integer   |
-| limit         | Page Request | query      | integer   |
-| Authorization | Bear JWT     | Header     | string    |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
+{% tab title="Parameter" %}
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Optional</th></tr></thead><tbody><tr><td>page</td><td>Page Request</td><td>query</td><td>integer</td><td>true</td></tr><tr><td>limit</td><td>Page Request</td><td>query</td><td>integer</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
@@ -233,12 +234,14 @@ The `Query sponsor` API provides users the entry to get the sponsors of a specif
 {% endswagger %}
 
 {% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
 {% tab title="Parameter" %}
-| Name          | Meaning                     | Param Type | Data Type |
-| ------------- | --------------------------- | ---------- | --------- |
-| Authorization | Bear JWT                    | Header     | string    |
-| address       | The address of the sponsor  | Path       | string    |
-| chain         | The type of the chain       | query      | string    |
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Optional</th></tr></thead><tbody><tr><td>Authorization</td><td>Bear JWT</td><td>Header</td><td>string</td><td>false</td></tr><tr><td>address</td><td>The address of the sponsor </td><td>Path</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The type of the chain</td><td>query</td><td>string</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}

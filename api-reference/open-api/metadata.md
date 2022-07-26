@@ -17,11 +17,14 @@ description: >-
 {% endswagger %}
 
 {% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
 {% tab title="Parameters" %}
-| Name          | Meaning       | Param Type          | Type   |
-| ------------- | ------------- | ------------------- | ------ |
-| Authorization | Bear JWT      | Header              | string |
-| file          | uploaded file | multipart/form-data |        |
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>file</td><td>uploaded file</td><td>multipart/form-data</td><td></td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Responses" %}
@@ -65,15 +68,14 @@ curl --request POST \
 {% endswagger %}
 
 {% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
 {% tab title="Parameters" %}
-| Name           | Meaning                            | Param Type | Data Type       |
-| -------------- | ---------------------------------- | ---------- | --------------- |
-| Authorization  | Bear JWT                           | Header     | Header / string |
-| name           | The name of the metadata           | body       | string          |
-| file           | The file url of the metadata       | body       | string          |
-| external\_link | The externanl link of the metadata | body       | string          |
-| description    | The description of the metadata    | body       | string          |
-| attributes     | The attributes of the metadata     | array      | attribute       |
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>file</td><td>The file url of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>external_link</td><td>The externanl link of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>attributes</td><td>The attributes of the metadata</td><td>array</td><td>attribute</td><td>false</td></tr></tbody></table>
 
 The struct of the attributes is listed as bellow.
 
@@ -141,6 +143,12 @@ The struct of the attributes is listed as bellow.
 {% endswagger %}
 
 {% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
 {% tab title="Parameters" %}
 | Name          | Meaning                | Param Type | Data Type |
 | ------------- | ---------------------- | ---------- | --------- |
@@ -206,12 +214,16 @@ curl --request GET \
 {% endswagger %}
 
 {% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
 {% tab title="Parameters" %}
-| Name          | Meaning                     | Param Type | Type           |
-| ------------- | --------------------------- | ---------- | -------------- |
-| nft\_address  | The address of the contract | query      | string(option) |
-| Authorization | Bear JWT                    | Header     | string         |
-|               |                             |            |                |
+| Name         | Meaning                     | Param Type | Type           |
+| ------------ | --------------------------- | ---------- | -------------- |
+| nft\_address | The address of the contract | query      | string(option) |
 {% endtab %}
 
 {% tab title="Response" %}
@@ -276,10 +288,10 @@ curl --request GET \
 {% endswagger %}
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Name          | Meanning | Param Type | Data Type |
-| ------------- | -------- | ---------- | --------- |
-| Authorization | Bear JWT | Header     | string    |
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
 {% endtab %}
 
 {% tab title="Response" %}
