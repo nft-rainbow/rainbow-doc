@@ -7,11 +7,11 @@ description: >-
 
 # Contract
 
-## Contract actions
+## Contract Actions
 
 ### Deploy Contract
 
-The `Deploy contract` API helps users to deploy a ERC721 contract.
+The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/contracts" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -91,13 +91,13 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
-### Set the sponsor for a contract
+### Set Sponsor
 
-{% hint style="success" %}
+{% hint style="info" %}
 **Good to know:** Conflux provides users the sponsor function. Once a contract is sponsored by an account, the accounts in the contract white list can call this contracts for free.&#x20;
 {% endhint %}
 
-The `Set the sponsor for a contract` API provides users to set sponsers for a specific contract.
+The `Set sponsor` API provides users to set a sponser for a specific contract according to the sponsor' address.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/:address/sponsor" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -144,11 +144,11 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
-## Query informations
+## Query Informations
 
-### Get the contract list
+### Obtain Contract List
 
-The `Get the contarct list` API provides users the entry to get the deployed contracts.
+The `Obtain contarct list` API provides users the entry to get the inforamtion of the  contracts deployed in a specified app. The parameter `page` and `size` are optional parameters.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/contracts" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -220,9 +220,13 @@ curl --request GET \
 {% endtab %}
 {% endtabs %}
 
-### Get the sponsor of a contract
+### Query Sponsor
 
-The `Get the sponsor of a contract` API provides users the entry to get the sponsors of a specific contract.&#x20;
+The `Query sponsor` API provides users the entry to get the sponsors of a specific contract according to the contract's address. The parameter `chain` is optional, which can be used to choose the test or main network of conflux.
+
+{% hint style="info" %}
+**Good to know:** Conflux Network can be divided into the main network and the test network. The later is used to test the developed functions for developers.
+{% endhint %}
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/:address/sponsor" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -277,7 +281,9 @@ curl --request GET \
 {% endtabs %}
 
 {% hint style="info" %}
-**Good to know:**  For more detailed information, please refer to the developer documentation:
-
-&#x20;[https://developer.confluxnetwork.org/conflux-rust/internal\_contract/internal\_contract#sponsorwhitelistcontrol-contract:\~:text=Copy-,SponsorWhitelistControl%20contract,-%23](https://developer.confluxnetwork.org/conflux-rust/internal\_contract/internal\_contract#sponsorwhitelistcontrol-contract)
+&#x20; **Good to know:**  For more detailed information, please refer to the following link
 {% endhint %}
+
+{% embed url="https://developer.confluxnetwork.org/conflux-rust/internal_contract/internal_contract#sponsorwhitelistcontrol-contract" %}
+SponsorWhitelistControl Contract
+{% endembed %}

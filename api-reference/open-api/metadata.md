@@ -1,16 +1,16 @@
 ---
 description: >-
   The metadata APIs provide users to make preparations for creating NFTs,
-  including uploading files and creating nft metadata.
+  including uploading files and creating NFT metadata.
 ---
 
 # Metadata
 
-## Create metadata actions
+## Create Actions
 
 ### Upload File
 
-The APIs provide users to upload files to get the urls for creating nft metadata.&#x20;
+`Upload file` API helps users to upload a file to get the corresponding url for creating NFT metadata.  The file can be a video, a image and so on.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/files" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -56,9 +56,9 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
-### Create nft metadata
+### Create NFT Metadata
 
-After obtaining the file urls, users can create the nft metadata by calling the [#v1-metadata](metadata.md#v1-metadata "mention").&#x20;
+`Create NFT metadata` API helps users to create their own metadata after calling [Upload File](metadata.md#metadata-files) to get the corresponding file url.  To call  `Create NFT metadata` , users have to provide the metadata information including `name`, `file`, `external_link` and so on.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -128,11 +128,11 @@ curl --request POST\
 {% endtab %}
 {% endtabs %}
 
-## Get the related metadata information&#x20;
+## Get Informations&#x20;
 
 ### Query Metadata
 
-After metadata is created, users can call this api to query the detailed information of the specific metadata. This api returns the `name`, `description`, `external link`, `file` and `attributes` of the quired metada.
+`Query metadata` API helps users to query the detailed information of the specified metadata according to `metadata_id`. This api returns the `name`, `description`, `external link`, `file` and `attributes` of the queried metada.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/:metadata_id" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -197,7 +197,7 @@ curl --request GET \
 
 ### Query Metadata List
 
-Users can call the api to get the metadata list. The results are the array of the result of [#v1-metadata-metadata\_id](metadata.md#v1-metadata-metadata\_id "mention").sers can call the api to get the metadata list. The results are the array of the result of [#v1-metadata-metadata\_id](metadata.md#v1-metadata-metadata\_id "mention").
+`Query metadata list` API helps users to obain the metadata list including the information of the metadata created in the specified app. The `nft_address` is optional. This API returns the array of the result from calling [Query matadata](metadata.md#metadata-metadata\_id).
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -265,9 +265,9 @@ curl --request GET \
 {% endtab %}
 {% endtabs %}
 
-### File
+### Obtain File List
 
-After files are uploaded, users can call this api to query the files information including the `file_url`, `file_size`, `file_type` and `file_name.`
+`Obtain file list` API helps users to obtain the list including the inforamion of the files uploaded in the specified app. The information of each file contains `file_url`, `file_size`, `file_type` and `file_name`.&#x20;
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/files" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -278,8 +278,6 @@ After files are uploaded, users can call this api to query the files information
 | Name          | Meanning | Param Type | Data Type |
 | ------------- | -------- | ---------- | --------- |
 | Authorization | Bear JWT | Header     | string    |
-|               |          |            |           |
-|               |          |            |           |
 {% endtab %}
 
 {% tab title="Response" %}

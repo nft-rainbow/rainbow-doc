@@ -6,7 +6,7 @@ description: >-
 
 # Mints
 
-## Mint NFTs
+## Mint Actions
 
 The Mints APIs provides three methods to help users mint NFTs, including the custom minting, minting with a file and minting with  a metada.
 
@@ -132,7 +132,7 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
-### Mint a NFT with metadata
+### Mint NFT with metadata
 
 The `Mint NFT with metadata` provides users with the entry to call the ERC721 or ERC1155 contract to mint the NFT with creating metadata by providing a file url.
 
@@ -196,7 +196,7 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
-## Obtain NFT list
+## Obtain Informations
 
 The `Obtain NFT list` API provide users with the entry to query the NFTs information created on a spcific app.
 

@@ -1,6 +1,6 @@
 ---
 description: >-
-  Rainbow-APIs is based on JWT. In order to use the open APIs, login inferfaces
+  Rainbow-APIs is based on JWT. In order to use the open APIs, login APIs
   provide us entries to get the JWT.
 ---
 
@@ -12,7 +12,7 @@ Login actions provide users the entries to call the open APIs including [metadat
 
 ### App Login
 
-Firstly, users have to call the `App Login` inferface to get the JWT.
+`APP login` API helps users to get the JWT according to `app_id` and `app_secret`. JWT can be used to access other open APIs.&#x20;
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/login" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -60,7 +60,13 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
-### Refresh Open API Token
+{% hint style="info" %}
+**Note:** Each JWT is valid for one hour. Once the JWT is expired, users have to call [Refresh JWT](login.md#refresh\_token) to get the new JWT.
+{% endhint %}
+
+### Refresh JWT
+
+`Refresh JWT` API helps users to get a new JWT of the specified app.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/refresh_token" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -76,9 +82,7 @@ curl --request POST \
 {% tab title="Response" %}
 | Name  | Meaning   | Type   |
 | ----- | --------- | ------ |
-| Toekn | JWT token | String |
-|       |           |        |
-|       |           |        |
+| Token | JWT token | String |
 {% endtab %}
 
 {% tab title="Response Example" %}
