@@ -24,7 +24,7 @@ description: >-
 {% endtab %}
 
 {% tab title="Parameters" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>file</td><td>uploaded file</td><td>multipart/form-data</td><td></td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>file</td><td>uploaded file</td><td>multipart/form-data</td><td></td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Responses" %}
@@ -75,16 +75,11 @@ curl --request POST \
 {% endtab %}
 
 {% tab title="Parameters" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>file</td><td>The file url of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>external_link</td><td>The externanl link of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>attributes</td><td>The attributes of the metadata</td><td>array</td><td>attribute</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>file</td><td>The file url of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>external_link</td><td>The externanl link of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>attributes</td><td>The attributes of the metadata</td><td>array</td><td>attribute</td><td>false</td></tr></tbody></table>
 
 The struct of the attributes is listed as bellow.
 
-| Name            | Meaning                           | Param Type | Type   |
-| --------------- | --------------------------------- | ---------- | ------ |
-| attribute\_name | The name of the attribute         | body       | string |
-| display\_type   | The display type of the attribute | body       | string |
-| trait\_type     | The trait type of the attribute   | body       | string |
-| value           | The value of the attribute        | body       | string |
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>attribute_name</td><td>The name of the attribute</td><td>body</td><td>string</td><td>false</td></tr><tr><td>display_type</td><td>The display type of the attribute</td><td>body</td><td>string</td><td>false</td></tr><tr><td>trait_type</td><td>The trait type of the attribute</td><td>body</td><td>string</td><td>false</td></tr><tr><td>value</td><td>The value of the attribute</td><td>body</td><td>string</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -124,7 +119,7 @@ The struct of the attributes is listed as bellow.
 
 {% tab title="Request Sample" %}
 ```
-/curl --request POST
+curl --request POST
 --url https://localhost:8080/v1/metadata/
 --header 'Authorization: '
 --header 'Content-Type: application/json'
@@ -150,11 +145,7 @@ The struct of the attributes is listed as bellow.
 {% endtab %}
 
 {% tab title="Parameters" %}
-| Name          | Meaning                | Param Type | Data Type |
-| ------------- | ---------------------- | ---------- | --------- |
-| metadata\_id  | The id of the metadata | Path       | Integer   |
-| Authorization | Bear JWT               | Header     | string    |
-|               |                        |            |           |
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>metadata_id</td><td>The id of the metadata</td><td>Path</td><td>Integer</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
@@ -221,9 +212,7 @@ curl --request GET \
 {% endtab %}
 
 {% tab title="Parameters" %}
-| Name         | Meaning                     | Param Type | Type           |
-| ------------ | --------------------------- | ---------- | -------------- |
-| nft\_address | The address of the contract | query      | string(option) |
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>nft_address</td><td>The address of the contract</td><td>query</td><td>string</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}

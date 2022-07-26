@@ -20,10 +20,7 @@ Login actions provide users the entries to call the open APIs including [metadat
 
 {% tabs %}
 {% tab title="Parameters" %}
-| Name        | Meaning               | Param Type | Data Type |
-| ----------- | --------------------- | ---------- | --------- |
-| app\_id     | The id of the app     | body       | string    |
-| app\_secret | The secret of the app | body       | string    |
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>app_id</td><td>The id of the app</td><td>body</td><td>string</td><td>true</td></tr><tr><td>app_secret</td><td>The secret of the app</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -74,12 +71,6 @@ curl --request POST \
 
 {% tabs %}
 {% tab title="Auth" %}
-| Name          | Meaning      | Param Type | Data Type |
-| ------------- | ------------ | ---------- | --------- |
-| Authorization | Bearer Token | Header     | string    |
-{% endtab %}
-
-{% tab title="Parameters" %}
 | Name          | Meaning      | Param Type | Data Type |
 | ------------- | ------------ | ---------- | --------- |
 | Authorization | Bearer Token | Header     | string    |
