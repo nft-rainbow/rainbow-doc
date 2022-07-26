@@ -271,7 +271,7 @@
                 "tags": [
                     "Metadata"
                 ],
-                "summary": "Query metadata list",
+                "summary": "Obtain metadata list",
                 "parameters": [
                     {
                         "type": "string",

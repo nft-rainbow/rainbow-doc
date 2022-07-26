@@ -121,10 +121,12 @@ The struct of the attributes is listed as bellow.
 {% endtab %}
 
 {% tab title="Request Sample" %}
-curl --request POST\
-\--url https://stoplight.io/mocks/xqyang/test/2579772/v1/metadata/\
-\--header 'Authorization: '\
-\--header 'Content-Type: application/json'
+```
+/curl --request POST
+--url https://localhost:8080/v1/metadata/
+--header 'Authorization: '
+--header 'Content-Type: application/json'
+```
 {% endtab %}
 {% endtabs %}
 
@@ -195,7 +197,7 @@ curl --request GET \
 {% endtab %}
 {% endtabs %}
 
-### Query Metadata List
+### Obtain Metadata List
 
 `Query metadata list` API helps users to obain the metadata list including the information of the metadata created in the specified app. The `nft_address` is optional. This API returns the array of the result from calling [Query matadata](metadata.md#metadata-metadata\_id).
 
