@@ -197,7 +197,7 @@ curl --location --request POST 'http://localhost:8080/v1/contracts' \
 }'
 ```
 
-The response is the deployed NFT contract information. Please query mint status by [Query contract](#query-mint)
+The response is the deployed NFT contract information. Please query mint status by [Query contract](#query-contract)
 #### Query Contract
 After deployed, you could query deploy status
 ```sh
