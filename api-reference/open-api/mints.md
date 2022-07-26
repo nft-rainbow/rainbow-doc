@@ -10,9 +10,9 @@ description: >-
 
 The Mints APIs provides three methods to help users mint NFTs, including the custom minting, minting with a file and minting with  a metada.
 
-### Mint a NFT
+### Mint NFT
 
-The `Mint a nft` provides users with the entry to call the ERC721 contract to mint the NFT.
+The `Mint NFT` provides users with the entry to call the ERC721 contract to mint the NFT.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/mints" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -75,9 +75,9 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
-### Mint a NFT with a file
+### Mint NFT with file
 
-The `Mint a nft by uploading a file` provides users with the entry to call the ERC721 contract to mint the NFT with uploading files.
+The `Mint NFT with file` provides users with the entry to call the ERC721 contract to mint the NFT with uploading files. The uploaded files can be images, video and so on.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/mints/files" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -134,7 +134,7 @@ curl --request POST \
 
 ### Mint a NFT with metadata
 
-The `Mint a nft by creating a metadata` provides users with the entry to call the ERC721 contract to mint the NFT with creating metadata.
+The `Mint NFT with metadata` provides users with the entry to call the ERC721 or ERC1155 contract to mint the NFT with creating metadata by providing a file url.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/mints/urls" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -196,9 +196,9 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
-## Query NFTs
+## Obtain NFT list
 
-The `Get a nft list of a specific app` API provide users with the entry to query the NFTs information created on a spcific app.
+The `Obtain NFT list` API provide users with the entry to query the NFTs information created on a spcific app.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/mints" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)

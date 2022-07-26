@@ -36,14 +36,14 @@ Firstly, users have to call the `App Login` inferface to get the JWT.
 {% endtab %}
 
 {% tab title="Response" %}
+The returned result can be used to access other OPEN-APIs
+
 | Name  | Meaning   | Type   |
 | ----- | --------- | ------ |
 | Token | JWT token | String |
 {% endtab %}
 
 {% tab title="Response Example" %}
-
-
 ```
 string
 ```
@@ -53,7 +53,6 @@ string
 
 {% tab title="Request Sample" %}
 ```
-
 curl --request POST \
   --url https://localhost:8080/v1/login \
   --header 'Content-Type: application/json'
