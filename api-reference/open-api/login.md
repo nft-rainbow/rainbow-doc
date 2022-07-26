@@ -61,7 +61,7 @@ curl --request POST \
 {% endtabs %}
 
 {% hint style="info" %}
-**Note:** Each JWT is valid for one hour. Once the JWT is expired, users have to call [Refresh JWT](login.md#refresh\_token) to get the new JWT.
+**Note:** Each JWT is valid to call open APIs for one hour. Once the JWT is expired, users have to call [Refresh JWT](login.md#refresh\_token) to get the new JWT.&#x20;
 {% endhint %}
 
 ### Refresh JWT
@@ -73,10 +73,18 @@ curl --request POST \
 {% endswagger %}
 
 {% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+|               |              |            |           |
+|               |              |            |           |
+{% endtab %}
+
 {% tab title="Parameters" %}
-| Name          | Meaning    | Param Type | Data Type |
-| ------------- | ---------- | ---------- | --------- |
-| Authorization | Bear Token | Header     | string    |
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
 {% endtab %}
 
 {% tab title="Response" %}
@@ -100,3 +108,7 @@ curl --request GET \
 ```
 {% endtab %}
 {% endtabs %}
+
+{% hint style="info" %}
+Note: Each JWT is valid to call [Refresh JWT](login.md#refresh\_token) for five hours. Once the JWT is expired, users have to call [App Login](login.md#login) to get JWT agian.
+{% endhint %}
