@@ -25,7 +25,7 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the nft</td><td>body</td><td>string</td><td>true</td></tr><tr><td>symbol</td><td>The symbol of the nft</td><td>body</td><td>string</td><td>true</td></tr><tr><td>owner_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>type</td><td>The type of the contract, e.g., ERC721, ERC1155</td><td>body</td><td>string</td><td>true</td></tr><tr><td>base_uri</td><td>The uri of the nft</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>symbol</td><td>The symbol of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>owner_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>type</td><td>The type of the contract, e.g., ERC721, ERC1155</td><td>body</td><td>string</td><td>true</td></tr><tr><td>base_uri</td><td>The uri of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type, which can be <code>conflux</code> or <code>conflux_test</code> </td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -81,8 +81,16 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 ```
 curl --request POST \
   --url https://localhost:8080/v1/contracts \
-  --header 'Authorization: ' \
-  --header 'Content-Type: application/json'
+  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "chain": "conflux_test",
+    "name": "NFT-name",
+    "symbol": "ENFT",
+    "owner_address": "cfxtest:aatk708nbb7573bkwumsu00h0r1rtkcdz2chwhttzk",
+    "type": "erc721",
+    "base_uri": ""
+}'
 ```
 {% endtab %}
 {% endtabs %}
@@ -107,15 +115,7 @@ The `Set sponsor` API provides users to set a sponser for a specific contract ac
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>address</td><td>The address of the sponsor</td><td>formData</td><td>string</td><td>true</td></tr><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>true</td></tr></tbody></table>
-{% endtab %}
-
-{% tab title="Parameter Example" %}
-```
-{
-    "address": "cfxtest:acdemzrsy4sfdcz1811bn5s565ecvrtz729caz3r5d"
-}
-```
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
@@ -134,11 +134,15 @@ The `Set sponsor` API provides users to set a sponser for a specific contract ac
 ```
 curl --request POST \
   --url https://localhost:8080/v1/contracts/:address/sponsor \
-  --header 'Authorization: ' \
+  --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}
 {% endtabs %}
+
+{% hint style="info" %}
+**Note:**  UP to now, only `conlux_test` network supports `Set sponsor` API.
+{% endhint %}
 
 ## Query Informations
 
@@ -237,7 +241,7 @@ The **`Contract Struct`** is listed as follow:
 ```
 curl --request GET \
   --url https://localhost:8080/v1/contracts \
-  --header 'Authorization: ' \
+  --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}
@@ -263,7 +267,7 @@ The `Query sponsor` API provides users the entry to get the sponsors of a specif
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>address</td><td>The address of the sponsor </td><td>Path</td><td>string</td><td>true</td></tr><tr><td>chain</td><td>The type of the chain</td><td>query</td><td>string</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>address</td><td>The address of the sponsor </td><td>Path</td><td>string</td><td>true</td></tr><tr><td>chain</td><td>The chain type, which can be <code>conflux</code> or <code>conflux_test</code> </td><td>query</td><td>string</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
@@ -294,14 +298,14 @@ The `Query sponsor` API provides users the entry to get the sponsors of a specif
 ```
 curl --request GET \
   --url https://localhost:8080/v1/contracts/:address/sponsor \
-  --header 'Authorization: ' \
+  --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}
 {% endtabs %}
 
 {% hint style="info" %}
-&#x20; **Good to know:**  For more detailed information, please refer to the following link
+&#x20; **Good to know:**  For more detailed information, please refer to the following link.
 {% endhint %}
 
 {% embed url="https://developer.confluxnetwork.org/conflux-rust/internal_contract/internal_contract#sponsorwhitelistcontrol-contract" %}

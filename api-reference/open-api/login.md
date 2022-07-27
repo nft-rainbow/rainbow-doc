@@ -52,7 +52,11 @@ string
 ```
 curl --request POST \
   --url https://localhost:8080/v1/login \
-  --header 'Content-Type: application/json'
+  --header 'Content-Type: application/json' \
+  --data `{
+    "app_id": "qUUcdueA",
+    "app_secret": "zGCaP8kAFEmwanqo"
+}`
 ```
 {% endtab %}
 {% endtabs %}
@@ -92,7 +96,7 @@ string
 ```
 curl --request GET \
   --url https://localhost:8080/v1/refresh_token \
-  --header 'Authorization: ' \
+  --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}

@@ -51,7 +51,7 @@ description: >-
 ```
 curl --request POST \
   --url https://localhost:8080/v1/metadata/files \
-  --header 'Authorization: ' \
+  --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: multipart/form-data' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --form file=
@@ -75,7 +75,7 @@ curl --request POST \
 {% endtab %}
 
 {% tab title="Parameters" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>file</td><td>The file url of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>external_link</td><td>The externanl link of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>attributes</td><td>The attributes of the metadata</td><td>array</td><td>attribute</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>file</td><td>The file url of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>external_link</td><td>The externanl link of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>attributes</td><td>The attributes of the metadata</td><td>array</td><td>attribute</td><td>false</td></tr><tr><td>nft_address</td><td>The address of the NFT</td><td>body</td><td>string</td><td>false</td></tr></tbody></table>
 
 The struct of the attributes is listed as bellow.
 
@@ -118,9 +118,23 @@ The struct of the attributes is listed as bellow.
 {% tab title="Request Sample" %}
 ```
 curl --request POST
---url https://localhost:8080/v1/metadata/
---header 'Authorization: '
---header 'Content-Type: application/json'
+--url https://localhost:8080/v1/metadata/ \
+--header 'Authorization: 'Bearer {JWT}' \
+--header 'Content-Type: application/json' \
+--data '{
+  "attributes": [
+    {
+      "attribute_name": "mouse",
+      "display_type": "test hey hey",
+      "trait_type": "big",
+      "value": "big"
+    }
+  ],
+  "description": "this is a test metadata",
+  "external_link": "https://www.google.com/search",
+  "file": "https://www.google.com/search",
+  "name": "test"
+}'
 ```
 {% endtab %}
 {% endtabs %}
@@ -149,7 +163,7 @@ curl --request POST
 {% tab title="Response" %}
 | Name           | Meaning                           | Data Type      |
 | -------------- | --------------------------------- | -------------- |
-| attributes     | The attribute of the              | \[]attributes  |
+| attributes     | The attribute of the metadata     | \[]attributes  |
 | description    | The description of the metadata   | string         |
 | external\_link | The external link of the metadata | string         |
 | file           | The file url of the metadata      | string         |
@@ -188,7 +202,7 @@ The **attributes struct** is listed as follow:
 ```
 curl --request GET \
   --url https://localhost:8080/v1/metadata/:metadata_id \
-  --header 'Authorization: ' \
+  --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}
@@ -276,7 +290,7 @@ The **`attributes struct`** is listed as follow:
 ```
 curl --request GET \
   --url https://localhost:8080/v1/metadata/ \
-  --header 'Authorization: ' \
+  --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}
@@ -337,7 +351,7 @@ The **`ExposedFile`** struct is lised as follow:
 ```
 curl --request GET \
   --url https://localhost:8080/v1/metadata/files \
-  --header 'Authorization: ' \
+  --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}
