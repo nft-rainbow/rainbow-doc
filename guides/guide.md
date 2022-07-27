@@ -20,8 +20,6 @@ curl --location --request POST 'http://localhost:8080/dashboard/register' \
 }'
 ```
 
-
-
 Login
 --------------------
 Then, [login](Login) with your email and password
@@ -110,7 +108,7 @@ the field `app_id` and `app_secret` of response is the API-KEY for authenticatio
 
 Mints
 --------------------
-Before use NFT operate APIs, user should login by API-KEY
+Before use NFT operate APIs, user should login by API-KEY to authenticate application
 
 ### Login API-KEY
 ```sh
@@ -179,7 +177,7 @@ The fields `status` of response could speicify if mint success, `1` represnets s
 
 ### Custom mint
 
-Custom mint allows user to deploy a indepent NFT contract and custom mint NFT by specify contract address.
+Custom mint allows user to deploy a indepent NFT contract and custom mint NFT by specifing contract address and tokenURI.
 
 #### Deploy Custom NFT Contract
 If you have not deployed a custom NFT contract, deploy one as follow.
@@ -208,7 +206,8 @@ The fields `status` of response could speicify if deployed success, `1` represne
 
 #### Custom mint
 
-After deployed custom NFT contract, you can custom mint as follow
+After deployed custom NFT contract, you can custom mint as follow.
+If you don't have a metadata uri online, you could create one by [create metadata](#create-metadata)
 
 ```sh
 curl --location --request POST 'http://localhost:8080/v1/mints' \
@@ -224,3 +223,93 @@ curl --location --request POST 'http://localhost:8080/v1/mints' \
 }'
 ```
 The response is the minted NFT information. Please query mint status by [Query mint](#query-mint)
+
+Metadata
+--------------------
+Every NFT could set metadata independently. Normally metadata is a JSON description, see details from [spec ERC721](https://eips.ethereum.org/EIPS/eip-721) and [spec ERC1155](https://eips.ethereum.org/EIPS/eip-1155)
+
+Basicly, it includes property `Image` and `Description`.
+
+### Upload File
+So, you should set the image url, if the image is offline, you could upload the image as follow.
+
+```sh
+curl --location --request POST 'http://localhost:8080/v1/metadata/files' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjEzMzg1MDQsImp3dF91aWQiOjMsIm9yaWdfaWF0IjoxNjU4NzQ2NTA0fQ.NxLKZoqnWkrtew6CFHwho4WhbWIxlFAgLY7sVAF055w' \
+--form 'file=@"/Users/dayong/Desktop/throll.png"'
+```
+The field `file_url` of response is the file url. You could use it be NFT image url.
+```json
+{
+    "code": 0,
+    "data": {
+        "file_url": "http://localhost:8080/assets/file/3/nft/02c95850aacd060da60f6fe500ff5bb06d67663682bef8fd490dedf0a0e7b2a7.png",
+        "file_size": 1954237,
+        "file_type": "png",
+        "file_name": "02c95850aacd060da60f6fe500ff5bb06d67663682bef8fd490dedf0a0e7b2a7"
+    }
+}
+```
+
+### Query File
+You could query files related your application as follow.
+```sh
+curl --location --request GET 'http://localhost:8080/v1/metadata/files' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjEzMzg1MDQsImp3dF91aWQiOjMsIm9yaWdfaWF0IjoxNjU4NzQ2NTA0fQ.NxLKZoqnWkrtew6CFHwho4WhbWIxlFAgLY7sVAF055w'
+```
+
+### Create metadata
+
+Then you can create metadata with image url generated above. Please refers metadata JSON schema from [spec ERC721](https://eips.ethereum.org/EIPS/eip-721) and [spec ERC1155](https://eips.ethereum.org/EIPS/eip-1155)
+
+```sh
+curl --location --request POST 'http://localhost:8080/v1/metadata/' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjEzMzg1MDQsImp3dF91aWQiOjMsIm9yaWdfaWF0IjoxNjU4NzQ2NTA0fQ.NxLKZoqnWkrtew6CFHwho4WhbWIxlFAgLY7sVAF055w' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "test", 
+    "description": "this is a test metadata", 
+    "external_link": "https://www.google.com/search", 
+    "image": "http://localhost:8080/assets/file/3/nft/02c95850aacd060da60f6fe500ff5bb06d67663682bef8fd490dedf0a0e7b2a7.png", 
+    "attributes": [
+        {
+            "attribute_name": "eyes", 
+            "trait_type": "test trait", 
+            "display_type": "", 
+            "value": "big"
+        }, 
+        {
+            "attribute_name": "mouse", 
+            "trait_type": "test hey hey", 
+            "display_type": "", 
+            "value": "big"
+        }
+    ], 
+}'
+```
+
+The filed `metadata_uri` of response is the generated metadata uri, which could use for [custome mints](#custom-mint-1).
+
+```json
+{
+    "code": 0,
+    "data": {
+        "metadata_uri": "http://localhost:8080/assets/metadata/3/nft/b86b99ed6218845757ff6e7ae9a8d5f2571642379be15712a0be30027f6158e9.json"
+    }
+}
+```
+
+### Query metadata
+After create metadata, you could query metadata as follow.
+```sh
+curl --location --request GET 'http://localhost:8080/v1/metadata/:metadata_id' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjEzMzg1MDQsImp3dF91aWQiOjMsIm9yaWdfaWF0IjoxNjU4NzQ2NTA0fQ.NxLKZoqnWkrtew6CFHwho4WhbWIxlFAgLY7sVAF055w'
+```
+
+### List metadata
+You also could list all metadata related to current application.
+```sh
+curl --location --request GET 'http://localhost:8080/v1/metadata/' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjEzMzg1MDQsImp3dF91aWQiOjMsIm9yaWdfaWF0IjoxNjU4NzQ2NTA0fQ.NxLKZoqnWkrtew6CFHwho4WhbWIxlFAgLY7sVAF055w' \
+--header 'Content-Type: application/x-www-form-urlencoded'
+```
