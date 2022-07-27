@@ -323,7 +323,7 @@
                 "tags": [
                     "Metadata"
                 ],
-                "summary": "Create nft metadata",
+                "summary": "Create NFT metadata",
                 "parameters": [
                     {
                         "type": "string",
@@ -607,7 +607,7 @@
                 }
             }
         },
-        "/mints/files": {
+        "/mints/easy/files": {
             "post": {
                 "consumes": [
                     "multipart/form-data"
@@ -675,7 +675,7 @@
                 }
             }
         },
-        "/mints/urls": {
+        "/mints/easy/urls": {
             "post": {
                 "produces": [
                     "application/json"
@@ -793,25 +793,13 @@
                 "attribute_name": {
                     "type": "string"
                 },
-                "createdAt": {
-                    "type": "string"
-                },
-                "deletedAt": {
-                    "$ref": "#/definitions/gorm.DeletedAt"
-                },
                 "display_type": {
                     "type": "string"
-                },
-                "id": {
-                    "type": "integer"
                 },
                 "metadataId": {
                     "type": "integer"
                 },
                 "trait_type": {
-                    "type": "string"
-                },
-                "updatedAt": {
                     "type": "string"
                 },
                 "value": {
@@ -933,21 +921,17 @@
         },
         "models.Metadata": {
             "type": "object",
+            "required": [
+                "description",
+                "file",
+                "name"
+            ],
             "properties": {
-                "app_id": {
-                    "type": "integer"
-                },
                 "attributes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.Attributes"
                     }
-                },
-                "createdAt": {
-                    "type": "string"
-                },
-                "deletedAt": {
-                    "$ref": "#/definitions/gorm.DeletedAt"
                 },
                 "description": {
                     "type": "string"
@@ -958,22 +942,10 @@
                 "file": {
                     "type": "string"
                 },
-                "id": {
-                    "type": "integer"
-                },
-                "metadata_id": {
-                    "type": "string"
-                },
                 "name": {
                     "type": "string"
                 },
                 "nft_address": {
-                    "type": "string"
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "uri": {
                     "type": "string"
                 }
             }

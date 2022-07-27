@@ -8,7 +8,7 @@ description: >-
 
 ## Mint Actions
 
-The Mints APIs provides three methods to help users mint NFTs, including the custom minting, minting with a file and minting with  a metada.
+The Mints APIs provide three methods to help users mint NFTs, including the custom minting, minting with a file and minting with metadata.
 
 ### Mint NFT
 
@@ -26,7 +26,7 @@ The `Mint NFT` provides users with the entry to call the ERC721 contract to mint
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the nft</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type</td><td>body</td><td>string</td><td>true</td></tr><tr><td>mint_to_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>metadata_uri</td><td>The uri of the metadata</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type</td><td>body</td><td>string</td><td>true</td></tr><tr><td>mint_to_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>metadata_uri</td><td>The uri of the metadata</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -164,10 +164,11 @@ curl --request POST \
   --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: multipart/form-data' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
-  --form chain= \
-  --form description= \
-  --form mint_to_address= \
-  --form name=
+  --form file= \
+  --form chain= 'conflux_test' \
+  --form description= 'throll description' \ 
+  --form mint_to_address= 'cfxtest:aatk708nbb7573bkwumsu00h0r1rtkcdz2chwhttzk' \
+  --form name= 'throll'
 ```
 {% endtab %}
 {% endtabs %}
@@ -271,7 +272,7 @@ curl --request POST \
 
 ## Obtain Informations
 
-The `Obtain NFT list` API provide users with the entry to query the NFTs information created on a spcific app.
+The `Obtain NFT list` API provides users with the entry to query the NFTs information created on a spcific app.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/mints" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
