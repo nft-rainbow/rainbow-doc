@@ -110,7 +110,7 @@ Mints
 --------------------
 Before use NFT operate APIs, user should login by API-KEY to authenticate application
 
-### Login API-KEY
+### Login Application
 ```sh
 curl --location --request POST 'http://localhost:8080/v1/login' \
 --header 'Content-Type: application/json' \
