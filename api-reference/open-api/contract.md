@@ -25,16 +25,16 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the nft</td><td>body</td><td>string</td><td>true</td></tr><tr><td>symbol</td><td>The symbol of the nft</td><td>body</td><td>string</td><td>true</td></tr><tr><td>owner_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>type</td><td>The type of the contract, e.g., ERC721, ERC1155</td><td>body</td><td>integer</td><td>true</td></tr><tr><td>base_uri</td><td>The uri of the nft</td><td>body</td><td>string</td><td>true</td></tr><tr><td>chain</td><td>The chain type</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the nft</td><td>body</td><td>string</td><td>true</td></tr><tr><td>symbol</td><td>The symbol of the nft</td><td>body</td><td>string</td><td>true</td></tr><tr><td>owner_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>type</td><td>The type of the contract, e.g., ERC721, ERC1155</td><td>body</td><td>string</td><td>true</td></tr><tr><td>base_uri</td><td>The uri of the nft</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
 ```
-{
+ {
     "chain": "conflux_test",
     "name": "NFT-name",
     "symbol": "ENFT",
-    "owner_address": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
+    "owner_address": "cfxtest:aatk708nbb7573bkwumsu00h0r1rtkcdz2chwhttzk",
     "type": "erc721",
     "base_uri": ""
 }
@@ -46,7 +46,7 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 | -------------- | -------------------------------------------------------------- | ------- |
 | address        | The address of the contract                                    | string  |
 | hash           | The hash of the transaction                                    | string  |
-| id             |                                                                | integer |
+| id             | The id of the contract                                         | integer |
 | chain\_id      | The id of the chain                                            | string  |
 | owner\_address | The uri of the nft                                             | string  |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed  | string  |
@@ -57,26 +57,23 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 {% tab title="Response Example" %}
 ```
 {
-  "address": "string",
-  "app_id": 0,
-  "base_uri": "string",
-  "chain_id": 0,
-  "chain_type": 0,
-  "created_at": "string",
-  "deleted_at": {
-    "time": "string",
-    "valid": true
-  },
-  "hash": "string",
-  "id": 0,
-  "name": "string",
-  "owner_address": "string",
-  "status": 0,
-  "symbol": "string",
-  "tx_id": 0,
-  "type": 0,
-  "updated_at": "string"
-}
+        "id": 3,
+        "created_at": "2022-07-27T11:00:57.519+08:00",
+        "updated_at": "2022-07-27T11:00:57.519+08:00",
+        "deleted_at": null,
+        "app_id": 1,
+        "chain_type": 1,
+        "chain_id": 1,
+        "address": "",
+        "owner_address": "cfxtest:aatk708nbb7573bkwumsu00h0r1rtkcdz2chwhttzk",
+        "type": 1,
+        "base_uri": "",
+        "name": "NFT-name",
+        "symbol": "ENFT",
+        "hash": "",
+        "tx_id": 3,
+        "status": 0
+    }
 ```
 {% endtab %}
 
@@ -161,10 +158,17 @@ The `Obtain contarct list` API provides users the entry to get the inforamtion o
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>page</td><td>Page Request</td><td>query</td><td>integer</td><td>false</td></tr><tr><td>limit</td><td>Page Request</td><td>query</td><td>integer</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>page</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr><tr><td>limit</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
+| Name  | Meaning                              | Type        |
+| ----- | ------------------------------------ | ----------- |
+| count | The number of the deployed contracts | integer     |
+| items | The files information                | \[]Contract |
+
+The **`Contract Struct`** is listed as follow:
+
 | Name           | Meaning                                                       | Type    |
 | -------------- | ------------------------------------------------------------- | ------- |
 | address        | Page Request                                                  | string  |
@@ -185,29 +189,47 @@ The `Obtain contarct list` API provides users the entry to get the inforamtion o
 
 {% tab title="Response Example" %}
 ```
-[
-  {
-    "address": "string",
-    "app_id": 0,
-    "base_uri": "string",
-    "chain_id": 0,
-    "chain_type": 0,
-    "created_at": "string",
-    "deleted_at": {
-      "time": "string",
-      "valid": true
-    },
-    "hash": "string",
-    "id": 0,
-    "name": "string",
-    "owner_address": "string",
-    "status": 0,
-    "symbol": "string",
-    "tx_id": 0,
-    "type": 0,
-    "updated_at": "string"
-  }
-]
+{
+        "count": 2,
+        "items": [
+            {
+                "id": 2,
+                "created_at": "2022-07-27T10:55:13.12+08:00",
+                "updated_at": "2022-07-27T10:55:13.12+08:00",
+                "deleted_at": null,
+                "app_id": 1,
+                "chain_type": 1,
+                "chain_id": 1,
+                "address": "",
+                "owner_address": "cfxtest:aatk708nbb7573bkwumsu00h0r1rtkcdz2chwhttzk",
+                "type": 1,
+                "base_uri": "",
+                "name": "NFT-name",
+                "symbol": "ENFT",
+                "hash": "",
+                "tx_id": 2,
+                "status": 0
+            },
+            {
+                "id": 1,
+                "created_at": "2022-07-27T10:47:58.362+08:00",
+                "updated_at": "2022-07-27T10:48:14.891+08:00",
+                "deleted_at": null,
+                "app_id": 1,
+                "chain_type": 1,
+                "chain_id": 1,
+                "address": "",
+                "owner_address": "cfxtest:aatk708nbb7573bkwumsu00h0r1rtkcdz2chwhttzk",
+                "type": 1,
+                "base_uri": "",
+                "name": "NFT-name",
+                "symbol": "ENFT",
+                "hash": "",
+                "tx_id": 1,
+                "status": 2
+            }
+        ]
+    }
 ```
 {% endtab %}
 
@@ -245,31 +267,26 @@ The `Query sponsor` API provides users the entry to get the sponsors of a specif
 {% endtab %}
 
 {% tab title="Response" %}
-| Name                         | Meaning                                  | Type |
-| ---------------------------- | ---------------------------------------- | ---- |
-| collateral\_sponsor          | The address of the collateral sponsor    |      |
-| collateral\_sponsor\_balance | The balance of the collateral sponsor    |      |
-| gas\_sponsor                 | The address of the gas sponsor           |      |
-| gas\_sponsor\_balance        | The balance of the gas sponsor           |      |
-| gas\_upper\_bound            | The upper bound of using gas             |      |
-| is\_all\_white\_listed       | wheter the sponsor in the all white list |      |
-|                              |                                          |      |
-|                              |                                          |      |
-|                              |                                          |      |
+| Name                         | Meaning                                  | Type    |
+| ---------------------------- | ---------------------------------------- | ------- |
+| collateral\_sponsor          | The address of the collateral sponsor    | string  |
+| collateral\_sponsor\_balance | The balance of the collateral sponsor    | integer |
+| gas\_sponsor                 | The address of the gas sponsor           | string  |
+| gas\_sponsor\_balance        | The balance of the gas sponsor           | integer |
+| gas\_upper\_bound            | The upper bound of using gas             | integer |
+| is\_all\_white\_listed       | wheter the sponsor in the all white list | bool    |
 {% endtab %}
 
 {% tab title="Response Example" %}
 ```
-[
-  {
-    "collateral_sponsor": {},
-    "collateral_sponsor_balance": {},
-    "gas_sponsor": {},
-    "gas_sponsor_balance": {},
-    "gas_upper_bound": {},
-    "is_all_white_listed": true
-  }
-]
+{
+        "gas_sponsor": "cfxtest:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa6f0vrcsw",
+        "gas_sponsor_balance": 0,
+        "collateral_sponsor": "cfxtest:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa6f0vrcsw",
+        "collateral_sponsor_balance": 0,
+        "is_all_white_listed": false,
+        "gas_upper_bound": 0
+}
 ```
 {% endtab %}
 

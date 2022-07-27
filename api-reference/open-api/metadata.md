@@ -39,10 +39,10 @@ description: >-
 {% tab title="Response Example" %}
 ```
 {
-  "file_name": "string",
-  "file_size": 0,
-  "file_type": "string",
-  "file_url": "string"
+  "file_name": "http://localhost:8080/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
+  "file_size": 11295,
+  "file_type": "jpeg",
+  "file_url": "67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111"
 }
 ```
 {% endtab %}
@@ -87,16 +87,16 @@ The struct of the attributes is listed as bellow.
 {
   "attributes": [
     {
-      "attribute_name": "string",
-      "display_type": "string",
-      "trait_type": "string",
-      "value": "string"
+      "attribute_name": "mouse",
+      "display_type": "test hey hey",
+      "trait_type": "big",
+      "value": "big"
     }
   ],
-  "description": "string",
-  "external_link": "string",
-  "file": "string",
-  "name": "string"
+  "description": "this is a test metadata",
+  "external_link": "https://www.google.com/search",
+  "file": "https://www.google.com/search",
+  "name": "test"
 }
 ```
 {% endtab %}
@@ -105,14 +105,12 @@ The struct of the attributes is listed as bellow.
 | Name          | Meaning                 | Type   |
 | ------------- | ----------------------- | ------ |
 | metadata\_uri | The uri of the metadata | string |
-|               |                         |        |
-|               |                         |        |
 {% endtab %}
 
 {% tab title="Response Example" %}
 ```
 {
-  "metadata_uri": "string"
+  "metadata_uri": "http://localhost:8080/assets/metadata/1/nft/46708cf66a806743cfc27b110a41a2ea2e1b7a47fbcfb2efc9cac8fd3bf29cd1.json"
 }
 ```
 {% endtab %}
@@ -149,15 +147,15 @@ curl --request POST
 {% endtab %}
 
 {% tab title="Response" %}
-| Name           | Meaning                           | Param Type     | Data Type   |
-| -------------- | --------------------------------- | -------------- | ----------- |
-| attributes     | The attribute of the              | array\[object] | attributes  |
-| description    | The description of the metadata   | body           | string      |
-| external\_link | The external link of the metadata | body           | string      |
-| file           | The file url of the metadata      | body           | string      |
-| name           | The name of the metadata          | body           | string      |
+| Name           | Meaning                           | Data Type      |
+| -------------- | --------------------------------- | -------------- |
+| attributes     | The attribute of the              | \[]attributes  |
+| description    | The description of the metadata   | string         |
+| external\_link | The external link of the metadata | string         |
+| file           | The file url of the metadata      | string         |
+| name           | The name of the metadata          | string         |
 
-The struct of the attributes is listed as bellow.
+The **attributes struct** is listed as follow:
 
 | Name            | Meaning                          | Type   |
 | --------------- | -------------------------------- | ------ |
@@ -172,16 +170,16 @@ The struct of the attributes is listed as bellow.
 {
   "attributes": [
     {
-      "attribute_name": "string",
-      "display_type": "string",
-      "trait_type": "string",
-      "value": "string"
+      "attribute_name": "mouse",
+      "display_type": "test hey hey",
+      "trait_type": "big",
+      "value": "big"
     }
   ],
-  "description": "string",
-  "external_link": "string",
-  "file": "string",
-  "name": "string"
+  "description": "this is a test metadata",
+  "external_link": "https://www.google.com/search",
+  "file": "https://www.google.com/search",
+  "name": "test"
 }
 ```
 {% endtab %}
@@ -212,19 +210,26 @@ curl --request GET \
 {% endtab %}
 
 {% tab title="Parameters" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>nft_address</td><td>The address of the contract</td><td>query</td><td>string</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>nft_address</td><td>The address of the contract</td><td>query</td><td>string</td><td>false</td></tr><tr><td>page</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr><tr><td>limit</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
-| Name           | Meaning                           | Param Type     | Data Type   |
-| -------------- | --------------------------------- | -------------- | ----------- |
-| attributes     | The attribute of the              | array\[object] | attributes  |
-| description    | The description of the metadata   | body           | string      |
-| external\_link | The external link of the metadata | body           | string      |
-| file           | The file url of the metadata      | body           | string      |
-| name           | The name of the metadata          | body           | string      |
+| Name  | Meaning                          | Type                    |
+| ----- | -------------------------------- | ----------------------- |
+| count | The number of the uploaded files | integer                 |
+| items | The files information            | \[]QueryMetadataRsponse |
 
-The struct of the attributes is listed as bellow.
+The **`QueryMetadataResponse struct`** is listed as follow:
+
+| Name           | Meaning                           | Data Type      |
+| -------------- | --------------------------------- | -------------- |
+| attributes     | The attribute of the              | \[]attributes  |
+| description    | The description of the metadata   | string         |
+| external\_link | The external link of the metadata | string         |
+| file           | The file url of the metadata      | string         |
+| name           | The name of the metadata          | string         |
+
+The **`attributes struct`** is listed as follow:
 
 | Name            | Meaning                          | Type   |
 | --------------- | -------------------------------- | ------ |
@@ -236,25 +241,34 @@ The struct of the attributes is listed as bellow.
 
 {% tab title="Response Example" %}
 ```
-[
-  {
-    "metadata": {
-      "attributes": [
-        {
-          "attribute_name": "string",
-          "display_type": "string",
-          "trait_type": "string",
-          "value": "string"
-        }
-      ],
-      "description": "string",
-      "external_link": "string",
-      "file": "string",
-      "name": "string"
-    },
-    "uri": "string"
-  }
-]
+{
+        "count": 1,
+        "items": [
+            {
+                "metadata": {
+                    "name": "test",
+                    "description": "this is a test metadata",
+                    "external_link": "https://www.google.com/search",
+                    "file": "https://www.google.com/search",
+                    "attributes": [
+                        {
+                            "attribute_name": "eyes",
+                            "trait_type": "test trait",
+                            "display_type": "",
+                            "value": "big"
+                        },
+                        {
+                            "attribute_name": "mouse",
+                            "trait_type": "test hey hey",
+                            "display_type": "",
+                            "value": "big"
+                        }
+                    ]
+                },
+                "uri": "http://localhost:8080/assets/metadata/1/nft/46708cf66a806743cfc27b110a41a2ea2e1b7a47fbcfb2efc9cac8fd3bf29cd1.json"
+            }
+        ]
+}
 ```
 {% endtab %}
 
@@ -283,7 +297,18 @@ curl --request GET \
 | Authorization | Bearer Token | Header     | string    |
 {% endtab %}
 
+{% tab title="Parameters" %}
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>page</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr><tr><td>limit</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr></tbody></table>
+{% endtab %}
+
 {% tab title="Response" %}
+| Name  | Meaning                          | Type           |
+| ----- | -------------------------------- | -------------- |
+| count | The number of the uploaded files | integer        |
+| items | The files information            | \[]ExposedFile |
+
+The **`ExposedFile`** struct is lised as follow:
+
 | Name       | Meaning                      | Type    |
 | ---------- | ---------------------------- | ------- |
 | file\_name | The name of the uploaed file | string  |
@@ -295,12 +320,15 @@ curl --request GET \
 {% tab title="Response Example" %}
 ```
 [
-  {
-    "file_name": "string",
-    "file_size": "string",
-    "file_type": "string",
-    "file_url": "string"
-  }
+        "count": 1,
+        "items": [
+            {
+                "file_url": "http://localhost:8080/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
+                "file_size": 11295,
+                "file_type": "jpeg",
+                "file_name": "67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111"
+            }
+        ]
 ]
 ```
 {% endtab %}
