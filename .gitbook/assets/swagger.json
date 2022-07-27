@@ -15,14 +15,13 @@
     "paths": {
         "/contracts": {
             "get": {
-                "description": "Get the contract list containing the contracts deployed through the specified app.",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Contract"
                 ],
-                "summary": "Obtain contract list",
+                "summary": "Get the contracts list",
                 "parameters": [
                     {
                         "type": "string",
@@ -39,8 +38,8 @@
                     },
                     {
                         "type": "integer",
-                        "description": "size",
-                        "name": "size",
+                        "description": "limit",
+                        "name": "limit",
                         "in": "formData"
                     }
                 ],
@@ -63,7 +62,6 @@
                 }
             },
             "post": {
-                "description": "Deploy a ERC721 or ERC1155 contract.",
                 "produces": [
                     "application/json"
                 ],
@@ -119,14 +117,13 @@
         },
         "/contracts/:address/sponsor": {
             "get": {
-                "description": "Get the sponsor of the specified contract according to address.",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Contract"
                 ],
-                "summary": "Query sponsor",
+                "summary": "Get the sponsor of a contract",
                 "parameters": [
                     {
                         "type": "string",
@@ -174,14 +171,13 @@
                 }
             },
             "post": {
-                "description": "Set the sponsor for a specified contract according to the address",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Contract"
                 ],
-                "summary": "Set sponsor",
+                "summary": "Set the sponsor for a contract",
                 "parameters": [
                     {
                         "type": "string",
@@ -222,7 +218,6 @@
         },
         "/login": {
             "post": {
-                "description": "Login the app to get the JWT according to the app_id and app_secret",
                 "produces": [
                     "application/json"
                 ],
@@ -233,17 +228,22 @@
                 "parameters": [
                     {
                         "type": "string",
+                        "description": "Bearer openapi_token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
                         "description": "app_id",
                         "name": "app_id",
-                        "in": "formData",
-                        "required": true
+                        "in": "formData"
                     },
                     {
                         "type": "string",
                         "description": "app_secret",
                         "name": "app_secret",
-                        "in": "formData",
-                        "required": true
+                        "in": "formData"
                     }
                 ],
                 "responses": {
@@ -264,14 +264,13 @@
         },
         "/metadata/": {
             "get": {
-                "description": "Get the metadata list containing the info of the metadata created in the specified app",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Metadata"
                 ],
-                "summary": "Obtain metadata list",
+                "summary": "Query metadata list",
                 "parameters": [
                     {
                         "type": "string",
@@ -284,6 +283,18 @@
                         "type": "string",
                         "description": "nft_address",
                         "name": "nft_address",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "page",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "limit",
+                        "name": "limit",
                         "in": "query"
                     }
                 ],
@@ -306,14 +317,13 @@
                 }
             },
             "post": {
-                "description": "Create NFT metadata by providing the info including name, description and so on",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Metadata"
                 ],
-                "summary": "Create NFT metadata",
+                "summary": "Create nft metadata",
                 "parameters": [
                     {
                         "type": "string",
@@ -356,7 +366,6 @@
         },
         "/metadata/:metadata_id": {
             "get": {
-                "description": "Query the metadata according to metadata_id",
                 "produces": [
                     "application/json"
                 ],
@@ -404,14 +413,13 @@
         },
         "/metadata/files": {
             "get": {
-                "description": "Get the file list containing the info of the files uploaded in the specified app",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Metadata"
                 ],
-                "summary": "Obtain file list",
+                "summary": "Query File list",
                 "parameters": [
                     {
                         "type": "string",
@@ -419,6 +427,18 @@
                         "name": "Authorization",
                         "in": "header",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "page",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -440,7 +460,6 @@
                 }
             },
             "post": {
-                "description": "Upload a file which can be a video, a image and so on",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -450,7 +469,7 @@
                 "tags": [
                     "Metadata"
                 ],
-                "summary": "Upload file",
+                "summary": "Upload File",
                 "parameters": [
                     {
                         "type": "string",
@@ -485,14 +504,13 @@
         },
         "/mints": {
             "get": {
-                "description": "Get the NFT list containing the NFTs minted in the specified app",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Mints"
                 ],
-                "summary": "Obtain NFT list",
+                "summary": "Get a nft list of a specified app",
                 "parameters": [
                     {
                         "type": "string",
@@ -510,7 +528,7 @@
                     {
                         "type": "integer",
                         "description": "limit",
-                        "name": "size",
+                        "name": "limit",
                         "in": "formData"
                     }
                 ],
@@ -533,14 +551,13 @@
                 }
             },
             "post": {
-                "description": "Mint a NFT by providing a metadata url",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Mints"
                 ],
-                "summary": "Mint NFT",
+                "summary": "Mint a nft by creating a metadata",
                 "parameters": [
                     {
                         "type": "string",
@@ -590,9 +607,8 @@
                 }
             }
         },
-        "/mints/easy/files": {
+        "/mints/files": {
             "post": {
-                "description": "Mint a NFT by uploading a file which can be a video, image and so on",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -602,7 +618,7 @@
                 "tags": [
                     "Mints"
                 ],
-                "summary": "Mint NFT with file",
+                "summary": "Mint a nft by uploading a file",
                 "parameters": [
                     {
                         "type": "string",
@@ -659,16 +675,15 @@
                 }
             }
         },
-        "/mints/easy/urls": {
+        "/mints/urls": {
             "post": {
-                "description": "Mint a nft by providing a file url to create the metadata",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Mints"
                 ],
-                "summary": "Mint NFT with metadata",
+                "summary": "Mint a nft by creating a metadata",
                 "parameters": [
                     {
                         "type": "string",
@@ -719,20 +734,14 @@
             }
         },
         "/refresh_token": {
-            "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "Obtain a new JWT",
+            "post": {
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Login"
                 ],
-                "summary": "Refresh JWT",
+                "summary": "Refresh open api token",
                 "parameters": [
                     {
                         "type": "string",
@@ -889,7 +898,7 @@
                     "type": "string"
                 },
                 "file_size": {
-                    "type": "string"
+                    "type": "integer"
                 },
                 "file_type": {
                     "type": "string"

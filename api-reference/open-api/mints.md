@@ -85,8 +85,15 @@ The `Mint NFT` provides users with the entry to call the ERC721 contract to mint
 ```
 curl --request POST \
   --url https://localhost/v1/mints \
-  --header 'Authorization: ' \
-  --header 'Content-Type: application/json'
+  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Content-Type: application/json' \ 
+  --data '{
+    "chain": "conflux_test",
+    "token_id": "",
+    "mint_to_address": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
+    "contract_address": "cfxtest:acgat1yux2rk0xmk2s8ceferyprgm0u1hetj0w72yf",
+    "metadata_uri": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+}'
 ```
 {% endtab %}
 {% endtabs %}
@@ -154,7 +161,7 @@ The `Mint NFT with file` provides users with the entry to call the ERC721 contra
 ```
 curl --request POST \
   --url https://localhost:8080/v1/mints/files \
-  --header 'Authorization: ' \
+  --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: multipart/form-data' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --form chain= \
@@ -249,8 +256,15 @@ The **`MintTask Struct`** is listed as follow:
 ```
 curl --request POST \
   --url https://localhost:8080/mints/urls \
-  --header 'Authorization: ' \
-  --header 'Content-Type: application/json'
+  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "chain": "conflux_test",
+    "name": "123",
+    "description": "123",
+    "mint_to_address": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
+    "file_url": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+}'
 ```
 {% endtab %}
 {% endtabs %}
@@ -324,7 +338,7 @@ The `Obtain NFT list` API provide users with the entry to query the NFTs informa
 ```
 curl --request GET \
   --url https://localhost:8080/v1/mints \
-  --header 'Authorization: ' \
+  --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}
