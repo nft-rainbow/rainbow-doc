@@ -69,7 +69,7 @@ curl --request POST \
 
 `Refresh JWT` API helps users to get a new JWT of the specified app.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/refresh_token" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/refresh_token" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
