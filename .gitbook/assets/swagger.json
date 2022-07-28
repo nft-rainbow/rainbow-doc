@@ -15,13 +15,19 @@
     "paths": {
         "/contracts": {
             "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the contract list containing the contracts deployed through the specified app.",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Contract"
                 ],
-                "summary": "Get the contracts list",
+                "summary": "Obtain contract list",
                 "parameters": [
                     {
                         "type": "string",
@@ -62,6 +68,12 @@
                 }
             },
             "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Deploy a ERC721 or ERC1155 contract.",
                 "produces": [
                     "application/json"
                 ],
@@ -117,13 +129,19 @@
         },
         "/contracts/:address/sponsor": {
             "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the sponsor of the specified contract according to address.",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Contract"
                 ],
-                "summary": "Get the sponsor of a contract",
+                "summary": "Query sponsor",
                 "parameters": [
                     {
                         "type": "string",
@@ -171,13 +189,19 @@
                 }
             },
             "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Set the sponsor for a specified contract according to the address",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Contract"
                 ],
-                "summary": "Set the sponsor for a contract",
+                "summary": "Set sponsor",
                 "parameters": [
                     {
                         "type": "string",
@@ -218,6 +242,7 @@
         },
         "/login": {
             "post": {
+                "description": "Login the app to get the JWT according to the app_id and app_secret",
                 "produces": [
                     "application/json"
                 ],
@@ -228,22 +253,17 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Bearer openapi_token",
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
                         "description": "app_id",
                         "name": "app_id",
-                        "in": "formData"
+                        "in": "formData",
+                        "required": true
                     },
                     {
                         "type": "string",
                         "description": "app_secret",
                         "name": "app_secret",
-                        "in": "formData"
+                        "in": "formData",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -264,13 +284,19 @@
         },
         "/metadata/": {
             "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the metadata list containing the info of the metadata created in the specified app",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Metadata"
                 ],
-                "summary": "Query metadata list",
+                "summary": "Obtain metadata list",
                 "parameters": [
                     {
                         "type": "string",
@@ -317,6 +343,12 @@
                 }
             },
             "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Create NFT metadata by providing the info including name, description and so on",
                 "produces": [
                     "application/json"
                 ],
@@ -366,6 +398,12 @@
         },
         "/metadata/:metadata_id": {
             "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Query the metadata according to metadata_id",
                 "produces": [
                     "application/json"
                 ],
@@ -413,13 +451,19 @@
         },
         "/metadata/files": {
             "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the file list containing the info of the files uploaded in the specified app",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Metadata"
                 ],
-                "summary": "Query File list",
+                "summary": "Obtain file list",
                 "parameters": [
                     {
                         "type": "string",
@@ -460,6 +504,12 @@
                 }
             },
             "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Upload a file which can be a video, a image and so on",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -469,7 +519,7 @@
                 "tags": [
                     "Metadata"
                 ],
-                "summary": "Upload File",
+                "summary": "Upload file",
                 "parameters": [
                     {
                         "type": "string",
@@ -504,13 +554,19 @@
         },
         "/mints": {
             "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the NFT list containing the NFTs minted in the specified app",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Mints"
                 ],
-                "summary": "Get a nft list of a specified app",
+                "summary": "Obtain NFT list",
                 "parameters": [
                     {
                         "type": "string",
@@ -551,13 +607,19 @@
                 }
             },
             "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Mint a NFT by providing a metadata url",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Mints"
                 ],
-                "summary": "Mint a nft by creating a metadata",
+                "summary": "Mint NFT",
                 "parameters": [
                     {
                         "type": "string",
@@ -609,6 +671,12 @@
         },
         "/mints/easy/files": {
             "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Mint a NFT by uploading a file which can be a video, image and so on",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -618,7 +686,7 @@
                 "tags": [
                     "Mints"
                 ],
-                "summary": "Mint a nft by uploading a file",
+                "summary": "Mint NFT with file",
                 "parameters": [
                     {
                         "type": "string",
@@ -677,13 +745,19 @@
         },
         "/mints/easy/urls": {
             "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Mint a nft by providing a file url to create the metadata",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Mints"
                 ],
-                "summary": "Mint a nft by creating a metadata",
+                "summary": "Mint NFT with metadata",
                 "parameters": [
                     {
                         "type": "string",
@@ -734,14 +808,20 @@
             }
         },
         "/refresh_token": {
-            "post": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Obtain a new JWT",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Login"
                 ],
-                "summary": "Refresh open api token",
+                "summary": "Refresh JWT",
                 "parameters": [
                     {
                         "type": "string",

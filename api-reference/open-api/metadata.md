@@ -50,7 +50,7 @@ description: >-
 {% tab title="Request Sample" %}
 ```
 curl --request POST \
-  --url https://localhost:8080/v1/metadata/files \
+  --url https://api.nftrainbow.xyz/v1/metadata/files \
   --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: multipart/form-data' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
@@ -118,7 +118,7 @@ The struct of the attributes is listed as bellow.
 {% tab title="Request Sample" %}
 ```
 curl --request POST
---url https://localhost:8080/v1/metadata/ \
+--url https://api.nftrainbow.xyz/v1/metadata/ \
 --header 'Authorization: 'Bearer {JWT}' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -289,7 +289,7 @@ The **`attributes struct`** is listed as follow:
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://localhost:8080/v1/metadata/ \
+  --url https://api.nftrainbow.xyz/v1/metadata/ \
   --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
@@ -350,7 +350,7 @@ The **`ExposedFile`** struct is lised as follow:
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://localhost:8080/v1/metadata/files \
+  --url https://api.nftrainbow.xyz/v1/metadata/files \
   --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
