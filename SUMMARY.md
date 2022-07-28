@@ -21,4 +21,4 @@
 
 * [Authentication](about-the-apis/authentication.md)
 * [Error codes](about-the-apis/error-codes.md)
-* [Rate limits](about-the-apis/rate-limits.md)
+* [Quotas and rate limits](about-the-apis/quotas-and-rate-limits.md)
