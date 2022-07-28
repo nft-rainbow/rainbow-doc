@@ -1,67 +1,14 @@
 ---
 description: >-
-  The metadata APIs provide users to make preparations for creating NFTs,
-  including uploading files and creating NFT metadata.
+  The metadata APIs provide users to make preparations for creating NFTs
+  including creating NFT metadata and the corresponding query functions.
 ---
 
 # Metadata
 
-## Create Actions
+## Create NFT Metadata
 
-### Upload File
-
-`Upload file` API helps users to upload a file to get the corresponding url for creating NFT metadata.  The file can be a video, a image and so on.
-
-{% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/files" method="post" %}
-[swagger.json](../../.gitbook/assets/swagger.json)
-{% endswagger %}
-
-{% tabs %}
-{% tab title="Auth" %}
-| Name          | Meaning      | Param Type | Data Type |
-| ------------- | ------------ | ---------- | --------- |
-| Authorization | Bearer Token | Header     | string    |
-{% endtab %}
-
-{% tab title="Parameters" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>file</td><td>uploaded file</td><td>multipart/form-data</td><td></td><td>true</td></tr></tbody></table>
-{% endtab %}
-
-{% tab title="Responses" %}
-| Name       | Meaning                      | Type    |
-| ---------- | ---------------------------- | ------- |
-| file\_name | The name of the uploaed file | string  |
-| file\_size | The size of the uploaed file | integer |
-| file\_type | The type of the uploaed file | string  |
-| file\_url  | The url of the uploaed file  | string  |
-{% endtab %}
-
-{% tab title="Response Example" %}
-```
-{
-  "file_name": "http://localhost:8080/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
-  "file_size": 11295,
-  "file_type": "jpeg",
-  "file_url": "67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111"
-}
-```
-{% endtab %}
-
-{% tab title="Request Sample" %}
-```
-curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/metadata/files \
-  --header 'Authorization: 'Bearer {JWT}' \
-  --header 'Content-Type: multipart/form-data' \
-  --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
-  --form file=
-```
-{% endtab %}
-{% endtabs %}
-
-### Create NFT Metadata
-
-`Create NFT metadata` API helps users to create their own metadata after calling [Upload File](metadata.md#metadata-files) to get the corresponding file url.  To call  `Create NFT metadata` , users have to provide the metadata information including `name`, `file`, `external_link` and so on.
+`Create NFT metadata` API helps users to create their own metadata after calling[ Upload File](files.md#upload-file) to get the corresponding file url.  To call  `Create NFT metadata` , users have to provide the metadata information including `name`, `file`, `external_link` and so on.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -119,7 +66,7 @@ The struct of the attributes is listed as bellow.
 ```
 curl --request POST
 --url https://api.nftrainbow.xyz/v1/metadata/ \
---header 'Authorization: 'Bearer {JWT}' \
+--header 'Authorization: Bearer {JWT}' \
 --header 'Content-Type: application/json' \
 --data '{
   "attributes": [
@@ -134,14 +81,12 @@ curl --request POST
   "external_link": "https://www.google.com/search",
   "file": "https://www.google.com/search",
   "name": "test"
-}'
+}
 ```
 {% endtab %}
 {% endtabs %}
 
-## Get Informations&#x20;
-
-### Query Metadata
+## Query Metadata
 
 `Query metadata` API helps users to query the detailed information of the specified metadata according to `metadata_id`. This api returns the `name`, `description`, `external link`, `file` and `attributes` of the queried metada.
 
@@ -208,7 +153,7 @@ curl --request GET \
 {% endtab %}
 {% endtabs %}
 
-### Obtain Metadata List
+## Obtain Metadata List
 
 `Query metadata list` API helps users to obain the metadata list including the information of the metadata created in the specified app. The `nft_address` is optional. This API returns the array of the result from calling [Query matadata](metadata.md#metadata-metadata\_id).
 
@@ -290,69 +235,9 @@ The **`attributes struct`** is listed as follow:
 ```
 curl --request GET \
   --url https://api.nftrainbow.xyz/v1/metadata/ \
-  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}
 {% endtabs %}
 
-### Obtain File List
-
-`Obtain file list` API helps users to obtain the list including the inforamion of the files uploaded in the specified app. The information of each file contains `file_url`, `file_size`, `file_type` and `file_name`.&#x20;
-
-{% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/files" method="get" %}
-[swagger.json](../../.gitbook/assets/swagger.json)
-{% endswagger %}
-
-{% tabs %}
-{% tab title="Auth" %}
-| Name          | Meaning      | Param Type | Data Type |
-| ------------- | ------------ | ---------- | --------- |
-| Authorization | Bearer Token | Header     | string    |
-{% endtab %}
-
-{% tab title="Parameters" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>page</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr><tr><td>limit</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr></tbody></table>
-{% endtab %}
-
-{% tab title="Response" %}
-| Name  | Meaning                          | Type           |
-| ----- | -------------------------------- | -------------- |
-| count | The number of the uploaded files | integer        |
-| items | The files information            | \[]ExposedFile |
-
-The **`ExposedFile`** struct is lised as follow:
-
-| Name       | Meaning                      | Type    |
-| ---------- | ---------------------------- | ------- |
-| file\_name | The name of the uploaed file | string  |
-| file\_size | The size of the uploaed file | integer |
-| file\_type | The type of the uploaed file | string  |
-| file\_url  | The url of the uploaed file  | string  |
-{% endtab %}
-
-{% tab title="Response Example" %}
-```
-[
-        "count": 1,
-        "items": [
-            {
-                "file_url": "http://localhost:8080/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
-                "file_size": 11295,
-                "file_type": "jpeg",
-                "file_name": "67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111"
-            }
-        ]
-]
-```
-{% endtab %}
-
-{% tab title="Request Sample" %}
-```
-curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/metadata/files \
-  --header 'Authorization: 'Bearer {JWT}' \
-  --header 'Content-Type: application/json'
-```
-{% endtab %}
-{% endtabs %}

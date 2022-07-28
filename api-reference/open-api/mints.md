@@ -85,7 +85,7 @@ The `Mint NFT` provides users with the entry to call the ERC721 contract to mint
 ```
 curl --request POST \
   --url https://api.nftrainbow.xyz/v1/mints \
-  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
   --data '{
     "chain": "conflux_test",
@@ -161,7 +161,7 @@ The `Mint NFT with file` provides users with the entry to call the ERC721 contra
 ```
 curl --request POST \
   --url https://api.nftrainbow.xyz/v1/mints/files \
-  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: multipart/form-data' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --form file= \
@@ -257,7 +257,7 @@ The **`MintTask Struct`** is listed as follow:
 ```
 curl --request POST \
   --url https://api.nftrainbow.xyz/mints/urls \
-  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \
   --data '{
     "chain": "conflux_test",
@@ -339,8 +339,9 @@ The `Obtain NFT list` API provides users with the entry to query the NFTs inform
 ```
 curl --request GET \
   --url https://api.nftrainbow.xyz/v1/mints \
-  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}
 {% endtabs %}
+

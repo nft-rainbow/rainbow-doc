@@ -6,11 +6,11 @@ The possible errors containing the `error codes`, `status code` and how to fix t
 
 ### Auth Errors
 
-| STATUS CODE | ERROR CODE                           | EXPLANATION                                                      |
-| ----------- | ------------------------------------ | ---------------------------------------------------------------- |
-| 401         | AUTHORIZATION\_TOKEN\_MISSING\_ERROR | Your auth header is empty. Please add the JWT.                   |
-| 401         | AUTHORIZATION\_TOKEN\_INVALID\_ERROR | Your authorization token is invalid. Please use the correct JWT. |
-| 401         | AUTHORIZATION\_TOKEN\_EXPIRED\_ERROR | Your JWT is expired. Please call refresh JWT to get a new JWT.   |
+| STATUS CODE | ERROR CODE                           | EXPLANATION                                                             |
+| ----------- | ------------------------------------ | ----------------------------------------------------------------------- |
+| 401         | AUTHORIZATION\_TOKEN\_MISSING\_ERROR | Your auth header is empty. Please add the Bearer JWT.                   |
+| 401         | AUTHORIZATION\_TOKEN\_INVALID\_ERROR | Your authorization token is invalid. Please use the correct Bearer JWT. |
+| 401         | AUTHORIZATION\_TOKEN\_EXPIRED\_ERROR | Your JWT is expired. Please call refresh JWT to get a new JWT.          |
 
 ### Request Validation Errors
 
@@ -33,6 +33,6 @@ The possible errors containing the `error codes`, `status code` and how to fix t
 
 ### Server Errors
 
-| STATUS CODE | ERROR CODE              | EXPLANATION                              |
-| ----------- | ----------------------- | ---------------------------------------- |
-| 500         | INTERNAL\_SERVER\_ERROR | There are errors in the internal server. |
+| STATUS CODE | ERROR CODE              | EXPLANATION                             |
+| ----------- | ----------------------- | --------------------------------------- |
+| 500         | INTERNAL\_SERVER\_ERROR | There are error in the internal server. |

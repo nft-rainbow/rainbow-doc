@@ -96,7 +96,7 @@ string
 ```
 curl --request GET \
   --url https://api.nftrainbow.xyz/v1/refresh_token \
-  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}
