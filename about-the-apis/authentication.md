@@ -14,7 +14,7 @@ To obtain the access to [open APIs](../api-reference/open-api/), users have to d
 The Bearer JWT is valid for one hour to call [open APIs](../api-reference/open-api/). Once the token is expired for one hour, users have to call [Refersh JWT](../api-reference/open-api/login.md#refresh\_token) to obtain a new JWT.
 
 {% hint style="info" %}
-Note: Bearer JWT is valid for five hours to call [Refersh JWT](../api-reference/open-api/login.md#refresh\_token). Once the token is expired for five hours, users have to call [login](../api-reference/open-api/login.md#login) again.
+**Note:** Bearer JWT is valid for five hours to call [Refersh JWT](../api-reference/open-api/login.md#refresh\_token). Once the token is expired for five hours, users have to call [login](../api-reference/open-api/login.md#login) again.
 {% endhint %}
 
 To debug various error codes related to authentication, please see[ Error codes.](error-codes.md)
