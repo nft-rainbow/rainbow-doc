@@ -1,7 +1,7 @@
 铸造NFT快速指南
 ======================
 
-欢迎来到Rainbow NFT，使用我们的Rainbow-NFT-API, 您将可以在2分钟之内免费将任务图片或者视频铸造成为NFT，而且可以在多种区块链上进行铸造。
+欢迎来到Rainbow NFT，使用我们的Rainbow-NFT-API, 您将可以在2分钟之内免费将任意文件铸造成为NFT，而且可以在多种区块链上进行。
 
 本文将包含如下内容
 ----------------------
@@ -61,16 +61,22 @@ Rainbow-NFT-API 提供了两种方式来铸造NFT
 
 定制化铸造 NFT
 ----------------------
-我们也提供了定制化方式铸造NFT，定制化铸造方式支持部署自己的NFT合约，在指定合约上铸币，指定Metadata URI。
+我们也提供了定制化方式铸造NFT，与建议铸造不同的是定制化铸造方式支持部署自己的NFT智能合约，在指定合约上铸币，并设置自定义的Metadata URI， 步骤如下：
 1. 使用[部署API]()来部署一个单独的的合约
-2. [创建 Metadata 文件]()
-3. 使用[定制化铸造NFT]()铸造NFT
+2. [创建自定义 Metadata 文件并上传]()得到Metadata URI
+3. 使用[定制化铸造NFT]()铸造NFT，您需要提供
+   - NFT 名称
+   - NFT 描述
+   - NFT Metadata URI
+   - NFT 智能合约地址
+   - NFT 铸造目标链
+   - NFT 铸造目标地址
 
 设置代付
 ----------------------
-其中有的区块链支持[代付]()机制，比如conflux
+其中有的区块链支持[代付]()机制，当前支持代付的网络有conflux
 
 代付使您可以完全免费的去铸造NFT，铸造花费的gas将由代付方来支付。
 
-- 使用conflux test网络时，可以通过代付API来设置代付
-- 使用conflux 网络时，您可以通过 [confluxscan](https://confluxscan.io/sponsor) 申请代付，当有大额需求时请联系 conflux 官方。
+- 使用 conflux test 网络时，可以通过[代付API]()来设置代付
+- 使用 conflux 网络时，您可以通过 [confluxscan](https://confluxscan.io/sponsor) 申请代付，当有大额需求时请联系 conflux 官方。
