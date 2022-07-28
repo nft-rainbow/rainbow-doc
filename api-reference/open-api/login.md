@@ -8,7 +8,7 @@ description: >-
 
 ## Login actions
 
-Login actions provide users the entries to call the open APIs including [metadata.md](metadata.md "mention"), [mints.md](mints.md "mention"), [contract.md](contract.md "mention").&#x20;
+Login actions provide users the entries to call the open APIs including [metadata.md](metadata.md "mention"), [mints.md](mints.md "mention"), [contract.md](contract.md "mention"),  [files.md](files.md "mention").
 
 ### App Login
 
