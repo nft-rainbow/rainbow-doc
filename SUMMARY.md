@@ -4,6 +4,11 @@
 * [docs](docs/README.md)
   * [tttt](docs/Rainbow-API-Port.md)
 
+## Tutorail
+
+* [Mints](tutorail/mints/README.md)
+  * [铸造NFT快速指南](tutorail/mints/zhu-zao-nft-kuai-su-zhi-nan.md)
+
 ## API Reference
 
 * [Open-API](api-reference/open-api/README.md)
