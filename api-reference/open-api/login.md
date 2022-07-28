@@ -51,7 +51,7 @@ string
 {% tab title="Request Sample" %}
 ```
 curl --request POST \
-  --url https://localhost:8080/v1/login \
+  --url https://api.nftrainbow.xyz/v1/login \
   --header 'Content-Type: application/json' \
   --data `{
     "app_id": "qUUcdueA",
@@ -69,7 +69,7 @@ curl --request POST \
 
 `Refresh JWT` API helps users to get a new JWT of the specified app.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/refresh_token" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/refresh_token" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -95,7 +95,7 @@ string
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://localhost:8080/v1/refresh_token \
+  --url https://api.nftrainbow.xyz/v1/refresh_token \
   --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```

@@ -80,7 +80,7 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 {% tab title="Request Sample" %}
 ```
 curl --request POST \
-  --url https://localhost:8080/v1/contracts \
+  --url https://api.nftrainbow.xyz/v1/contracts \
   --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json' \
   --data '{
@@ -133,7 +133,7 @@ The `Set sponsor` API provides users to set a sponser for a specific contract ac
 {% tab title="Requst Sample" %}
 ```
 curl --request POST \
-  --url https://localhost:8080/v1/contracts/:address/sponsor \
+  --url https://api.nftrainbow.xyz/v1/contracts/:address/sponsor \
   --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
@@ -240,7 +240,7 @@ The **`Contract Struct`** is listed as follow:
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://localhost:8080/v1/contracts \
+  --url https://api.nftrainbow.xyz/v1/contracts \
   --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
@@ -297,7 +297,7 @@ The `Query sponsor` API provides users the entry to get the sponsors of a specif
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://localhost:8080/v1/contracts/:address/sponsor \
+  --url https://api.nftrainbow.xyz/v1/contracts/:address/sponsor \
   --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
