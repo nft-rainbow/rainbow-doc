@@ -1,6 +1,6 @@
 # Table of contents
 
-* [NFTRainbow The Rainbow Bridge for NFTs 🌈🌉🦄](README.md)
+* [The Rainbow Bridge for NFTs 🌈🌉🦄](README.md)
 
 ## Tutorials
 
