@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Welcome](README.md)
+* [NFTRainbow, the rainbow bridge for NFTs 🌈🌉🦄](README.md)
 
 ## Tutorials
 
