@@ -1,4 +1,4 @@
-# NFTRainbow, the rainbow bridge for NFTs 🌈🌉🦄
+# NFTRainbow The Rainbow Bridge for NFTs 🌈🌉🦄
 
 NFTRainbow is a rainbow bridge for NFTs: a One-Stop, Simple and Developer-Friendly NFT Infrastructure & APIs to help developers bring their NFT applications to market in hours instead of months. We take care of the NFT infrastructure so you can focus on your application. Built by developers for developers.
 
