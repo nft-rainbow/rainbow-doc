@@ -1,8 +1,6 @@
 # Table of contents
 
 * [rainbow-doc](README.md)
-* [docs](docs/README.md)
-  * [tttt](docs/Rainbow-API-Port.md)
 
 ## Tutorials
 
