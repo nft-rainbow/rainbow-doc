@@ -22,7 +22,7 @@ description: >-
 {% endtab %}
 
 {% tab title="Parameters" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>file</td><td>The file url of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>external_link</td><td>The externanl link of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>attributes</td><td>The attributes of the metadata</td><td>array</td><td>attribute</td><td>false</td></tr><tr><td>nft_address</td><td>The address of the NFT</td><td>body</td><td>string</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>Image</td><td>The file url of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>external_link</td><td>The externanl link of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>attributes</td><td>The attributes of the metadata</td><td>array</td><td>attribute</td><td>false</td></tr><tr><td>nft_address</td><td>The address of the NFT</td><td>body</td><td>string</td><td>false</td></tr></tbody></table>
 
 The struct of the attributes is listed as bellow.
 
@@ -42,7 +42,7 @@ The struct of the attributes is listed as bellow.
   ],
   "description": "this is a test metadata",
   "external_link": "https://www.google.com/search",
-  "file": "https://www.google.com/search",
+  "image": "https://www.google.com/search",
   "name": "test"
 }
 ```
@@ -79,7 +79,7 @@ curl --request POST
   ],
   "description": "this is a test metadata",
   "external_link": "https://www.google.com/search",
-  "file": "https://www.google.com/search",
+  "image": "https://www.google.com/search",
   "name": "test"
 }
 ```
@@ -111,7 +111,7 @@ curl --request POST
 | attributes     | The attribute of the metadata     | \[]attributes  |
 | description    | The description of the metadata   | string         |
 | external\_link | The external link of the metadata | string         |
-| file           | The file url of the metadata      | string         |
+| image          | The file url of the metadata      | string         |
 | name           | The name of the metadata          | string         |
 
 The **attributes struct** is listed as follow:
@@ -137,7 +137,7 @@ The **attributes struct** is listed as follow:
   ],
   "description": "this is a test metadata",
   "external_link": "https://www.google.com/search",
-  "file": "https://www.google.com/search",
+  "image": "https://www.google.com/search",
   "name": "test"
 }
 ```
@@ -185,7 +185,7 @@ The **`QueryMetadataResponse struct`** is listed as follow:
 | attributes     | The attribute of the              | \[]attributes  |
 | description    | The description of the metadata   | string         |
 | external\_link | The external link of the metadata | string         |
-| file           | The file url of the metadata      | string         |
+| image          | The file url of the metadata      | string         |
 | name           | The name of the metadata          | string         |
 
 The **`attributes struct`** is listed as follow:
@@ -208,7 +208,7 @@ The **`attributes struct`** is listed as follow:
                     "name": "test",
                     "description": "this is a test metadata",
                     "external_link": "https://www.google.com/search",
-                    "file": "https://www.google.com/search",
+                    "image": "https://www.google.com/search",
                     "attributes": [
                         {
                             "attribute_name": "eyes",
