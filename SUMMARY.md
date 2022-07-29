@@ -1,6 +1,6 @@
 # Table of contents
 
-* [rainbow-doc](README.md)
+* [Welcome](README.md)
 
 ## Tutorials
 
