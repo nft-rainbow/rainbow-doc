@@ -9,7 +9,7 @@
 * [Mints](tutorials/mints/README.md)
   * [铸造NFT快速指南](tutorials/mints/zhu-zao-nft-kuai-su-zhi-nan.md)
 * [OpenAPI](https://github.com/nft-rainbow/PostManCollection/blob/main/Postman%20Collections/NFT-Rainbow-API.json)
-* [Postman Collection](https://orange-spaceship-358323.postman.co/workspace/NFT-rainbow\~7cf261f4-07b3-4da4-bb55-779f853c3393/overview)
+* [Postman Collection](https://god.gw.postman.com/run-collection/11713837-cbd0da1f-c17b-4f2a-8749-0c89c467ada5?action=collection%2Ffork\&collection-url=entityId%3D11713837-cbd0da1f-c17b-4f2a-8749-0c89c467ada5%26entityType%3Dcollection%26workspaceId%3De79ada8c-30d2-4354-9597-0980b87bac8f)
 
 ## API Reference
 
