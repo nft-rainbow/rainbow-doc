@@ -36,7 +36,7 @@ The `Mint NFT` provides users with the entry to call the ERC721 contract to mint
     "token_id": "",
     "mint_to_address": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
     "contract_address": "cfxtest:acgat1yux2rk0xmk2s8ceferyprgm0u1hetj0w72yf",
-    "metadata_uri": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+    "metadata_uri": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg"
 }
 ```
 {% endtab %}
@@ -70,7 +70,7 @@ The `Mint NFT` provides users with the entry to call the ERC721 contract to mint
         "chain_id": 1,
         "contract": "cfxtest:acf8m2gzrv8pnfsjbne2d28m4h2ycj569uupgys473",
         "mint_to": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
-        "token_uri": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png",
+        "token_uri": "http://dev.nftrainbow/assets/metadata/1/nft/46708cf66a806743cfc27b110a41a2ea2e1b7a47fbcfb2efc9cac8fd3bf29cd1.json",
         "token_id": 7958647809,
         "amount": 1,
         "status": 0,
@@ -85,14 +85,14 @@ The `Mint NFT` provides users with the entry to call the ERC721 contract to mint
 ```
 curl --request POST \
   --url https://api.nftrainbow.xyz/v1/mints \
-  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
   --data '{
     "chain": "conflux_test",
     "token_id": "",
     "mint_to_address": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
     "contract_address": "cfxtest:acgat1yux2rk0xmk2s8ceferyprgm0u1hetj0w72yf",
-    "metadata_uri": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+    "metadata_uri": "http://dev.nftrainbow/assets/metadata/0/nft/2dfd6b3add9d5154cf4ccef7a040f4c5c3c965ec5845bd11ca297e8550ac63ee.json"
 }'
 ```
 {% endtab %}
@@ -146,7 +146,7 @@ The `Mint NFT with file` provides users with the entry to call the ERC721 contra
         "chain_id": 1,
         "contract": "cfxtest:acgraybn1g1upesed09g96vxev79sdhmxjmz7bxzyy",
         "mint_to": "cfxtest:aatk708nbb7573bkwumsu00h0r1rtkcdz2chwhttzk",
-        "token_uri": "http://localhost:8080/assets/metadata/0/nft/2dfd6b3add9d5154cf4ccef7a040f4c5c3c965ec5845bd11ca297e8550ac63ee.json",
+        "token_uri": "http://dev.nftrainbow/assets/metadata/0/nft/2dfd6b3add9d5154cf4ccef7a040f4c5c3c965ec5845bd11ca297e8550ac63ee.json",
         "token_id": 0,
         "amount": 1,
         "status": 0,
@@ -161,7 +161,7 @@ The `Mint NFT with file` provides users with the entry to call the ERC721 contra
 ```
 curl --request POST \
   --url https://api.nftrainbow.xyz/v1/mints/files \
-  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: multipart/form-data' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --form file= \
@@ -199,7 +199,7 @@ The `Mint NFT with metadata` provides users with the entry to call the ERC721 or
     "name": "123",
     "description": "123",
     "mint_to_address": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
-    "file_url": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+    "file_url": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg"
 }
 ```
 {% endtab %}
@@ -242,7 +242,7 @@ The **`MintTask Struct`** is listed as follow:
         "chain_id": 1,
         "contract": "cfxtest:acgraybn1g1upesed09g96vxev79sdhmxjmz7bxzyy",
         "mint_to": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
-        "token_uri": "http://localhost:8080/assets/metadata/0/nft/35dd0e140460bcb3197ace4364c41f7f5c51b71582c421121e7bea9bcf4391a1.json",
+        "token_uri": "http://dev.nftrainbow/assets/metadata/0/nft/35dd0e140460bcb3197ace4364c41f7f5c51b71582c421121e7bea9bcf4391a1.json",
         "token_id": 0,
         "amount": 1,
         "status": 0,
@@ -257,14 +257,14 @@ The **`MintTask Struct`** is listed as follow:
 ```
 curl --request POST \
   --url https://api.nftrainbow.xyz/mints/urls \
-  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \
   --data '{
     "chain": "conflux_test",
     "name": "123",
     "description": "123",
     "mint_to_address": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
-    "file_url": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+    "file_url": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg"
 }'
 ```
 {% endtab %}
@@ -309,26 +309,26 @@ The `Obtain NFT list` API provides users with the entry to query the NFTs inform
 
 {% tab title="Response Example" %}
 ```
-{
+ {
         "count": 1,
         "items": [
             {
                 "id": 1,
-                "created_at": "2022-07-27T11:14:09.686+08:00",
-                "updated_at": "2022-07-27T11:14:14.921+08:00",
+                "created_at": "2022-08-01T11:14:33.513+08:00",
+                "updated_at": "2022-08-01T11:14:33.513+08:00",
                 "deleted_at": null,
-                "app_id": 1,
+                "app_id": 2,
                 "chain_type": 1,
                 "chain_id": 1,
                 "contract": "cfxtest:acf8m2gzrv8pnfsjbne2d28m4h2ycj569uupgys473",
                 "mint_to": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
-                "token_uri": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png",
-                "token_id": 7958647809,
+                "token_uri": "http://dev.nftrainbow/assets/metadata/0/nft/2dfd6b3add9d5154cf4ccef7a040f4c5c3c965ec5845bd11ca297e8550ac63ee.json",
+                "token_id": 6361807482,
                 "amount": 1,
-                "status": 2,
+                "status": 0,
                 "hash": "",
                 "tx_id": 5,
-                "error": "failed to get default account: address list is empty"
+                "error": ""
             }
         ]
     }
@@ -339,8 +339,9 @@ The `Obtain NFT list` API provides users with the entry to query the NFTs inform
 ```
 curl --request GET \
   --url https://api.nftrainbow.xyz/v1/mints \
-  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}
 {% endtabs %}
+

@@ -8,7 +8,7 @@ description: >-
 
 ## Login actions
 
-Login actions provide users the entries to call the open APIs including [metadata.md](metadata.md "mention"), [mints.md](mints.md "mention"), [contract.md](contract.md "mention").&#x20;
+Login actions provide users the entries to call the open APIs including [metadata.md](metadata.md "mention"), [mints.md](mints.md "mention"), [contract.md](contract.md "mention"),  [files.md](files.md "mention").
 
 ### App Login
 
@@ -35,14 +35,18 @@ Login actions provide users the entries to call the open APIs including [metadat
 {% tab title="Response" %}
 The returned result can be used to access other OPEN-APIs
 
-| Name  | Meaning   | Type   |
-| ----- | --------- | ------ |
-| Token | JWT token | String |
+| Name   | Meaning          | Type   |
+| ------ | ---------------- | ------ |
+| token  | JWT token        | String |
+| expire | The expired time | String |
 {% endtab %}
 
 {% tab title="Response Example" %}
 ```
-string
+{
+    "expire": "2022-08-31T15:54:04.2046805+08:00",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjE5MzI0NDQsImlkIjozLCJvcmlnX2lhdCI6MTY1OTM0MDQ0NH0.BLkzyiQzxlljYLj5Gjjqjnd4fFm1GdoEduaVrVlU_Tw"
+}
 ```
 
 
@@ -81,14 +85,18 @@ curl --request POST \
 {% endtab %}
 
 {% tab title="Response" %}
-| Name  | Meaning   | Type   |
-| ----- | --------- | ------ |
-| Token | JWT token | String |
+| Name   | Meaning          | Type   |
+| ------ | ---------------- | ------ |
+| token  | JWT token        | String |
+| expire | The expired time | String |
 {% endtab %}
 
 {% tab title="Response Example" %}
 ```
-string
+{
+    "expire": "2022-08-31T15:54:04.2046805+08:00",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjE5MzI0NDQsImlkIjozLCJvcmlnX2lhdCI6MTY1OTM0MDQ0NH0.BLkzyiQzxlljYLj5Gjjqjnd4fFm1GdoEduaVrVlU_Tw"
+}
 ```
 {% endtab %}
 
@@ -96,7 +104,7 @@ string
 ```
 curl --request GET \
   --url https://api.nftrainbow.xyz/v1/refresh_token \
-  --header 'Authorization: 'Bearer {JWT}' \
+  --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
 {% endtab %}
