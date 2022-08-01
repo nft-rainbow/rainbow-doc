@@ -37,10 +37,10 @@ description: >-
 {% tab title="Response Example" %}
 ```
 {
-  "file_name": "http://localhost:8080/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
+  "file_url": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
   "file_size": 11295,
   "file_type": "jpeg",
-  "file_url": "67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111"
+  "file_name": "67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111"
 }
 ```
 {% endtab %}
@@ -95,33 +95,28 @@ The **`ExposedFile`** struct is lised as follow:
 {% tab title="Response Example" %}
 ```
 {
-        "count": 1,
+        "count": 3,
         "items": [
             {
-                "metadata": {
-                    "name": "test",
-                    "description": "this is a test metadata",
-                    "external_link": "https://www.google.com/search",
-                    "file": "https://www.google.com/search",
-                    "attributes": [
-                        {
-                            "attribute_name": "eyes",
-                            "trait_type": "test trait",
-                            "display_type": "",
-                            "value": "big"
-                        },
-                        {
-                            "attribute_name": "mouse",
-                            "trait_type": "test hey hey",
-                            "display_type": "",
-                            "value": "big"
-                        }
-                    ]
-                },
-                "uri": "http://localhost:8080/assets/metadata/1/nft/46708cf66a806743cfc27b110a41a2ea2e1b7a47fbcfb2efc9cac8fd3bf29cd1.json"
+                "file_url": "http://dev.nftrainbow/assets/file/2/nft/fa6f733c258e3a0f364aeb18198c9e2bae2e2c91bee4d38a1c88fb9cc8a71a1b.jpeg",
+                "file_size": 11295,
+                "file_type": "jpeg",
+                "file_name": "fa6f733c258e3a0f364aeb18198c9e2bae2e2c91bee4d38a1c88fb9cc8a71a1b"
+            },
+            {
+                "file_url": "http://dev.nftrainbow/assets/file/2/nft/06edf22f414234ea59c949104a054ca4af27cd71e87170d99401b50d15651cdc.jpeg",
+                "file_size": 11295,
+                "file_type": "jpeg",
+                "file_name": "06edf22f414234ea59c949104a054ca4af27cd71e87170d99401b50d15651cdc"
+            },
+            {
+                "file_url": "http://dev.nftrainbow/assets/file/2/nft/bf822838b7b3a7dadc96bd6f38defcbb21376852284ded6302aac69a71e58027.jpeg",
+                "file_size": 11295,
+                "file_type": "jpeg",
+                "file_name": "bf822838b7b3a7dadc96bd6f38defcbb21376852284ded6302aac69a71e58027"
             }
         ]
-}
+    }
 ```
 {% endtab %}
 

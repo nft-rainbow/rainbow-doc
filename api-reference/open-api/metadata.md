@@ -41,8 +41,7 @@ The struct of the attributes is listed as bellow.
     }
   ],
   "description": "this is a test metadata",
-  "external_link": "https://www.google.com/search",
-  "image": "https://www.google.com/search",
+  "image": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
   "name": "test"
 }
 ```
@@ -57,7 +56,7 @@ The struct of the attributes is listed as bellow.
 {% tab title="Response Example" %}
 ```
 {
-  "metadata_uri": "http://localhost:8080/assets/metadata/1/nft/46708cf66a806743cfc27b110a41a2ea2e1b7a47fbcfb2efc9cac8fd3bf29cd1.json"
+  "metadata_uri": "http://dev.nftrainbow/assets/metadata/1/nft/46708cf66a806743cfc27b110a41a2ea2e1b7a47fbcfb2efc9cac8fd3bf29cd1.json"
 }
 ```
 {% endtab %}
@@ -78,7 +77,6 @@ curl --request POST
     }
   ],
   "description": "this is a test metadata",
-  "external_link": "https://www.google.com/search",
   "image": "https://www.google.com/search",
   "name": "test"
 }
@@ -136,8 +134,7 @@ The **attributes struct** is listed as follow:
     }
   ],
   "description": "this is a test metadata",
-  "external_link": "https://www.google.com/search",
-  "image": "https://www.google.com/search",
+  "image": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
   "name": "test"
 }
 ```
@@ -146,7 +143,7 @@ The **attributes struct** is listed as follow:
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://localhost:8080/v1/metadata/:metadata_id \
+  --url https://dev.nftrainbow/v1/metadata/:metadata_id \
   --header 'Authorization: 'Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
@@ -207,8 +204,7 @@ The **`attributes struct`** is listed as follow:
                 "metadata": {
                     "name": "test",
                     "description": "this is a test metadata",
-                    "external_link": "https://www.google.com/search",
-                    "image": "https://www.google.com/search",
+                    "image": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
                     "attributes": [
                         {
                             "attribute_name": "eyes",
@@ -224,7 +220,7 @@ The **`attributes struct`** is listed as follow:
                         }
                     ]
                 },
-                "uri": "http://localhost:8080/assets/metadata/1/nft/46708cf66a806743cfc27b110a41a2ea2e1b7a47fbcfb2efc9cac8fd3bf29cd1.json"
+                "uri": "http://dev.nftrainbow/assets/metadata/1/nft/46708cf66a806743cfc27b110a41a2ea2e1b7a47fbcfb2efc9cac8fd3bf29cd1.json"
             }
         ]
 }
