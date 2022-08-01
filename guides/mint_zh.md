@@ -38,9 +38,10 @@ Rainbow-NFT-API 提供了两种方式来铸造NFT
 准备工作
 ----------------------
 铸造NFT之前，您需要
-1. [注册 Rainbow-NFT 账户]()
-2. [创建应用]()
-3. [登录应用]()
+1. [注册 Rainbow-NFT 账户](https://dev.nftrainbow.xyz/login)
+2. [创建应用，应用通常对应一个产品](https://dev.nftrainbow.xyz/panels/apps)
+3. 从[应用列表](https://dev.nftrainbow.xyz/panels/apps)进入刚创建的应用，点击“查看AppKey”，获取AppKey
+4. [登录应用，获取JWT Token](https://docs.nftrainbow.xyz/api-reference/open-api/login#app-login)，下面的API将都需要使用该Token做身份验证
 
 简单铸造 NFT
 ----------------------
@@ -51,7 +52,7 @@ Rainbow-NFT-API 提供了两种方式来铸造NFT
 - NFT 铸造目标链
 - NFT 铸造目标地址
 
-然后使用 [easymint-file]() 或 [easymint-url]() 铸造NFT即可。
+然后使用 [easymint-file](https://docs.nftrainbow.xyz/api-reference/open-api/mints#mint-nft-with-file) 或 [easymint-url](https://docs.nftrainbow.xyz/api-reference/open-api/mints#mint-nft-with-metadata) 铸造NFT即可。
 
 当简单铸造 NFT 时，背后做了如下工作
 1. 上传文件到存储服务器生成文件URL
@@ -63,9 +64,9 @@ Rainbow-NFT-API 提供了两种方式来铸造NFT
 定制化铸造 NFT
 ----------------------
 我们也提供了定制化方式铸造NFT，与简易铸造不同的是定制化铸造方式支持部署自己的NFT智能合约，在指定合约上铸币，并设置自定义的Metadata URI， 步骤如下：
-1. 使用[部署API]()来部署一个单独的的合约
-2. [创建自定义 Metadata 文件并上传]()得到Metadata URI
-3. 使用[定制化铸造NFT]()铸造NFT，您需要提供
+1. 使用[部署API](https://docs.nftrainbow.xyz/api-reference/open-api/contract#deploy-contract)来部署一个单独的的合约
+2. [创建自定义 Metadata 文件并上传](https://docs.nftrainbow.xyz/api-reference/open-api/metadata#create-nft-metadata)得到Metadata URI
+3. 使用[定制化铸造NFT](https://docs.nftrainbow.xyz/api-reference/open-api/mints#mint-nft)铸造NFT，您需要提供
    - NFT 名称
    - NFT 描述
    - NFT Metadata URI
@@ -78,5 +79,5 @@ Rainbow-NFT-API 提供了两种方式来铸造NFT
 其中有的区块链支持代付机制，代付指由代付方支付合约调用所花费的gas，合约调用方不需要付费。所以代付使您可以完全免费的去铸造NFT，铸造花费的gas将由代付方来支付。
 
 当前支持代付的网络有conflux
-- 使用 conflux test 网络时，可以通过[代付API]()来设置代付
+- 使用 conflux test 网络时，可以通过[代付API](https://docs.nftrainbow.xyz/api-reference/open-api/contract#set-sponsor)或 [confluxscan](https://testnet.confluxscan.io/sponsor) 来申请代付
 - 使用 conflux 网络时，您可以通过 [confluxscan](https://confluxscan.io/sponsor) 申请代付，当有大额需求时请联系 conflux 官方。
