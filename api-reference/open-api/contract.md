@@ -284,12 +284,12 @@ The `Query sponsor` API provides users the entry to get the sponsors of a specif
 {% tab title="Response Example" %}
 ```
 {
-        "gas_sponsor": "cfxtest:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa6f0vrcsw",
-        "gas_sponsor_balance": 0,
-        "collateral_sponsor": "cfxtest:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa6f0vrcsw",
-        "collateral_sponsor_balance": 0,
-        "is_all_white_listed": false,
-        "gas_upper_bound": 0
+        "gas_sponsor": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
+        "gas_sponsor_balance": 10000000000000000000,
+        "collateral_sponsor": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
+        "collateral_sponsor_balance": 100000000000000000000,
+        "is_all_white_listed": true,
+        "gas_upper_bound": 5000000000000000
 }
 ```
 {% endtab %}
