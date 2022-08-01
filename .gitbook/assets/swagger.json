@@ -59,8 +59,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "internal error",
+                    "50000": {
+                        "description": "Internal Server error",
                         "schema": {
                             "type": "string"
                         }
@@ -106,20 +106,20 @@
                             "$ref": "#/definitions/models.Contract"
                         }
                     },
-                    "400": {
-                        "description": "invalid request",
+                    "40000": {
+                        "description": "Invalid request",
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "422": {
-                        "description": "invalid address",
+                    "40002": {
+                        "description": "Invalid address",
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "500": {
-                        "description": "internal error",
+                    "50000": {
+                        "description": "Internal Server error",
                         "schema": {
                             "type": "string"
                         }
@@ -174,14 +174,14 @@
                             }
                         }
                     },
-                    "422": {
-                        "description": "invalid address",
+                    "40002": {
+                        "description": "Invalid address",
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "500": {
-                        "description": "internal error",
+                    "50000": {
+                        "description": "Internal Server error",
                         "schema": {
                             "type": "string"
                         }
@@ -225,14 +225,14 @@
                             "type": "string"
                         }
                     },
-                    "422": {
-                        "description": "invalid address",
+                    "40002": {
+                        "description": "Invalid address",
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "500": {
-                        "description": "internal error",
+                    "50000": {
+                        "description": "Internal Server error",
                         "schema": {
                             "type": "string"
                         }
@@ -286,8 +286,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "internal error",
+                    "50000": {
+                        "description": "Internal Server error",
                         "schema": {
                             "type": "string"
                         }
@@ -334,8 +334,8 @@
                             "$ref": "#/definitions/services.UploadFilesResponse"
                         }
                     },
-                    "500": {
-                        "description": "internal error",
+                    "50000": {
+                        "description": "Internal Server error",
                         "schema": {
                             "type": "string"
                         }
@@ -376,8 +376,8 @@
                             "type": "string"
                         }
                     },
-                    "401": {
-                        "description": "internal error",
+                    "40101": {
+                        "description": "Internal error",
                         "schema": {
                             "type": "string"
                         }
@@ -437,8 +437,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "internal error",
+                    "50000": {
+                        "description": "Internal Server error",
                         "schema": {
                             "type": "string"
                         }
@@ -484,14 +484,14 @@
                             "$ref": "#/definitions/services.CreateMetadataResponse"
                         }
                     },
-                    "400": {
-                        "description": "invalid request",
+                    "40000": {
+                        "description": "Invalid request",
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "500": {
-                        "description": "internal error",
+                    "50000": {
+                        "description": "Internal Server error",
                         "schema": {
                             "type": "string"
                         }
@@ -537,14 +537,14 @@
                             "$ref": "#/definitions/models.ExposedMetadata"
                         }
                     },
-                    "400": {
-                        "description": "invalid request",
+                    "40000": {
+                        "description": "Invalid request",
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "500": {
-                        "description": "internal error",
+                    "50000": {
+                        "description": "Internal Server error",
                         "schema": {
                             "type": "string"
                         }
@@ -598,8 +598,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "internal error",
+                    "50000": {
+                        "description": "Internal Server error",
                         "schema": {
                             "type": "string"
                         }
@@ -648,20 +648,20 @@
                             }
                         }
                     },
-                    "400": {
-                        "description": "invalid request",
+                    "40000": {
+                        "description": "Invalid request",
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "422": {
-                        "description": "invalid address",
+                    "40002": {
+                        "description": "Invalid address",
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "500": {
-                        "description": "internal error",
+                    "50000": {
+                        "description": "Internal Server error",
                         "schema": {
                             "type": "string"
                         }
@@ -722,20 +722,20 @@
                             }
                         }
                     },
-                    "400": {
-                        "description": "invalid request",
+                    "40000": {
+                        "description": "Invalid request",
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "422": {
-                        "description": "invalid address",
+                    "40002": {
+                        "description": "Invalid address",
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "500": {
-                        "description": "internal error",
+                    "50000": {
+                        "description": "Internal Server error",
                         "schema": {
                             "type": "string"
                         }
@@ -786,20 +786,20 @@
                             }
                         }
                     },
-                    "400": {
-                        "description": "invalid request",
+                    "40000": {
+                        "description": "Invalid request",
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "422": {
-                        "description": "invalid address",
+                    "40002": {
+                        "description": "Invalid address",
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "500": {
-                        "description": "internal error",
+                    "50000": {
+                        "description": "Internal Server error",
                         "schema": {
                             "type": "string"
                         }
@@ -838,8 +838,8 @@
                             "type": "string"
                         }
                     },
-                    "401": {
-                        "description": "internal error",
+                    "40101": {
+                        "description": "Internal error",
                         "schema": {
                             "type": "string"
                         }
@@ -991,7 +991,7 @@
                 "external_link": {
                     "type": "string"
                 },
-                "file": {
+                "image": {
                     "type": "string"
                 },
                 "name": {
@@ -1003,7 +1003,7 @@
             "type": "object",
             "required": [
                 "description",
-                "file",
+                "image",
                 "name"
             ],
             "properties": {
@@ -1019,7 +1019,7 @@
                 "external_link": {
                     "type": "string"
                 },
-                "file": {
+                "image": {
                     "type": "string"
                 },
                 "name": {
