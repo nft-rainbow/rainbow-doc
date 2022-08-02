@@ -96,7 +96,7 @@ OSS is a storage service provided by Alibaba. Users can choose to upload the fil
 ```
 {% endtab %}
 
-{% tab title="Untitled" %}
+{% tab title="Request Sample" %}
 ```
 curl --request POST \
   --url https://api.nftrainbow.xyz/v1/files/oss \
