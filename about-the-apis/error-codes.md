@@ -8,7 +8,7 @@ The possible errors containing the `error codes`, `status code` and how to fix t
 
 | ERROR CODE | ERROR MESSAGE                    | EXPLANATION                                                                         |
 | ---------- | -------------------------------- | ----------------------------------------------------------------------------------- |
-| 40101      | \*                               | Auth failed. Please check the input parameaters.                                    |
+| 40101      | \*                               | Auth failed. Please check the input parameters.                                     |
 | 40102      | `auth header is empty`           | Your auth header is empty. Please add the JWT.                                      |
 | 40103      | `Authorization token is invalid` | Your authorization token is invalid. Please use the correct JWT.                    |
 | 40104      | `Token is expired`               | Your JWT is expired. Please call refresh JWT to get a new JWT.                      |
