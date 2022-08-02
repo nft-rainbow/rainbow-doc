@@ -88,10 +88,10 @@ OSS is a storage service provided by Alibaba. Users can choose to upload the fil
 {% tab title="Response Example" %}
 ```
 {
-  "file_url": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
-  "file_size": 11295,
-  "file_type": "jpeg",
-  "file_name": "67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111"
+    "file_url": "https://nft-rainbow.oss-cn-hangzhou.aliyuncs.com/file/4/nft/377d21aaeddfff1f4f1fa73498df70a462945bb06f5a984358202cec0682c4d2.jpeg",
+    "file_size": 11295,
+    "file_type": "jpeg",
+    "file_name": "377d21aaeddfff1f4f1fa73498df70a462945bb06f5a984358202cec0682c4d2"
 }
 ```
 {% endtab %}
