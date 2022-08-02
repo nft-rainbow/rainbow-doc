@@ -8,7 +8,7 @@ description: >-
 
 ### Upload File
 
-`Upload file` API helps users to upload a file to get the corresponding url for creating NFT metadata.  The file can be a video, a image and so on.
+`Upload file` API helps users to upload a file to get the corresponding url for creating NFT metadata.  The file can be a video, a figure and so on.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/files" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -49,6 +49,57 @@ description: >-
 ```
 curl --request POST \
   --url https://api.nftrainbow.xyz/v1/files \
+  --header 'Authorization: Bearer {JWT}' \
+  --header 'Content-Type: multipart/form-data' \
+  --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
+  --form file=
+```
+{% endtab %}
+{% endtabs %}
+
+### Upload File to OSS
+
+OSS is a storage service provided by Alibaba. Users can choose to upload the files to OSS storage. `Upload file to OSS` API helps users to achieve the target. The file can be a video, a figure and so on.
+
+{% swagger src="../../.gitbook/assets/swagger.json" path="/files/oss" method="post" %}
+[swagger.json](../../.gitbook/assets/swagger.json)
+{% endswagger %}
+
+{% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
+{% tab title="Parameters" %}
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>file</td><td>uploaded file</td><td>multipart/form-data</td><td></td><td>true</td></tr></tbody></table>
+{% endtab %}
+
+{% tab title="Responses" %}
+| Name       | Meaning                      | Type    |
+| ---------- | ---------------------------- | ------- |
+| file\_name | The name of the uploaed file | string  |
+| file\_size | The size of the uploaed file | integer |
+| file\_type | The type of the uploaed file | string  |
+| file\_url  | The url of the uploaed file  | string  |
+{% endtab %}
+
+{% tab title="Response Example" %}
+```
+{
+  "file_url": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
+  "file_size": 11295,
+  "file_type": "jpeg",
+  "file_name": "67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111"
+}
+```
+{% endtab %}
+
+{% tab title="Untitled" %}
+```
+curl --request POST \
+  --url https://api.nftrainbow.xyz/v1/files/oss \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: multipart/form-data' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
