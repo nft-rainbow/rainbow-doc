@@ -1,27 +1,27 @@
 铸造NFT快速指南
 ======================
 
-欢迎来到 NFT Rainbow，使用我们的Rainbow-NFT-API, 您将可以在2分钟之内免费将任意文件铸造成为NFT，而且可以在多种区块链上进行。
+欢迎来到 NFTRainbow，使用我们的NFTRainbow-API, 您将可以在2分钟之内免费将任意文件铸造成为NFT，而且可以在多种区块链上进行。
 
 本文将包含如下内容
 ----------------------
-  - [为什么使用 Rainbow-NFT-API](#为什么使用-rainbow-nft-api)
-  - [Rainbow-NFT-API 能做什么](#rainbow-nft-api-能做什么)
+  - [为什么使用 NFTRainbow-API](#为什么使用-rainbow-nft-api)
+  - [NFTRainbow-API 能做什么](#rainbow-nft-api-能做什么)
   - [准备工作](#准备工作)
   - [简单铸造 NFT](#简单铸造-nft)
   - [定制化铸造 NFT](#定制化铸造-nft)
   - [设置代付](#设置代付)
 
-为什么使用 Rainbow-NFT-API
+为什么使用 NFTRainbow-API
 ----------------------
 1. 区块链技术栈很复杂，通常实现铸造和查询NFT需要掌握区块链相关知识，包括 Solidity、Web3.js、GraphQL、节点、IPFS、数据密集型应用程序等，学习曲线陡峭且需要大量时间，通常需要一个团队来涵盖所有技能。
 2. 基础设施的建立和维护成本昂贵且耗时，通常团队的50%的工作量会花费在这上面，如果支持多种区块链则会让难度成倍上升。
 3. 运行自己的节点很昂贵，使用第三方节点服务则受限于服务的可靠性和安全性。
 4. 时间是宝贵的，当有一个商业机会时是否能抢在对手前面将影响整个项目的成败。
 
-使用 Rainbow-NFT-API 将可以避免以上问题，让web2开发者无门槛使用，不需要学习web3技术栈，极大降低成本，提高开发效率。
+使用 NFTRainbow-API 将可以避免以上问题，让web2开发者无门槛使用，不需要学习web3技术栈，极大降低成本，提高开发效率。
 
-Rainbow-NFT-API 能做什么
+NFTRainbow-API 能做什么
 ----------------------
 可以将任何文件（通常是图片或视频），通过Web API的方式铸造成为NFT，比如艺术品或者数字收藏品，或者您能想到的任何可视化的东西。
 
@@ -31,7 +31,7 @@ Rainbow-NFT-API 能做什么
 - 在您的应用程序中通过调用 Rainbow-NFT-API 自动铸造 NFT
 - 向指定用户钱包地址铸造 NFT 来宣传您的 NFT项目，比如向 CryptoPunk 或者 Bored Ape Yacht Club 拥有者地址铸造 NFT
 
-Rainbow-NFT-API 提供了两种方式来铸造NFT
+NFTRainbow-API 提供了两种方式来铸造NFT
 - [简单铸造](#简单铸造-nft)
 - [定制化铸造](#定制化铸造-nft)
 
