@@ -20,7 +20,13 @@
 
 目前 树图链 NFT Easy mint 操作，以及合约部署都是免费的。合约部署后，需自行为合约设置代付，Mint 操作也是免费的。
 
-## 为什么 Mint 接口调用后，接口返回的数据中没有 tokenId，合约地址等信息？
+## 树图链如何给合约设置代付？
+
+树图链测试环境 NFTRainbow 提供了免费的 [Sponsor 设置接口](https://docs.nftrainbow.xyz/api-reference/open-api/contract#set-sponsor).
+
+树图链主网需要自己获取并设置代付，也可以联系 Conflux 基金会购买。
+
+## 为什么 Mint 接口调用后，接口返回的数据中没有 tokenId，哈希等信息？
 
 当前 NFTRainbow 所有的上链操作都是异步进行的，接口调用后无法立刻获取 tokenId，可使用 Mint 详情接口，查看藏品铸造状态。
 成功上链后可以获取藏品铸造的 TokenId，哈希等信息。失败的会会返回失败的原因。
