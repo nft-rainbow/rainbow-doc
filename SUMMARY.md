@@ -6,8 +6,12 @@
 
 * [Mints](tutorials/mints/README.md)
   * [铸造NFT快速指南](tutorials/mints/mints-zh.md)
-* [OpenAPI](https://github.com/nft-rainbow/Swagger-API/blob/main/swagger.json)
-* [Postman Collection](https://app.getpostman.com/run-collection/11713837-cbd0da1f-c17b-4f2a-8749-0c89c467ada5?action=collection%2Ffork\&collection-url=entityId%3D11713837-cbd0da1f-c17b-4f2a-8749-0c89c467ada5%26entityType%3Dcollection%26workspaceId%3De79ada8c-30d2-4354-9597-0980b87bac8f)
+
+## Docs
+
+* [FAQs](./FAQs.md)
+* [Changelog](./CHANGELOG.md)
+* [RoadMap](./ROADMAP.md)
 
 ## API Reference
 
@@ -17,6 +21,8 @@
   * [Metadata](api-reference/open-api/metadata.md)
   * [Contract](api-reference/open-api/contract.md)
   * [Mints](api-reference/open-api/mints.md)
+* [OpenAPI](https://github.com/nft-rainbow/Swagger-API/blob/main/swagger.json)
+* [Postman Collection](https://app.getpostman.com/run-collection/11713837-cbd0da1f-c17b-4f2a-8749-0c89c467ada5?action=collection%2Ffork\&collection-url=entityId%3D11713837-cbd0da1f-c17b-4f2a-8749-0c89c467ada5%26entityType%3Dcollection%26workspaceId%3De79ada8c-30d2-4354-9597-0980b87bac8f)
 
 ## ABOUT THE APIs
 
