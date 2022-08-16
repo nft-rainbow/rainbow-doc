@@ -10,7 +10,7 @@
 * Ethereum
 * BNB Chain
 * Polygon
-* 联盟链
+* 主流联盟链
 
 ## 如何获取访问 API 的 AppSecret ？
 
