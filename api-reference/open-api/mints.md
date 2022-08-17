@@ -84,7 +84,7 @@ The `Mint NFT` provides users with the entry to call the ERC721 contract to mint
 {% tab title="Requst Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/mints \
+  --url https://api.nftrainbow.xyz/v1/mints/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
   --data '{
@@ -160,7 +160,7 @@ The `Mint NFT with file` provides users with the entry to call the ERC721 contra
 {% tab title="Request Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/mints/files \
+  --url https://api.nftrainbow.xyz/v1/mints/easy/files \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: multipart/form-data' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
@@ -256,7 +256,7 @@ The **`MintTask Struct`** is listed as follow:
 {% tab title="Request Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/mints/urls \
+  --url https://api.nftrainbow.xyz/mints/easy/urls \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \
   --data '{
@@ -338,7 +338,7 @@ The `Obtain NFT list` API provides users with the entry to query the NFTs inform
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/mints \
+  --url https://api.nftrainbow.xyz/v1/mints/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```

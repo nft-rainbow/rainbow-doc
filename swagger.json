@@ -16,7 +16,7 @@
   "host": "localhost:8080",
   "basePath": "/",
   "paths": {
-    "/v1/contracts": {
+    "/v1/contracts/": {
       "get": {
         "produces": [
           "application/json"
@@ -404,13 +404,13 @@
         }
       }
     },
-    "/v1/metadata/files": {
+    "/v1/files/": {
       "get": {
         "produces": [
           "application/json"
         ],
         "tags": [
-          "Metadata"
+          "Files"
         ],
         "summary": "Query File list",
         "parameters": [
@@ -483,7 +483,7 @@
         }
       }
     },
-    "/v1/mints": {
+    "/v1/mints/": {
       "get": {
         "produces": [
           "application/json"
@@ -588,7 +588,7 @@
         }
       }
     },
-    "/v1/mints/files": {
+    "/v1/mints/easy/files": {
       "post": {
         "consumes": [
           "multipart/form-data"
@@ -656,7 +656,7 @@
         }
       }
     },
-    "/v1/mints/urls": {
+    "/v1/mints/easy/urls": {
       "post": {
         "produces": [
           "application/json"

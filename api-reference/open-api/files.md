@@ -48,7 +48,7 @@ description: >-
 {% tab title="Request Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/files \
+  --url https://api.nftrainbow.xyz/v1/files/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: multipart/form-data' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
@@ -174,7 +174,7 @@ The **`ExposedFile`** struct is lised as follow:
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/files \
+  --url https://api.nftrainbow.xyz/v1/files/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
