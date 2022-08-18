@@ -256,7 +256,7 @@ The **`MintTask Struct`** is listed as follow:
 {% tab title="Request Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/mints/easy/urls \
+  --url https://api.nftrainbow.xyz/v1/mints/easy/urls \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \
   --data '{
