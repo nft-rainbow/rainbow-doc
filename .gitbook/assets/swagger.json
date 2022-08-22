@@ -240,6 +240,59 @@
                 }
             }
         },
+        "/contracts/detail/:id": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get Contract info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Contract detail",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Contract"
+                        }
+                    },
+                    "40000": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "50000": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/files": {
             "get": {
                 "security": [
@@ -715,6 +768,65 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    "60002": {
+                        "description": "Contract has no sponsor",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/mints/:id": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get NFT detail info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mints"
+                ],
+                "summary": "Mint NFT detail",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.MintTask"
+                        }
+                    },
+                    "40000": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "50000": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 }
             }
@@ -800,14 +912,14 @@
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Mint a NFT by providing a file url to create the metadata",
+                "description": "Mint several NFTs once",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Mints"
                 ],
-                "summary": "Mint NFT with metadata",
+                "summary": "Batch Mint NFTs",
                 "parameters": [
                     {
                         "type": "string",
@@ -817,12 +929,12 @@
                         "required": true
                     },
                     {
-                        "description": "easy_mint_meta_info",
-                        "name": "easy_mint_meta_info",
+                        "description": "custom_mint_batch_dto",
+                        "name": "custom_mint_batch_dto",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/services.EasyMintMetaDto"
+                            "$ref": "#/definitions/services.CustomMintBatchDto"
                         }
                     }
                 ],
@@ -832,7 +944,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/services.EasyMintFileDto"
+                                "$ref": "#/definitions/models.MintBatchTask"
                             }
                         }
                     },
@@ -848,8 +960,20 @@
                             "type": "string"
                         }
                     },
+                    "40007": {
+                        "description": "Invalid mint amount, mint amount could not be 0",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
                     "50000": {
                         "description": "Internal Server error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "60002": {
+                        "description": "Contract has no sponsor",
                         "schema": {
                             "type": "string"
                         }
@@ -973,12 +1097,27 @@
                 "owner_address": {
                     "type": "string"
                 },
+                "royalties_address": {
+                    "type": "string"
+                },
+                "royalties_bps": {
+                    "type": "integer"
+                },
                 "status": {
                     "description": "0-pending, 1-success, 2-failed",
                     "type": "integer"
                 },
                 "symbol": {
                     "type": "string"
+                },
+                "tokens_burnable_admin": {
+                    "type": "boolean"
+                },
+                "tokens_transferable_admin": {
+                    "type": "boolean"
+                },
+                "transfer_cooldown_time": {
+                    "type": "integer"
                 },
                 "tx_id": {
                     "type": "integer"
@@ -1080,6 +1219,86 @@
                 }
             }
         },
+        "models.MintBatchTask": {
+            "type": "object",
+            "properties": {
+                "app_id": {
+                    "type": "integer"
+                },
+                "chain_id": {
+                    "type": "integer"
+                },
+                "chain_type": {
+                    "type": "integer"
+                },
+                "contract": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "hash": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.MintItem"
+                    }
+                },
+                "status": {
+                    "description": "0-pending, 1-success, 2-failed",
+                    "type": "integer"
+                },
+                "tx_id": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.MintItem": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "mintBatchTaskID": {
+                    "type": "integer"
+                },
+                "mint_to": {
+                    "type": "string"
+                },
+                "token_id": {
+                    "type": "integer"
+                },
+                "token_uri": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
         "models.MintTask": {
             "type": "object",
             "properties": {
@@ -1156,8 +1375,23 @@
                 "owner_address": {
                     "type": "string"
                 },
+                "royalties_address": {
+                    "type": "string"
+                },
+                "royalties_bps": {
+                    "type": "integer"
+                },
                 "symbol": {
                     "type": "string"
+                },
+                "tokens_burnable_admin": {
+                    "type": "boolean"
+                },
+                "tokens_transferable_admin": {
+                    "type": "boolean"
+                },
+                "transfer_cooldown_time": {
+                    "type": "integer"
                 },
                 "type": {
                     "type": "string"
@@ -1172,19 +1406,52 @@
                 }
             }
         },
-        "services.CustomMintDto": {
+        "services.CustomMintBatchDto": {
             "type": "object",
             "required": [
                 "chain",
                 "contract_address",
-                "metadata_uri",
-                "mint_to_address"
+                "contract_type",
+                "mint_items"
             ],
             "properties": {
                 "chain": {
                     "type": "string"
                 },
                 "contract_address": {
+                    "type": "string"
+                },
+                "contract_type": {
+                    "type": "string"
+                },
+                "mint_items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/services.MintItemDto"
+                    }
+                }
+            }
+        },
+        "services.CustomMintDto": {
+            "type": "object",
+            "required": [
+                "chain",
+                "contract_address",
+                "contract_type",
+                "metadata_uri",
+                "mint_to_address"
+            ],
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "chain": {
+                    "type": "string"
+                },
+                "contract_address": {
+                    "type": "string"
+                },
+                "contract_type": {
                     "type": "string"
                 },
                 "metadata_uri": {
@@ -1244,6 +1511,27 @@
                     "type": "string"
                 },
                 "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "services.MintItemDto": {
+            "type": "object",
+            "required": [
+                "metadata_uri",
+                "mint_to_address"
+            ],
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "metadata_uri": {
+                    "type": "string"
+                },
+                "mint_to_address": {
+                    "type": "string"
+                },
+                "token_id": {
                     "type": "string"
                 }
             }
