@@ -831,6 +831,82 @@
                 }
             }
         },
+        "/mints/customizable/batch": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Mint several NFTs once",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mints"
+                ],
+                "summary": "Batch Mint NFTs",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "custom_mint_batch_dto",
+                        "name": "custom_mint_batch_dto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.CustomMintBatchDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.MintBatchTask"
+                            }
+                        }
+                    },
+                    "40000": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "40002": {
+                        "description": "Invalid address",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "40007": {
+                        "description": "Invalid mint amount, mint amount could not be 0",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "50000": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "60002": {
+                        "description": "Contract has no sponsor",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/mints/easy/files": {
             "post": {
                 "security": [
@@ -912,14 +988,14 @@
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Mint several NFTs once",
+                "description": "Mint a NFT by providing a file url to create the metadata",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Mints"
                 ],
-                "summary": "Batch Mint NFTs",
+                "summary": "Mint NFT with metadata",
                 "parameters": [
                     {
                         "type": "string",
@@ -929,12 +1005,12 @@
                         "required": true
                     },
                     {
-                        "description": "custom_mint_batch_dto",
-                        "name": "custom_mint_batch_dto",
+                        "description": "easy_mint_meta_info",
+                        "name": "easy_mint_meta_info",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/services.CustomMintBatchDto"
+                            "$ref": "#/definitions/services.EasyMintMetaDto"
                         }
                     }
                 ],
@@ -944,7 +1020,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.MintBatchTask"
+                                "$ref": "#/definitions/services.EasyMintFileDto"
                             }
                         }
                     },
@@ -960,20 +1036,8 @@
                             "type": "string"
                         }
                     },
-                    "40007": {
-                        "description": "Invalid mint amount, mint amount could not be 0",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
                     "50000": {
                         "description": "Internal Server error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "60002": {
-                        "description": "Contract has no sponsor",
                         "schema": {
                             "type": "string"
                         }
