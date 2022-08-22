@@ -25,7 +25,7 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>symbol</td><td>The symbol of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>owner_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>type</td><td>The type of the contract, e.g., ERC721, ERC1155</td><td>body</td><td>string</td><td>true</td></tr><tr><td>base_uri</td><td>The uri of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type, which can be <code>conflux</code> or <code>conflux_test</code> </td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>symbol</td><td>The symbol of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>owner_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>type</td><td>The type of the contract, e.g., ERC721, ERC1155</td><td>body</td><td>string</td><td>true</td></tr><tr><td>base_uri</td><td>The uri of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type, which can be <code>conflux</code> or <code>conflux_test</code> </td><td>body</td><td>string</td><td>true</td></tr><tr><td>royalties_bps</td><td>The bps of the royalties </td><td>body</td><td>integer</td><td>true</td></tr><tr><td>royalties_address</td><td>The address of the royalties </td><td>body</td><td>string</td><td>true</td></tr><tr><td>tokens_burnable_admin</td><td>Whether the burning tokens is supported by admin </td><td>body</td><td>bool</td><td>true</td></tr><tr><td>tokens_transferable_admin</td><td>Whether the transferring tokens is supported by admin </td><td>body</td><td>bool</td><td>true</td></tr><tr><td>transfer_cooldown_time</td><td>The cooldown time of transfering tokens </td><td>body</td><td>integer</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -36,44 +36,64 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
     "symbol": "ENFT",
     "owner_address": "cfxtest:aatk708nbb7573bkwumsu00h0r1rtkcdz2chwhttzk",
     "type": "erc721",
-    "base_uri": ""
+    "base_uri": "",
+    "royalties_bps": 0,
+    "royalties_address": "",
+    "tokens_burnable_admin": false,
+    "tokens_transferable_admin": false,
+    "transfer_cooldown_time": 0
 }
 ```
 {% endtab %}
 
 {% tab title="Response" %}
-| Name           | Meaning                                                        | Type    |
-| -------------- | -------------------------------------------------------------- | ------- |
-| address        | The address of the contract                                    | string  |
-| hash           | The hash of the transaction                                    | string  |
-| id             | The id of the contract                                         | integer |
-| chain\_id      | The id of the chain                                            | string  |
-| owner\_address | The uri of the nft                                             | string  |
-| status         | The status of the transaction. 0-pending, 1-success, 2-failed  | string  |
-| tx\_id         | The id of the transaction                                      | integer |
-| type           | The type of the contract. 1-ERC721, 2-ERC1155                  | integer |
+| Name           | Meaning                                                       | Type    |
+| -------------- | ------------------------------------------------------------- | ------- |
+| address        | The address of the contract                                   | string  |
+| app\_id        | The app id                                                    | string  |
+| base\_uri      | The uri of the nft                                            | string  |
+| chain\_id      | The id of the chain                                           | integer |
+| chain\_type    | The type of the chain                                         | integer |
+| hash           | The hash of the transaction                                   | string  |
+| id             | The id of the contract                                        | integer |
+| name           | The name of the nft                                           | string  |
+| owner\_address | The creator of the contract                                   | string  |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
+| symbol         | The symbol of the nft                                         | string  |
+| tx\_id         | The id of the transaction                                     | integer |
+| type           | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
+| royalties\_bps           | The bps of the royalties                            | integer |
+| royalties\_address          | The address of the royalties                            | string |
+| tokens\_transferable\_admin         | Whether the transferring tokens is supported by admin                           | bool |
+| tokens\_burnable\_admin         | Whether the burning tokens is supported by admin                           | bool |
+| transfer_cooldown_time         | The cooldown time of transfering tokens                           | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
 ```
 {
-        "id": 3,
-        "created_at": "2022-07-27T11:00:57.519+08:00",
-        "updated_at": "2022-07-27T11:00:57.519+08:00",
-        "deleted_at": null,
-        "app_id": 1,
-        "chain_type": 1,
-        "chain_id": 1,
-        "address": "",
-        "owner_address": "cfxtest:aatk708nbb7573bkwumsu00h0r1rtkcdz2chwhttzk",
-        "type": 1,
-        "base_uri": "",
-        "name": "NFT-name",
-        "symbol": "ENFT",
-        "hash": "",
-        "tx_id": 3,
-        "status": 0
-    }
+    "id": 20,
+    "created_at": "2022-08-22T15:49:42.46+08:00",
+    "updated_at": "2022-08-22T15:49:42.46+08:00",
+    "deleted_at": null,
+    "app_id": 4,
+    "chain_type": 1,
+    "chain_id": 1,
+    "address": "",
+    "owner_address": "cfxtest:aajb342mw5kzad6pjjkdz0wxx0tr54nfwpbu6yaj49",
+    "type": 1,
+    "base_uri": "",
+    "name": "NFT-name",
+    "symbol": "ENFT",
+    "royalties_bps": 0,
+    "royalties_address": "cfxtest:aajb342mw5kzad6pjjkdz0wxx0tr54nfwpbu6yaj49",
+    "tokens_burnable_admin": false,
+    "tokens_transferable_admin": false,
+    "transfer_cooldown_time": 0,
+    "hash": "",
+    "tx_id": 64,
+    "status": 0
+}
 ```
 {% endtab %}
 
@@ -83,13 +103,18 @@ curl --request POST \
   --url https://api.nftrainbow.xyz/v1/contracts/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \
-  --data '{
+  --data ' {
     "chain": "conflux_test",
     "name": "NFT-name",
     "symbol": "ENFT",
     "owner_address": "cfxtest:aatk708nbb7573bkwumsu00h0r1rtkcdz2chwhttzk",
     "type": "erc721",
-    "base_uri": ""
+    "base_uri": "",
+    "royalties_bps": 0,
+    "royalties_address": "",
+    "tokens_burnable_admin": false,
+    "tokens_transferable_admin": false,
+    "transfer_cooldown_time": 0
 }'
 ```
 {% endtab %}
@@ -169,14 +194,14 @@ The `Obtain contarct list` API provides users the entry to get the inforamtion o
 | Name  | Meaning                              | Type        |
 | ----- | ------------------------------------ | ----------- |
 | count | The number of the deployed contracts | integer     |
-| items | The files information                | \[]Contract |
+| items | The contract information                | \[]Contract |
 
 The **`Contract Struct`** is listed as follow:
 
 | Name           | Meaning                                                       | Type    |
 | -------------- | ------------------------------------------------------------- | ------- |
-| address        | Page Request                                                  | string  |
-| app\_id        | Page Request                                                  | string  |
+| address        | The address of the contract                                   | string  |
+| app\_id        | The app id                                                    | string  |
 | base\_uri      | The uri of the nft                                            | string  |
 | chain\_id      | The id of the chain                                           | integer |
 | chain\_type    | The type of the chain                                         | integer |
@@ -188,49 +213,40 @@ The **`Contract Struct`** is listed as follow:
 | symbol         | The symbol of the nft                                         | string  |
 | tx\_id         | The id of the transaction                                     | integer |
 | type           | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
-| Authorization  | Bear JWT                                                      | string  |
+| royalties\_bps           | The bps of the royalties                            | integer |
+| royalties\_address          | The address of the royalties                            | string |
+| tokens\_transferable\_admin         | Whether the transferring tokens is supported by admin                           | bool |
+| tokens\_burnable\_admin         | Whether the burning tokens is supported by admin                           | bool |
+| transfer_cooldown_time         | The cooldown time of transfering tokens                           | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
 ```
 {
-        "count": 2,
+        "count": 1,
         "items": [
             {
-                "id": 2,
-                "created_at": "2022-07-27T10:55:13.12+08:00",
-                "updated_at": "2022-07-27T10:55:13.12+08:00",
-                "deleted_at": null,
-                "app_id": 1,
-                "chain_type": 1,
-                "chain_id": 1,
-                "address": "",
-                "owner_address": "cfxtest:aatk708nbb7573bkwumsu00h0r1rtkcdz2chwhttzk",
-                "type": 1,
-                "base_uri": "",
-                "name": "NFT-name",
-                "symbol": "ENFT",
-                "hash": "",
-                "tx_id": 2,
-                "status": 0
-            },
-            {
                 "id": 1,
-                "created_at": "2022-07-27T10:47:58.362+08:00",
-                "updated_at": "2022-07-27T10:48:14.891+08:00",
+                "created_at": "2022-08-19T10:48:13.049+08:00",
+                "updated_at": "2022-08-19T10:49:15.853+08:00",
                 "deleted_at": null,
-                "app_id": 1,
+                "app_id": 4,
                 "chain_type": 1,
                 "chain_id": 1,
-                "address": "",
-                "owner_address": "cfxtest:aatk708nbb7573bkwumsu00h0r1rtkcdz2chwhttzk",
+                "address": "cfxtest:acdzrjc92rds9tuta8rdkx3mn10yzf0jny1z3s0s8e",
+                "owner_address": "cfxtest:aajb342mw5kzad6pjjkdz0wxx0tr54nfwpbu6yaj49",
                 "type": 1,
                 "base_uri": "",
-                "name": "NFT-name",
-                "symbol": "ENFT",
-                "hash": "",
-                "tx_id": 1,
-                "status": 2
+                "name": "ttt",
+                "symbol": "test",
+                "royalties_bps": 0,
+                "royalties_address": "",
+                "tokens_burnable_admin": false,
+                "tokens_transferable_admin": false,
+                "transfer_cooldown_time": 0,
+                "hash": "0xcbcedb27eb941a9a4fb6008d343055d98d9fe1ccdba65268680f46af6bf3fa0a",
+                "tx_id": 49,
+                "status": 1
             }
         ]
     }
@@ -246,6 +262,89 @@ curl --request GET \
 ```
 {% endtab %}
 {% endtabs %}
+
+### Query detail contract
+The `Query detail contract` API provides users the entry to get the detail contract information of a specific contract according to the contract's id. The parameter `chain` is optional, which can be used to choose the test or main network of conflux.
+
+{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/detail/:id" method="get" %}
+[swagger.json](../../.gitbook/assets/swagger.json)
+{% endswagger %}
+
+{% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
+
+{% tab title="Parameter" %}
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>id</td><td>The id of the contract </td><td>Path</td><td>integer</td><td>true</td></tr></tbody></table>
+{% endtab %}
+
+{% tab title="Response" %}
+| Name           | Meaning                                                       | Type    |
+| -------------- | ------------------------------------------------------------- | ------- |
+| address        | The address of the contract                                   | string  |
+| app\_id        | The app id                                                    | string  |
+| base\_uri      | The uri of the nft                                            | string  |
+| chain\_id      | The id of the chain                                           | integer |
+| chain\_type    | The type of the chain                                         | integer |
+| hash           | The hash of the transaction                                   | string  |
+| id             | The id of the contract                                        | integer |
+| name           | The name of the nft                                           | string  |
+| owner\_address | The creator of the contract                                   | string  |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
+| symbol         | The symbol of the nft                                         | string  |
+| tx\_id         | The id of the transaction                                     | integer |
+| type           | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
+| royalties\_bps           | The bps of the royalties                            | integer |
+| royalties\_address          | The address of the royalties                            | string |
+| tokens\_transferable\_admin         | Whether the transferring tokens is supported by admin                           | bool |
+| tokens\_burnable\_admin         | Whether the burning tokens is supported by admin                           | bool |
+| transfer_cooldown_time         | The cooldown time of transfering tokens                           | integer |
+{% endtab %}
+
+{% tab title="Response Example" %}
+```
+{
+    "id": 10,
+    "created_at": "2022-08-19T10:48:13.049+08:00",
+    "updated_at": "2022-08-19T10:49:15.853+08:00",
+    "deleted_at": null,
+    "app_id": 4,
+    "chain_type": 1,
+    "chain_id": 1,
+    "address": "cfxtest:acdzrjc92rds9tuta8rdkx3mn10yzf0jny1z3s0s8e",
+    "owner_address": "cfxtest:aajb342mw5kzad6pjjkdz0wxx0tr54nfwpbu6yaj49",
+    "type": 1,
+    "base_uri": "",
+    "name": "ttt",
+    "symbol": "test",
+    "royalties_bps": 0,
+    "royalties_address": "",
+    "tokens_burnable_admin": false,
+    "tokens_transferable_admin": false,
+    "transfer_cooldown_time": 0,
+    "hash": "0xcbcedb27eb941a9a4fb6008d343055d98d9fe1ccdba65268680f46af6bf3fa0a",
+    "tx_id": 49,
+    "status": 1
+}
+```
+{% endtab %}
+
+{% tab title="Request Sample" %}
+```
+curl --request GET \
+  --url https://api.nftrainbow.xyz/v1/contracts/detail/:id \
+  --header 'Authorization: Bearer {JWT}' \
+  --header 'Content-Type: application/json'
+```
+{% endtab %}
+{% endtabs %}
+
+
+
 
 ### Query Sponsor
 
@@ -311,3 +410,4 @@ curl --request GET \
 {% embed url="https://developer.confluxnetwork.org/conflux-rust/internal_contract/internal_contract#sponsorwhitelistcontrol-contract" %}
 SponsorWhitelistControl Contract
 {% endembed %}
+
