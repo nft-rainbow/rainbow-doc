@@ -10,7 +10,7 @@ description: >-
 
 `Upload file` API helps users to upload a file to get the corresponding url for creating NFT metadata.  The file can be a video, a figure and so on.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/files" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/files/" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -112,7 +112,7 @@ curl --request POST \
 
 `Obtain file list` API helps users to obtain the list including the inforamion of the files uploaded in the specified app. The information of each file contains `file_url`, `file_size`, `file_type` and `file_name`.&#x20;
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/files" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/files/" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 

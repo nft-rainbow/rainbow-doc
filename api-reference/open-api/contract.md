@@ -13,7 +13,7 @@ description: >-
 
 The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -175,7 +175,7 @@ curl --request POST \
 
 The `Obtain contarct list` API provides users the entry to get the inforamtion of the  contracts deployed in a specified app. The parameter `page` and `size` are optional parameters.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 

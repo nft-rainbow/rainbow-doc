@@ -14,7 +14,7 @@ The Mints APIs provide three methods to help users mint NFTs, including the cust
 
 The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contract to mint the NFT.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/mints" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -465,7 +465,7 @@ curl --request POST \
 ### Obtain NFT list
 The `Obtain NFT list` API provides users with the entry to query the NFTs information created on a spcific app.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/mints" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
