@@ -13,7 +13,7 @@
     "host": "api.nftrainbow.xyz",
     "basePath": "/v1",
     "paths": {
-        "/contracts": {
+        "/contracts/": {
             "get": {
                 "security": [
                     {
@@ -293,7 +293,7 @@
                 }
             }
         },
-        "/files": {
+        "/files/": {
             "get": {
                 "security": [
                     {
@@ -655,7 +655,7 @@
                 }
             }
         },
-        "/mints": {
+        "/mints/": {
             "get": {
                 "security": [
                     {
@@ -1576,6 +1576,9 @@
                 "mint_to": {
                     "type": "string"
                 },
+                "mint_type": {
+                    "type": "integer"
+                },
                 "status": {
                     "description": "0-pending, 1-success, 2-failed",
                     "type": "integer"
@@ -1740,15 +1743,18 @@
                 "chain",
                 "name",
                 "owner_address",
-                "symbol",
-                "type"
+                "symbol"
             ],
             "properties": {
                 "base_uri": {
                     "type": "string"
                 },
                 "chain": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "conflux",
+                        "conflux_test"
+                    ]
                 },
                 "name": {
                     "type": "string"
