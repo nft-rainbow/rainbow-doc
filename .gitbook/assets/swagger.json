@@ -1084,6 +1084,177 @@
                     }
                 }
             }
+        },
+        "/transfer/": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the NFT list containing the transferred NFT information.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transfer"
+                ],
+                "summary": "Obtain the transferred NFTs list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page",
+                        "name": "page",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.TransferTask"
+                            }
+                        }
+                    },
+                    "50000": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/transfer/customizable": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the NFT list containing the transferred NFT information.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transfer"
+                ],
+                "summary": "Obtain the transferred NFTs list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "transfer_batch_dto",
+                        "name": "transfer_batch_dto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.TransferBatchDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.TransferTask"
+                            }
+                        }
+                    },
+                    "40000": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "50000": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/transfer/customizable/batch": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Transfer several NFTs once",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transfer"
+                ],
+                "summary": "Batch Transfer NFTs",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "transfer_batch_dto",
+                        "name": "transfer_batch_dto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.TransferBatchDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.TransferBatchTask"
+                            }
+                        }
+                    },
+                    "40000": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "50000": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -1298,6 +1469,9 @@
                 "contract": {
                     "type": "string"
                 },
+                "contract_type": {
+                    "type": "integer"
+                },
                 "created_at": {
                     "type": "string"
                 },
@@ -1381,6 +1555,9 @@
                 "contract": {
                     "type": "string"
                 },
+                "contract_type": {
+                    "type": "integer"
+                },
                 "created_at": {
                     "type": "string"
                 },
@@ -1407,6 +1584,146 @@
                     "type": "integer"
                 },
                 "token_uri": {
+                    "type": "string"
+                },
+                "tx_id": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.TransferBatchTask": {
+            "type": "object",
+            "properties": {
+                "app_id": {
+                    "type": "integer"
+                },
+                "chain_id": {
+                    "type": "integer"
+                },
+                "chain_type": {
+                    "type": "integer"
+                },
+                "contract": {
+                    "type": "string"
+                },
+                "contract_type": {
+                    "type": "integer"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "hash": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.TransferItem"
+                    }
+                },
+                "status": {
+                    "description": "0-pending, 1-success, 2-failed",
+                    "type": "integer"
+                },
+                "tx_id": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.TransferItem": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "token_id": {
+                    "type": "string"
+                },
+                "transferBatchTaskID": {
+                    "type": "integer"
+                },
+                "transfer_from": {
+                    "type": "string"
+                },
+                "transfer_to": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.TransferTask": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "app_id": {
+                    "type": "integer"
+                },
+                "chain_id": {
+                    "type": "integer"
+                },
+                "chain_type": {
+                    "type": "integer"
+                },
+                "contract": {
+                    "type": "string"
+                },
+                "contract_type": {
+                    "type": "integer"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "hash": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "description": "0-pending, 1-success, 2-failed",
+                    "type": "integer"
+                },
+                "token_id": {
+                    "type": "string"
+                },
+                "transfer_from": {
+                    "type": "string"
+                },
+                "transfer_to": {
                     "type": "string"
                 },
                 "tx_id": {
@@ -1480,13 +1797,21 @@
             ],
             "properties": {
                 "chain": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "conflux",
+                        "conflux_test"
+                    ]
                 },
                 "contract_address": {
                     "type": "string"
                 },
                 "contract_type": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "erc721",
+                        "erc1155"
+                    ]
                 },
                 "mint_items": {
                     "type": "array",
@@ -1507,16 +1832,24 @@
             ],
             "properties": {
                 "amount": {
-                    "type": "integer"
+                    "$ref": "#/definitions/big.Int"
                 },
                 "chain": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "conflux",
+                        "conflux_test"
+                    ]
                 },
                 "contract_address": {
                     "type": "string"
                 },
                 "contract_type": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "erc721",
+                        "erc1155"
+                    ]
                 },
                 "metadata_uri": {
                     "type": "string"
@@ -1525,7 +1858,7 @@
                     "type": "string"
                 },
                 "token_id": {
-                    "type": "string"
+                    "$ref": "#/definitions/big.Int"
                 }
             }
         },
@@ -1587,7 +1920,7 @@
             ],
             "properties": {
                 "amount": {
-                    "type": "integer"
+                    "$ref": "#/definitions/big.Int"
                 },
                 "metadata_uri": {
                     "type": "string"
@@ -1596,7 +1929,7 @@
                     "type": "string"
                 },
                 "token_id": {
-                    "type": "string"
+                    "$ref": "#/definitions/big.Int"
                 }
             }
         },
@@ -1632,6 +1965,62 @@
                 },
                 "is_all_white_listed": {
                     "type": "boolean"
+                }
+            }
+        },
+        "services.TransferBatchDto": {
+            "type": "object",
+            "required": [
+                "chain",
+                "contract_address",
+                "contract_type",
+                "items"
+            ],
+            "properties": {
+                "chain": {
+                    "type": "string",
+                    "enum": [
+                        "conflux",
+                        "conflux_test"
+                    ]
+                },
+                "contract_address": {
+                    "type": "string"
+                },
+                "contract_type": {
+                    "type": "string",
+                    "enum": [
+                        "erc721",
+                        "erc1155"
+                    ]
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/services.TransferItemDto"
+                    }
+                }
+            }
+        },
+        "services.TransferItemDto": {
+            "type": "object",
+            "required": [
+                "token_id",
+                "transfer_from_address",
+                "transfer_to_address"
+            ],
+            "properties": {
+                "amount": {
+                    "$ref": "#/definitions/big.Int"
+                },
+                "token_id": {
+                    "$ref": "#/definitions/big.Int"
+                },
+                "transfer_from_address": {
+                    "type": "string"
+                },
+                "transfer_to_address": {
+                    "type": "string"
                 }
             }
         },
