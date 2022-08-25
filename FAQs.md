@@ -7,14 +7,16 @@
 将来计划会支持：
 
 * 树图链 eSpace
-* Ethereum
-* BNB Chain
-* Polygon
+* 主流EVM 兼容链
 * 主流联盟链
 
 ## 如何获取访问 API 的 AppSecret ？
 
 注册 [NFTRainbow 平台账号](https://console.nftrainbow.xyz/)，并填写用户实名信息，官方审核通过后，可创建自己的应用，从应用详情管理页面获取 AppId 和 AppSecret。
+
+## AppId, AppSecret 调用登录接口失败？
+
+返回错误 ”KYC required“, 是因为未填写实名信息，填写完成通过审核后才可能访问接口。
 
 ## 如何收费的？
 
@@ -40,3 +42,7 @@
 ## NFTRainbow 的产品资源是存放于什么地方？
 
 我们提供多种存储方式选择比如：云对象存储服务，云服务器，IPFS 等，用户可根据自己的产品或应用选择。
+
+## 自定义 Mint 功能，mint 的 token id 为什么不连续？
+
+CustomMint 接口，支持参数指定 tokenId，若不指定则会随机生成；接口调用方可根据自身需求控制 tokenId 自增，从而实现连续。
