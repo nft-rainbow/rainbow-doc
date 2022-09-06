@@ -13,7 +13,7 @@ The Transfer APIs provide two methods to help users transfer NFTs, including the
 
 The `Transfer NFT` provides users with the entry to transfer the NFT.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/transfer/customizable" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/transfers/customizable" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -88,7 +88,7 @@ The `Transfer NFT` provides users with the entry to transfer the NFT.
 {% tab title="Requst Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/transfer/customizable \
+  --url https://api.nftrainbow.xyz/v1/transfers/customizable \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
   --data '{
@@ -106,7 +106,7 @@ curl --request POST \
 
 ### Batch Transfer NFTs
 The `Batch Transfer NFTs` API provides users with the entry to transfer several NFTs once. 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/transfer/customizable/batch" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/transfers/customizable/batch" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -222,7 +222,7 @@ The TransferItem construct is presented in the following:
 {% tab title="Requst Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/transfer/customizable/batch \
+  --url https://api.nftrainbow.xyz/v1/transfers/customizable/batch \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
   --data '{
@@ -253,7 +253,7 @@ curl --request POST \
 ### Obtain transferred NFT list
 The `Obtain transferred NFT list` API provides users with the entry to query the transferred NFTs information.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/transfer/" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/transfers/" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -363,7 +363,7 @@ The **`MintTask Struct`** is listed as follow:
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/transfer/ \
+  --url https://api.nftrainbow.xyz/v1/transfers/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
@@ -373,7 +373,7 @@ curl --request GET \
 ### Obtain Detialed NFT Information
 The `Obtain detailed NFT information` API provides users with the entry to query the transferred NFT information according to its `id`.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/transfer/:id" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/transfers/:id" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -434,7 +434,7 @@ The `Obtain detailed NFT information` API provides users with the entry to query
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/transfer/:id \
+  --url https://api.nftrainbow.xyz/v1/transfers/:id \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
