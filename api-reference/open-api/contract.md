@@ -354,7 +354,7 @@ The `Query sponsor` API provides users the entry to get the sponsors of a specif
 **Good to know:** Conflux Network can be divided into the main network and the test network. The later is used to test the developed functions for developers.
 {% endhint %}
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/:address/sponsor" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/sponsor" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -396,7 +396,7 @@ The `Query sponsor` API provides users the entry to get the sponsors of a specif
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/contracts/:address/sponsor \
+  --url https://api.nftrainbow.xyz/v1/contracts/{address}/sponsor \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
