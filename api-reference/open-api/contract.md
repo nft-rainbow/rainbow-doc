@@ -266,7 +266,7 @@ curl --request GET \
 ### Query detail contract
 The `Query detail contract` API provides users the entry to get the detail contract information of a specific contract according to the contract's id. The parameter `chain` is optional, which can be used to choose the test or main network of conflux.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/detail/:id" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/detail/{id}" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -336,7 +336,7 @@ The `Query detail contract` API provides users the entry to get the detail contr
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/contracts/detail/:id \
+  --url https://api.nftrainbow.xyz/v1/contracts/detail/{id} \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
