@@ -50,13 +50,42 @@ The struct of the attributes is listed as bellow.
 {% tab title="Responses" %}
 | Name          | Meaning                 | Type   |
 | ------------- | ----------------------- | ------ |
-| metadata\_uri | The uri of the metadata | string |
+| uri           | The uri of the metadata | string |
+| metadata\_id   | The id of the metadata | string |
+| description    | The description of the metadata   | string         |
+| external\_link | The external link of the metadata | string         |
+| image          | The file url of the metadata      | string         |
+| metadata\_id   | The id of the metadata            | string         |
+| name           | The name of the metadata          | string         |
+| attributes     | The attribute of the metadata     | \[]ExposedMetadataAttribute  |
+
+The **ExposedMetadataAttribute struct** is listed as follow:
+
+| Name            | Meaning                          | Type   |
+| --------------- | -------------------------------- | ------ |
+| attribute\_name | The name of the attribute        | string |
+| display\_type   | The display type of the attribut | string |
+| trait\_type     | The trait type of the attribute  | string |
+| value           | The value of the attribute       | string |
+
 {% endtab %}
 
 {% tab title="Response Example" %}
 ```
 {
-  "metadata_uri": "http://dev.nftrainbow/assets/metadata/1/nft/46708cf66a806743cfc27b110a41a2ea2e1b7a47fbcfb2efc9cac8fd3bf29cd1.json"
+  "attributes": [
+    {
+      "attribute_name": "mouse",
+      "display_type": "test hey hey",
+      "trait_type": "big",
+      "value": "big"
+    }
+  ],
+  "description": "this is a test metadata",
+  "metadata_id": "f35c25ced3f537e8850a377c01d22aa7507069270054d12587ddbe5fc47ec490",
+  "image": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
+  "name": "test",
+  "uri": "https://dev.nftrainbow.xyz/assets/metadata/2/nft/db2078aed6187e487a46a19624ba1559faddeb096849c4688347302023c40f6b.json"
 }
 ```
 {% endtab %}
@@ -106,13 +135,14 @@ curl --request POST
 {% tab title="Response" %}
 | Name           | Meaning                           | Data Type      |
 | -------------- | --------------------------------- | -------------- |
-| attributes     | The attribute of the metadata     | \[]attributes  |
+| attributes     | The attribute of the metadata     | \[]ExposedMetadataAttribute  |
 | description    | The description of the metadata   | string         |
 | external\_link | The external link of the metadata | string         |
 | image          | The file url of the metadata      | string         |
+| metadata\_id   | The id of the metadata            | string         |
 | name           | The name of the metadata          | string         |
 
-The **attributes struct** is listed as follow:
+The **ExposedMetadataAttribute struct** is listed as follow:
 
 | Name            | Meaning                          | Type   |
 | --------------- | -------------------------------- | ------ |
@@ -134,8 +164,10 @@ The **attributes struct** is listed as follow:
     }
   ],
   "description": "this is a test metadata",
+  "metadata_id": "f35c25ced3f537e8850a377c01d22aa7507069270054d12587ddbe5fc47ec490",
   "image": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
-  "name": "test"
+  "name": "test",
+  "uri": "https://dev.nftrainbow.xyz/assets/metadata/2/nft/db2078aed6187e487a46a19624ba1559faddeb096849c4688347302023c40f6b.json"
 }
 ```
 {% endtab %}
@@ -183,6 +215,7 @@ The **`QueryMetadataResponse struct`** is listed as follow:
 | description    | The description of the metadata   | string         |
 | external\_link | The external link of the metadata | string         |
 | image          | The file url of the metadata      | string         |
+| metadata\_id   | The id of the metadata            | string         |
 | name           | The name of the metadata          | string         |
 
 The **`attributes struct`** is listed as follow:
@@ -204,6 +237,7 @@ The **`attributes struct`** is listed as follow:
                 "metadata": {
                     "name": "test",
                     "description": "this is a test metadata",
+                    "metadata_id": "f35c25ced3f537e8850a377c01d22aa7507069270054d12587ddbe5fc47ec490",
                     "image": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
                     "attributes": [
                         {

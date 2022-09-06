@@ -30,3 +30,8 @@
 1. 实现 NFTRainbow 基础功能：EasyMint，合约部署，资源托管，自定义 Mint，数据查询等 API
 2. 核心模块交易上链模块，支持树图链
 3. 控制台管理端开发
+
+## 2022.9.6
+
+1. 修改了metadata, transfers, mints的response与parameters的字段
+2. 将transfer改为了transfers

@@ -370,3 +370,74 @@ curl --request GET \
 {% endtab %}
 {% endtabs %}
 
+### Obtain Detialed NFT Information
+The `Obtain detailed NFT information` API provides users with the entry to query the transferred NFT information according to its `id`.
+
+{% swagger src="../../.gitbook/assets/swagger.json" path="/transfer/:id" method="get" %}
+[swagger.json](../../.gitbook/assets/swagger.json)
+{% endswagger %}
+
+{% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
+{% tab title="Parameter" %}
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>id</td><td>NFT id</td><td>path</td><td>integer</td><td>true</td></tr></tbody></table>
+{% endtab %}
+
+{% tab title="Response" %}
+| Name        | Meaning                                                       | Type    |
+| ----------- | ------------------------------------------------------------- | ------- |
+| amount      | The amount of the nft                                         | integer |
+| app\_id     | The id of the app                                             | integer |
+| chain\_id   | The id of the chain                                           | integer |
+| chain\_type | The type of the chain                                         | integer |
+| contract    | The address of the nft                                        | string  |
+| contract_type    | The type of the contract                                        | integer  |
+| error       | The error during executing tx                                 | string  |
+| hash        | The hash of the transaction                                   | string  |
+| id          | The id of the storage                                                                     | integer |
+| transfer_to   | The receiver of the sending NFT                                   | string  |
+| status      | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
+| token\_id   | The id of the token                                           | string ||
+| transfer_from  | The sender of the sending NFT                                          | string  |
+| tx\_id      | The id of the transaction                                     | integer |
+{% endtab %}
+
+{% tab title="Response Example" %}
+```
+{
+    "id": 3,
+    "created_at": "2022-08-24T07:47:48.56Z",
+    "updated_at": "2022-08-24T07:47:51.882Z",
+    "deleted_at": null,
+    "app_id": 2,
+    "chain_type": 1,
+    "chain_id": 1,
+    "contract": "cfxtest:accy6epch754uamc4x55mcv3pzgae8vfvaufj6v4uj",
+    "contract_type": 2,
+    "tx_id": 8129,
+    "hash": "",
+    "status": 2,
+    "error": "",
+    "transfer_from": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
+    "transfer_to": "cfxtest:aang4d91rejdbpgmgtmspdyefxkubj2bbywrwm9j3z",
+    "token_id": "21",
+    "amount": 1
+}
+```
+{% endtab %}
+
+{% tab title="Request Sample" %}
+```
+curl --request GET \
+  --url https://api.nftrainbow.xyz/v1/transfer/:id \
+  --header 'Authorization: Bearer {JWT}' \
+  --header 'Content-Type: application/json'
+```
+{% endtab %}
+{% endtabs %}
+
