@@ -373,7 +373,7 @@ curl --request GET \
 ### Obtain Detialed NFT Information
 The `Obtain detailed NFT information` API provides users with the entry to query the transferred NFT information according to its `id`.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/transfers/:id" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/transfers/{id}" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -434,7 +434,7 @@ The `Obtain detailed NFT information` API provides users with the entry to query
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/transfers/:id \
+  --url https://api.nftrainbow.xyz/v1/transfers/{id} \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
