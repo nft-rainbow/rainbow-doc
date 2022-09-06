@@ -22,9 +22,9 @@ description: >-
 {% endtab %}
 
 {% tab title="Parameters" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>image</td><td>The file url of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>external_link</td><td>The externanl link of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>attributes</td><td>The attributes of the metadata</td><td>array</td><td>attribute</td><td>false</td></tr><tr><td>nft_address</td><td>The address of the NFT</td><td>body</td><td>string</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>image</td><td>The file url of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>external_link</td><td>The externanl link of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>MetadataAttribute</td><td>The attributes of the metadata</td><td>array</td><td>attribute</td><td>false</td></tr></tbody></table>
 
-The struct of the attributes is listed as bellow.
+The struct of the MetadataAttribute is listed as bellow.
 
 <table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>attribute_name</td><td>The name of the attribute</td><td>body</td><td>string</td><td>false</td></tr><tr><td>display_type</td><td>The display type of the attribute</td><td>body</td><td>string</td><td>false</td></tr><tr><td>trait_type</td><td>The trait type of the attribute</td><td>body</td><td>string</td><td>false</td></tr><tr><td>value</td><td>The value of the attribute</td><td>body</td><td>string</td><td>false</td></tr></tbody></table>
 {% endtab %}

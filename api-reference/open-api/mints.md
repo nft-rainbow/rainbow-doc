@@ -551,7 +551,7 @@ curl --request GET \
 ### Query detailed NFT
 The `Query detailed NFT` API provides users with the entry to query the detailed NFT information created on a spcific app according to the NFT's id.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/:id" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/{id}" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -614,7 +614,7 @@ The `Query detailed NFT` API provides users with the entry to query the detailed
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/mints/:id \
+  --url https://api.nftrainbow.xyz/v1/mints/{id} \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
