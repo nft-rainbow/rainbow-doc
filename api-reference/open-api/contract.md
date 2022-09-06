@@ -39,8 +39,8 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
     "base_uri": "",
     "royalties_bps": 0,
     "royalties_address": "",
-    "tokens_burnable_admin": false,
-    "tokens_transferable_admin": false,
+    "tokens_burnable": false,
+    "tokens_transferable": false,
     "transfer_cooldown_time": 0
 }
 ```
@@ -64,8 +64,8 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 | type           | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
 | royalties\_bps           | The bps of the royalties                            | integer |
 | royalties\_address          | The address of the royalties                            | string |
-| tokens\_transferable\_admin         | Whether the transferring tokens is supported by admin                           | bool |
-| tokens\_burnable\_admin         | Whether the burning tokens is supported by admin                           | bool |
+| tokens\_transferable         | Whether the transferring tokens is supported                           | bool |
+| tokens\_burnable         | Whether the burning tokens is supported                           | bool |
 | transfer_cooldown_time         | The cooldown time of transfering tokens                           | integer |
 {% endtab %}
 
@@ -87,8 +87,8 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
     "symbol": "ENFT",
     "royalties_bps": 0,
     "royalties_address": "cfxtest:aajb342mw5kzad6pjjkdz0wxx0tr54nfwpbu6yaj49",
-    "tokens_burnable_admin": false,
-    "tokens_transferable_admin": false,
+    "tokens_burnable": false,
+    "tokens_transferable": false,
     "transfer_cooldown_time": 0,
     "hash": "",
     "tx_id": 64,
@@ -112,8 +112,8 @@ curl --request POST \
     "base_uri": "",
     "royalties_bps": 0,
     "royalties_address": "",
-    "tokens_burnable_admin": false,
-    "tokens_transferable_admin": false,
+    "tokens_burnable": false,
+    "tokens_transferable": false,
     "transfer_cooldown_time": 0
 }'
 ```
@@ -215,8 +215,8 @@ The **`Contract Struct`** is listed as follow:
 | type           | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
 | royalties\_bps           | The bps of the royalties                            | integer |
 | royalties\_address          | The address of the royalties                            | string |
-| tokens\_transferable\_admin         | Whether the transferring tokens is supported by admin                           | bool |
-| tokens\_burnable\_admin         | Whether the burning tokens is supported by admin                           | bool |
+| tokens\_transferable         | Whether the transferring tokens is supported                           | bool |
+| tokens\_burnable        | Whether the burning tokens is supported                           | bool |
 | transfer_cooldown_time         | The cooldown time of transfering tokens                           | integer |
 {% endtab %}
 
@@ -241,8 +241,8 @@ The **`Contract Struct`** is listed as follow:
                 "symbol": "test",
                 "royalties_bps": 0,
                 "royalties_address": "",
-                "tokens_burnable_admin": false,
-                "tokens_transferable_admin": false,
+                "tokens_burnable": false,
+                "tokens_transferable": false,
                 "transfer_cooldown_time": 0,
                 "hash": "0xcbcedb27eb941a9a4fb6008d343055d98d9fe1ccdba65268680f46af6bf3fa0a",
                 "tx_id": 49,
@@ -300,8 +300,8 @@ The `Query detail contract` API provides users the entry to get the detail contr
 | type           | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
 | royalties\_bps           | The bps of the royalties                            | integer |
 | royalties\_address          | The address of the royalties                            | string |
-| tokens\_transferable\_admin         | Whether the transferring tokens is supported by admin                           | bool |
-| tokens\_burnable\_admin         | Whether the burning tokens is supported by admin                           | bool |
+| tokens\_transferable         | Whether the transferring tokens is supported                      | bool |
+| tokens\_burnable         | Whether the burning tokens is supported                           | bool |
 | transfer_cooldown_time         | The cooldown time of transfering tokens                           | integer |
 {% endtab %}
 
@@ -323,8 +323,8 @@ The `Query detail contract` API provides users the entry to get the detail contr
     "symbol": "test",
     "royalties_bps": 0,
     "royalties_address": "",
-    "tokens_burnable_admin": false,
-    "tokens_transferable_admin": false,
+    "tokens_burnable": false,
+    "tokens_transferable": false,
     "transfer_cooldown_time": 0,
     "hash": "0xcbcedb27eb941a9a4fb6008d343055d98d9fe1ccdba65268680f46af6bf3fa0a",
     "tx_id": 49,

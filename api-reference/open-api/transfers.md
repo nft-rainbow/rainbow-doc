@@ -385,7 +385,7 @@ The `Obtain detailed NFT information` API provides users with the entry to query
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>id</td><td>NFT id</td><td>path</td><td>integer</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>id</td><td>transfer id</td><td>path</td><td>integer</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
