@@ -128,7 +128,7 @@ curl --request POST \
 
 The `Set sponsor` API provides users to set a sponser for a specific contract according to the sponsor' address.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/:address/sponsor" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/sponsor" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -158,7 +158,7 @@ The `Set sponsor` API provides users to set a sponser for a specific contract ac
 {% tab title="Requst Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/contracts/:address/sponsor \
+  --url https://api.nftrainbow.xyz/v1/contracts/{address}/sponsor \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
