@@ -453,33 +453,38 @@
                     "Login"
                 ],
                 "summary": "App login",
+                "operationId": "LoginApp",
                 "parameters": [
                     {
-                        "type": "string",
                         "description": "app_id",
                         "name": "app_id",
-                        "in": "formData",
-                        "required": true
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
                     },
                     {
-                        "type": "string",
                         "description": "app_secret",
                         "name": "app_secret",
-                        "in": "formData",
-                        "required": true
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "correct response",
+                        "description": "auth token",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "40101": {
-                        "description": "Internal error",
+                        "description": "Unauthorized",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
@@ -1018,6 +1023,7 @@
                     "Login"
                 ],
                 "summary": "Refresh JWT",
+                "operationId": "RefreshAuth",
                 "parameters": [
                     {
                         "type": "string",
@@ -1029,15 +1035,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "correct response",
+                        "description": "refreshed auth token",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "40101": {
-                        "description": "Internal error",
+                        "description": "Unauthorized",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
