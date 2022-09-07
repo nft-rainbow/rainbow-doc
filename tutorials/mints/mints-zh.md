@@ -5,8 +5,8 @@
 
 本文将包含如下内容
 ----------------------
-  - [为什么使用 NFTRainbow-API](#为什么使用-rainbow-nft-api)
-  - [NFTRainbow-API 能做什么](#rainbow-nft-api-能做什么)
+  - [为什么使用 NFTRainbow-API](#为什么使用-nftrainbow-api)
+  - [NFTRainbow-API 能做什么](#nftrainbow-api-能做什么)
   - [准备工作](#准备工作)
   - [简单铸造 NFT](#简单铸造-nft)
   - [定制化铸造 NFT](#定制化铸造-nft)
@@ -28,7 +28,7 @@ NFTRainbow-API 能做什么
 这意味着您可以：
 - 快速铸造 NFT 将其发布到区块链网络
 - 无需学习智能合约开发即可测试新的 NFT 产品创意
-- 在您的应用程序中通过调用 Rainbow-NFT-API 自动铸造 NFT
+- 在您的应用程序中通过调用 NFTRainbow-API 自动铸造 NFT
 - 向指定用户钱包地址铸造 NFT 来宣传您的 NFT项目，比如向 CryptoPunk 或者 Bored Ape Yacht Club 拥有者地址铸造 NFT
 
 NFTRainbow-API 提供了两种方式来铸造NFT
@@ -38,7 +38,7 @@ NFTRainbow-API 提供了两种方式来铸造NFT
 准备工作
 ----------------------
 铸造NFT之前，您需要
-1. [注册 Rainbow-NFT 账户](https://dev.nftrainbow.xyz/login)
+1. [注册 NFTRainbow 账户](https://dev.nftrainbow.xyz/login)
 2. [创建应用，应用通常对应一个产品](https://dev.nftrainbow.xyz/panels/apps)
 3. 从[应用列表](https://dev.nftrainbow.xyz/panels/apps)进入刚创建的应用，点击“查看AppKey”，获取AppKey
 4. [登录应用，获取JWT Token](https://docs.nftrainbow.xyz/api-reference/open-api/login#app-login)，下面的API将都需要使用该Token做身份验证
