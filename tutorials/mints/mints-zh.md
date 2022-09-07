@@ -38,7 +38,7 @@ NFTRainbow-API 提供了两种方式来铸造NFT
 准备工作
 ----------------------
 铸造NFT之前，您需要
-1. [注册 NFTRainbow 账户](https://dev.nftrainbow.xyz/login)
+1. [注册 NFTRainbow 账户，并进行实名认证](https://dev.nftrainbow.xyz/login)
 2. [创建应用，应用通常对应一个产品](https://dev.nftrainbow.xyz/panels/apps)
 3. 从[应用列表](https://dev.nftrainbow.xyz/panels/apps)进入刚创建的应用，点击“查看AppKey”，获取AppKey
 4. [登录应用，获取JWT Token](https://docs.nftrainbow.xyz/api-reference/open-api/login#app-login)，下面的API将都需要使用该Token做身份验证
