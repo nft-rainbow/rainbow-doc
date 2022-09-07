@@ -81,7 +81,7 @@ The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contr
             "mint_to": "cfxtest:aar9up0wsbgtw7f0g5tyc4hbwb2wa5wf7emmk94znd",
             "token_id": 0,
             "amount": 1,
-            "token_uri": "https://dev.nftrainbow.xyz/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7bjson",
+            "token_uri": "https://dev.nftrainbow.xyz/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7b.json",
             "mint_type": 0
         }
 ```
@@ -337,7 +337,7 @@ The `Mint NFT with file` API provides users with the entry to call the ERC721 or
             "mint_to": "cfxtest:aar9up0wsbgtw7f0g5tyc4hbwb2wa5wf7emmk94znd",
             "token_id": 0,
             "amount": 1,
-            "token_uri": "https://dev.nftrainbow.xyz/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7bjson",
+            "token_uri": "https://dev.nftrainbow.xyz/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7b.json",
             "mint_type": 0
         }
 ```
@@ -438,7 +438,7 @@ The **`MintTask Struct`** is listed as follow:
             "mint_to": "cfxtest:aar9up0wsbgtw7f0g5tyc4hbwb2wa5wf7emmk94znd",
             "token_id": 0,
             "amount": 1,
-            "token_uri": "https://dev.nftrainbow.xyz/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7bjson",
+            "token_uri": "https://dev.nftrainbow.xyz/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7b.json",
             "mint_type": 0
         }
 ```
@@ -527,7 +527,7 @@ The **`MintTask Struct`** is listed as follow:
             "mint_to": "cfxtest:aar9up0wsbgtw7f0g5tyc4hbwb2wa5wf7emmk94znd",
             "token_id": 0,
             "amount": 1,
-            "token_uri": "https://dev.nftrainbow.xyz/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7bjson",
+            "token_uri": "https://dev.nftrainbow.xyz/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7b.json",
             "mint_type": 0
             }
 ]

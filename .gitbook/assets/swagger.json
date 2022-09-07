@@ -443,6 +443,48 @@
                 }
             }
         },
+        "/login": {
+            "post": {
+                "description": "Login the app to get the JWT according to the app_id and app_secret",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Login"
+                ],
+                "summary": "App login",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "app_id",
+                        "name": "app_id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "app_secret",
+                        "name": "app_secret",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "correct response",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "40101": {
+                        "description": "Internal error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/metadata/": {
             "get": {
                 "security": [
@@ -956,6 +998,46 @@
                         "description": "Internal Server error",
                         "schema": {
                             "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/refresh_token": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Obtain a new JWT",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Refresh JWT",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer openapi_token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "correct response",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "40101": {
+                        "description": "Internal error",
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 }
