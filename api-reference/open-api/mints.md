@@ -26,7 +26,7 @@ The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contr
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>integer</td><td>false</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>mint_to_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>metadata_uri</td><td>The uri of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_type</td><td>The type of the contract</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>integer</td><td>false</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>mint_to_address</td><td>The owner of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>metadata_uri</td><td>The uri of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_type</td><td>The type of the contract</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -43,23 +43,23 @@ The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contr
 {% endtab %}
 
 {% tab title="Response" %}
-| Name        | Meaning                                                       | Type    |
-| ----------- | ------------------------------------------------------------- | ------- |
-| amount      | The amount of the nft                                         | integer |
-| app\_id     | The id of the app                                             | integer |
-| chain\_id   | The id of the chain                                           | integer |
-| chain\_type | The type of the chain                                         | integer |
-| contract\_type | The type of the contract                                         | integer |
-| contract    | The address of the nft                                        | string  |
-| error       | The error during executing tx                                 | string  |
-| hash        | The hash of the transaction                                   | string  |
-| id          | The id of the storage                                                                           | integer |
-| mint\_to    | The owner of the nft                                   | string  |
-| status      | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| token\_id   | The id of the token                                           | integer |
-| token\_uri  | The uri of the token                                          | string  |
-| tx\_id      | The id of the transaction                                     | integer |
-| mint_type      | The type of the minting                                     | integer |
+| Name           | Meaning                                                       | Type    |
+| -------------- | ------------------------------------------------------------- | ------- |
+| amount         | The amount of the nft                                         | integer |
+| app\_id        | The id of the app                                             | integer |
+| chain\_id      | The id of the chain                                           | integer |
+| chain\_type    | The type of the chain                                         | integer |
+| contract\_type | The type of the contract                                      | integer |
+| contract       | The address of the nft                                        | string  |
+| error          | The error during executing tx                                 | string  |
+| hash           | The hash of the transaction                                   | string  |
+| id             | The id of the storage                                         | integer |
+| mint\_to       | The owner of the nft                                          | string  |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
+| token\_id      | The id of the token                                           | integer |
+| token\_uri     | The uri of the token                                          | string  |
+| tx\_id         | The id of the transaction                                     | integer |
+| mint\_type     | The type of the minting                                       | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -105,7 +105,9 @@ curl --request POST \
 {% endtabs %}
 
 ### Batch Mint NFTs
-The `Batch Mint NFTs` API provides users with the entry to call the ERC721 or ERC1155 contract to mint several NFTs once. 
+
+The `Batch Mint NFTs` API provides users with the entry to call the ERC721 or ERC1155 contract to mint several NFTs once.
+
 {% swagger src="../../.gitbook/assets/swagger.json" path="/mints/customizable/batch" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
@@ -121,7 +123,8 @@ The `Batch Mint NFTs` API provides users with the entry to call the ERC721 or ER
 <table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>description</td><td>The description of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_type</td><td>The type of the contract, which includes <code>erc721</code> and <code>erc1155</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>mint_items</td><td>The mint tasks</td><td>body</td><td>The array of the MintItemDto</td><td>true</td></tr></tbody></table>
 
 The MintItemDto construct is presented in the following.
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>mint_to_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the NFTs</td><td>body</td><td>integer</td><td>false</td></tr><tr><td>metadata_uri</td><td>The uri of the metadata</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
+
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>mint_to_address</td><td>The owner of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the NFTs</td><td>body</td><td>integer</td><td>false</td></tr><tr><td>metadata_uri</td><td>The uri of the metadata</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -156,35 +159,35 @@ The MintItemDto construct is presented in the following.
 ```
 {% endtab %}
 
-
 {% tab title="Response" %}
-| Name        | Meaning                                    | Type    |
-| ----------- | ------------------------------------------ | ------- |
-| id          | The id of the NFTs                          | integer |
-| app\_id     | The id of the app                          | integer |
-| chain\_type | The type of the chain.                     | integer |
-| chain\_id   | The id of the chain                        | integer |
-| contract    | The address of the contract                | string  |
-| contract_type    | The type of the contract                | integer  |
-| mint\_to    | The address of the owner                   | string  |
-| token\_uri  | The uri of the token                       | string  |
-| token\_id   | The id of the token                        | integer |
-| amount      | The amount of the token                    | integer |
-| status      | The status of the transaction              | integer |
-| hash        | The hash of the transaction                | string  |
-| tx\_id      | The id of the transaction                  | integer |
-| error       | The error during executing the transaction | string  |
-| items       | The items of the NFT intformations | []MintItem |
+| Name           | Meaning                                    | Type        |
+| -------------- | ------------------------------------------ | ----------- |
+| id             | The id of the NFTs                         | integer     |
+| app\_id        | The id of the app                          | integer     |
+| chain\_type    | The type of the chain.                     | integer     |
+| chain\_id      | The id of the chain                        | integer     |
+| contract       | The address of the contract                | string      |
+| contract\_type | The type of the contract                   | integer     |
+| mint\_to       | The address of the owner                   | string      |
+| token\_uri     | The uri of the token                       | string      |
+| token\_id      | The id of the token                        | integer     |
+| amount         | The amount of the token                    | integer     |
+| status         | The status of the transaction              | integer     |
+| hash           | The hash of the transaction                | string      |
+| tx\_id         | The id of the transaction                  | integer     |
+| error          | The error during executing the transaction | string      |
+| items          | The items of the NFT intformations         | \[]MintItem |
 
 The MintItem construct is presented in the following:
-| Name        | Meaning                                    | Type    |
-| ----------- | ------------------------------------------ | ------- |
-| id          | The id of the NFTs                          | integer |
-| chain\_id   | The id of the chain                        | integer |
-| mint\_to    | The address of the owner                   | string  |
-| token\_uri  | The uri of the token                       | string  |
-| amount      | The amount of the token                    | integer |
-| MintBachTaskID       | The id of the mintBach task | integer|
+
+| Name           | Meaning                     | Type    |
+| -------------- | --------------------------- | ------- |
+| id             | The id of the NFTs          | integer |
+| chain\_id      | The id of the chain         | integer |
+| mint\_to       | The address of the owner    | string  |
+| token\_uri     | The uri of the token        | string  |
+| amount         | The amount of the token     | integer |
+| MintBachTaskID | The id of the mintBach task | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -299,23 +302,23 @@ The `Mint NFT with file` API provides users with the entry to call the ERC721 or
 {% endtab %}
 
 {% tab title="Response" %}
-| Name        | Meaning                                                       | Type    |
-| ----------- | ------------------------------------------------------------- | ------- |
-| amount      | The amount of the nft                                         | integer |
-| app\_id     | The id of the app                                             | integer |
-| chain\_id   | The id of the chain                                           | integer |
-| chain\_type | The type of the chain                                         | integer |
-| contract\_type | The type of the contract                                         | integer |
-| contract    | The address of the nft                                        | string  |
-| error       | The error during executing tx                                 | string  |
-| hash        | The hash of the transaction                                   | string  |
-| id          | The id of the storage                                                                           | integer |
-| mint\_to    | The owner of the nft                                   | string  |
-| status      | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| token\_id   | The id of the token                                           | integer |
-| token\_uri  | The uri of the token                                          | string  |
-| tx\_id      | The id of the transaction                                     | integer |
-| mint_type      | The type of the minting                                     | integer |
+| Name           | Meaning                                                       | Type    |
+| -------------- | ------------------------------------------------------------- | ------- |
+| amount         | The amount of the nft                                         | integer |
+| app\_id        | The id of the app                                             | integer |
+| chain\_id      | The id of the chain                                           | integer |
+| chain\_type    | The type of the chain                                         | integer |
+| contract\_type | The type of the contract                                      | integer |
+| contract       | The address of the nft                                        | string  |
+| error          | The error during executing tx                                 | string  |
+| hash           | The hash of the transaction                                   | string  |
+| id             | The id of the storage                                         | integer |
+| mint\_to       | The owner of the nft                                          | string  |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
+| token\_id      | The id of the token                                           | integer |
+| token\_uri     | The uri of the token                                          | string  |
+| tx\_id         | The id of the transaction                                     | integer |
+| mint\_type     | The type of the minting                                       | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -375,7 +378,7 @@ The `Mint NFT with metadata` provides users with the entry to call the ERC721 or
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the nft</td><td>body</td><td>string</td><td>true</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>mint_to_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>description</td><td>The description of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>file_url</td><td>The url of the file</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the nft</td><td>body</td><td>string</td><td>true</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>mint_to_address</td><td>The owner of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>description</td><td>The description of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>file_url</td><td>The url of the file</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -391,8 +394,6 @@ The `Mint NFT with metadata` provides users with the entry to call the ERC721 or
 {% endtab %}
 
 {% tab title="Response" %}
-
-
 | Name  | Meaning                          | Type        |
 | ----- | -------------------------------- | ----------- |
 | count | The number of the uploaded files | integer     |
@@ -400,23 +401,23 @@ The `Mint NFT with metadata` provides users with the entry to call the ERC721 or
 
 The **`MintTask Struct`** is listed as follow:
 
-| Name        | Meaning                                                       | Type    |
-| ----------- | ------------------------------------------------------------- | ------- |
-| amount      | The amount of the nft                                         | integer |
-| app\_id     | The id of the app                                             | integer |
-| chain\_id   | The id of the chain                                           | integer |
-| chain\_type | The type of the chain                                         | integer |
-| contract\_type | The type of the contract                                         | integer |
-| contract    | The address of the nft                                        | string  |
-| error       | The error during executing tx                                 | string  |
-| hash        | The hash of the transaction                                   | string  |
-| id          | The id of the storage                                                                           | integer |
-| mint\_to    | The owner of the nft                                   | string  |
-| status      | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| token\_id   | The id of the token                                           | integer |
-| token\_uri  | The uri of the token                                          | string  |
-| tx\_id      | The id of the transaction                                     | integer |
-| mint_type      | The type of the minting                                     | integer |
+| Name           | Meaning                                                       | Type    |
+| -------------- | ------------------------------------------------------------- | ------- |
+| amount         | The amount of the nft                                         | integer |
+| app\_id        | The id of the app                                             | integer |
+| chain\_id      | The id of the chain                                           | integer |
+| chain\_type    | The type of the chain                                         | integer |
+| contract\_type | The type of the contract                                      | integer |
+| contract       | The address of the nft                                        | string  |
+| error          | The error during executing tx                                 | string  |
+| hash           | The hash of the transaction                                   | string  |
+| id             | The id of the storage                                         | integer |
+| mint\_to       | The owner of the nft                                          | string  |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
+| token\_id      | The id of the token                                           | integer |
+| token\_uri     | The uri of the token                                          | string  |
+| tx\_id         | The id of the transaction                                     | integer |
+| mint\_type     | The type of the minting                                       | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -462,7 +463,9 @@ curl --request POST \
 {% endtabs %}
 
 ## Obtain Informations
+
 ### Obtain NFT list
+
 The `Obtain NFT list` API provides users with the entry to query the NFTs information created on a spcific app.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/mints/" method="get" %}
@@ -481,29 +484,30 @@ The `Obtain NFT list` API provides users with the entry to query the NFTs inform
 {% endtab %}
 
 {% tab title="Response" %}
-| Name  | Meaning                              | Type        |
-| ----- | ------------------------------------ | ----------- |
+| Name  | Meaning                       | Type        |
+| ----- | ----------------------------- | ----------- |
 | count | The number of the minted NFTs | integer     |
-| items | The nfts information                | \[]MintTask |
+| items | The nfts information          | \[]MintTask |
 
 The **`MintTask Struct`** is listed as follow:
-| Name        | Meaning                                                       | Type    |
-| ----------- | ------------------------------------------------------------- | ------- |
-| amount      | The amount of the nft                                         | integer |
-| app\_id     | The id of the app                                             | integer |
-| chain\_id   | The id of the chain                                           | integer |
-| chain\_type | The type of the chain                                         | integer |
-| contract\_type | The type of the contract                                         | integer |
-| contract    | The address of the nft                                        | string  |
-| error       | The error during executing tx                                 | string  |
-| hash        | The hash of the transaction                                   | string  |
-| id          | The id of the storage                                                                           | integer |
-| mint\_to    | The owner of the nft                                   | string  |
-| status      | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| token\_id   | The id of the token                                           | integer |
-| token\_uri  | The uri of the token                                          | string  |
-| tx\_id      | The id of the transaction                                     | integer |
-| mint_type      | The type of the minting                                     | integer |
+
+| Name           | Meaning                                                       | Type    |
+| -------------- | ------------------------------------------------------------- | ------- |
+| amount         | The amount of the nft                                         | integer |
+| app\_id        | The id of the app                                             | integer |
+| chain\_id      | The id of the chain                                           | integer |
+| chain\_type    | The type of the chain                                         | integer |
+| contract\_type | The type of the contract                                      | integer |
+| contract       | The address of the nft                                        | string  |
+| error          | The error during executing tx                                 | string  |
+| hash           | The hash of the transaction                                   | string  |
+| id             | The id of the storage                                         | integer |
+| mint\_to       | The owner of the nft                                          | string  |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
+| token\_id      | The id of the token                                           | integer |
+| token\_uri     | The uri of the token                                          | string  |
+| tx\_id         | The id of the transaction                                     | integer |
+| mint\_type     | The type of the minting                                       | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -534,9 +538,7 @@ The **`MintTask Struct`** is listed as follow:
  
     }
 ```
-
 {% endtab %}
-
 
 {% tab title="Request Sample" %}
 ```
@@ -549,6 +551,7 @@ curl --request GET \
 {% endtabs %}
 
 ### Query detailed NFT
+
 The `Query detailed NFT` API provides users with the entry to query the detailed NFT information created on a spcific app according to the NFT's id.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/mints/{id}" method="get" %}
@@ -567,23 +570,23 @@ The `Query detailed NFT` API provides users with the entry to query the detailed
 {% endtab %}
 
 {% tab title="Response" %}
-| Name        | Meaning                                                       | Type    |
-| ----------- | ------------------------------------------------------------- | ------- |
-| amount      | The amount of the nft                                         | integer |
-| app\_id     | The id of the app                                             | integer |
-| chain\_id   | The id of the chain                                           | integer |
-| chain\_type | The type of the chain                                         | integer |
-| contract\_type | The type of the contract                                         | integer |
-| contract    | The address of the nft                                        | string  |
-| error       | The error during executing tx                                 | string  |
-| hash        | The hash of the transaction                                   | string  |
-| id          | The id of the storage                                                                           | integer |
-| mint\_to    | The owner of the nft                                    | string  |
-| status      | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| token\_id   | The id of the token                                           | integer |
-| token\_uri  | The uri of the token                                          | string  |
-| tx\_id      | The id of the transaction                                     | integer |
-| mint_type      | The type of the minting                                     | integer |
+| Name           | Meaning                                                       | Type    |
+| -------------- | ------------------------------------------------------------- | ------- |
+| amount         | The amount of the nft                                         | integer |
+| app\_id        | The id of the app                                             | integer |
+| chain\_id      | The id of the chain                                           | integer |
+| chain\_type    | The type of the chain                                         | integer |
+| contract\_type | The type of the contract                                      | integer |
+| contract       | The address of the nft                                        | string  |
+| error          | The error during executing tx                                 | string  |
+| hash           | The hash of the transaction                                   | string  |
+| id             | The id of the storage                                         | integer |
+| mint\_to       | The owner of the nft                                          | string  |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
+| token\_id      | The id of the token                                           | integer |
+| token\_uri     | The uri of the token                                          | string  |
+| tx\_id         | The id of the transaction                                     | integer |
+| mint\_type     | The type of the minting                                       | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
