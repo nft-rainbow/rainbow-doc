@@ -178,6 +178,133 @@
                 }
             }
         },
+        "/contracts/{address}/admin": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get Contract Admin",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Get administrator of contract, only work on conflux chain",
+                "operationId": "GetContractAdmin",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Admin address",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "599": {
+                        "description": "Businesss error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Update administrator of contract, only work on conflux chain",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Update administrator of contract",
+                "operationId": "UpdateContractAdmin",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "contract admin update info",
+                        "name": "admin_info",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.ContractAdminUpdateDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transaction id",
+                        "schema": {
+                            "$ref": "#/definitions/services.SendTxResp"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "599": {
+                        "description": "Businesss error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
         "/contracts/{address}/sponsor": {
             "get": {
                 "security": [
@@ -283,6 +410,185 @@
                     },
                     "500": {
                         "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/contracts/{address}/sponsor/whitelist/": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get contract sponsored whitelist, only work on conflux chain",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Get contract sponsored whitelist",
+                "operationId": "GetContractSponsoredWhitelist",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Contract sponsored whitelist",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "599": {
+                        "description": "Businesss error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Add contract sponsored whitelist, only work on conflux chain",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Add contract sponsored whitelist",
+                "operationId": "AddContractSponsorWhitelist",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transaction id",
+                        "schema": {
+                            "$ref": "#/definitions/services.SendTxResp"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "599": {
+                        "description": "Businesss error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Remove contract sponsored whitelist, only work on conflux chain",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Remove contract sponsored whitelist",
+                "operationId": "RemoveContractSponsorWhitelist",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transaction id",
+                        "schema": {
+                            "$ref": "#/definitions/services.SendTxResp"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "599": {
+                        "description": "Businesss error",
                         "schema": {
                             "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
@@ -481,7 +787,7 @@
                             "type": "string"
                         }
                     },
-                    "40101": {
+                    "401": {
                         "description": "Unauthorized",
                         "schema": {
                             "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
@@ -1008,6 +1314,67 @@
                 }
             }
         },
+        "/nft/{address}/{token_id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get NFT info, mainly owner and metadata",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "NFTs"
+                ],
+                "summary": "Get NFT info, mainly owner and metadata",
+                "operationId": "NFTInfo",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "token_id",
+                        "name": "token_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/services.NFT"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
         "/refresh_token": {
             "get": {
                 "security": [
@@ -1040,7 +1407,7 @@
                             "type": "string"
                         }
                     },
-                    "40101": {
+                    "401": {
                         "description": "Unauthorized",
                         "schema": {
                             "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
@@ -1264,6 +1631,66 @@
                     },
                     "500": {
                         "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/tx/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get transaction informantion by ID",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "Get transaction informantion by ID",
+                "operationId": "GetTransactionByID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Transaction ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transaction informantion",
+                        "schema": {
+                            "$ref": "#/definitions/services.TxResp"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "599": {
+                        "description": "Businesss error",
                         "schema": {
                             "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
@@ -1659,10 +2086,23 @@
                 }
             }
         },
+        "services.ContractAdminUpdateDto": {
+            "type": "object",
+            "required": [
+                "admin_address"
+            ],
+            "properties": {
+                "admin_address": {
+                    "description": "Chain           string `form:\"chain\" json:\"chain\" binding:\"required,oneof=conflux conflux_test\"`\nContractAddress string `form:\"contract_address\" json:\"contract_address\" binding:\"required\"`",
+                    "type": "string"
+                }
+            }
+        },
         "services.ContractDeployDto": {
             "type": "object",
             "required": [
                 "chain",
+                "is_sponsor_for_all_user",
                 "name",
                 "owner_address",
                 "symbol",
@@ -1678,6 +2118,9 @@
                         "conflux",
                         "conflux_test"
                     ]
+                },
+                "is_sponsor_for_all_user": {
+                    "type": "boolean"
                 },
                 "name": {
                     "type": "string"
@@ -1863,6 +2306,28 @@
                 }
             }
         },
+        "services.NFT": {
+            "type": "object",
+            "properties": {
+                "contract_address": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                },
+                "token_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "services.SendTxResp": {
+            "type": "object",
+            "properties": {
+                "tx_id": {
+                    "type": "integer"
+                }
+            }
+        },
         "services.SponsorInfo": {
             "type": "object",
             "properties": {
@@ -1980,6 +2445,29 @@
                     "type": "string"
                 },
                 "transfer_to_address": {
+                    "type": "string"
+                }
+            }
+        },
+        "services.TxResp": {
+            "type": "object",
+            "properties": {
+                "error_msg": {
+                    "type": "string"
+                },
+                "hash": {
+                    "type": "string"
+                },
+                "is_finalized": {
+                    "type": "boolean"
+                },
+                "is_success": {
+                    "type": "boolean"
+                },
+                "state_code": {
+                    "type": "integer"
+                },
+                "state_msg": {
                     "type": "string"
                 }
             }

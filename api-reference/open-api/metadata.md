@@ -116,7 +116,7 @@ curl --request POST
 
 `Query metadata` API helps users to query the detailed information of the specified metadata according to `metadata_id`. This api returns the `name`, `description`, `external link`, `file` and `attributes` of the queried metada.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/:metadata_id" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/{metadata_id}" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 

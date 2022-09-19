@@ -25,7 +25,7 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>symbol</td><td>The symbol of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>owner_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>type</td><td>The type of the contract, e.g., ERC721, ERC1155</td><td>body</td><td>string</td><td>true</td></tr><tr><td>base_uri</td><td>The uri of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type, which can be <code>conflux</code> or <code>conflux_test</code> </td><td>body</td><td>string</td><td>true</td></tr><tr><td>royalties_bps</td><td>The bps of the royalties </td><td>body</td><td>integer</td><td>true</td></tr><tr><td>royalties_address</td><td>The address of the royalties </td><td>body</td><td>string</td><td>true</td></tr><tr><td>tokens_burnable</td><td>Whether the burning tokens is supported </td><td>body</td><td>bool</td><td>true</td></tr><tr><td>tokens_transferable</td><td>Whether the transferring tokens is supported</td><td>body</td><td>bool</td><td>true</td></tr><tr><td>transfer_cooldown_time</td><td>The cooldown time of transfering tokens </td><td>body</td><td>integer</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>symbol</td><td>The symbol of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>owner_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>type</td><td>The type of the contract, e.g., ERC721, ERC1155</td><td>body</td><td>string</td><td>true</td></tr><tr><td>base_uri</td><td>The uri of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type, which can be <code>conflux</code> or <code>conflux_test</code> </td><td>body</td><td>string</td><td>true</td></tr><tr><td>royalties_bps</td><td>The bps of the royalties </td><td>body</td><td>integer</td><td>true</td></tr><tr><td>royalties_address</td><td>The address of the royalties </td><td>body</td><td>string</td><td>true</td></tr><tr><td>tokens_burnable</td><td>Whether the burning tokens is supported </td><td>body</td><td>bool</td><td>true</td></tr><tr><td>tokens_transferable</td><td>Whether the transferring tokens is supported</td><td>body</td><td>bool</td><td>true</td></tr><tr><td>transfer_cooldown_time</td><td>The cooldown time of transfering tokens </td><td>body</td><td>integer</td><td>true</td></tr><tr><td>is_sponsor_for_all_user</td><td>Whether all users are sponsors in the contract </td><td>body</td><td>bool</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -41,7 +41,8 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
     "royalties_address": "",
     "tokens_burnable": false,
     "tokens_transferable": false,
-    "transfer_cooldown_time": 0
+    "transfer_cooldown_time": 0,
+    "is_sponsor_for_all_user": true
 }
 ```
 {% endtab %}
@@ -120,6 +121,48 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
+### Update contract admin
+The `Update contract admin` API provides users the entry to update the admin of the specific contract.
+
+{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/admin" method="put" %}
+[swagger.json](../../.gitbook/assets/swagger.json)
+{% endswagger %}
+
+{% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
+
+{% tab title="Parameter" %}
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>address</td><td>The address of the contract </td><td>Path</td><td>string</td><td>true</td></tr><tr><td>admin_address</td><td>The address of the admin </td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
+{% endtab %}
+
+{% tab title="Response" %}
+| Name           | Meaning                                                       | Type    |
+| -------------- | ------------------------------------------------------------- | ------- |
+| tx_id        | The id of the transaction                                   | integer  |
+{% endtab %}
+
+{% tab title="Response Example" %}
+```
+  3
+```
+{% endtab %}
+
+{% tab title="Request Sample" %}
+```
+curl --request PUT \
+  --url https://api.nftrainbow.xyz/v1/contracts/{address}/admin \
+  --header 'Authorization: Bearer {JWT}' \
+  --header 'Content-Type: application/json'
+```
+{% endtab %}
+{% endtabs %}
+
+
 ### Set Sponsor
 
 {% hint style="info" %}
@@ -168,6 +211,88 @@ curl --request POST \
 {% hint style="info" %}
 **Note:**  UP to now, only `conlux_test` network supports `Set sponsor` API.
 {% endhint %}
+
+### Add Contract Sponsor Users
+
+The `Add Contract Sponsor Users` API provides users to add the address in the whitelist.
+
+{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/sponsor/whitelist/" method="post" %}
+[swagger.json](../../.gitbook/assets/swagger.json)
+{% endswagger %}
+
+{% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
+{% tab title="Parameter" %}
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>true</td></tr></tbody></table>
+{% endtab %}
+
+{% tab title="Response" %}
+```
+Return the tx id directly.
+```
+{% endtab %}
+
+{% tab title="Response Example" %}
+```
+322
+```
+{% endtab %}
+
+{% tab title="Requst Sample" %}
+```
+curl --request POST \
+  --url https://api.nftrainbow.xyz/v1/contracts/{address}/sponsor/whitelist/ \
+  --header 'Authorization: Bearer {JWT}' \
+  --header 'Content-Type: application/json'
+```
+{% endtab %}
+{% endtabs %}
+
+### Remove Contract Sponsor Users
+
+The `Remove Contract Sponsor Users` API provides users to remove the address from the whitelist.
+
+{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/sponsor/whitelist/" method="delete" %}
+[swagger.json](../../.gitbook/assets/swagger.json)
+{% endswagger %}
+
+{% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
+{% tab title="Parameter" %}
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>true</td></tr></tbody></table>
+{% endtab %}
+
+{% tab title="Response" %}
+```
+Return the tx id directly.
+```
+{% endtab %}
+
+{% tab title="Response Example" %}
+```
+322
+```
+{% endtab %}
+
+{% tab title="Requst Sample" %}
+```
+curl --request DELETE \
+  --url https://api.nftrainbow.xyz/v1/contracts/{address}/sponsor/whitelist/ \
+  --header 'Authorization: Bearer {JWT}' \
+  --header 'Content-Type: application/json'
+```
+{% endtab %}
+{% endtabs %}
 
 ## Query Informations
 
@@ -411,3 +536,82 @@ curl --request GET \
 SponsorWhitelistControl Contract
 {% endembed %}
 
+
+### Query contract admin
+The `Query contract admin` API provides users the entry to get the admin of the specific contract.
+
+{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/admin" method="get" %}
+[swagger.json](../../.gitbook/assets/swagger.json)
+{% endswagger %}
+
+{% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
+
+{% tab title="Parameter" %}
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>address</td><td>The address of the contract </td><td>Path</td><td>string</td><td>true</td></tr></tbody></table>
+{% endtab %}
+
+{% tab title="Response Example" %}
+```
+{
+  "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0"
+}
+```
+{% endtab %}
+
+{% tab title="Request Sample" %}
+```
+curl --request GET \
+  --url https://api.nftrainbow.xyz/v1/contracts/{address}/admin \
+  --header 'Authorization: Bearer {JWT}' \
+  --header 'Content-Type: application/json'
+```
+{% endtab %}
+{% endtabs %}
+
+
+### Query Contract Whitelist
+
+The `Query Contract Whitelist` API provides users to get the whitelist of the specific  contract.
+
+{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/sponsor/whitelist/" method="get" %}
+[swagger.json](../../.gitbook/assets/swagger.json)
+{% endswagger %}
+
+{% tabs %}
+{% tab title="Auth" %}
+| Name          | Meaning      | Param Type | Data Type |
+| ------------- | ------------ | ---------- | --------- |
+| Authorization | Bearer Token | Header     | string    |
+{% endtab %}
+
+{% tab title="Parameter" %}
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>true</td></tr></tbody></table>
+{% endtab %}
+
+{% tab title="Response" %}
+```
+Return the slices of the addresses in the whiltelist.
+```
+{% endtab %}
+
+{% tab title="Response Example" %}
+```
+["cfxtest:acexyjf36ddwcct171wr1k5srd289zp9te70p67zc1"]
+```
+{% endtab %}
+
+{% tab title="Requst Sample" %}
+```
+curl --request GET \
+  --url https://api.nftrainbow.xyz/v1/contracts/{address}/sponsor/whitelist/ \
+  --header 'Authorization: Bearer {JWT}' \
+  --header 'Content-Type: application/json'
+```
+{% endtab %}
+{% endtabs %}
