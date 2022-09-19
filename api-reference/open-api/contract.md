@@ -148,7 +148,9 @@ The `Update contract admin` API provides users the entry to update the admin of 
 
 {% tab title="Response Example" %}
 ```
-  3
+{
+  "tx_id": 421312
+}
 ```
 {% endtab %}
 
@@ -232,14 +234,16 @@ The `Add Contract Sponsor Users` API provides users to add the address in the wh
 {% endtab %}
 
 {% tab title="Response" %}
-```
-Return the tx id directly.
-```
+| Name           | Meaning                                                       | Type    |
+| -------------- | ------------------------------------------------------------- | ------- |
+| tx_id        | The id of the transaction                                   | integer  |
 {% endtab %}
 
 {% tab title="Response Example" %}
 ```
-322
+{
+  "tx_id": 421312
+}
 ```
 {% endtab %}
 
@@ -273,14 +277,16 @@ The `Remove Contract Sponsor Users` API provides users to remove the address fro
 {% endtab %}
 
 {% tab title="Response" %}
-```
-Return the tx id directly.
-```
+| Name           | Meaning                                                       | Type    |
+| -------------- | ------------------------------------------------------------- | ------- |
+| tx_id        | The id of the transaction                                   | integer  |
 {% endtab %}
 
 {% tab title="Response Example" %}
 ```
-322
+{
+  "tx_id": 421312
+}
 ```
 {% endtab %}
 
