@@ -8,7 +8,7 @@ description: >-
 
 ## Create NFT Metadata
 
-`Create NFT metadata` API helps users to create their own metadata after calling[ Upload File](files.md#upload-file) to get the corresponding file url.  To call  `Create NFT metadata` , users have to provide the metadata information including `name`, `file`, `external_link` and so on.
+`Create NFT metadata` API helps users to create their own metadata after calling[ Upload File](files.md#upload-file) to get the corresponding file url. To call `Create NFT metadata` , users have to provide the metadata information including `name`, `file`, `external_link` and so on.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -22,7 +22,7 @@ description: >-
 {% endtab %}
 
 {% tab title="Parameters" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>image</td><td>The file url of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>external_link</td><td>The externanl link of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>MetadataAttribute</td><td>The attributes of the metadata</td><td>array</td><td>attribute</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>image</td><td>The file url of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>external_link</td><td>The externanl link of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>attributes</td><td>The attributes of the metadata</td><td>array</td><td>attribute</td><td>false</td></tr></tbody></table>
 
 The struct of the MetadataAttribute is listed as bellow.
 
@@ -48,16 +48,16 @@ The struct of the MetadataAttribute is listed as bellow.
 {% endtab %}
 
 {% tab title="Responses" %}
-| Name          | Meaning                 | Type   |
-| ------------- | ----------------------- | ------ |
-| uri           | The uri of the metadata | string |
-| metadata\_id   | The id of the metadata | string |
-| description    | The description of the metadata   | string         |
-| external\_link | The external link of the metadata | string         |
-| image          | The file url of the metadata      | string         |
-| metadata\_id   | The id of the metadata            | string         |
-| name           | The name of the metadata          | string         |
-| attributes     | The attribute of the metadata     | \[]ExposedMetadataAttribute  |
+| Name           | Meaning                           | Type                        |
+| -------------- | --------------------------------- | --------------------------- |
+| uri            | The uri of the metadata           | string                      |
+| metadata\_id   | The id of the metadata            | string                      |
+| description    | The description of the metadata   | string                      |
+| external\_link | The external link of the metadata | string                      |
+| image          | The file url of the metadata      | string                      |
+| metadata\_id   | The id of the metadata            | string                      |
+| name           | The name of the metadata          | string                      |
+| attributes     | The attribute of the metadata     | \[]ExposedMetadataAttribute |
 
 The **ExposedMetadataAttribute struct** is listed as follow:
 
@@ -67,7 +67,6 @@ The **ExposedMetadataAttribute struct** is listed as follow:
 | display\_type   | The display type of the attribut | string |
 | trait\_type     | The trait type of the attribute  | string |
 | value           | The value of the attribute       | string |
-
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -133,14 +132,14 @@ curl --request POST
 {% endtab %}
 
 {% tab title="Response" %}
-| Name           | Meaning                           | Data Type      |
-| -------------- | --------------------------------- | -------------- |
-| attributes     | The attribute of the metadata     | \[]ExposedMetadataAttribute  |
-| description    | The description of the metadata   | string         |
-| external\_link | The external link of the metadata | string         |
-| image          | The file url of the metadata      | string         |
-| metadata\_id   | The id of the metadata            | string         |
-| name           | The name of the metadata          | string         |
+| Name           | Meaning                           | Data Type                   |
+| -------------- | --------------------------------- | --------------------------- |
+| attributes     | The attribute of the metadata     | \[]ExposedMetadataAttribute |
+| description    | The description of the metadata   | string                      |
+| external\_link | The external link of the metadata | string                      |
+| image          | The file url of the metadata      | string                      |
+| metadata\_id   | The id of the metadata            | string                      |
+| name           | The name of the metadata          | string                      |
 
 The **ExposedMetadataAttribute struct** is listed as follow:
 
@@ -209,14 +208,14 @@ curl --request GET \
 
 The **`QueryMetadataResponse struct`** is listed as follow:
 
-| Name           | Meaning                           | Data Type      |
-| -------------- | --------------------------------- | -------------- |
-| attributes     | The attribute of the              | \[]attributes  |
-| description    | The description of the metadata   | string         |
-| external\_link | The external link of the metadata | string         |
-| image          | The file url of the metadata      | string         |
-| metadata\_id   | The id of the metadata            | string         |
-| name           | The name of the metadata          | string         |
+| Name           | Meaning                           | Data Type     |
+| -------------- | --------------------------------- | ------------- |
+| attributes     | The attribute of the              | \[]attributes |
+| description    | The description of the metadata   | string        |
+| external\_link | The external link of the metadata | string        |
+| image          | The file url of the metadata      | string        |
+| metadata\_id   | The id of the metadata            | string        |
+| name           | The name of the metadata          | string        |
 
 The **`attributes struct`** is listed as follow:
 
@@ -270,4 +269,3 @@ curl --request GET \
 ```
 {% endtab %}
 {% endtabs %}
-

@@ -1,9 +1,8 @@
 ---
-description: >-
-  The Transfer APIs provide users the entries to tranfer the NFTs easily.
+description: The Transfer APIs provide users the entries to tranfer the NFTs easily.
 ---
 
-# Transfer
+# Transfers
 
 ## Transfer Actions
 
@@ -25,7 +24,7 @@ The `Transfer NFT` provides users with the entry to transfer the NFT.
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>integer</td><td>true</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_from_address</td><td>The sender of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_to_address</td><td>The receiver of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the sending NFT</td><td>body</td><td>integer</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>contract_type</td><td>The type of the contract</td><td>body</td><td>string</td><td>false</td></tr><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>integer</td><td>true</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_from_address</td><td>The sender of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_to_address</td><td>The receiver of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the sending NFT</td><td>body</td><td>integer</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -43,22 +42,22 @@ The `Transfer NFT` provides users with the entry to transfer the NFT.
 {% endtab %}
 
 {% tab title="Response" %}
-| Name        | Meaning                                    | Type    |
-| ----------- | ------------------------------------------ | ------- |
-| id          | The id of the storage                      | integer |
-| app\_id     | The id of the app                          | integer |
-| chain\_type | The type of the chain.                     | integer |
-| chain\_id   | The id of the chain                        | integer |
-| contract    | The address of the contract                | string  |
-| contract\_type    | The type of the contract                | integer  |
-| token\_id    | The id of the token                   | string  |
-| transfer\_from  | The sender of the sending NFT                        | string |
-| transfer\_to  | The receiver of the sending NFT                        | string |
-| amount      | The amount of the token                    | integer |
-| status      | The status of the transaction              | integer |
-| hash        | The hash of the transaction                | string  |
-| tx\_id      | The id of the transaction                  | integer |
-| error       | The error during executing the transaction | string  |
+| Name           | Meaning                                    | Type    |
+| -------------- | ------------------------------------------ | ------- |
+| id             | The id of the storage                      | integer |
+| app\_id        | The id of the app                          | integer |
+| chain\_type    | The type of the chain.                     | integer |
+| chain\_id      | The id of the chain                        | integer |
+| contract       | The address of the contract                | string  |
+| contract\_type | The type of the contract                   | integer |
+| token\_id      | The id of the token                        | string  |
+| transfer\_from | The sender of the sending NFT              | string  |
+| transfer\_to   | The receiver of the sending NFT            | string  |
+| amount         | The amount of the token                    | integer |
+| status         | The status of the transaction              | integer |
+| hash           | The hash of the transaction                | string  |
+| tx\_id         | The id of the transaction                  | integer |
+| error          | The error during executing the transaction | string  |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -105,7 +104,9 @@ curl --request POST \
 {% endtabs %}
 
 ### Batch Transfer NFTs
-The `Batch Transfer NFTs` API provides users with the entry to transfer several NFTs once. 
+
+The `Batch Transfer NFTs` API provides users with the entry to transfer several NFTs once.
+
 {% swagger src="../../.gitbook/assets/swagger.json" path="/transfers/customizable/batch" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
@@ -121,6 +122,7 @@ The `Batch Transfer NFTs` API provides users with the entry to transfer several 
 <table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_type</td><td>The type of the contract, which includes <code>erc721</code> and <code>erc1155</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>items</td><td>The mint tasks</td><td>body</td><td>The array of the TransferItem</td><td>true</td></tr></tbody></table>
 
 The TransferItem construct is presented in the following.
+
 <table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>transfer_from_address</td><td>The sender of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_to_address</td><td>The receiver of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the NFTs</td><td>body</td><td>integer</td><td>true</td></tr><tr><td>token_id</td><td>The id of the token</td><td>body</td><td>integer</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
@@ -148,31 +150,31 @@ The TransferItem construct is presented in the following.
 ```
 {% endtab %}
 
-
 {% tab title="Response" %}
-| Name        | Meaning                                    | Type    |
-| ----------- | ------------------------------------------ | ------- |
-| id          | The id of the storage                      | integer |
-| app\_id     | The id of the app                          | integer |
-| chain\_type | The type of the chain.                     | integer |
-| chain\_id   | The id of the chain                        | integer |
-| contract    | The address of the contract                | string  |
-| contract_type  | The type of the contract                        | integer |
-| status      | The status of the transaction              | integer |
-| hash        | The hash of the transaction                | string  |
-| tx\_id      | The id of the transaction                  | integer |
-| error       | The error during executing the transaction | string  |
-| items       | The items of the NFT transfer intformations | []TransferItem |
+| Name           | Meaning                                     | Type            |
+| -------------- | ------------------------------------------- | --------------- |
+| id             | The id of the storage                       | integer         |
+| app\_id        | The id of the app                           | integer         |
+| chain\_type    | The type of the chain.                      | integer         |
+| chain\_id      | The id of the chain                         | integer         |
+| contract       | The address of the contract                 | string          |
+| contract\_type | The type of the contract                    | integer         |
+| status         | The status of the transaction               | integer         |
+| hash           | The hash of the transaction                 | string          |
+| tx\_id         | The id of the transaction                   | integer         |
+| error          | The error during executing the transaction  | string          |
+| items          | The items of the NFT transfer intformations | \[]TransferItem |
 
 The TransferItem construct is presented in the following:
-| Name        | Meaning                                    | Type    |
-| ----------- | ------------------------------------------ | ------- |
-| id          | The id of the storage                 | integer |
-| transfer_to   | The receiver of the sending NFT                       | string |
-| transfer_from    | The sender of the sending NFT                  | string  |
-| token_id  | The id of the token                       | integer  |
-| amount      | The amount of the token                    | integer |
-| TransferBatchTaskID       | The id of the transferBach task | integer|
+
+| Name                | Meaning                         | Type    |
+| ------------------- | ------------------------------- | ------- |
+| id                  | The id of the storage           | integer |
+| transfer\_to        | The receiver of the sending NFT | string  |
+| transfer\_from      | The sender of the sending NFT   | string  |
+| token\_id           | The id of the token             | integer |
+| amount              | The amount of the token         | integer |
+| TransferBatchTaskID | The id of the transferBach task | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -248,9 +250,10 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
-
 ## Obtain Informations
+
 ### Obtain transferred NFT list
+
 The `Obtain transferred NFT list` API provides users with the entry to query the transferred NFTs information.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/transfers/" method="get" %}
@@ -269,28 +272,29 @@ The `Obtain transferred NFT list` API provides users with the entry to query the
 {% endtab %}
 
 {% tab title="Response" %}
-| Name  | Meaning                              | Type        |
-| ----- | ------------------------------------ | ----------- |
+| Name  | Meaning                           | Type        |
+| ----- | --------------------------------- | ----------- |
 | count | The number of the tranferred NFTs | integer     |
-| items | The nfts information                | \[]MintTask |
+| items | The nfts information              | \[]MintTask |
 
 The **`MintTask Struct`** is listed as follow:
-| Name        | Meaning                                                       | Type    |
-| ----------- | ------------------------------------------------------------- | ------- |
-| amount      | The amount of the nft                                         | integer |
-| app\_id     | The id of the app                                             | integer |
-| chain\_id   | The id of the chain                                           | integer |
-| chain\_type | The type of the chain                                         | integer |
-| contract    | The address of the nft                                        | string  |
-| contract_type    | The type of the contract                                        | integer  |
-| error       | The error during executing tx                                 | string  |
-| hash        | The hash of the transaction                                   | string  |
-| id          | The id of the storage                                                                     | integer |
-| transfer_to   | The receiver of the sending NFT                                   | string  |
-| status      | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| token\_id   | The id of the token                                           | string ||
-| transfer_from  | The sender of the sending NFT                                          | string  |
-| tx\_id      | The id of the transaction                                     | integer |
+
+| Name           | Meaning                                                       | Type    |
+| -------------- | ------------------------------------------------------------- | ------- |
+| amount         | The amount of the nft                                         | integer |
+| app\_id        | The id of the app                                             | integer |
+| chain\_id      | The id of the chain                                           | integer |
+| chain\_type    | The type of the chain                                         | integer |
+| contract       | The address of the nft                                        | string  |
+| contract\_type | The type of the contract                                      | integer |
+| error          | The error during executing tx                                 | string  |
+| hash           | The hash of the transaction                                   | string  |
+| id             | The id of the storage                                         | integer |
+| transfer\_to   | The receiver of the sending NFT                               | string  |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
+| token\_id      | The id of the token                                           | string  |
+| transfer\_from | The sender of the sending NFT                                 | string  |
+| tx\_id         | The id of the transaction                                     | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -371,6 +375,7 @@ curl --request GET \
 {% endtabs %}
 
 ### Obtain Detialed NFT Information
+
 The `Obtain detailed NFT information` API provides users with the entry to query the transferred NFT information according to its `id`.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/transfers/{id}" method="get" %}
@@ -389,22 +394,22 @@ The `Obtain detailed NFT information` API provides users with the entry to query
 {% endtab %}
 
 {% tab title="Response" %}
-| Name        | Meaning                                                       | Type    |
-| ----------- | ------------------------------------------------------------- | ------- |
-| amount      | The amount of the nft                                         | integer |
-| app\_id     | The id of the app                                             | integer |
-| chain\_id   | The id of the chain                                           | integer |
-| chain\_type | The type of the chain                                         | integer |
-| contract    | The address of the nft                                        | string  |
-| contract_type    | The type of the contract                                        | integer  |
-| error       | The error during executing tx                                 | string  |
-| hash        | The hash of the transaction                                   | string  |
-| id          | The id of the storage                                                                     | integer |
-| transfer_to   | The receiver of the sending NFT                                   | string  |
-| status      | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| token\_id   | The id of the token                                           | string ||
-| transfer_from  | The sender of the sending NFT                                          | string  |
-| tx\_id      | The id of the transaction                                     | integer |
+| Name           | Meaning                                                       | Type    |
+| -------------- | ------------------------------------------------------------- | ------- |
+| amount         | The amount of the nft                                         | integer |
+| app\_id        | The id of the app                                             | integer |
+| chain\_id      | The id of the chain                                           | integer |
+| chain\_type    | The type of the chain                                         | integer |
+| contract       | The address of the nft                                        | string  |
+| contract\_type | The type of the contract                                      | integer |
+| error          | The error during executing tx                                 | string  |
+| hash           | The hash of the transaction                                   | string  |
+| id             | The id of the storage                                         | integer |
+| transfer\_to   | The receiver of the sending NFT                               | string  |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
+| token\_id      | The id of the token                                           | string  |
+| transfer\_from | The sender of the sending NFT                                 | string  |
+| tx\_id         | The id of the transaction                                     | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -440,4 +445,3 @@ curl --request GET \
 ```
 {% endtab %}
 {% endtabs %}
-
