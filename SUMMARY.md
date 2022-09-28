@@ -6,9 +6,8 @@
 
 * [Mints](tutorials/mints/README.md)
   * [铸造NFT快速指南](tutorials/mints/mints-zh.md)
-* By Community
+* [By Community](tutorials/by-community/README.md)
   * [NFTRainbow 使用教程](https://forum.conflux.fun/t/nftrainbow/16433)
-  <!-- * [NFTRainbow API使用指南](https://segmentfault.com/a/1190000042251326) -->
 
 ## Docs
 

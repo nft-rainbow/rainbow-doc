@@ -26,7 +26,7 @@ The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contr
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>integer</td><td>false</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>mint_to_address</td><td>The owner of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>metadata_uri</td><td>The uri of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_type</td><td>The type of the contract</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>integer</td><td>false</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>mint_to_address</td><td>The owner of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>metadata_uri</td><td>The uri of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_type</td><td>The type of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the minted NFTs</td><td>body</td><td>integer</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -37,7 +37,8 @@ The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contr
     "mint_to_address": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
     "contract_address": "cfxtest:aca7psszv5pvak2hesk3e33m5yabkn3d5j2gzsmm5n",
     "contract_type": "erc721",
-    "metadata_uri": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+    "metadata_uri": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png",
+    "amount": 123
 }
 ```
 {% endtab %}
@@ -98,7 +99,8 @@ curl --request POST \
     "token_id": "",
     "mint_to_address": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
     "contract_address": "cfxtest:acgat1yux2rk0xmk2s8ceferyprgm0u1hetj0w72yf",
-    "metadata_uri": "http://dev.nftrainbow/assets/metadata/0/nft/2dfd6b3add9d5154cf4ccef7a040f4c5c3c965ec5845bd11ca297e8550ac63ee.json"
+    "metadata_uri": "http://dev.nftrainbow/assets/metadata/0/nft/2dfd6b3add9d5154cf4ccef7a040f4c5c3c965ec5845bd11ca297e8550ac63ee.json",
+    "amount": 1
 }'
 ```
 {% endtab %}
@@ -120,7 +122,7 @@ The `Batch Mint NFTs` API provides users with the entry to call the ERC721 or ER
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the NFTs</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_type</td><td>The type of the contract, which includes <code>erc721</code> and <code>erc1155</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>mint_items</td><td>The mint tasks</td><td>body</td><td>The array of the MintItemDto</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_type</td><td>The type of the contract, which includes <code>erc721</code> and <code>erc1155</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>mint_items</td><td>The mint tasks</td><td>body</td><td>The array of the MintItemDto</td><td>true</td></tr></tbody></table>
 
 The MintItemDto construct is presented in the following.
 
@@ -131,8 +133,6 @@ The MintItemDto construct is presented in the following.
 ```
 {
     "chain": "conflux_test",
-    "name": "test-mia",
-    "description": "test-mia",
     "contract_type":"erc721",
     "contract_address": "cfxtest:aceng286bm0xnu8s4wdf1xzdchgn0zxxapb1jj597t",
     "mint_items": [
@@ -160,6 +160,12 @@ The MintItemDto construct is presented in the following.
 {% endtab %}
 
 {% tab title="Response" %}
+The response is the array of MintTask construct.
+
+The MintTask construct is showed in the following.
+
+
+
 | Name           | Meaning                                    | Type        |
 | -------------- | ------------------------------------------ | ----------- |
 | id             | The id of the NFTs                         | integer     |
@@ -178,16 +184,14 @@ The MintItemDto construct is presented in the following.
 | error          | The error during executing the transaction | string      |
 | items          | The items of the NFT intformations         | \[]MintItem |
 
-The MintItem construct is presented in the following:
+The MintItemCore construct is presented in the following:
 
-| Name           | Meaning                     | Type    |
-| -------------- | --------------------------- | ------- |
-| id             | The id of the NFTs          | integer |
-| chain\_id      | The id of the chain         | integer |
-| mint\_to       | The address of the owner    | string  |
-| token\_uri     | The uri of the token        | string  |
-| amount         | The amount of the token     | integer |
-| MintBachTaskID | The id of the mintBach task | integer |
+| Name       | Meaning                  | Type    |
+| ---------- | ------------------------ | ------- |
+| token\_id  | The id of the token      | string  |
+| mint\_to   | The address of the owner | string  |
+| token\_uri | The uri of the token     | string  |
+| amount     | The amount of the token  | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -253,8 +257,6 @@ curl --request POST \
   --header 'Content-Type: application/json' \ 
   --data '{
     "chain": "conflux_test",
-    "name": "test-mia",
-    "description": "test-mia",
     "contract_type":"erc721",
     "contract_address": "cfxtest:aceng286bm0xnu8s4wdf1xzdchgn0zxxapb1jj597t",
     "mint_items": [

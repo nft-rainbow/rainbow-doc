@@ -417,7 +417,7 @@
                 }
             }
         },
-        "/contracts/{address}/sponsor/whitelist/": {
+        "/contracts/{address}/sponsor/whitelist": {
             "get": {
                 "security": [
                     {
@@ -508,6 +508,18 @@
                         "name": "address",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "description": "Adding sponsor whitelist",
+                        "name": "users",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
                     }
                 ],
                 "responses": {
@@ -566,6 +578,18 @@
                         "name": "address",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "description": "Removing sponsor whitelist",
+                        "name": "users",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
                     }
                 ],
                 "responses": {
@@ -2093,7 +2117,6 @@
             ],
             "properties": {
                 "admin_address": {
-                    "description": "Chain           string `form:\"chain\" json:\"chain\" binding:\"required,oneof=conflux conflux_test\"`\nContractAddress string `form:\"contract_address\" json:\"contract_address\" binding:\"required\"`",
                     "type": "string"
                 }
             }
