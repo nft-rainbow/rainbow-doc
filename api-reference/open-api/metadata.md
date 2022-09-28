@@ -106,6 +106,7 @@ curl --request POST
   ],
   "description": "this is a test metadata",
   "image": "https://www.google.com/search",
+  "external_link": "https://www.google.com/search",
   "name": "test"
 }
 ```

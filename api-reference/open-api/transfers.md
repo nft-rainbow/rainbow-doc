@@ -151,9 +151,15 @@ The TransferItem construct is presented in the following.
 {% endtab %}
 
 {% tab title="Response" %}
+The response is the array of transferTask construct.
+The construct is showed in the following.
+
 | Name           | Meaning                                     | Type            |
 | -------------- | ------------------------------------------- | --------------- |
-| id             | The id of the storage                       | integer         |
+| created_at             | The time of creating the item in the database                        | string     |
+| updated_at      | The time of updating the item in the database                          | string     |
+| deleted_at   | The time of deleting the item in the database                      | string     |
+| id             | The id of the item in the database                        | integer     |
 | app\_id        | The id of the app                           | integer         |
 | chain\_type    | The type of the chain.                      | integer         |
 | chain\_id      | The id of the chain                         | integer         |
@@ -163,61 +169,56 @@ The TransferItem construct is presented in the following.
 | hash           | The hash of the transaction                 | string          |
 | tx\_id         | The id of the transaction                   | integer         |
 | error          | The error during executing the transaction  | string          |
-| items          | The items of the NFT transfer intformations | \[]TransferItem |
-
-The TransferItem construct is presented in the following:
-
-| Name                | Meaning                         | Type    |
-| ------------------- | ------------------------------- | ------- |
-| id                  | The id of the storage           | integer |
 | transfer\_to        | The receiver of the sending NFT | string  |
 | transfer\_from      | The sender of the sending NFT   | string  |
 | token\_id           | The id of the token             | integer |
 | amount              | The amount of the token         | integer |
-| TransferBatchTaskID | The id of the transferBach task | integer |
+
+
 {% endtab %}
 
 {% tab title="Response Example" %}
 ```
-{
-    "id": 1,
-    "created_at": "2022-08-24T07:47:48.557Z",
-    "updated_at": "2022-08-24T07:47:48.557Z",
-    "deleted_at": null,
-    "app_id": 2,
-    "chain_type": 1,
-    "chain_id": 1,
-    "contract": "cfxtest:accy6epch754uamc4x55mcv3pzgae8vfvaufj6v4uj",
-    "contract_type": 2,
-    "tx_id": 8129,
-    "hash": "",
-    "status": 0,
-    "error": "",
-    "items": [
-        {
-            "id": 1,
-            "created_at": "2022-08-24T07:47:48.558Z",
-            "updated_at": "2022-08-24T07:47:48.558Z",
-            "deleted_at": null,
-            "transfer_from": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
-            "transfer_to": "cfxtest:aanpu16mtgc7dke5xhuktyfyef8f00pz8a2z5mc14g",
-            "token_id": "20",
-            "amount": 2,
-            "TransferBatchTaskID": 1
-        },
-        {
-            "id": 2,
-            "created_at": "2022-08-24T07:47:48.558Z",
-            "updated_at": "2022-08-24T07:47:48.558Z",
-            "deleted_at": null,
-            "transfer_from": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
-            "transfer_to": "cfxtest:aang4d91rejdbpgmgtmspdyefxkubj2bbywrwm9j3z",
-            "token_id": "21",
-            "amount": 1,
-            "TransferBatchTaskID": 1
-        }
-    ]
-}
+[
+    {
+        "id": 1,
+        "created_at": "2022-08-24T07:47:48.558Z",
+        "updated_at": "2022-08-24T07:47:48.558Z",
+        "deleted_at": null,
+        "app_id": 2,
+        "chain_type": 1,
+        "chain_id": 1,
+        "contract": "cfxtest:acbf8taf6zzy99kncvu7d81vyavaz2ay5254ca3j7c",
+        "contract_type": 1,
+        "tx_id": 8474,
+        "hash": "",
+        "status": 0,
+        "error": "",
+        "transfer_from": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
+        "transfer_to": "cfxtest:aanpu16mtgc7dke5xhuktyfyef8f00pz8a2z5mc14g",
+        "token_id": "20",
+        "amount": 2,
+    },
+    {
+        "id": 2,
+        "created_at": "2022-08-24T07:47:48.558Z",
+        "updated_at": "2022-08-24T07:47:48.558Z",
+        "deleted_at": null,
+        "app_id": 2,
+        "chain_type": 1,
+        "chain_id": 1,
+        "contract": "cfxtest:acbf8taf6zzy99kncvu7d81vyavaz2ay5254ca3j7c",
+        "contract_type": 1,
+        "tx_id": 8474,
+        "hash": "",
+        "status": 0,
+        "error": "",
+        "transfer_from": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
+        "transfer_to": "cfxtest:aang4d91rejdbpgmgtmspdyefxkubj2bbywrwm9j3z",
+        "token_id": "21",
+        "amount": 1,
+    }
+]
 ```
 {% endtab %}
 
@@ -300,7 +301,7 @@ The **`MintTask Struct`** is listed as follow:
 {% tab title="Response Example" %}
 ```
 {
-    "count": 1,
+    "count": 3,
     "items": [
         {
             "id": 3,

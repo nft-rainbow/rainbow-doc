@@ -164,11 +164,12 @@ The response is the array of MintTask construct.
 
 The MintTask construct is showed in the following.
 
-
-
 | Name           | Meaning                                    | Type        |
 | -------------- | ------------------------------------------ | ----------- |
-| id             | The id of the NFTs                         | integer     |
+| created_at             | The time of creating the item in the database                        | string     |
+| updated_at      | The time of updating the item in the database                          | string     |
+| deleted_at   | The time of deleting the item in the database                      | string     |
+| id             | The id of the item in the database                        | integer     |
 | app\_id        | The id of the app                          | integer     |
 | chain\_type    | The type of the chain.                     | integer     |
 | chain\_id      | The id of the chain                        | integer     |
@@ -182,70 +183,74 @@ The MintTask construct is showed in the following.
 | hash           | The hash of the transaction                | string      |
 | tx\_id         | The id of the transaction                  | integer     |
 | error          | The error during executing the transaction | string      |
-| items          | The items of the NFT intformations         | \[]MintItem |
+| mint_type          | The type of minting. 1-easyMinting 2-customMinting 3-BatchcustomMinting        | integer |
 
-The MintItemCore construct is presented in the following:
-
-| Name       | Meaning                  | Type    |
-| ---------- | ------------------------ | ------- |
-| token\_id  | The id of the token      | string  |
-| mint\_to   | The address of the owner | string  |
-| token\_uri | The uri of the token     | string  |
-| amount     | The amount of the token  | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
 ```
-{
-    "id": 1,
-    "created_at": "2022-08-22T16:06:21.058+08:00",
-    "updated_at": "2022-08-22T16:06:21.058+08:00",
-    "deleted_at": null,
-    "app_id": 4,
-    "chain_type": 1,
-    "chain_id": 1,
-    "contract": "cfxtest:acbyjkpzzux69s2mpfxz3kw897nuxw01x20tpnbh0e",
-    "contract_type": 1,
-    "tx_id": 65,
-    "hash": "",
-    "status": 0,
-    "error": "",
-    "items": [
-        {
-            "id": 1,
-            "created_at": "2022-08-22T16:06:21.06+08:00",
-            "updated_at": "2022-08-22T16:06:21.06+08:00",
-            "deleted_at": null,
-            "mint_to": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
-            "token_id": 10,
-            "amount": 2,
-            "token_uri": "https://live---metadata-5covpqijaa-uc.a.run.app/metadata/10",
-            "MintBatchTaskID": 1
-        },
-        {
-            "id": 2,
-            "created_at": "2022-08-22T16:06:21.06+08:00",
-            "updated_at": "2022-08-22T16:06:21.06+08:00",
-            "deleted_at": null,
-            "mint_to": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
-            "token_id": 11,
-            "amount": 2,
-            "token_uri": "https://live---metadata-5covpqijaa-uc.a.run.app/metadata/11",
-            "MintBatchTaskID": 1
-        },
-        {
-            "id": 3,
-            "created_at": "2022-08-22T16:06:21.06+08:00",
-            "updated_at": "2022-08-22T16:06:21.06+08:00",
-            "deleted_at": null,
-            "mint_to": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
-            "token_id": 12,
-            "amount": 2,
-            "token_uri": "https://live---metadata-5covpqijaa-uc.a.run.app/metadata/12",
-            "MintBatchTaskID": 1
-        }
-    ]
-}
+[
+    {
+        "id": 8372,
+        "created_at": "2022-09-28T07:54:53.602Z",
+        "updated_at": "2022-09-28T07:54:53.602Z",
+        "deleted_at": null,
+        "app_id": 2,
+        "chain_type": 1,
+        "chain_id": 1,
+        "contract": "cfxtest:acbf8taf6zzy99kncvu7d81vyavaz2ay5254ca3j7c",
+        "contract_type": 1,
+        "tx_id": 8474,
+        "hash": "",
+        "status": 0,
+        "error": "",
+        "mint_to": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
+        "token_id": "1",
+        "amount": 1,
+        "token_uri": "https://live---metadata-5covpqijaa-uc.a.run.app/metadata/10",
+        "mint_type": 3
+    },
+    {
+        "id": 8373,
+        "created_at": "2022-09-28T07:54:53.602Z",
+        "updated_at": "2022-09-28T07:54:53.602Z",
+        "deleted_at": null,
+        "app_id": 2,
+        "chain_type": 1,
+        "chain_id": 1,
+        "contract": "cfxtest:acbf8taf6zzy99kncvu7d81vyavaz2ay5254ca3j7c",
+        "contract_type": 1,
+        "tx_id": 8474,
+        "hash": "",
+        "status": 0,
+        "error": "",
+        "mint_to": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
+        "token_id": "22",
+        "amount": 1,
+        "token_uri": "https://live---metadata-5covpqijaa-uc.a.run.app/metadata/11",
+        "mint_type": 3
+    },
+    {
+        "id": 8374,
+        "created_at": "2022-09-28T07:54:53.602Z",
+        "updated_at": "2022-09-28T07:54:53.602Z",
+        "deleted_at": null,
+        "app_id": 2,
+        "chain_type": 1,
+        "chain_id": 1,
+        "contract": "cfxtest:acbf8taf6zzy99kncvu7d81vyavaz2ay5254ca3j7c",
+        "contract_type": 1,
+        "tx_id": 8474,
+        "hash": "",
+        "status": 0,
+        "error": "",
+        "mint_to": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
+        "token_id": "23",
+        "amount": 1,
+        "token_uri": "https://live---metadata-5covpqijaa-uc.a.run.app/metadata/12",
+        "mint_type": 3
+    }
+]
 ```
 {% endtab %}
 
@@ -311,7 +316,7 @@ The `Mint NFT with file` API provides users with the entry to call the ERC721 or
 | chain\_id      | The id of the chain                                           | integer |
 | chain\_type    | The type of the chain                                         | integer |
 | contract\_type | The type of the contract                                      | integer |
-| contract       | The address of the nft                                        | string  |
+| contract       | The address of the contract                                        | string  |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
 | id             | The id of the storage                                         | integer |
@@ -410,7 +415,7 @@ The **`MintTask Struct`** is listed as follow:
 | chain\_id      | The id of the chain                                           | integer |
 | chain\_type    | The type of the chain                                         | integer |
 | contract\_type | The type of the contract                                      | integer |
-| contract       | The address of the nft                                        | string  |
+| contract       | The address of the contract                                        | string  |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
 | id             | The id of the storage                                         | integer |
@@ -500,7 +505,7 @@ The **`MintTask Struct`** is listed as follow:
 | chain\_id      | The id of the chain                                           | integer |
 | chain\_type    | The type of the chain                                         | integer |
 | contract\_type | The type of the contract                                      | integer |
-| contract       | The address of the nft                                        | string  |
+| contract       | The address of the contract                                        | string  |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
 | id             | The id of the storage                                         | integer |
@@ -579,7 +584,7 @@ The `Query detailed NFT` API provides users with the entry to query the detailed
 | chain\_id      | The id of the chain                                           | integer |
 | chain\_type    | The type of the chain                                         | integer |
 | contract\_type | The type of the contract                                      | integer |
-| contract       | The address of the nft                                        | string  |
+| contract       | The address of the contract                                        | string  |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
 | id             | The id of the storage                                         | integer |
