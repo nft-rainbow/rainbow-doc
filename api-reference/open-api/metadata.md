@@ -43,6 +43,7 @@ The struct of the MetadataAttribute is listed as bellow.
   "description": "this is a test metadata",
   "image": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
   "name": "test"
+  "external_link": "https://www.google.com/search",
 }
 ```
 {% endtab %}
