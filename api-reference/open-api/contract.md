@@ -189,13 +189,19 @@ The `Set sponsor` API provides users to set a sponser for a specific contract ac
 
 {% tab title="Response" %}
 ```
-"success"
+| Name   | Meaning                   | Type    |
+| ------ | ------------------------- | ------- |
+| sponsor_gas_tx_id | The id of the sponsor gas tx | integer |
+| sponsor_collateral_tx_id | The id of the sponsor collateral tx | integer |
 ```
 {% endtab %}
 
 {% tab title="Response Example" %}
 ```
-"success"
+{
+    "sponsor_gas_tx_id": 8475,
+    "sponsor_collateral_tx_id": 8476
+}
 ```
 {% endtab %}
 
