@@ -235,7 +235,7 @@ The `Add Contract Sponsor Users` API provides users to add the address in the wh
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>users</td><td>The addresses being added into the whitelist</td><td>body</td><td>[]string</td><td>true</td></tr><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
@@ -257,7 +257,8 @@ The `Add Contract Sponsor Users` API provides users to add the address in the wh
 curl --request POST \
   --url https://api.nftrainbow.xyz/v1/contracts/{address}/sponsor/whitelist/ \
   --header 'Authorization: Bearer {JWT}' \
-  --header 'Content-Type: application/json'
+  --header 'Content-Type: application/json' \
+  --data `["cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8"]`
 ```
 {% endtab %}
 {% endtabs %}
@@ -300,7 +301,9 @@ The `Remove Contract Sponsor Users` API provides users to remove the address fro
 curl --request DELETE \
   --url https://api.nftrainbow.xyz/v1/contracts/{address}/sponsor/whitelist/ \
   --header 'Authorization: Bearer {JWT}' \
-  --header 'Content-Type: application/json'
+  --header 'Content-Type: application/json' \
+  --data `["cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8"]`
+  
 ```
 {% endtab %}
 {% endtabs %}
