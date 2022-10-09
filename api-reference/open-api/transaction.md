@@ -53,7 +53,7 @@ The `Query Transaction Information` API provides users to get the transaction in
 {% tab title="Requst Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/tx/{id} \
+  --url https://api.nftrainbow.cn/v1/tx/{id} \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```

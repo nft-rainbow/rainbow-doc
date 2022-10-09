@@ -47,7 +47,7 @@ The `Query specific NFT of specific account` API provides users to get the nft i
 {% tab title="Requst Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/nft/{address}/{token_id} \
+  --url https://api.nftrainbow.cn/v1/nft/{address}/{token_id} \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```

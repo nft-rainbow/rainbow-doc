@@ -82,7 +82,7 @@ The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contr
             "mint_to": "cfxtest:aar9up0wsbgtw7f0g5tyc4hbwb2wa5wf7emmk94znd",
             "token_id": 0,
             "amount": 1,
-            "token_uri": "https://dev.nftrainbow.xyz/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7b.json",
+            "token_uri": "https://dev.nftrainbow.cn/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7b.json",
             "mint_type": 0
         }
 ```
@@ -91,7 +91,7 @@ The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contr
 {% tab title="Requst Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/mints/ \
+  --url https://api.nftrainbow.cn/v1/mints/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
   --data '{
@@ -257,7 +257,7 @@ The MintTask construct is showed in the following.
 {% tab title="Requst Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/mints/customizable/batch \
+  --url https://api.nftrainbow.cn/v1/mints/customizable/batch \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
   --data '{
@@ -347,7 +347,7 @@ The `Mint NFT with file` API provides users with the entry to call the ERC721 or
             "mint_to": "cfxtest:aar9up0wsbgtw7f0g5tyc4hbwb2wa5wf7emmk94znd",
             "token_id": 0,
             "amount": 1,
-            "token_uri": "https://dev.nftrainbow.xyz/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7b.json",
+            "token_uri": "https://dev.nftrainbow.cn/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7b.json",
             "mint_type": 0
         }
 ```
@@ -356,7 +356,7 @@ The `Mint NFT with file` API provides users with the entry to call the ERC721 or
 {% tab title="Request Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/mints/easy/files \
+  --url https://api.nftrainbow.cn/v1/mints/easy/files \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: multipart/form-data' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
@@ -446,7 +446,7 @@ The **`MintTask Struct`** is listed as follow:
             "mint_to": "cfxtest:aar9up0wsbgtw7f0g5tyc4hbwb2wa5wf7emmk94znd",
             "token_id": 0,
             "amount": 1,
-            "token_uri": "https://dev.nftrainbow.xyz/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7b.json",
+            "token_uri": "https://dev.nftrainbow.cn/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7b.json",
             "mint_type": 0
         }
 ```
@@ -455,7 +455,7 @@ The **`MintTask Struct`** is listed as follow:
 {% tab title="Request Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/mints/easy/urls \
+  --url https://api.nftrainbow.cn/v1/mints/easy/urls \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \
   --data '{
@@ -538,7 +538,7 @@ The **`MintTask Struct`** is listed as follow:
             "mint_to": "cfxtest:aar9up0wsbgtw7f0g5tyc4hbwb2wa5wf7emmk94znd",
             "token_id": 0,
             "amount": 1,
-            "token_uri": "https://dev.nftrainbow.xyz/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7b.json",
+            "token_uri": "https://dev.nftrainbow.cn/assets/metadata/0/nft/0b7ba21ca161facbf392e8b275f2d62bbf78eb5302f13564415de85879b7cd7b.json",
             "mint_type": 0
             }
 ]
@@ -550,7 +550,7 @@ The **`MintTask Struct`** is listed as follow:
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/mints/ \
+  --url https://api.nftrainbow.cn/v1/mints/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
@@ -624,7 +624,7 @@ The `Query detailed NFT` API provides users with the entry to query the detailed
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/mints/{id} \
+  --url https://api.nftrainbow.cn/v1/mints/{id} \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```

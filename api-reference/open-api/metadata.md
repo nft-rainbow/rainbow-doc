@@ -86,7 +86,7 @@ The **ExposedMetadataAttribute struct** is listed as follow:
   "image": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
   "name": "test",
   "external_link": "https://www.google.com/search",
-  "uri": "https://dev.nftrainbow.xyz/assets/metadata/2/nft/db2078aed6187e487a46a19624ba1559faddeb096849c4688347302023c40f6b.json"
+  "uri": "https://dev.nftrainbow.cn/assets/metadata/2/nft/db2078aed6187e487a46a19624ba1559faddeb096849c4688347302023c40f6b.json"
 }
 ```
 {% endtab %}
@@ -94,7 +94,7 @@ The **ExposedMetadataAttribute struct** is listed as follow:
 {% tab title="Request Sample" %}
 ```
 curl --request POST
---url https://api.nftrainbow.xyz/v1/metadata/ \
+--url https://api.nftrainbow.cn/v1/metadata/ \
 --header 'Authorization: Bearer {JWT}' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -170,7 +170,7 @@ The **ExposedMetadataAttribute struct** is listed as follow:
   "metadata_id": "f35c25ced3f537e8850a377c01d22aa7507069270054d12587ddbe5fc47ec490",
   "image": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
   "name": "test",
-  "uri": "https://dev.nftrainbow.xyz/assets/metadata/2/nft/db2078aed6187e487a46a19624ba1559faddeb096849c4688347302023c40f6b.json"
+  "uri": "https://dev.nftrainbow.cn/assets/metadata/2/nft/db2078aed6187e487a46a19624ba1559faddeb096849c4688347302023c40f6b.json"
 }
 ```
 {% endtab %}
@@ -268,7 +268,7 @@ The **`attributes struct`** is listed as follow:
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/metadata/ \
+  --url https://api.nftrainbow.cn/v1/metadata/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```

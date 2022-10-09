@@ -101,7 +101,7 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 {% tab title="Request Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/contracts/ \
+  --url https://api.nftrainbow.cn/v1/contracts/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \
   --data ' {
@@ -157,7 +157,7 @@ The `Update contract admin` API provides users the entry to update the admin of 
 {% tab title="Request Sample" %}
 ```
 curl --request PUT \
-  --url https://api.nftrainbow.xyz/v1/contracts/{address}/admin \
+  --url https://api.nftrainbow.cn/v1/contracts/{address}/admin \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
@@ -208,7 +208,7 @@ The `Set sponsor` API provides users to set a sponser for a specific contract ac
 {% tab title="Requst Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/contracts/{address}/sponsor \
+  --url https://api.nftrainbow.cn/v1/contracts/{address}/sponsor \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
@@ -255,7 +255,7 @@ The `Add Contract Sponsor Users` API provides users to add the address in the wh
 {% tab title="Requst Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/contracts/{address}/sponsor/whitelist/ \
+  --url https://api.nftrainbow.cn/v1/contracts/{address}/sponsor/whitelist/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \
   --data `["cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8"]`
@@ -299,7 +299,7 @@ The `Remove Contract Sponsor Users` API provides users to remove the address fro
 {% tab title="Requst Sample" %}
 ```
 curl --request DELETE \
-  --url https://api.nftrainbow.xyz/v1/contracts/{address}/sponsor/whitelist/ \
+  --url https://api.nftrainbow.cn/v1/contracts/{address}/sponsor/whitelist/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \
   --data `["cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8"]`
@@ -395,7 +395,7 @@ The **`Contract Struct`** is listed as follow:
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/contracts/ \
+  --url https://api.nftrainbow.cn/v1/contracts/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
@@ -475,7 +475,7 @@ The `Query detail contract` API provides users the entry to get the detail contr
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/contracts/detail/{id} \
+  --url https://api.nftrainbow.cn/v1/contracts/detail/{id} \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
@@ -532,7 +532,7 @@ The `Query sponsor` API provides users the entry to get the sponsors of a specif
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/contracts/{address}/sponsor \
+  --url https://api.nftrainbow.cn/v1/contracts/{address}/sponsor \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
@@ -577,7 +577,7 @@ The `Query contract admin` API provides users the entry to get the admin of the 
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/contracts/{address}/admin \
+  --url https://api.nftrainbow.cn/v1/contracts/{address}/admin \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
@@ -618,7 +618,7 @@ Return the slices of the addresses in the whiltelist.
 {% tab title="Requst Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/contracts/{address}/sponsor/whitelist/ \
+  --url https://api.nftrainbow.cn/v1/contracts/{address}/sponsor/whitelist/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```
