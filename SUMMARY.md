@@ -6,11 +6,9 @@
 
 * [Mints](tutorials/mints/README.md)
   * [铸造NFT快速指南](tutorials/mints/mints-zh.md)
-<<<<<<< HEAD
 * [OpenAPI](https://github.com/nft-rainbow/Swagger-API/blob/main/swagger.json)
 * [Postman Collection](https://app.getpostman.com/run-collection/11713837-cbd0da1f-c17b-4f2a-8749-0c89c467ada5?action=collection%2Ffork\&collection-url=entityId%3D11713837-cbd0da1f-c17b-4f2a-8749-0c89c467ada5%26entityType%3Dcollection%26workspaceId%3De79ada8c-30d2-4354-9597-0980b87bac8f)
 * [Cross-Functional Flowchart](tutorials/flowchart/cross_function.html)
-=======
 * [By Community](tutorials/by-community/README.md)
   * [NFTRainbow 使用教程](https://forum.conflux.fun/t/nftrainbow/16433)
 
@@ -19,7 +17,6 @@
 * [FAQs](FAQs.md)
 * [Changelog](CHANGELOG.md)
 * [RoadMap](ROADMAP.md)
->>>>>>> 7ec58491c8db86a078e834abec9bae41ca4e2135
 
 ## API Reference
 
