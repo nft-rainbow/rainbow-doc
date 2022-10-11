@@ -1,28 +1,15 @@
 # Quotas and rate limits
 
-## Quotas <a href="#quotas" id="quotas"></a>
+## Quotas
 
-### Free tier
-
-| CHAIN | ACTION | LIMIT TIMEFRAME | FREE TIER QUOTA |
-| ----- | ------ | --------------- | --------------- |
-|       |        |                 |                 |
-|       |        |                 |                 |
-|       |        |                 |                 |
-
-### Growth tier
-
-| CHAIN | ACTION | GROWTH TIER QUOTA | FREE TIER QUOTA | COST OF OVERAGES |
-| ----- | ------ | ----------------- | --------------- | ---------------- |
-|       |        |                   |                 |                  |
-|       |        |                   |                 |                  |
-|       |        |                   |                 |                  |
-|       |        |                   |                 |                  |
+| API | LIMIT TIMEFRAME | COMMON USER | COMPANY |
+| --- | --------------- | --------------- | ----------------- |
+| Deploy Contract | requests per month |      10      |  NO LIMIT      |
+| Upload file | requests per month |      10      |   NO LIMIT     |
+| Mint NFTs | requests per month |      100      |    NO LIMIT     |
 
 ## Rate Limits
 
 | API | LIMIT TIMEFRAME | FREE TIER LIMIT | GROWTH TIER LIMIT |
 | --- | --------------- | --------------- | ----------------- |
-|     |                 |                 |                   |
-|     |                 |                 |                   |
-|     |                 |                 |                   |
+| All | requests per second |      5      |       10          |

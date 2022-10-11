@@ -55,7 +55,7 @@ The returned result can be used to access other OPEN-APIs
 {% tab title="Request Sample" %}
 ```
 curl --request POST \
-  --url https://api.nftrainbow.xyz/v1/login \
+  --url https://api.nftrainbow.cn/v1/login \
   --header 'Content-Type: application/json' \
   --data `{
     "app_id": "qUUcdueA",
@@ -103,7 +103,7 @@ curl --request POST \
 {% tab title="Request Sample" %}
 ```
 curl --request GET \
-  --url https://api.nftrainbow.xyz/v1/refresh_token \
+  --url https://api.nftrainbow.cn/v1/refresh_token \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json'
 ```

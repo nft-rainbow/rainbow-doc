@@ -1,49 +1,55 @@
 # NFTRainbow The Rainbow Bridge for NFTs 🌈🌉🦄
 
-NFTRainbow is a rainbow bridge for NFTs: a One-Stop, Simple and Developer-Friendly NFT Infrastructure & APIs to help developers bring their NFT applications to market in hours instead of months. We take care of the NFT infrastructure so you can focus on your application. Built by developers for developers.
+NFTRainbow -- NFT 彩虹桥。是一个 ”一站式，简单，开发者友好的 NFT 基础设施&API服务“，可以帮助开发者将 NFT 应用推向市场的时间从几个月缩减至几个小时。我们负责搭建好 NFT 基础设施，开发者可以将精力专注于应用开发。由开发者打造，服务于开发者。
 
-## Developing NFT Applications used to be Hard, Slow and Expensive 🤯
+## NFT 应用开发通常是困难，缓慢和昂贵的 🤯
 
-### Blockchain stack is complex 🤔
+### 复杂的 Blockchain 技术栈 🤔
 
-Grasping Solidity, Web3.js, GraphQL, nodes, IPFS, data-intensive applications, etc. is hard, time-consuming and usually needs a team to cover all of the skills.
+开发者需要学习区块链的基础概念比如区块链，账户，私钥，助记词等等；掌握新的开发技能如 Solidity，Web3.js，GraphQL，节点，IPFS等等。这往往需要花费大量的时间，甚至需要多人分工来完成。
 
-### Setting up and maintaining blockchain infra is like selecting the nightmare difficulty in Doom 👹
+### 搭建和维护区块链基础设施是一件有挑战的工作 👹
 
-Teams waste 25-50% of engineering resources managing nodes, developing NFT indexers, doing DevOps, etc. Going multi-chain only compounds that because it usually takes 3+ months to develop a robust NFT infrastructure per chain.
+团队需要花费 25-50% 的工程师资源搭建区块链节点，NFT 索引服务，并进行持续的运维（节点升级）。如果想开发多链应用，这些工作不只是翻倍，因为通长开发一个健壮的一条链的 NFT 基础设施至少需要三个月。
 
-### Running your own nodes is expensive 💸
+### 运行独立的节点非常昂贵 💸
 
-Already only for Ethereum, you will run into a minimum of $84k/year in costs i.e. $2k-5k/month for cloud and $5K/month for engineering time. Using hosted node providers is even more expensive as you need to retreive all the historical NFT data.
+以`以太坊`为例，运行一个节点，一年最少需要 8.4w$，如果是云服务器每月需要 $2k-5k，以及 $5K 每月的人力费用。使用托管的节点服务更加昂贵，因为你需要查询所有的 NFT 历史数据。
 
-### Non-infrastructure first providers are a risky bet 🎰
+### 使用非基础设施节点提供商有很大的业务风险 🎰
 
-Using heavily rate-limited APIs is risky because if the service provider is not an infrastructure first company, they can change their business strategy and limit or turn off their APIs, leaving your project being shut down.
+他们的 API 通常被严重的限流保护，因为他们不是一个基础设施为核心业务的公司，他们可能随时修改业务策略，限流策略，甚至关闭他们的服务，这将会导致你的应用非常尴尬。
 
-### Speed matters in this market 🚀
+### NFT 市场，推出速度非常关键 🚀
 
-Being leapfrogged by the competition in a fast moving NFT market is one of the top worries for many. Slow-to-deploy and -use APIs will hinder your go-to-market, thus you risk losing users, revenue and being displaced by the competition.
+被竞争对手抢先发布产品是快速发展的 NFT 市场参与者最大的忌讳之一。开发周期长，部署落后会阻碍你进入市场，从而导致丢失用户，收益，被竞争对手所替代。
 
-## NFTRainbow Core Products 🏳️‍🌈🍭
+## NFTRainbow 核心产品和优势 🏳️‍🌈🍭
 
-We provide products which make the developer experience as easy as possible and accelerate NFT application development. All of them enable to focus on building the best product for your users, instead of reinventing the NFT infrastructure wheel.
+我们提供服务能够让开发者以最快的速度完成他们 NFT 应用的开发。这些产品可以让开发者把更多的精力放在为用户开发最好的产品服务上，而不是重新制造 NFT 基础设施轮子。
 
-### NFTRainbow Easy Minting 🖼️
+### NFT Easy Minting 🖼️
 
-Using our minting APIs, you can turn anything into an NFT for free in less than 120 seconds. No previous blockchain experience is needed, there's zero maintenance and using Conflux, it does not harm the environment as there is no electricity hungry mining. Checkout Minting Quickstart to start building.
+使用我们的 API 服务，开发者可以在`两分钟内`将任何资源铸造成 NFT。开发者无需具备区块链知识和经验，领维护成本。
 
-### Developer dashboard 🖥
+* 提供多种资源托管方式：中心化存储，IPFS，云存储
+* 支持树图链，未来会支持 Ethereum，BNB chain，Polygon，甚至联盟链
+* 支持多种数字藏品应用场景
+* 支持批量铸造，超高上链性能
 
-In your NFTRainbow dashboard you can see all NFTs and contracts you have created, review your usage and quotas, and much more.
+### 开发者控制台 🖥
 
-## Support and Developer Community 👥
+在我们的开发者控制台，用户可以查看自己部署的所有合约，铸造的 NFT，以及 API 使用情况。
 
-Our goal is to support you throughout your developer experience and help you succeed with your NFT application. We have expert, hands-on support, dedicated for all users.
+## 技术支持&开发者社区 👥
 
-Find solutions to common issues in our FAQ or email us at info@nftrainbow.xyz.
+我们的目标是提升开发者的开发体验，帮助 NFT 应用快速完成产品，取得成功。我们有区块链专家手把手指导，随时解决问题。
 
-Join our community Feishu for support from our team and a space to discuss NFT related topics, ask questions, and engage with other like-minded NFT developers. Besides that, we provide:
+用户可至开发者文档 [FAQs](./FAQs.md) 部分查看常见问题解决方案，也可以通过邮箱 `contract@nftrainbow.xyz` 联系我们。
 
-* Direct access to our core engineers
-* Advising on building your NFT product
-* Connections to other people in the NFT industry
+加入我们的开发者社区，在那里可以得到 NFTRainbow 团队的帮助和支持，以及讨论 NFT 相关的话题。并和其他 NFT 爱好者建立联系，互相交流。
+除此之外我们还提供：
+
+* 官方核心开发者的直接支持
+* 为您的 NFT 产品提供咨询服务
+* 帮助您与 NFT 行业的其他大咖建立联系

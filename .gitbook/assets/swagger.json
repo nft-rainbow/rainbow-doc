@@ -1,4 +1,8 @@
 {
+    "schemes": [
+        "http",
+        "https"
+    ],
     "swagger": "2.0",
     "info": {
         "description": "The responses of the open api in swagger focus on the data field rather than the code and the message fields",
@@ -10,10 +14,10 @@
         },
         "version": "1.0"
     },
-    "host": "api.nftrainbow.xyz",
+    "host": "api.nftrainbow.cn",
     "basePath": "/v1",
     "paths": {
-        "/contracts": {
+        "/contracts/": {
             "get": {
                 "security": [
                     {
@@ -28,6 +32,7 @@
                     "Contract"
                 ],
                 "summary": "Obtain contract list",
+                "operationId": "ListContracts",
                 "parameters": [
                     {
                         "type": "string",
@@ -40,29 +45,26 @@
                         "type": "integer",
                         "description": "page",
                         "name": "page",
-                        "in": "formData"
+                        "in": "query"
                     },
                     {
                         "type": "integer",
                         "description": "limit",
                         "name": "limit",
-                        "in": "formData"
+                        "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/models.Contract"
-                            }
+                            "$ref": "#/definitions/models.ContractTaskQueryResult"
                         }
                     },
-                    "50000": {
+                    "500": {
                         "description": "Internal Server error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
@@ -81,6 +83,7 @@
                     "Contract"
                 ],
                 "summary": "Deploy contract",
+                "operationId": "DeployContract",
                 "parameters": [
                     {
                         "type": "string",
@@ -106,28 +109,203 @@
                             "$ref": "#/definitions/models.Contract"
                         }
                     },
-                    "40000": {
+                    "400": {
                         "description": "Invalid request",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     },
-                    "40002": {
-                        "description": "Invalid address",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "50000": {
+                    "500": {
                         "description": "Internal Server error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
             }
         },
-        "/contracts/:address/sponsor": {
+        "/contracts/detail/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get Contract info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Contract detail",
+                "operationId": "GetContractInfo",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Contract"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/contracts/{address}/admin": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get Contract Admin",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Get administrator of contract, only work on conflux chain",
+                "operationId": "GetContractAdmin",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Admin address",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "599": {
+                        "description": "Businesss error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Update administrator of contract, only work on conflux chain",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Update administrator of contract",
+                "operationId": "UpdateContractAdmin",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "contract admin update info",
+                        "name": "admin_info",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.ContractAdminUpdateDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transaction id",
+                        "schema": {
+                            "$ref": "#/definitions/services.SendTxResp"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "599": {
+                        "description": "Businesss error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/contracts/{address}/sponsor": {
             "get": {
                 "security": [
                     {
@@ -142,6 +320,7 @@
                     "Contract"
                 ],
                 "summary": "Query sponsor",
+                "operationId": "GetContractSponsorInfo",
                 "parameters": [
                     {
                         "type": "string",
@@ -168,22 +347,19 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/services.SponsorInfo"
-                            }
+                            "$ref": "#/definitions/services.SponsorInfo"
                         }
                     },
-                    "40002": {
+                    "400": {
                         "description": "Invalid address",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     },
-                    "50000": {
+                    "500": {
                         "description": "Internal Server error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
@@ -202,6 +378,7 @@
                     "Contract"
                 ],
                 "summary": "Set sponsor",
+                "operationId": "SetContractSponsor",
                 "parameters": [
                     {
                         "type": "string",
@@ -225,22 +402,225 @@
                             "type": "string"
                         }
                     },
-                    "40002": {
+                    "400": {
                         "description": "Invalid address",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     },
-                    "50000": {
+                    "500": {
                         "description": "Internal Server error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
             }
         },
-        "/files": {
+        "/contracts/{address}/sponsor/whitelist": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get contract sponsored whitelist, only work on conflux chain",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Get contract sponsored whitelist",
+                "operationId": "GetContractSponsoredWhitelist",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Contract sponsored whitelist",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "599": {
+                        "description": "Businesss error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Add contract sponsored whitelist, only work on conflux chain",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Add contract sponsored whitelist",
+                "operationId": "AddContractSponsorWhitelist",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Adding sponsor whitelist",
+                        "name": "users",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transaction id",
+                        "schema": {
+                            "$ref": "#/definitions/services.SendTxResp"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "599": {
+                        "description": "Businesss error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Remove contract sponsored whitelist, only work on conflux chain",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Remove contract sponsored whitelist",
+                "operationId": "RemoveContractSponsorWhitelist",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Removing sponsor whitelist",
+                        "name": "users",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transaction id",
+                        "schema": {
+                            "$ref": "#/definitions/services.SendTxResp"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "599": {
+                        "description": "Businesss error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/files/": {
             "get": {
                 "security": [
                     {
@@ -255,6 +635,7 @@
                     "Files"
                 ],
                 "summary": "Obtain file list",
+                "operationId": "ListFiles",
                 "parameters": [
                     {
                         "type": "string",
@@ -280,16 +661,13 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/models.ExposedFile"
-                            }
+                            "$ref": "#/definitions/models.FilesQueryResult"
                         }
                     },
-                    "50000": {
+                    "500": {
                         "description": "Internal Server error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
@@ -311,6 +689,7 @@
                     "Files"
                 ],
                 "summary": "Upload file",
+                "operationId": "UploadFile",
                 "parameters": [
                     {
                         "type": "string",
@@ -334,10 +713,61 @@
                             "$ref": "#/definitions/services.UploadFilesResponse"
                         }
                     },
-                    "50000": {
+                    "500": {
                         "description": "Internal Server error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/files/oss": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Upload a file to OSS, which can be a video, an image and so on",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Upload file to OSS",
+                "operationId": "UploadFileToOss",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer openapi_token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "file",
+                        "description": "uploaded file",
+                        "name": "file",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/services.UploadFilesResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
@@ -353,33 +783,38 @@
                     "Login"
                 ],
                 "summary": "App login",
+                "operationId": "LoginApp",
                 "parameters": [
                     {
-                        "type": "string",
                         "description": "app_id",
                         "name": "app_id",
-                        "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "app_secret",
-                        "name": "app_secret",
-                        "in": "formData",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "correct response",
+                        "in": "body",
+                        "required": true,
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "40101": {
-                        "description": "Internal error",
+                    {
+                        "description": "app_secret",
+                        "name": "app_secret",
+                        "in": "body",
+                        "required": true,
                         "schema": {
                             "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "auth token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
@@ -400,6 +835,7 @@
                     "Metadata"
                 ],
                 "summary": "Obtain metadata list",
+                "operationId": "ListMetadatas",
                 "parameters": [
                     {
                         "type": "string",
@@ -407,12 +843,6 @@
                         "name": "Authorization",
                         "in": "header",
                         "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "nft_address",
-                        "name": "nft_address",
-                        "in": "query"
                     },
                     {
                         "type": "string",
@@ -431,16 +861,13 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/services.QueryMetadataResponse"
-                            }
+                            "$ref": "#/definitions/models.ExposedMetadataQueryResult"
                         }
                     },
-                    "50000": {
+                    "500": {
                         "description": "Internal Server error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
@@ -459,6 +886,7 @@
                     "Metadata"
                 ],
                 "summary": "Create NFT metadata",
+                "operationId": "CreateMetadata",
                 "parameters": [
                     {
                         "type": "string",
@@ -473,7 +901,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.Metadata"
+                            "$ref": "#/definitions/services.MetadataDto"
                         }
                     }
                 ],
@@ -481,25 +909,25 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/services.CreateMetadataResponse"
+                            "$ref": "#/definitions/models.ExposedMetadata"
                         }
                     },
-                    "40000": {
+                    "400": {
                         "description": "Invalid request",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     },
-                    "50000": {
+                    "500": {
                         "description": "Internal Server error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
             }
         },
-        "/metadata/:metadata_id": {
+        "/metadata/{metadata_id}": {
             "get": {
                 "security": [
                     {
@@ -514,6 +942,7 @@
                     "Metadata"
                 ],
                 "summary": "Query metadata",
+                "operationId": "GetMetadatInfo",
                 "parameters": [
                     {
                         "type": "string",
@@ -523,7 +952,7 @@
                         "required": true
                     },
                     {
-                        "type": "integer",
+                        "type": "string",
                         "description": "metadata_id",
                         "name": "metadata_id",
                         "in": "path",
@@ -537,22 +966,22 @@
                             "$ref": "#/definitions/models.ExposedMetadata"
                         }
                     },
-                    "40000": {
+                    "400": {
                         "description": "Invalid request",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     },
-                    "50000": {
+                    "500": {
                         "description": "Internal Server error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
             }
         },
-        "/mints": {
+        "/mints/": {
             "get": {
                 "security": [
                     {
@@ -567,6 +996,7 @@
                     "Mints"
                 ],
                 "summary": "Obtain NFT list",
+                "operationId": "ListMints",
                 "parameters": [
                     {
                         "type": "string",
@@ -579,29 +1009,26 @@
                         "type": "integer",
                         "description": "page",
                         "name": "page",
-                        "in": "formData"
+                        "in": "query"
                     },
                     {
                         "type": "integer",
                         "description": "limit",
                         "name": "limit",
-                        "in": "formData"
+                        "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/models.MintTask"
-                            }
+                            "$ref": "#/definitions/models.MintTaskQueryResult"
                         }
                     },
-                    "50000": {
+                    "500": {
                         "description": "Internal Server error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
@@ -620,6 +1047,7 @@
                     "Mints"
                 ],
                 "summary": "Mint NFT",
+                "operationId": "CustomMint",
                 "parameters": [
                     {
                         "type": "string",
@@ -629,8 +1057,8 @@
                         "required": true
                     },
                     {
-                        "description": "custom_mint_info",
-                        "name": "custom_mint_info",
+                        "description": "custom_mint_dto",
+                        "name": "custom_mint_dto",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -642,28 +1070,78 @@
                     "200": {
                         "description": "OK",
                         "schema": {
+                            "$ref": "#/definitions/models.MintTask"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/mints/customizable/batch": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Mint several NFTs once",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mints"
+                ],
+                "summary": "Batch Mint NFTs",
+                "operationId": "BatchCustomMint",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "custom_mint_batch_dto",
+                        "name": "custom_mint_batch_dto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.CustomMintBatchDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/services.EasyMintFileDto"
+                                "$ref": "#/definitions/models.MintTask"
                             }
                         }
                     },
-                    "40000": {
+                    "400": {
                         "description": "Invalid request",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     },
-                    "40002": {
-                        "description": "Invalid address",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "50000": {
+                    "500": {
                         "description": "Internal Server error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
@@ -687,6 +1165,7 @@
                     "Mints"
                 ],
                 "summary": "Mint NFT with file",
+                "operationId": "EasyMintByFile",
                 "parameters": [
                     {
                         "type": "string",
@@ -697,47 +1176,53 @@
                     },
                     {
                         "type": "file",
-                        "description": "uploaded file",
+                        "description": "file",
                         "name": "file",
                         "in": "formData",
                         "required": true
                     },
                     {
-                        "description": "easy_mint_file_info",
-                        "name": "easy_mint_file_info",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/services.EasyMintFileDto"
-                        }
+                        "type": "string",
+                        "name": "chain",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "description",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "mint_to_address",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "name",
+                        "in": "formData",
+                        "required": true
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/services.EasyMintFileDto"
-                            }
+                            "$ref": "#/definitions/models.MintTask"
                         }
                     },
-                    "40000": {
+                    "400": {
                         "description": "Invalid request",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     },
-                    "40002": {
-                        "description": "Invalid address",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "50000": {
+                    "500": {
                         "description": "Internal Server error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
@@ -758,6 +1243,7 @@
                     "Mints"
                 ],
                 "summary": "Mint NFT with metadata",
+                "operationId": "EasyMintByMetadata",
                 "parameters": [
                     {
                         "type": "string",
@@ -780,28 +1266,134 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/services.EasyMintFileDto"
-                            }
+                            "$ref": "#/definitions/models.MintTask"
                         }
                     },
-                    "40000": {
+                    "400": {
                         "description": "Invalid request",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     },
-                    "40002": {
-                        "description": "Invalid address",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "50000": {
+                    "500": {
                         "description": "Internal Server error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/mints/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get NFT detail info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mints"
+                ],
+                "summary": "Mint NFT detail",
+                "operationId": "GetMintDetail",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.MintTask"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/nft/{address}/{token_id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get NFT info, mainly owner and metadata",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "NFTs"
+                ],
+                "summary": "Get NFT info, mainly owner and metadata",
+                "operationId": "NFTInfo",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "token_id",
+                        "name": "token_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/services.NFT"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
@@ -822,6 +1414,7 @@
                     "Login"
                 ],
                 "summary": "Refresh JWT",
+                "operationId": "RefreshAuth",
                 "parameters": [
                     {
                         "type": "string",
@@ -833,15 +1426,297 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "correct response",
+                        "description": "refreshed auth token",
                         "schema": {
                             "type": "string"
                         }
                     },
-                    "40101": {
-                        "description": "Internal error",
+                    "401": {
+                        "description": "Unauthorized",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/transfers/": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the NFT list containing the transferred NFT information.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transfers"
+                ],
+                "summary": "Obtain the transferred NFTs list",
+                "operationId": "ListTransfer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.TransferTaskQueryResult"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/transfers/customizable": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Transfer NFT by admin",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transfers"
+                ],
+                "summary": "Transfer NFT",
+                "operationId": "TransferNft",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "transfer_dto",
+                        "name": "transfer_dto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.TransferDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.TransferTask"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/transfers/customizable/batch": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Transfer several NFTs once",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transfers"
+                ],
+                "summary": "Batch Transfer NFTs",
+                "operationId": "BatchTransferNft",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "transfer_batch_dto",
+                        "name": "transfer_batch_dto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.TransferBatchDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.TransferTask"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/transfers/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get NFT Transfer detail info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transfers"
+                ],
+                "summary": "Transfer NFT detail",
+                "operationId": "GetTransferDetail",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.TransferTask"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/tx/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get transaction informantion by ID",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "Get transaction informantion by ID",
+                "operationId": "GetTransactionByID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Transaction ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transaction informantion",
+                        "schema": {
+                            "$ref": "#/definitions/services.TxResp"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "599": {
+                        "description": "Businesss error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
                         }
                     }
                 }
@@ -849,12 +1724,6 @@
         }
     },
     "definitions": {
-        "big.Int": {
-            "type": "object"
-        },
-        "cfxaddress.Address": {
-            "type": "object"
-        },
         "gorm.DeletedAt": {
             "type": "object",
             "properties": {
@@ -864,26 +1733,6 @@
                 "valid": {
                     "description": "Valid is true if Time is not NULL",
                     "type": "boolean"
-                }
-            }
-        },
-        "models.Attributes": {
-            "type": "object",
-            "properties": {
-                "attribute_name": {
-                    "type": "string"
-                },
-                "display_type": {
-                    "type": "string"
-                },
-                "metadataId": {
-                    "type": "integer"
-                },
-                "trait_type": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
                 }
             }
         },
@@ -923,12 +1772,27 @@
                 "owner_address": {
                     "type": "string"
                 },
+                "royalties_address": {
+                    "type": "string"
+                },
+                "royalties_bps": {
+                    "type": "integer"
+                },
                 "status": {
                     "description": "0-pending, 1-success, 2-failed",
                     "type": "integer"
                 },
                 "symbol": {
                     "type": "string"
+                },
+                "tokens_burnable": {
+                    "type": "boolean"
+                },
+                "tokens_transferable": {
+                    "type": "boolean"
+                },
+                "transfer_cooldown_time": {
+                    "type": "integer"
                 },
                 "tx_id": {
                     "type": "integer"
@@ -942,7 +1806,96 @@
                 }
             }
         },
-        "models.ExposedAttributes": {
+        "models.ContractTaskQueryResult": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Contract"
+                    }
+                }
+            }
+        },
+        "models.ExposedFile": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "file_name": {
+                    "type": "string"
+                },
+                "file_size": {
+                    "type": "integer"
+                },
+                "file_type": {
+                    "type": "string"
+                },
+                "file_url": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ExposedMetadata": {
+            "type": "object",
+            "required": [
+                "description",
+                "image",
+                "name"
+            ],
+            "properties": {
+                "attributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ExposedMetadataAttribute"
+                    }
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "external_link": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "metadata_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "uri": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ExposedMetadataAttribute": {
             "type": "object",
             "properties": {
                 "attribute_name": {
@@ -959,74 +1912,31 @@
                 }
             }
         },
-        "models.ExposedFile": {
+        "models.ExposedMetadataQueryResult": {
             "type": "object",
             "properties": {
-                "file_name": {
-                    "type": "string"
-                },
-                "file_size": {
+                "count": {
                     "type": "integer"
                 },
-                "file_type": {
-                    "type": "string"
-                },
-                "file_url": {
-                    "type": "string"
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ExposedMetadata"
+                    }
                 }
             }
         },
-        "models.ExposedMetadata": {
+        "models.FilesQueryResult": {
             "type": "object",
             "properties": {
-                "attributes": {
+                "count": {
+                    "type": "integer"
+                },
+                "items": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/models.ExposedAttributes"
+                        "$ref": "#/definitions/models.ExposedFile"
                     }
-                },
-                "description": {
-                    "type": "string"
-                },
-                "external_link": {
-                    "type": "string"
-                },
-                "image": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.Metadata": {
-            "type": "object",
-            "required": [
-                "description",
-                "image",
-                "name"
-            ],
-            "properties": {
-                "attributes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/models.Attributes"
-                    }
-                },
-                "description": {
-                    "type": "string"
-                },
-                "external_link": {
-                    "type": "string"
-                },
-                "image": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "nft_address": {
-                    "type": "string"
                 }
             }
         },
@@ -1048,6 +1958,9 @@
                 "contract": {
                     "type": "string"
                 },
+                "contract_type": {
+                    "type": "integer"
+                },
                 "created_at": {
                     "type": "string"
                 },
@@ -1066,12 +1979,15 @@
                 "mint_to": {
                     "type": "string"
                 },
+                "mint_type": {
+                    "type": "integer"
+                },
                 "status": {
                     "description": "0-pending, 1-success, 2-failed",
                     "type": "integer"
                 },
                 "token_id": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "token_uri": {
                     "type": "string"
@@ -1084,10 +2000,132 @@
                 }
             }
         },
+        "models.MintTaskQueryResult": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.MintTask"
+                    }
+                }
+            }
+        },
+        "models.TransferTask": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "app_id": {
+                    "type": "integer"
+                },
+                "chain_id": {
+                    "type": "integer"
+                },
+                "chain_type": {
+                    "type": "integer"
+                },
+                "contract": {
+                    "type": "string"
+                },
+                "contract_type": {
+                    "type": "integer"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "hash": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "description": "0-pending, 1-success, 2-failed",
+                    "type": "integer"
+                },
+                "token_id": {
+                    "type": "string"
+                },
+                "transfer_from": {
+                    "type": "string"
+                },
+                "transfer_to": {
+                    "type": "string"
+                },
+                "tx_id": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.TransferTaskQueryResult": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.TransferTask"
+                    }
+                }
+            }
+        },
+        "multipart.FileHeader": {
+            "type": "object",
+            "properties": {
+                "filename": {
+                    "type": "string"
+                },
+                "header": {
+                    "$ref": "#/definitions/textproto.MIMEHeader"
+                },
+                "size": {
+                    "type": "integer"
+                }
+            }
+        },
+        "rainbow_errors.RainbowErrorDetailInfo": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "services.ContractAdminUpdateDto": {
+            "type": "object",
+            "required": [
+                "admin_address"
+            ],
+            "properties": {
+                "admin_address": {
+                    "type": "string"
+                }
+            }
+        },
         "services.ContractDeployDto": {
             "type": "object",
             "required": [
                 "chain",
+                "is_sponsor_for_all_user",
                 "name",
                 "owner_address",
                 "symbol",
@@ -1098,7 +2136,14 @@
                     "type": "string"
                 },
                 "chain": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "conflux",
+                        "conflux_test"
+                    ]
+                },
+                "is_sponsor_for_all_user": {
+                    "type": "boolean"
                 },
                 "name": {
                     "type": "string"
@@ -1106,19 +2151,64 @@
                 "owner_address": {
                     "type": "string"
                 },
+                "royalties_address": {
+                    "type": "string"
+                },
+                "royalties_bps": {
+                    "type": "integer"
+                },
                 "symbol": {
                     "type": "string"
                 },
+                "tokens_burnable": {
+                    "type": "boolean"
+                },
+                "tokens_transferable": {
+                    "type": "boolean"
+                },
+                "transfer_cooldown_time": {
+                    "type": "integer"
+                },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "erc721",
+                        "erc1155"
+                    ]
                 }
             }
         },
-        "services.CreateMetadataResponse": {
+        "services.CustomMintBatchDto": {
             "type": "object",
+            "required": [
+                "chain",
+                "contract_address",
+                "contract_type",
+                "mint_items"
+            ],
             "properties": {
-                "metadata_uri": {
+                "chain": {
+                    "type": "string",
+                    "enum": [
+                        "conflux",
+                        "conflux_test"
+                    ]
+                },
+                "contract_address": {
                     "type": "string"
+                },
+                "contract_type": {
+                    "type": "string",
+                    "enum": [
+                        "erc721",
+                        "erc1155"
+                    ]
+                },
+                "mint_items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/services.MintItemDto"
+                    }
                 }
             }
         },
@@ -1127,15 +2217,30 @@
             "required": [
                 "chain",
                 "contract_address",
+                "contract_type",
                 "metadata_uri",
                 "mint_to_address"
             ],
             "properties": {
+                "amount": {
+                    "type": "integer"
+                },
                 "chain": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "conflux",
+                        "conflux_test"
+                    ]
                 },
                 "contract_address": {
                     "type": "string"
+                },
+                "contract_type": {
+                    "type": "string",
+                    "enum": [
+                        "erc721",
+                        "erc1155"
+                    ]
                 },
                 "metadata_uri": {
                     "type": "string"
@@ -1144,29 +2249,6 @@
                     "type": "string"
                 },
                 "token_id": {
-                    "type": "string"
-                }
-            }
-        },
-        "services.EasyMintFileDto": {
-            "type": "object",
-            "required": [
-                "chain",
-                "description",
-                "mint_to_address",
-                "name"
-            ],
-            "properties": {
-                "chain": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "mint_to_address": {
-                    "type": "string"
-                },
-                "name": {
                     "type": "string"
                 }
             }
@@ -1198,14 +2280,74 @@
                 }
             }
         },
-        "services.QueryMetadataResponse": {
+        "services.MetadataDto": {
+            "type": "object",
+            "required": [
+                "description",
+                "image",
+                "name"
+            ],
+            "properties": {
+                "attributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ExposedMetadataAttribute"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "external_link": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "services.MintItemDto": {
+            "type": "object",
+            "required": [
+                "metadata_uri",
+                "mint_to_address"
+            ],
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "metadata_uri": {
+                    "type": "string"
+                },
+                "mint_to_address": {
+                    "type": "string"
+                },
+                "token_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "services.NFT": {
             "type": "object",
             "properties": {
-                "metadata": {
-                    "$ref": "#/definitions/models.ExposedMetadata"
-                },
-                "uri": {
+                "contract_address": {
                     "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                },
+                "token_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "services.SendTxResp": {
+            "type": "object",
+            "properties": {
+                "tx_id": {
+                    "type": "integer"
                 }
             }
         },
@@ -1213,23 +2355,143 @@
             "type": "object",
             "properties": {
                 "collateral_sponsor": {
-                    "$ref": "#/definitions/cfxaddress.Address"
+                    "type": "string"
                 },
                 "collateral_sponsor_balance": {
-                    "$ref": "#/definitions/big.Int"
+                    "type": "string"
                 },
                 "gas_sponsor": {
-                    "$ref": "#/definitions/cfxaddress.Address"
+                    "type": "string"
                 },
                 "gas_sponsor_balance": {
-                    "$ref": "#/definitions/big.Int"
+                    "type": "string"
                 },
                 "gas_upper_bound": {
-                    "description": "Admin                    cfxaddress.Address `json:\"admin\"`",
-                    "$ref": "#/definitions/big.Int"
+                    "type": "string"
                 },
                 "is_all_white_listed": {
                     "type": "boolean"
+                }
+            }
+        },
+        "services.TransferBatchDto": {
+            "type": "object",
+            "required": [
+                "chain",
+                "contract_address",
+                "contract_type",
+                "items"
+            ],
+            "properties": {
+                "chain": {
+                    "type": "string",
+                    "enum": [
+                        "conflux",
+                        "conflux_test"
+                    ]
+                },
+                "contract_address": {
+                    "type": "string"
+                },
+                "contract_type": {
+                    "type": "string",
+                    "enum": [
+                        "erc721",
+                        "erc1155"
+                    ]
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/services.TransferItemDto"
+                    }
+                }
+            }
+        },
+        "services.TransferDto": {
+            "type": "object",
+            "required": [
+                "chain",
+                "contract_address",
+                "contract_type",
+                "token_id",
+                "transfer_from_address",
+                "transfer_to_address"
+            ],
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "chain": {
+                    "type": "string",
+                    "enum": [
+                        "conflux",
+                        "conflux_test"
+                    ]
+                },
+                "contract_address": {
+                    "type": "string"
+                },
+                "contract_type": {
+                    "type": "string",
+                    "enum": [
+                        "erc721",
+                        "erc1155"
+                    ]
+                },
+                "token_id": {
+                    "type": "string"
+                },
+                "transfer_from_address": {
+                    "type": "string"
+                },
+                "transfer_to_address": {
+                    "type": "string"
+                }
+            }
+        },
+        "services.TransferItemDto": {
+            "type": "object",
+            "required": [
+                "token_id",
+                "transfer_from_address",
+                "transfer_to_address"
+            ],
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "token_id": {
+                    "type": "string"
+                },
+                "transfer_from_address": {
+                    "type": "string"
+                },
+                "transfer_to_address": {
+                    "type": "string"
+                }
+            }
+        },
+        "services.TxResp": {
+            "type": "object",
+            "properties": {
+                "error_msg": {
+                    "type": "string"
+                },
+                "hash": {
+                    "type": "string"
+                },
+                "is_finalized": {
+                    "type": "boolean"
+                },
+                "is_success": {
+                    "type": "boolean"
+                },
+                "state_code": {
+                    "type": "integer"
+                },
+                "state_msg": {
+                    "type": "string"
                 }
             }
         },
@@ -1246,6 +2508,15 @@
                     "type": "string"
                 },
                 "file_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "textproto.MIMEHeader": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "array",
+                "items": {
                     "type": "string"
                 }
             }
