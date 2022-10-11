@@ -15,4 +15,4 @@
 8. 创建账户
 9. Mint -> 项目方调用 NFT-Rainbow Mint
 
-![流程图](./cross_function.drawio.png)
+![流程图](./interactive.drawio.png)
