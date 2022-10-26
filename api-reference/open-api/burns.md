@@ -1,6 +1,5 @@
 ---
-description: >-
-  The burns API provide users the entries to burn the NFTs.
+description: The burns API provide users the entries to burn the NFTs.
 ---
 
 # Burns
@@ -11,7 +10,7 @@ description: >-
 
 The `Burn NFT by Admin` API helps users to burn the corresponding NFT.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/burns/" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/burns" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -42,9 +41,9 @@ The `Burn NFT by Admin` API helps users to burn the corresponding NFT.
 {% tab title="Response" %}
 | Name           | Meaning                                                       | Type    |
 | -------------- | ------------------------------------------------------------- | ------- |
-| created_at             | The time of creating the item in the database                        | string     |
-| updated_at      | The time of updating the item in the database                          | string     |
-| deleted_at   | The time of deleting the item in the database                      | string     |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
 | amount         | The amount of the nft                                         | integer |
 | app\_id        | The id of the app                                             | integer |
 | chain\_id      | The id of the chain                                           | integer |
@@ -56,10 +55,10 @@ The `Burn NFT by Admin` API helps users to burn the corresponding NFT.
 | id             | The id of the storage                                         | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | token\_id      | The id of the token                                           | integer |
-| user    | The address of the user                                          | string  |
+| user           | The address of the user                                       | string  |
 | tx\_id         | The id of the transaction                                     | integer |
 | mint\_type     | The type of the minting                                       | integer |
-| error          | The error during executing the transaction | string      |
+| error          | The error during executing the transaction                    | string  |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -104,9 +103,10 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
-
 ## Query Operations
+
 ### Query specific Burning NFT information
+
 The `Query specific Burning NFT information` API helps users to query burning record according to `id`.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/burns/{id}" method="get" %}
@@ -127,9 +127,9 @@ The `Query specific Burning NFT information` API helps users to query burning re
 {% tab title="Response" %}
 | Name           | Meaning                                                       | Type    |
 | -------------- | ------------------------------------------------------------- | ------- |
-| created_at             | The time of creating the item in the database                        | string     |
-| updated_at      | The time of updating the item in the database                          | string     |
-| deleted_at   | The time of deleting the item in the database                      | string     |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
 | amount         | The amount of the nft                                         | integer |
 | app\_id        | The id of the app                                             | integer |
 | chain\_id      | The id of the chain                                           | integer |
@@ -141,10 +141,10 @@ The `Query specific Burning NFT information` API helps users to query burning re
 | id             | The id of the storage                                         | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | token\_id      | The id of the token                                           | integer |
-| user    | The address of the user                                          | string  |
+| user           | The address of the user                                       | string  |
 | tx\_id         | The id of the transaction                                     | integer |
 | mint\_type     | The type of the minting                                       | integer |
-| error          | The error during executing the transaction | string      |
+| error          | The error during executing the transaction                    | string  |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -176,15 +176,15 @@ curl --request get \
   --url https://api.nftrainbow.cn/v1/burns/105 \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
-
 ```
 {% endtab %}
 {% endtabs %}
 
 ### Query Burning List
+
 The `Query Burning List` API helps users to query burning list.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/burns/" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/burns/{id}" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -200,18 +200,18 @@ The `Query Burning List` API helps users to query burning list.
 {% endtab %}
 
 {% tab title="Response" %}
-| Name           | Meaning                                                       | Type    |
-| -------------- | ------------------------------------------------------------- | ------- |
-| count             | The count of the records                        | string     |
-| Items      | The array of items                          | []BurnTask     |
+| Name  | Meaning                  | Type        |
+| ----- | ------------------------ | ----------- |
+| count | The count of the records | string      |
+| Items | The array of items       | \[]BurnTask |
 
 The BurnTask struct is showed in the following.
 
 | Name           | Meaning                                                       | Type    |
 | -------------- | ------------------------------------------------------------- | ------- |
-| created_at             | The time of creating the item in the database                        | string     |
-| updated_at      | The time of updating the item in the database                          | string     |
-| deleted_at   | The time of deleting the item in the database                      | string     |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
 | amount         | The amount of the nft                                         | integer |
 | app\_id        | The id of the app                                             | integer |
 | chain\_id      | The id of the chain                                           | integer |
@@ -223,10 +223,10 @@ The BurnTask struct is showed in the following.
 | id             | The id of the storage                                         | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | token\_id      | The id of the token                                           | integer |
-| user    | The address of the user                                          | string  |
+| user           | The address of the user                                       | string  |
 | tx\_id         | The id of the transaction                                     | integer |
 | mint\_type     | The type of the minting                                       | integer |
-| error          | The error during executing the transaction | string      |
+| error          | The error during executing the transaction                    | string  |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -263,7 +263,6 @@ curl --request GET \
   --url https://api.nftrainbow.cn/v1/burns/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
-
 ```
 {% endtab %}
 {% endtabs %}
