@@ -1,7 +1,9 @@
 # Cross-Functional Flowchart
+
 ## 项目方侧使用Rainbow服务的交互流程
 
-项目方
+项目方:
+
 1. 注册账户
 2. KYC
 3. 创建APP
@@ -10,7 +12,7 @@
 6. 部署合约
 7. 为合约申请代付
 
-用户
+用户:
 
 8. 创建账户
 9. Mint -> 项目方调用 NFT-Rainbow Mint
