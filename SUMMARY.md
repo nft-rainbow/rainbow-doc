@@ -9,7 +9,7 @@
 * [Interactive Flowchart](tutorials/flowchart/interactive.md)
 * [By Community](tutorials/by-community/README.md)
   * [NFTRainbow 使用教程](https://forum.conflux.fun/t/nftrainbow/16433)
-* [Account Resolutions](tutorials/account-solution/README.md)
+* [Account Solutions](tutorials/account-solution/README.md)
 
 ## Docs
 
