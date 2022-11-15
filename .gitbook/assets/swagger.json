@@ -14,7 +14,7 @@
         },
         "version": "1.0"
     },
-    "host": "api.nftrainbow.xyz",
+    "host": "api.nftrainbow.cn",
     "basePath": "/v1",
     "paths": {
         "/burns": {
