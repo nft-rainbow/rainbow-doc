@@ -3,7 +3,7 @@ RPC-Bridge
 
 ## 简介
 
-Conflux 是一个采用创新树图结构的高性能公链，但其原生空间（Core Space）的 RPC，与以太坊不兼容，由一组专有的 RPC 方法组成，并且账户地址格式也不同。由此导致以太坊生态的大部分开发工具，SDK，服务无法直接使用，大大增加的开发者学习成本，及项目迁移成本。为解决此问题 [Conflux RPC Bridge](https://github.com/conflux-fans/rpc-bridge) 服务应用而生，该服务可将 Conflux 的大部分方法映射为以太坊的 RPC 方法，最终目标是使得开发者可以直接使用以太坊的开发工具，SDK，服务与 Conflux Core 空间交互。
+Conflux 是一个采用创新树图结构的高性能公链，但其原生空间（Core Space）的 RPC，与以太坊不兼容，由一组专有的 RPC 方法组成，并且账户地址格式也不同。由此导致以太坊生态的大部分开发工具，SDK，服务无法直接使用，大大增加的开发者学习成本，及项目迁移成本。为解决此问题 [Conflux RPC Bridge](https://github.com/conflux-fans/rpc-bridge) 服务应孕而生，该服务可将 Conflux 的大部分方法映射为以太坊的 RPC 方法，最终目标是使得开发者可以直接使用以太坊的开发工具，SDK，服务与 Conflux Core 空间交互。
 
 ## Rainbow RPC Bridge Service
 
