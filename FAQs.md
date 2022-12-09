@@ -45,3 +45,12 @@
 ## 自定义 Mint 功能，mint 的 token id 为什么不连续？
 
 CustomMint 接口，支持参数指定 tokenId，若不指定则会随机生成；接口调用方可根据自身需求控制 tokenId 自增，从而实现连续。
+
+## NFT 支持的文件格式有哪些？
+
+目前支持 图片，视频，音频 三大类文件，具体支持的格式如下：
+
+图片：.ico .svg .tif .tiff .jpg, .jpeg, .png, .gif, .bmp, .webp
+视频：.mp4, .avi .mpeg .ogv .ts .webm .3gp .2gp
+音频：.aac .mid .midi .mp3 .oga .opus .wav .weba .cda
+
