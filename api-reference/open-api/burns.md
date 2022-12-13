@@ -32,7 +32,7 @@ The `Burn NFT by Admin` API helps users to burn the corresponding NFT.
     "contract_address": "cfxtest:acg1rr3cxaykwymwrajgat0vbk44wvzsrj0ftk7wb1",
     "contract_type":"erc721",
     "user": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
-    "token_id":23,
+    "token_id":"23",
     "amount":1
 }
 ```
@@ -54,7 +54,7 @@ The `Burn NFT by Admin` API helps users to burn the corresponding NFT.
 | hash           | The hash of the transaction                                   | string  |
 | id             | The id of the storage                                         | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| token\_id      | The id of the token                                           | integer |
+| token\_id      | The id of the token                                           | string  |
 | user           | The address of the user                                       | string  |
 | tx\_id         | The id of the transaction                                     | integer |
 | mint\_type     | The type of the minting                                       | integer |
@@ -78,7 +78,7 @@ The `Burn NFT by Admin` API helps users to burn the corresponding NFT.
     "status": 0,
     "error": "",
     "user": "cfxtest:aarep2p1rcadt0j1x0gkybggfkk97uxwty45grxxt7",
-    "token_id": "4646046442",
+    "token_id": "23",
     "amount": 1
 }
 ```
@@ -96,7 +96,7 @@ curl --request POST \
     "contract_address": "cfxtest:acg1rr3cxaykwymwrajgat0vbk44wvzsrj0ftk7wb1",
     "contract_type":"erc721",
     "user": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
-    "token_id":23,
+    "token_id":"23",
     "amount":1
 }'
 ```
@@ -140,7 +140,7 @@ The `Query specific Burning NFT information` API helps users to query burning re
 | hash           | The hash of the transaction                                   | string  |
 | id             | The id of the storage                                         | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| token\_id      | The id of the token                                           | integer |
+| token\_id      | The id of the token                                           | string  |
 | user           | The address of the user                                       | string  |
 | tx\_id         | The id of the transaction                                     | integer |
 | mint\_type     | The type of the minting                                       | integer |
@@ -222,7 +222,7 @@ The BurnTask struct is showed in the following.
 | hash           | The hash of the transaction                                   | string  |
 | id             | The id of the storage                                         | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| token\_id      | The id of the token                                           | integer |
+| token\_id      | The id of the token                                           | string  |
 | user           | The address of the user                                       | string  |
 | tx\_id         | The id of the transaction                                     | integer |
 | mint\_type     | The type of the minting                                       | integer |

@@ -24,7 +24,7 @@ The `Transfer NFT` provides users with the entry to transfer the NFT.
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>contract_type</td><td>The type of the contract</td><td>body</td><td>string</td><td>false</td></tr><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>integer</td><td>true</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_from_address</td><td>The sender of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_to_address</td><td>The receiver of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the sending NFT</td><td>body</td><td>integer</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>contract_type</td><td>The type of the contract</td><td>body</td><td>string</td><td>false</td></tr><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_from_address</td><td>The sender of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_to_address</td><td>The receiver of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the sending NFT</td><td>body</td><td>integer</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -35,7 +35,7 @@ The `Transfer NFT` provides users with the entry to transfer the NFT.
     "contract_type":"erc1155",
     "transfer_from_address": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
     "transfer_to_address": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
-    "token_id":20,
+    "token_id":"20",
     "amount":1
 }
 ```
@@ -96,7 +96,7 @@ curl --request POST \
     "contract_type":"erc1155",
     "transfer_from_address": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
     "transfer_to_address": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
-    "token_id":20,
+    "token_id":"20",
     "amount":1
 }'
 ```
@@ -123,7 +123,7 @@ The `Batch Transfer NFTs` API provides users with the entry to transfer several 
 
 The TransferItem construct is presented in the following.
 
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>transfer_from_address</td><td>The sender of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_to_address</td><td>The receiver of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the NFTs</td><td>body</td><td>integer</td><td>true</td></tr><tr><td>token_id</td><td>The id of the token</td><td>body</td><td>integer</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>transfer_from_address</td><td>The sender of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_to_address</td><td>The receiver of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the NFTs</td><td>body</td><td>integer</td><td>true</td></tr><tr><td>token_id</td><td>The id of the token</td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -136,13 +136,13 @@ The TransferItem construct is presented in the following.
         {
             "transfer_from_address": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
             "transfer_to_address": "cfxtest:aanpu16mtgc7dke5xhuktyfyef8f00pz8a2z5mc14g",
-            "token_id": 20,
+            "token_id": "20",
             "amount": 2
         },
         {
             "transfer_from_address": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
             "transfer_to_address": "cfxtest:aang4d91rejdbpgmgtmspdyefxkubj2bbywrwm9j3z",
-            "token_id": 21,
+            "token_id": "21",
             "amount": 1
         }
     ]
@@ -151,30 +151,27 @@ The TransferItem construct is presented in the following.
 {% endtab %}
 
 {% tab title="Response" %}
-The response is the array of transferTask construct.
-The construct is showed in the following.
+The response is the array of transferTask construct. The construct is showed in the following.
 
-| Name           | Meaning                                     | Type            |
-| -------------- | ------------------------------------------- | --------------- |
-| created_at             | The time of creating the item in the database                        | string     |
-| updated_at      | The time of updating the item in the database                          | string     |
-| deleted_at   | The time of deleting the item in the database                      | string     |
-| id             | The id of the item in the database                        | integer     |
-| app\_id        | The id of the app                           | integer         |
-| chain\_type    | The type of the chain.                      | integer         |
-| chain\_id      | The id of the chain                         | integer         |
-| contract       | The address of the contract                 | string          |
-| contract\_type | The type of the contract                    | integer         |
-| status         | The status of the transaction               | integer         |
-| hash           | The hash of the transaction                 | string          |
-| tx\_id         | The id of the transaction                   | integer         |
-| error          | The error during executing the transaction  | string          |
-| transfer\_to        | The receiver of the sending NFT | string  |
-| transfer\_from      | The sender of the sending NFT   | string  |
-| token\_id           | The id of the token             | integer |
-| amount              | The amount of the token         | integer |
-
-
+| Name           | Meaning                                       | Type    |
+| -------------- | --------------------------------------------- | ------- |
+| created\_at    | The time of creating the item in the database | string  |
+| updated\_at    | The time of updating the item in the database | string  |
+| deleted\_at    | The time of deleting the item in the database | string  |
+| id             | The id of the item in the database            | integer |
+| app\_id        | The id of the app                             | integer |
+| chain\_type    | The type of the chain.                        | integer |
+| chain\_id      | The id of the chain                           | integer |
+| contract       | The address of the contract                   | string  |
+| contract\_type | The type of the contract                      | integer |
+| status         | The status of the transaction                 | integer |
+| hash           | The hash of the transaction                   | string  |
+| tx\_id         | The id of the transaction                     | integer |
+| error          | The error during executing the transaction    | string  |
+| transfer\_to   | The receiver of the sending NFT               | string  |
+| transfer\_from | The sender of the sending NFT                 | string  |
+| token\_id      | The id of the token                           | integer |
+| amount         | The amount of the token                       | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -236,13 +233,13 @@ curl --request POST \
         {
             "transfer_from_address": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
             "transfer_to_address": "cfxtest:aanpu16mtgc7dke5xhuktyfyef8f00pz8a2z5mc14g",
-            "token_id": 20,
+            "token_id": "20",
             "amount": 2
         },
         {
             "transfer_from_address": "cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8",
             "transfer_to_address": "cfxtest:aang4d91rejdbpgmgtmspdyefxkubj2bbywrwm9j3z",
-            "token_id": 21,
+            "token_id": "21",
             "amount": 1
         }
     ]
