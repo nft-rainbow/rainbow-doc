@@ -4,7 +4,6 @@
 
 ## Tutorials
 
-* [Terminology](tutorials/terminology.md)
 * [Mints](tutorials/mints/README.md)
   * [铸造NFT快速指南](tutorials/mints/mints-zh.md)
 * [Interactive Flowchart](tutorials/flowchart/interactive.md)
@@ -18,6 +17,7 @@
 * [Changelog](CHANGELOG.md)
 * [RoadMap](ROADMAP.md)
 * [树图Contract Sponsor](docs/shu-tu-contract-sponsor.md)
+* [Terminology](docs/terminology.md)
 
 ## Products
 
