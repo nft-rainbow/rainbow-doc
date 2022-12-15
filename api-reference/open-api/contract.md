@@ -341,26 +341,27 @@ The `Obtain contarct list` API provides users the entry to get the inforamtion o
 
 The **`Contract Struct`** is listed as follow:
 
-| Name                     | Meaning                                                       | Type    |
-| ------------------------ | ------------------------------------------------------------- | ------- |
-| address                  | The address of the contract                                   | string  |
-| app\_id                  | The app id                                                    | string  |
-| base\_uri                | The uri of the nft                                            | string  |
-| chain\_id                | The id of the chain                                           | integer |
-| chain\_type              | The type of the chain                                         | integer |
-| hash                     | The hash of the transaction                                   | string  |
-| id                       | The id of the contract                                        | integer |
-| name                     | The name of the nft                                           | string  |
-| owner\_address           | The creator of the contract                                   | string  |
-| status                   | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| symbol                   | The symbol of the nft                                         | string  |
-| tx\_id                   | The id of the transaction                                     | integer |
-| type                     | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
-| royalties\_bps           | The bps of the royalties                                      | integer |
-| royalties\_address       | The address of the royalties                                  | string  |
-| tokens\_transferable     | Whether the transferring tokens is supported                  | bool    |
-| tokens\_burnable         | Whether the burning tokens is supported                       | bool    |
-| transfer\_cooldown\_time | The cooldown time of transfering tokens                       | integer |
+| Name                            | Meaning                                                       | Type    |
+| ------------------------------- | ------------------------------------------------------------- | ------- |
+| address                         | The address of the contract                                   | string  |
+| app\_id                         | The app id                                                    | string  |
+| base\_uri                       | The uri of the nft                                            | string  |
+| chain\_id                       | The id of the chain                                           | integer |
+| chain\_type                     | The type of the chain                                         | integer |
+| hash                            | The hash of the transaction                                   | string  |
+| id                              | The id of the contract                                        | integer |
+| name                            | The name of the nft                                           | string  |
+| owner\_address                  | The creator of the contract                                   | string  |
+| status                          | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
+| symbol                          | The symbol of the nft                                         | string  |
+| tx\_id                          | The id of the transaction                                     | integer |
+| type                            | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
+| royalties\_bps                  | The bps of the royalties                                      | integer |
+| royalties\_address              | The address of the royalties                                  | string  |
+| tokens\_transferable\_by\_admin | Whether the transferring tokens by admin is supported         | bool    |
+| tokens\_transferable\_by\_user  | Whether the transferring tokens by user is supported          | bool    |
+| tokens\_burnable                | Whether the burning tokens is supported                       | bool    |
+| transfer\_cooldown\_time        | The cooldown time of transfering tokens                       | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -385,7 +386,8 @@ The **`Contract Struct`** is listed as follow:
                 "royalties_bps": 0,
                 "royalties_address": "",
                 "tokens_burnable": false,
-                "tokens_transferable": false,
+               "tokens_transferable_by_admin": false,
+                "tokens_transferable_by_user": false,
                 "transfer_cooldown_time": 0,
                 "hash": "0xcbcedb27eb941a9a4fb6008d343055d98d9fe1ccdba65268680f46af6bf3fa0a",
                 "tx_id": 49,
@@ -426,26 +428,27 @@ The `Query detail contract` API provides users the entry to get the detail contr
 {% endtab %}
 
 {% tab title="Response" %}
-| Name                     | Meaning                                                       | Type    |
-| ------------------------ | ------------------------------------------------------------- | ------- |
-| address                  | The address of the contract                                   | string  |
-| app\_id                  | The app id                                                    | string  |
-| base\_uri                | The uri of the nft                                            | string  |
-| chain\_id                | The id of the chain                                           | integer |
-| chain\_type              | The type of the chain                                         | integer |
-| hash                     | The hash of the transaction                                   | string  |
-| id                       | The id of the contract                                        | integer |
-| name                     | The name of the nft                                           | string  |
-| owner\_address           | The creator of the contract                                   | string  |
-| status                   | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| symbol                   | The symbol of the nft                                         | string  |
-| tx\_id                   | The id of the transaction                                     | integer |
-| type                     | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
-| royalties\_bps           | The bps of the royalties                                      | integer |
-| royalties\_address       | The address of the royalties                                  | string  |
-| tokens\_transferable     | Whether the transferring tokens is supported                  | bool    |
-| tokens\_burnable         | Whether the burning tokens is supported                       | bool    |
-| transfer\_cooldown\_time | The cooldown time of transfering tokens                       | integer |
+| Name                            | Meaning                                                       | Type    |
+| ------------------------------- | ------------------------------------------------------------- | ------- |
+| address                         | The address of the contract                                   | string  |
+| app\_id                         | The app id                                                    | string  |
+| base\_uri                       | The uri of the nft                                            | string  |
+| chain\_id                       | The id of the chain                                           | integer |
+| chain\_type                     | The type of the chain                                         | integer |
+| hash                            | The hash of the transaction                                   | string  |
+| id                              | The id of the contract                                        | integer |
+| name                            | The name of the nft                                           | string  |
+| owner\_address                  | The creator of the contract                                   | string  |
+| status                          | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
+| symbol                          | The symbol of the nft                                         | string  |
+| tx\_id                          | The id of the transaction                                     | integer |
+| type                            | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
+| royalties\_bps                  | The bps of the royalties                                      | integer |
+| royalties\_address              | The address of the royalties                                  | string  |
+| tokens\_transferable\_by\_admin | Whether the transferring tokens by admin is supported         | bool    |
+| tokens\_transferable\_by\_user  | Whether the transferring tokens by user is supported          | bool    |
+| tokens\_burnable                | Whether the burning tokens is supported                       | bool    |
+| transfer\_cooldown\_time        | The cooldown time of transfering tokens                       | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -467,7 +470,8 @@ The `Query detail contract` API provides users the entry to get the detail contr
     "royalties_bps": 0,
     "royalties_address": "",
     "tokens_burnable": false,
-    "tokens_transferable": false,
+    "tokens_transferable_by_admin": false,
+    "tokens_transferable_by_user": false,
     "transfer_cooldown_time": 0,
     "hash": "0xcbcedb27eb941a9a4fb6008d343055d98d9fe1ccdba65268680f46af6bf3fa0a",
     "tx_id": 49,
