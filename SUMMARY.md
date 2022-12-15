@@ -4,6 +4,7 @@
 
 ## Tutorials
 
+* [Terminology](tutorials/terminology.md)
 * [Mints](tutorials/mints/README.md)
   * [铸造NFT快速指南](tutorials/mints/mints-zh.md)
 * [Interactive Flowchart](tutorials/flowchart/interactive.md)
@@ -19,7 +20,7 @@
 
 ## Products
 
-* [Conflux RPC Bridge](./products/rpc-bridge.md)
+* [Conflux RPC Bridge](products/rpc-bridge.md)
 
 ## API Reference
 
