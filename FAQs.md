@@ -23,9 +23,7 @@
 
 ## 树图链如何给合约设置代付？
 
-树图链测试环境 NFTRainbow 提供了免费的 [Sponsor 设置接口](https://docs.nftrainbow.xyz/api-reference/open-api/contract#set-sponsor).
-
-树图链主网需要自己获取并设置代付，也可以联系 Conflux 基金会购买。
+在 NFTRainbow 控制台，`智能合约页面` 有树图代付设置入口，该功能可用于给合约设置代付，测试网免费设置，主网需要按量收取费用
 
 ## 为什么 Mint 接口调用后，接口返回的数据中没有 tokenId，哈希等信息？
 
@@ -54,3 +52,14 @@ CustomMint 接口，支持参数指定 tokenId，若不指定则会随机生成�
 视频：.mp4, .avi .mpeg .ogv .ts .webm .3gp .2gp
 音频：.aac .mid .midi .mp3 .oga .opus .wav .weba .cda
 
+## Easy Mint 跟自定义 Mint 的区别？
+
+Easy mint 主要作用是方便 Rainbow 用户快速体验铸造功能，直接使用事先部署好的合约进行铸造。此种方式用户无需部署合约，因此操作比较简单。`但此种方式铸造的 NFT 无法通过转移接口转移`。
+
+自定义 Mint 是用户自己部署合约，然后使用自定义 Mint 接口进行铸造。此种方式用户需要部署合约，因此操作比较复杂。但此种方式铸造的 NFT 可以通过转移接口转移。
+
+## ERC721 和 ERC1155 的区别？
+
+ERC721 是最初的 NFT 标准，每个 NFT 都是唯一，不可替代的。每个 NFT 都有唯一的 tokenId，且只有一个，不可分割。
+
+ERC1155 是多代币标准，一个合约中可以有多种 NFT，每种 NFT 可以有多个。TokenId 相同的 NFT 之间是等价的。
