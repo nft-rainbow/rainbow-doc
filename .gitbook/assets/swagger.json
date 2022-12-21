@@ -559,9 +559,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "success",
+                        "description": "Transaction id\"                             \"success",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/services.SetSponsorResp"
                         }
                     },
                     "400": {
@@ -948,21 +948,12 @@
                 "operationId": "LoginApp",
                 "parameters": [
                     {
-                        "description": "app_id",
-                        "name": "app_id",
+                        "description": "login info, contain app_id and app_secret",
+                        "name": "appLoginInfo",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "app_secret",
-                        "name": "app_secret",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/middlewares.appLogin"
                         }
                     }
                 ],
@@ -1898,6 +1889,21 @@
                 }
             }
         },
+        "middlewares.appLogin": {
+            "type": "object",
+            "required": [
+                "app_id",
+                "app_secret"
+            ],
+            "properties": {
+                "app_id": {
+                    "type": "string"
+                },
+                "app_secret": {
+                    "type": "string"
+                }
+            }
+        },
         "models.BurnTask": {
             "type": "object",
             "properties": {
@@ -2018,7 +2024,10 @@
                 "tokens_burnable": {
                     "type": "boolean"
                 },
-                "tokens_transferable": {
+                "tokens_transferable_by_admin": {
+                    "type": "boolean"
+                },
+                "tokens_transferable_by_user": {
                     "type": "boolean"
                 },
                 "transfer_cooldown_time": {
@@ -2431,7 +2440,10 @@
                 "tokens_burnable": {
                     "type": "boolean"
                 },
-                "tokens_transferable": {
+                "tokens_transferable_by_admin": {
+                    "type": "boolean"
+                },
+                "tokens_transferable_by_user": {
                     "type": "boolean"
                 },
                 "transfer_cooldown_time": {
@@ -2451,7 +2463,6 @@
             "required": [
                 "chain",
                 "contract_address",
-                "contract_type",
                 "mint_items"
             ],
             "properties": {
@@ -2464,13 +2475,6 @@
                 },
                 "contract_address": {
                     "type": "string"
-                },
-                "contract_type": {
-                    "type": "string",
-                    "enum": [
-                        "erc721",
-                        "erc1155"
-                    ]
                 },
                 "mint_items": {
                     "type": "array",
@@ -2485,8 +2489,6 @@
             "required": [
                 "chain",
                 "contract_address",
-                "contract_type",
-                "metadata_uri",
                 "mint_to_address"
             ],
             "properties": {
@@ -2502,13 +2504,6 @@
                 },
                 "contract_address": {
                     "type": "string"
-                },
-                "contract_type": {
-                    "type": "string",
-                    "enum": [
-                        "erc721",
-                        "erc1155"
-                    ]
                 },
                 "metadata_uri": {
                     "type": "string"
@@ -2579,7 +2574,6 @@
         "services.MintItemDto": {
             "type": "object",
             "required": [
-                "metadata_uri",
                 "mint_to_address"
             ],
             "properties": {
@@ -2615,6 +2609,17 @@
             "type": "object",
             "properties": {
                 "tx_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "services.SetSponsorResp": {
+            "type": "object",
+            "properties": {
+                "sponsor_collateral_tx_id": {
+                    "type": "integer"
+                },
+                "sponsor_gas_tx_id": {
                     "type": "integer"
                 }
             }
