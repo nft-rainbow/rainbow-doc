@@ -17,6 +17,168 @@
     "host": "api.nftrainbow.cn",
     "basePath": "/v1",
     "paths": {
+        "/burns": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the NFT burned list information.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Burns"
+                ],
+                "summary": "Obtain the burned NFTs list",
+                "operationId": "GetBurnList",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.BurnTaskQueryResult"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Burn NFT by admin",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Burns"
+                ],
+                "summary": "Burn NFT",
+                "operationId": "BurnNft",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "burn_dto",
+                        "name": "burn_dto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.BurnDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.BurnTask"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/burns/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get NFT Burn detail info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Burns"
+                ],
+                "summary": "Burn NFT detail",
+                "operationId": "GetBurnDetail",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.BurnTask"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
         "/contracts/": {
             "get": {
                 "security": [
@@ -397,9 +559,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "success",
+                        "description": "Transaction id\"                             \"success",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/services.SetSponsorResp"
                         }
                     },
                     "400": {
@@ -786,21 +948,12 @@
                 "operationId": "LoginApp",
                 "parameters": [
                     {
-                        "description": "app_id",
-                        "name": "app_id",
+                        "description": "login info, contain app_id and app_secret",
+                        "name": "appLoginInfo",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "app_secret",
-                        "name": "app_secret",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/middlewares.appLogin"
                         }
                     }
                 ],
@@ -1736,6 +1889,89 @@
                 }
             }
         },
+        "middlewares.appLogin": {
+            "type": "object",
+            "required": [
+                "app_id",
+                "app_secret"
+            ],
+            "properties": {
+                "app_id": {
+                    "type": "string"
+                },
+                "app_secret": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.BurnTask": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "app_id": {
+                    "type": "integer"
+                },
+                "chain_id": {
+                    "type": "integer"
+                },
+                "chain_type": {
+                    "type": "integer"
+                },
+                "contract": {
+                    "type": "string"
+                },
+                "contract_type": {
+                    "type": "integer"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "hash": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "description": "0-pending, 1-success, 2-failed",
+                    "type": "integer"
+                },
+                "token_id": {
+                    "type": "string"
+                },
+                "tx_id": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "user": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.BurnTaskQueryResult": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.BurnTask"
+                    }
+                }
+            }
+        },
         "models.Contract": {
             "type": "object",
             "properties": {
@@ -1788,7 +2024,10 @@
                 "tokens_burnable": {
                     "type": "boolean"
                 },
-                "tokens_transferable": {
+                "tokens_transferable_by_admin": {
+                    "type": "boolean"
+                },
+                "tokens_transferable_by_user": {
                     "type": "boolean"
                 },
                 "transfer_cooldown_time": {
@@ -2110,6 +2349,43 @@
                 }
             }
         },
+        "services.BurnDto": {
+            "type": "object",
+            "required": [
+                "chain",
+                "contract_address",
+                "contract_type",
+                "token_id"
+            ],
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "chain": {
+                    "type": "string",
+                    "enum": [
+                        "conflux",
+                        "conflux_test"
+                    ]
+                },
+                "contract_address": {
+                    "type": "string"
+                },
+                "contract_type": {
+                    "type": "string",
+                    "enum": [
+                        "erc721",
+                        "erc1155"
+                    ]
+                },
+                "token_id": {
+                    "type": "string"
+                },
+                "user": {
+                    "type": "string"
+                }
+            }
+        },
         "services.ContractAdminUpdateDto": {
             "type": "object",
             "required": [
@@ -2117,6 +2393,7 @@
             ],
             "properties": {
                 "admin_address": {
+                    "description": "Chain           string `form:\"chain\" json:\"chain\" binding:\"required,oneof=conflux conflux_test\"`\nContractAddress string `form:\"contract_address\" json:\"contract_address\" binding:\"required\"`",
                     "type": "string"
                 }
             }
@@ -2163,7 +2440,10 @@
                 "tokens_burnable": {
                     "type": "boolean"
                 },
-                "tokens_transferable": {
+                "tokens_transferable_by_admin": {
+                    "type": "boolean"
+                },
+                "tokens_transferable_by_user": {
                     "type": "boolean"
                 },
                 "transfer_cooldown_time": {
@@ -2183,7 +2463,6 @@
             "required": [
                 "chain",
                 "contract_address",
-                "contract_type",
                 "mint_items"
             ],
             "properties": {
@@ -2196,13 +2475,6 @@
                 },
                 "contract_address": {
                     "type": "string"
-                },
-                "contract_type": {
-                    "type": "string",
-                    "enum": [
-                        "erc721",
-                        "erc1155"
-                    ]
                 },
                 "mint_items": {
                     "type": "array",
@@ -2217,8 +2489,6 @@
             "required": [
                 "chain",
                 "contract_address",
-                "contract_type",
-                "metadata_uri",
                 "mint_to_address"
             ],
             "properties": {
@@ -2234,13 +2504,6 @@
                 },
                 "contract_address": {
                     "type": "string"
-                },
-                "contract_type": {
-                    "type": "string",
-                    "enum": [
-                        "erc721",
-                        "erc1155"
-                    ]
                 },
                 "metadata_uri": {
                     "type": "string"
@@ -2311,7 +2574,6 @@
         "services.MintItemDto": {
             "type": "object",
             "required": [
-                "metadata_uri",
                 "mint_to_address"
             ],
             "properties": {
@@ -2347,6 +2609,17 @@
             "type": "object",
             "properties": {
                 "tx_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "services.SetSponsorResp": {
+            "type": "object",
+            "properties": {
+                "sponsor_collateral_tx_id": {
+                    "type": "integer"
+                },
+                "sponsor_gas_tx_id": {
                     "type": "integer"
                 }
             }
