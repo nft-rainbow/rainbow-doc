@@ -330,7 +330,7 @@ The `Obtain contarct list` API provides users the entry to get the inforamtion o
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>page</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr><tr><td>limit</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th><th>Default</th></tr></thead><tbody><tr><td>page</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td><td>1</td></tr><tr><td>limit</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td><td>10</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}

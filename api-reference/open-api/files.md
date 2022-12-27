@@ -8,7 +8,7 @@ description: >-
 
 ### Upload File
 
-`Upload file` API helps users to upload a file to get the corresponding url for creating NFT metadata.  The file can be a video, a figure and so on.
+`Upload file` API helps users to upload a file to get the corresponding url for creating NFT metadata. The file can be a video, a figure and so on.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/files/" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -110,7 +110,7 @@ curl --request POST \
 
 ### Obtain File List
 
-`Obtain file list` API helps users to obtain the list including the inforamion of the files uploaded in the specified app. The information of each file contains `file_url`, `file_size`, `file_type` and `file_name`.&#x20;
+`Obtain file list` API helps users to obtain the list including the inforamion of the files uploaded in the specified app. The information of each file contains `file_url`, `file_size`, `file_type` and `file_name`.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/files/" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -124,7 +124,7 @@ curl --request POST \
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>page</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr><tr><td>limit</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th><th>Default</th></tr></thead><tbody><tr><td>page</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td><td>1</td></tr><tr><td>limit</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td><td>10</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
@@ -180,7 +180,5 @@ curl --request GET \
 ```
 {% endtab %}
 {% endtabs %}
-
-
 
 ###
