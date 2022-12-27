@@ -184,7 +184,7 @@ curl --request get \
 
 The `Query Burning List` API helps users to query burning list.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/burns/{id}" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/burns" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
