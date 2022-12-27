@@ -54,7 +54,7 @@ The `Transfer NFT` provides users with the entry to transfer the NFT.
 | transfer\_from | The sender of the sending NFT              | string  |
 | transfer\_to   | The receiver of the sending NFT            | string  |
 | amount         | The amount of the token                    | integer |
-| status         | The status of the transaction              | integer |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed              | integer |
 | hash           | The hash of the transaction                | string  |
 | tx\_id         | The id of the transaction                  | integer |
 | error          | The error during executing the transaction | string  |
@@ -164,7 +164,7 @@ The response is the array of transferTask construct. The construct is showed in 
 | chain\_id      | The id of the chain                           | integer |
 | contract       | The address of the contract                   | string  |
 | contract\_type | The type of the contract                      | integer |
-| status         | The status of the transaction                 | integer |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed                 | integer |
 | hash           | The hash of the transaction                   | string  |
 | tx\_id         | The id of the transaction                     | integer |
 | error          | The error during executing the transaction    | string  |

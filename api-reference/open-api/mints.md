@@ -177,7 +177,7 @@ The MintTask construct is showed in the following.
 | token\_uri     | The uri of the token                                                    | string  |
 | token\_id      | The id of the token                                                     | string  |
 | amount         | The amount of the token                                                 | integer |
-| status         | The status of the transaction                                           | integer |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed                                           | integer |
 | hash           | The hash of the transaction                                             | string  |
 | tx\_id         | The id of the transaction                                               | integer |
 | error          | The error during executing the transaction                              | string  |
