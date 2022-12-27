@@ -1,6 +1,5 @@
 ---
-description: >-
-  The nft API provide users the entries to interact with the NFTs.
+description: The nft API provide users the entries to interact with the NFTs.
 ---
 
 # NFT
@@ -8,7 +7,8 @@ description: >-
 ## Query NFT
 
 ### Query specific NFT of specific account
-The `Query specific NFT of specific account` API provides users to get the nft information according to the contract address and the token_id.
+
+The `Query specific NFT of specific account` API provides users to get the nft information according to the contract address and the token\_id.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/nft/{address}/{token_id}" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -26,12 +26,11 @@ The `Query specific NFT of specific account` API provides users to get the nft i
 {% endtab %}
 
 {% tab title="Response" %}
-| Name           | Meaning                                    | Type    |
-| -------------- | ------------------------------------------ | ------- |
-| owner             | The owner of the NFT                                   | string                     |
-| contract_address        | The address of the contract                        | string |
-| token_id    | The id of the token                     | string |
-
+| Name              | Meaning                     | Type   |
+| ----------------- | --------------------------- | ------ |
+| owner             | The owner of the NFT        | string |
+| contract\_address | The address of the contract | string |
+| token\_id         | The id of the token         | string |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -53,3 +52,7 @@ curl --request GET \
 ```
 {% endtab %}
 {% endtabs %}
+
+{% hint style="info" %}
+The token\_id is the number like "123", which type is string
+{% endhint %}

@@ -103,6 +103,10 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+The token\_id is the number like "123", which type is string
+{% endhint %}
+
 ## Query Operations
 
 ### Query specific Burning NFT information

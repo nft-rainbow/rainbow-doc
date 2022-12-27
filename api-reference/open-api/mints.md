@@ -105,6 +105,10 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+The token\_id is the number like "123", which type is string
+{% endhint %}
+
 ### Batch Mint NFTs
 
 The `Batch Mint NFTs` API provides users with the entry to call the ERC721 or ERC1155 contract to mint several NFTs once.
@@ -177,7 +181,7 @@ The MintTask construct is showed in the following.
 | token\_uri     | The uri of the token                                                    | string  |
 | token\_id      | The id of the token                                                     | string  |
 | amount         | The amount of the token                                                 | integer |
-| status         | The status of the transaction. 0-pending, 1-success, 2-failed                                           | integer |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed           | integer |
 | hash           | The hash of the transaction                                             | string  |
 | tx\_id         | The id of the transaction                                               | integer |
 | error          | The error during executing the transaction                              | string  |
