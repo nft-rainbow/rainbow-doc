@@ -14,9 +14,15 @@ NFTRainbow提供了合约设置代付的接口，项目方在发布了自己的�
 
 通过控制台右上角的`用户余额`进入充值页面。&#x20;
 
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
 点击`充值`按钮，进入充值流程。目前Rainbow支持微信支付，后续还有开启其他法币充值渠道。&#x20;
 
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
 输入充值的金额后，页面就会弹出支付二维码。通过微信扫码后并支付费用后，可用额度就会增加。&#x20;
+
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 ### 设置代付
 
@@ -24,9 +30,15 @@ NFTRainbow提供了合约设置代付的接口，项目方在发布了自己的�
 
 点击`智能合约`页面的`设置树图代付`按钮，进入代付流程&#x20;
 
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
 可以看到，代付页面主要包含四个参数，分别为`合约地址`、`燃气数量`、`燃气上限`、`存储数量`。&#x20;
 
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
 其中，`合约地址`是我们想要去赞助的合约，可以是项目方部署的合约，也可以是其他人的合约。若该合约是项目方通过Rainbow部署的，则在部署合约页面能够获取到合约地址&#x20;
+
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 燃气是合约运行的燃料，合约的运行离不开燃气。合约的部署与调用都是需要去消耗燃气费，EVM中的每一次操作都是需要燃气作为燃料来推动的，合约越复杂，所需要的燃气也越高。用户支付gas费所支付的费用，将被分配给矿工。
 
@@ -34,7 +46,7 @@ NFTRainbow提供了合约设置代付的接口，项目方在发布了自己的�
 
 合约的代码与数据的存储需要消耗空间，这部分的数据将被上链。项目方需要为其付费。因此，`存储数量`也需要进行设置。占用1KB空间则支付1CFX作为押金，其对应公式如下，因此，存储数量的计算为：
 
-![](../.gitbook/assets/image.png)
+![](<../.gitbook/assets/image (7).png>)
 
 燃气数量与燃气上限及存储的详细介绍可以参考[树图Contract Sponsor.](https://docs.nftrainbow.xyz/docs/shu-tu-contract-sponsor)
 
@@ -45,6 +57,8 @@ NFTRainbow提供了合约设置代付的接口，项目方在发布了自己的�
 {% endhint %}
 
 在填入对应的数据后，点击`提交`，就能够实现对应的代付。代付的提交需要上链，因此中间需要几分钟的时间。&#x20;
+
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 ### 设置白名单
 
