@@ -34,11 +34,12 @@ The possible errors containing the `error codes`, `status code` and how to fix t
 | 40003      | `Chain is not supported`                                                      | The chain type is not supported. The chain type includes `conflux` and `conflux_test`.                |
 | 40004      | `Contract type is not supported`                                              | The contract type does not be supported. The supported contract type includes `ERC721` and `ERC1155`. |
 | 40005      | `Invalid url`                                                                 | The url path is not true. Please check the url again.                                                 |
-| 40006      | `Invalid mint amount, mint amount could not be 0`                             | The mint amount is invalied. Please set the mint amount again.                                        |
-| 40007      | `Invalid mint amount, mint amount could not more than 1 for erc 721 contract` | The mint amount is invalied. Please set the mint amount again.                                        |
-| 40008      | `Invalid token ID`                                                            | The token id is invalied. Please check the token id again.                                            |
-| 40009      | `Contract type and contract address not match`                                | The contract type and contract address do not match. Please check the contract type again.            |
-| 40010      | `Invalid page or limit`                                                       | The page or limit are invalid. The parameters should be integer.                                      |
+| 40006      | `Invalid metadataId`                                                          | The metadataID is not true. The length of the metadataid should be 64.                                |
+| 40007      | `Invalid mint amount, mint amount could not be 0`                             | The mint amount is invalied. Please set the mint amount again.                                        |
+| 40008      | `Invalid mint amount, mint amount could not more than 1 for erc 721 contract` | The mint amount is invalied. Please set the mint amount again.                                        |
+| 40009      | `Invalid token ID`                                                            | The token id is invalied. Please check the token id again.                                            |
+| 40010      | `Contract type and contract address not match`                                | The contract type and contract address do not match. Please check the contract type again.            |
+| 40011      | `Invalid page or limit`                                                       | The page or limit are invalid. The parameters should be integer.                                      |
 
 ### Conflict Errors
 

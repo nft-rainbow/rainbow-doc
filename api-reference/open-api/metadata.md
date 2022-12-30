@@ -22,7 +22,7 @@ description: >-
 {% endtab %}
 
 {% tab title="Parameters" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>image</td><td>The file url of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>external_link</td><td>The externanl link of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>attributes</td><td>The attributes of the metadata</td><td>array</td><td>attribute</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>image</td><td>The file url of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>external_link</td><td>The externanl link of the metadata</td><td>body</td><td>string</td><td>false</td></tr><tr><td>description</td><td>The description of the metadata</td><td>body</td><td>string</td><td>true</td></tr><tr><td>animation_url</td><td>A URL to a multi-media attachment for the item. The file extensions GLTF, GLB, WEBM, MP4, M4V, OGV, and OGG are supported, along with the audio-only extensions MP3, WAV, and OGA.</td><td>body</td><td>string</td><td>false</td></tr><tr><td>attributes</td><td>The attributes of the metadata</td><td>array</td><td>attribute</td><td>false</td></tr></tbody></table>
 
 The struct of the MetadataAttribute is listed as bellow.
 
@@ -42,23 +42,25 @@ The struct of the MetadataAttribute is listed as bellow.
   ],
   "description": "this is a test metadata",
   "image": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
-  "name": "test"
+  "name": "test",
   "external_link": "https://www.google.com/search",
+  "animation_url": "https://www.google.com/search"
 }
 ```
 {% endtab %}
 
 {% tab title="Responses" %}
-| Name           | Meaning                           | Type                        |
-| -------------- | --------------------------------- | --------------------------- |
-| uri            | The uri of the metadata           | string                      |
-| metadata\_id   | The id of the metadata            | string                      |
-| description    | The description of the metadata   | string                      |
-| external\_link | The external link of the metadata | string                      |
-| image          | The file url of the metadata      | string                      |
-| metadata\_id   | The id of the metadata            | string                      |
-| name           | The name of the metadata          | string                      |
-| attributes     | The attribute of the metadata     | \[]ExposedMetadataAttribute |
+| Name           | Meaning                                                                                                                                                                            | Type                        |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| uri            | The uri of the metadata                                                                                                                                                            | string                      |
+| metadata\_id   | The id of the metadata                                                                                                                                                             | string                      |
+| description    | The description of the metadata                                                                                                                                                    | string                      |
+| external\_link | The external link of the metadata                                                                                                                                                  | string                      |
+| image          | The file url of the metadata                                                                                                                                                       | string                      |
+| metadata\_id   | The id of the metadata                                                                                                                                                             | string                      |
+| name           | The name of the metadata                                                                                                                                                           | string                      |
+| animation\_url | A URL to a multi-media attachment for the item. The file extensions GLTF, GLB, WEBM, MP4, M4V, OGV, and OGG are supported, along with the audio-only extensions MP3, WAV, and OGA. | string                      |
+| attributes     | The attribute of the metadata                                                                                                                                                      | \[]ExposedMetadataAttribute |
 
 The **ExposedMetadataAttribute struct** is listed as follow:
 
@@ -86,6 +88,7 @@ The **ExposedMetadataAttribute struct** is listed as follow:
   "image": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
   "name": "test",
   "external_link": "https://www.google.com/search",
+  "animation_url": "https://www.google.com/search",
   "uri": "https://dev.nftrainbow.cn/assets/metadata/2/nft/db2078aed6187e487a46a19624ba1559faddeb096849c4688347302023c40f6b.json"
 }
 ```
@@ -109,6 +112,7 @@ curl --request POST
   "description": "this is a test metadata",
   "image": "https://www.google.com/search",
   "external_link": "https://www.google.com/search",
+   "animation_url": "https://www.google.com/search",
   "name": "test"
 }
 ```
@@ -135,14 +139,15 @@ curl --request POST
 {% endtab %}
 
 {% tab title="Response" %}
-| Name           | Meaning                           | Data Type                   |
-| -------------- | --------------------------------- | --------------------------- |
-| attributes     | The attribute of the metadata     | \[]ExposedMetadataAttribute |
-| description    | The description of the metadata   | string                      |
-| external\_link | The external link of the metadata | string                      |
-| image          | The file url of the metadata      | string                      |
-| metadata\_id   | The id of the metadata            | string                      |
-| name           | The name of the metadata          | string                      |
+| Name           | Meaning                                                                                                                                                                            | Data Type                   |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| attributes     | The attribute of the metadata                                                                                                                                                      | \[]ExposedMetadataAttribute |
+| description    | The description of the metadata                                                                                                                                                    | string                      |
+| external\_link | The external link of the metadata                                                                                                                                                  | string                      |
+| animation\_url | A URL to a multi-media attachment for the item. The file extensions GLTF, GLB, WEBM, MP4, M4V, OGV, and OGG are supported, along with the audio-only extensions MP3, WAV, and OGA. | string                      |
+| image          | The file url of the metadata                                                                                                                                                       | string                      |
+| metadata\_id   | The id of the metadata                                                                                                                                                             | string                      |
+| name           | The name of the metadata                                                                                                                                                           | string                      |
 
 The **ExposedMetadataAttribute struct** is listed as follow:
 
@@ -167,6 +172,7 @@ The **ExposedMetadataAttribute struct** is listed as follow:
   ],
   "description": "this is a test metadata",
   "external_link": "https://www.google.com/search",
+  "animation_url": "https://www.google.com/search",
   "metadata_id": "f35c25ced3f537e8850a377c01d22aa7507069270054d12587ddbe5fc47ec490",
   "image": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
   "name": "test",
@@ -201,7 +207,7 @@ curl --request GET \
 {% endtab %}
 
 {% tab title="Parameters" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>nft_address</td><td>The address of the contract</td><td>query</td><td>string</td><td>false</td></tr><tr><td>page</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr><tr><td>limit</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th><th>Default</th></tr></thead><tbody><tr><td>page</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td><td>1</td></tr><tr><td>limit</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td><td>10</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
@@ -212,14 +218,15 @@ curl --request GET \
 
 The **`QueryMetadataResponse struct`** is listed as follow:
 
-| Name           | Meaning                           | Data Type     |
-| -------------- | --------------------------------- | ------------- |
-| attributes     | The attribute of the              | \[]attributes |
-| description    | The description of the metadata   | string        |
-| external\_link | The external link of the metadata | string        |
-| image          | The file url of the metadata      | string        |
-| metadata\_id   | The id of the metadata            | string        |
-| name           | The name of the metadata          | string        |
+| Name           | Meaning                                                                                                                                                                            | Data Type     |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| attributes     | The attribute of the                                                                                                                                                               | \[]attributes |
+| description    | The description of the metadata                                                                                                                                                    | string        |
+| external\_link | The external link of the metadata                                                                                                                                                  | string        |
+| animation\_url | A URL to a multi-media attachment for the item. The file extensions GLTF, GLB, WEBM, MP4, M4V, OGV, and OGG are supported, along with the audio-only extensions MP3, WAV, and OGA. | string        |
+| image          | The file url of the metadata                                                                                                                                                       | string        |
+| metadata\_id   | The id of the metadata                                                                                                                                                             | string        |
+| name           | The name of the metadata                                                                                                                                                           | string        |
 
 The **`attributes struct`** is listed as follow:
 
@@ -243,6 +250,7 @@ The **`attributes struct`** is listed as follow:
                     "metadata_id": "f35c25ced3f537e8850a377c01d22aa7507069270054d12587ddbe5fc47ec490",
                     "image": "http://dev.nftrainbow/assets/file/1/nft/67c96aee8ee1293594a4b4ded15c60ea7853e49c0a2eb41a4805a01a70bc3111.jpeg",
                     "external_link": "https://www.google.com/search",
+                    "animation_url": "https://www.google.com/search",
                     "attributes": [
                         {
                             "attribute_name": "eyes",

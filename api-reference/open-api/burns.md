@@ -103,6 +103,10 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+The token\_id is the number like "123", which type is string
+{% endhint %}
+
 ## Query Operations
 
 ### Query specific Burning NFT information
@@ -184,7 +188,7 @@ curl --request get \
 
 The `Query Burning List` API helps users to query burning list.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/burns/{id}" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/burns" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -196,7 +200,7 @@ The `Query Burning List` API helps users to query burning list.
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>page</td><td>The page request</td><td>query</td><td>string</td><td>false</td></tr><tr><td>limit</td><td>The page request</td><td>query</td><td>string</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th><th>Default</th></tr></thead><tbody><tr><td>page</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td><td>1</td></tr><tr><td>limit</td><td>Page Query</td><td>query</td><td>integer</td><td>false</td><td>10</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}

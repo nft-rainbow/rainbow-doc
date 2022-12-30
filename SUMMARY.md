@@ -10,6 +10,8 @@
 * [By Community](tutorials/by-community/README.md)
   * [NFTRainbow 使用教程](https://forum.conflux.fun/t/nftrainbow/16433)
 * [Account Solutions](tutorials/account-solution/README.md)
+* [Guides](tutorials/guides/README.md)
+  * [控制台合约代付设置](tutorials/guides/kong-zhi-tai-he-yue-dai-fu-she-zhi.md)
 
 ## Docs
 
@@ -18,7 +20,7 @@
 * [RoadMap](ROADMAP.md)
 * [树图Contract Sponsor](docs/shu-tu-contract-sponsor.md)
 * [Terminology](docs/terminology.md)
-* [Prices](./docs/price.md)
+* [Prices](docs/price.md)
 
 ## Products
 
