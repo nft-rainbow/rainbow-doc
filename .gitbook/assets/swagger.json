@@ -961,7 +961,7 @@
                     "200": {
                         "description": "auth token",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/middlewares.LoginResp"
                         }
                     },
                     "401": {
@@ -1169,6 +1169,18 @@
                         "description": "limit",
                         "name": "limit",
                         "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract",
+                        "name": "contract",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "mint_to",
+                        "name": "mint_to",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -1328,33 +1340,18 @@
                         "required": true
                     },
                     {
+                        "description": "easy_mint_file_info",
+                        "name": "easy_mint_file_info",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.EasyMintFileDto"
+                        }
+                    },
+                    {
                         "type": "file",
                         "description": "file",
                         "name": "file",
-                        "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "name": "chain",
-                        "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "name": "description",
-                        "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "name": "mint_to_address",
-                        "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "name": "name",
                         "in": "formData",
                         "required": true
                     }
@@ -1581,7 +1578,7 @@
                     "200": {
                         "description": "refreshed auth token",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/middlewares.LoginResp"
                         }
                     },
                     "401": {
@@ -1889,6 +1886,17 @@
                 }
             }
         },
+        "middlewares.LoginResp": {
+            "type": "object",
+            "properties": {
+                "expire": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
         "middlewares.appLogin": {
             "type": "object",
             "required": [
@@ -2096,6 +2104,9 @@
                 "name"
             ],
             "properties": {
+                "animation_url": {
+                    "type": "string"
+                },
                 "attributes": {
                     "type": "array",
                     "items": {
@@ -2516,6 +2527,33 @@
                 }
             }
         },
+        "services.EasyMintFileDto": {
+            "type": "object",
+            "required": [
+                "chain",
+                "description",
+                "file",
+                "mint_to_address",
+                "name"
+            ],
+            "properties": {
+                "chain": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "file": {
+                    "$ref": "#/definitions/multipart.FileHeader"
+                },
+                "mint_to_address": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
         "services.EasyMintMetaDto": {
             "type": "object",
             "required": [
@@ -2551,6 +2589,9 @@
                 "name"
             ],
             "properties": {
+                "animation_url": {
+                    "type": "string"
+                },
                 "attributes": {
                     "type": "array",
                     "items": {
