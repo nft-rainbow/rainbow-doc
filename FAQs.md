@@ -7,7 +7,6 @@
 将来计划会支持：
 
 * 主流EVM 兼容链
-* 主流联盟链
 
 ## 如何获取访问 API 的 AppSecret ？
 
@@ -19,7 +18,7 @@
 
 ## 如何收费的？
 
-目前 树图链 NFT Easy mint 操作，以及合约部署都是免费的。合约部署后，需自行为合约设置代付，Mint 操作也是免费的。
+收费规则[参看详情](./docs/price.md)
 
 ## 树图链如何给合约设置代付？
 
@@ -48,9 +47,9 @@ CustomMint 接口，支持参数指定 tokenId，若不指定则会随机生成�
 
 目前支持 图片，视频，音频 三大类文件，具体支持的格式如下：
 
-图片：.ico .svg .tif .tiff .jpg, .jpeg, .png, .gif, .bmp, .webp
-视频：.mp4, .avi .mpeg .ogv .ts .webm .3gp .2gp
-音频：.aac .mid .midi .mp3 .oga .opus .wav .weba .cda
+* 图片：.ico .svg .tif .tiff .jpg, .jpeg, .png, .gif, .bmp, .webp
+* 视频：.mp4, .avi .mpeg .ogv .ts .webm .3gp .2gp
+* 音频：.aac .mid .midi .mp3 .oga .opus .wav .weba .cda
 
 ## Easy Mint 跟自定义 Mint 的区别？
 
