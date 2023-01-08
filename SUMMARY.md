@@ -40,7 +40,7 @@
   * [Burns](api-reference/open-api/burns.md)
 * [Swagger-Doc](https://api.nftrainbow.cn/swagger/index.html)
 * [Postman Collection](https://app.getpostman.com/run-collection/21790918-c81bbc99-9fcd-417c-b3f6-f3fdcdd26f44?action=collection%2Ffork\&collection-url=entityId%3D21790918-c81bbc99-9fcd-417c-b3f6-f3fdcdd26f44%26entityType%3Dcollection%26workspaceId%3De79ada8c-30d2-4354-9597-0980b87bac8f)
-* [SDKs]
+* SDKs
   * [Go-SDK](https://github.com/nft-rainbow/rainbow-sdk-go)
   * [Java-SDK](https://github.com/nft-rainbow/rainbow-sdk-java)
 
