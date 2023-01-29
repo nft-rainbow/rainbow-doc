@@ -118,6 +118,10 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+When the api is called successfully, we need to use the `id` in response to call [Query contract detail api](contract.md#query-detail-contract) to get the contract address. It is several seconds that the contract address can be obtained from [Query contract detail api](contract.md#query-detail-contract).
+{% endhint %}
+
 ### Update contract admin
 
 The `Update contract admin` API provides users the entry to update the admin of the specific contract.
