@@ -12,7 +12,7 @@ The Mints APIs provide three methods to help users mint NFTs, including the cust
 
 ### Mint NFT
 
-The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contract to mint the NFT.
+The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contract to mint the NFT. Users need to [deploy their own contract](contract.md#deploy-contract) firstly.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/mints/" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -43,23 +43,23 @@ The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contr
 {% endtab %}
 
 {% tab title="Response" %}
-| Name           | Meaning                                                       | Type    |
-| -------------- | ------------------------------------------------------------- | ------- |
-| amount         | The amount of the nft                                         | integer |
-| app\_id        | The id of the app                                             | integer |
-| chain\_id      | The id of the chain                                           | integer |
-| chain\_type    | The type of the chain                                         | integer |
-| contract\_type | The type of the contract                                      | integer |
-| contract       | The address of the nft                                        | string  |
-| error          | The error during executing tx                                 | string  |
-| hash           | The hash of the transaction                                   | string  |
-| id             | The id of the storage                                         | integer |
-| mint\_to       | The owner of the nft                                          | string  |
-| status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| token\_id      | The id of the token                                           | string  |
-| token\_uri     | The uri of the token                                          | string  |
-| tx\_id         | The id of the transaction                                     | integer |
-| mint\_type     | The type of the minting                                       | integer |
+| Name           | Meaning                                                            | Type    |
+| -------------- | ------------------------------------------------------------------ | ------- |
+| amount         | The amount of the nft                                              | integer |
+| app\_id        | The id of the app                                                  | integer |
+| chain\_id      | The id of the chain                                                | integer |
+| chain\_type    | The type of the chain                                              | integer |
+| contract\_type | The type of the contract                                           | integer |
+| contract       | The address of the nft                                             | string  |
+| error          | The error during executing tx                                      | string  |
+| hash           | The hash of the transaction                                        | string  |
+| id             | The id of the storage                                              | integer |
+| mint\_to       | The owner of the nft                                               | string  |
+| status         | The status of the transaction. 0-pending, 1-success, 2-failed      | integer |
+| token\_id      | The id of the token                                                | string  |
+| token\_uri     | The uri of the token                                               | string  |
+| tx\_id         | The id of the transaction                                          | integer |
+| mint\_type     | The type of the mint. 1-easyMint, 2-customMint, 3-customBatchMint  | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}

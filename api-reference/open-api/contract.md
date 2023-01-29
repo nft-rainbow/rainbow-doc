@@ -1,8 +1,7 @@
 ---
 description: >-
   The contract API provide users the entries to interact with the ERC721
-  contracts, including deploying the contracts, setting the sponsors and other
-  query functions.
+  contracts, including deploying the contracts, setting the sponsors and so on.
 ---
 
 # Contract
@@ -25,7 +24,7 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>symbol</td><td>The symbol of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>owner_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>type</td><td>The type of the contract, e.g., erc721, erc1155</td><td>body</td><td>string</td><td>true</td></tr><tr><td>base_uri</td><td>The uri of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type, which can be <code>conflux</code> or <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>royalties_bps</td><td>The bps of the royalties</td><td>body</td><td>integer</td><td>true</td></tr><tr><td>royalties_address</td><td>The address of the royalties</td><td>body</td><td>string</td><td>false</td></tr><tr><td>tokens_burnable</td><td>Whether the burning tokens is supported</td><td>body</td><td>bool</td><td>false</td></tr><tr><td>tokens_transferable_by_admin</td><td>Whether the transferring tokens by admin is supported</td><td>body</td><td>bool</td><td>false</td></tr><tr><td>tokens_transferable_by_user</td><td>Whether the transferring tokens by user is supported</td><td>body</td><td>bool</td><td>false</td></tr><tr><td>transfer_cooldown_time</td><td>The cooldown time of transfering tokens</td><td>body</td><td>integer</td><td>true</td></tr><tr><td>is_sponsor_for_all_user</td><td>Whether all users are sponsors in the contract</td><td>body</td><td>bool</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>name</td><td>The name of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>symbol</td><td>The symbol of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>owner_address</td><td>The creater of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>type</td><td>The type of the contract, e.g., erc721, erc1155</td><td>body</td><td>string</td><td>true</td></tr><tr><td>base_uri</td><td>The uri of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type, which can be <code>conflux</code> or <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>royalties_bps</td><td><p>The price</p><p>of the royalties. When a transferring happens, the projector or creator of the NFT can obtain from the transaction.</p></td><td>body</td><td>integer</td><td>true</td></tr><tr><td>royalties_address</td><td>The address of the beneficiary. When a  transaferring happens, this address can obtain from the transaction.</td><td>body</td><td>string</td><td>false</td></tr><tr><td>tokens_burnable</td><td>Whether the function of burning tokens by the token owner is supported</td><td>body</td><td>bool</td><td>false</td></tr><tr><td>tokens_transferable_by_admin</td><td>Whether the function of  transferring tokens by the contract admin is supported</td><td>body</td><td>bool</td><td>false</td></tr><tr><td>tokens_transferable_by_user</td><td>Whether the function of transferring tokens by contract user is supported</td><td>body</td><td>bool</td><td>false</td></tr><tr><td>transfer_cooldown_time</td><td>The cooldown time of transfering tokens.  Once a transfer transaction is confirmed, the cooldown time must pass before the transfer transaction can be proposed again.</td><td>body</td><td>integer</td><td>true</td></tr><tr><td>is_sponsor_for_all_user</td><td>Whether all users are <a href="../../docs/shu-tu-contract-sponsor.md">sponsored </a>in the contract.  Once the function is opened, all users can call the contract free. </td><td>body</td><td>bool</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -49,27 +48,21 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 {% endtab %}
 
 {% tab title="Response" %}
-| Name                            | Meaning                                                       | Type    |
-| ------------------------------- | ------------------------------------------------------------- | ------- |
-| address                         | The address of the contract                                   | string  |
-| app\_id                         | The app id                                                    | string  |
-| base\_uri                       | The uri of the nft                                            | string  |
-| chain\_id                       | The id of the chain                                           | integer |
-| chain\_type                     | The type of the chain                                         | integer |
-| hash                            | The hash of the transaction                                   | string  |
-| id                              | The id of the contract                                        | integer |
-| name                            | The name of the nft                                           | string  |
-| owner\_address                  | The creator of the contract                                   | string  |
-| status                          | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| symbol                          | The symbol of the nft                                         | string  |
-| tx\_id                          | The id of the transaction                                     | integer |
-| type                            | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
-| royalties\_bps                  | The bps of the royalties                                      | integer |
-| royalties\_address              | The address of the royalties                                  | string  |
-| tokens\_transferable\_by\_admin | Whether the transferring tokens by admin is supported         | bool    |
-| tokens\_transferable\_by\_user  | Whether the transferring tokens by user is supported          | bool    |
-| tokens\_burnable                | Whether the burning tokens is supported                       | bool    |
-| transfer\_cooldown\_time        | The cooldown time of transfering tokens                       | integer |
+| Name                            | Meaning                                                                                                                                                                | Type    |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| name                            | The name of the NFT                                                                                                                                                    | string  |
+| symbol                          | The symbol of the NFT                                                                                                                                                  | string  |
+| owner\_address                  | The creater of the contract                                                                                                                                            | string  |
+| type                            | The type of the contract, e.g., erc721, erc1155                                                                                                                        | string  |
+| base\_uri                       | The uri of the NFT                                                                                                                                                     | string  |
+| chain                           | The chain type, which can be `conflux` or `conflux_test`                                                                                                               | string  |
+| royalties\_bps                  | <p>The price</p><p>of the royalties. When a transferring happens, the projector or creator of the NFT can obtain from the transaction.</p>                             | integer |
+| royalties\_address              | The address of the beneficiary. When a  transaferring happens, this address can obtain from the transaction.                                                           | string  |
+| tokens\_burnable                | Whether the function of burning tokens by the token owner is supported                                                                                                 | bool    |
+| tokens\_transferable\_by\_admin | Whether the function of  transferring tokens by the contract admin is supported                                                                                        | bool    |
+| tokens\_transferable\_by\_user  | Whether the function of transferring tokens by contract user is supported                                                                                              | bool    |
+| transfer\_cooldown\_time        | The cooldown time of transfering tokens.  Once a transfer transaction is confirmed, the cooldown time must pass before the transfer transaction can be proposed again. | integer |
+| is\_sponsor\_for\_all\_user     | Whether all users are [sponsored ](../../docs/shu-tu-contract-sponsor.md)in the contract.  Once the function is opened, all users can call the contract free.          | bool    |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -192,12 +185,10 @@ The `Set sponsor` API provides users to set a sponser for a specific contract ac
 {% endtab %}
 
 {% tab title="Response" %}
-```
-| Name   | Meaning                   | Type    |
-| ------ | ------------------------- | ------- |
-| sponsor_gas_tx_id | The id of the sponsor gas tx | integer |
-| sponsor_collateral_tx_id | The id of the sponsor collateral tx | integer |
-```
+| Name                       | Meaning                                                                                   | Type    |
+| -------------------------- | ----------------------------------------------------------------------------------------- | ------- |
+| sponsor\_gas\_tx\_id       | The id of the sponsor gas setting transaction. `gas` is used for contract running.        | integer |
+| sponsor\_collateral\_tx\_i | The id of the sponsor storage setting transaction. `collateral` is presented for storage. | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -239,7 +230,7 @@ The `Add Contract Sponsor Users` API provides users to add the address in the wh
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>users</td><td>The addresses being added into the whitelist</td><td>body</td><td>[]string</td><td>true</td></tr><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>users</td><td>The addresses being added into the <a href="../../docs/shu-tu-contract-sponsor.md">whitelist</a></td><td>body</td><td>[]string</td><td>true</td></tr><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
@@ -341,27 +332,21 @@ The `Obtain contarct list` API provides users the entry to get the inforamtion o
 
 The **`Contract Struct`** is listed as follow:
 
-| Name                            | Meaning                                                       | Type    |
-| ------------------------------- | ------------------------------------------------------------- | ------- |
-| address                         | The address of the contract                                   | string  |
-| app\_id                         | The app id                                                    | string  |
-| base\_uri                       | The uri of the nft                                            | string  |
-| chain\_id                       | The id of the chain                                           | integer |
-| chain\_type                     | The type of the chain                                         | integer |
-| hash                            | The hash of the transaction                                   | string  |
-| id                              | The id of the contract                                        | integer |
-| name                            | The name of the nft                                           | string  |
-| owner\_address                  | The creator of the contract                                   | string  |
-| status                          | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| symbol                          | The symbol of the nft                                         | string  |
-| tx\_id                          | The id of the transaction                                     | integer |
-| type                            | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
-| royalties\_bps                  | The bps of the royalties                                      | integer |
-| royalties\_address              | The address of the royalties                                  | string  |
-| tokens\_transferable\_by\_admin | Whether the transferring tokens by admin is supported         | bool    |
-| tokens\_transferable\_by\_user  | Whether the transferring tokens by user is supported          | bool    |
-| tokens\_burnable                | Whether the burning tokens is supported                       | bool    |
-| transfer\_cooldown\_time        | The cooldown time of transfering tokens                       | integer |
+| Name                            | Meaning                                                                                                                                                                | Type    |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| name                            | The name of the NFT                                                                                                                                                    | string  |
+| symbol                          | The symbol of the NFT                                                                                                                                                  | string  |
+| owner\_address                  | The creater of the contract                                                                                                                                            | string  |
+| type                            | The type of the contract, e.g., erc721, erc1155                                                                                                                        | string  |
+| base\_uri                       | The uri of the NFT                                                                                                                                                     | string  |
+| chain                           | The chain type, which can be `conflux` or `conflux_test`                                                                                                               | string  |
+| royalties\_bps                  | <p>The price</p><p>of the royalties. When a transferring happens, the projector or creator of the NFT can obtain from the transaction.</p>                             | integer |
+| royalties\_address              | The address of the beneficiary. When a  transaferring happens, this address can obtain from the transaction.                                                           | string  |
+| tokens\_burnable                | Whether the function of burning tokens by the token owner is supported                                                                                                 | bool    |
+| tokens\_transferable\_by\_admin | Whether the function of  transferring tokens by the contract admin is supported                                                                                        | bool    |
+| tokens\_transferable\_by\_user  | Whether the function of transferring tokens by contract user is supported                                                                                              | bool    |
+| transfer\_cooldown\_time        | The cooldown time of transfering tokens.  Once a transfer transaction is confirmed, the cooldown time must pass before the transfer transaction can be proposed again. | integer |
+| is\_sponsor\_for\_all\_user     | Whether all users are [sponsored ](../../docs/shu-tu-contract-sponsor.md)in the contract.  Once the function is opened, all users can call the contract free.          | bool    |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -428,27 +413,21 @@ The `Query detail contract` API provides users the entry to get the detail contr
 {% endtab %}
 
 {% tab title="Response" %}
-| Name                            | Meaning                                                       | Type    |
-| ------------------------------- | ------------------------------------------------------------- | ------- |
-| address                         | The address of the contract                                   | string  |
-| app\_id                         | The app id                                                    | string  |
-| base\_uri                       | The uri of the nft                                            | string  |
-| chain\_id                       | The id of the chain                                           | integer |
-| chain\_type                     | The type of the chain                                         | integer |
-| hash                            | The hash of the transaction                                   | string  |
-| id                              | The id of the contract                                        | integer |
-| name                            | The name of the nft                                           | string  |
-| owner\_address                  | The creator of the contract                                   | string  |
-| status                          | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
-| symbol                          | The symbol of the nft                                         | string  |
-| tx\_id                          | The id of the transaction                                     | integer |
-| type                            | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
-| royalties\_bps                  | The bps of the royalties                                      | integer |
-| royalties\_address              | The address of the royalties                                  | string  |
-| tokens\_transferable\_by\_admin | Whether the transferring tokens by admin is supported         | bool    |
-| tokens\_transferable\_by\_user  | Whether the transferring tokens by user is supported          | bool    |
-| tokens\_burnable                | Whether the burning tokens is supported                       | bool    |
-| transfer\_cooldown\_time        | The cooldown time of transfering tokens                       | integer |
+| Name                            | Meaning                                                                                                                                                                | Type    |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| name                            | The name of the NFT                                                                                                                                                    | string  |
+| symbol                          | The symbol of the NFT                                                                                                                                                  | string  |
+| owner\_address                  | The creater of the contract                                                                                                                                            | string  |
+| type                            | The type of the contract, e.g., erc721, erc1155                                                                                                                        | string  |
+| base\_uri                       | The uri of the NFT                                                                                                                                                     | string  |
+| chain                           | The chain type, which can be `conflux` or `conflux_test`                                                                                                               | string  |
+| royalties\_bps                  | <p>The price</p><p>of the royalties. When a transferring happens, the projector or creator of the NFT can obtain from the transaction.</p>                             | integer |
+| royalties\_address              | The address of the beneficiary. When a  transaferring happens, this address can obtain from the transaction.                                                           | string  |
+| tokens\_burnable                | Whether the function of burning tokens by the token owner is supported                                                                                                 | bool    |
+| tokens\_transferable\_by\_admin | Whether the function of  transferring tokens by the contract admin is supported                                                                                        | bool    |
+| tokens\_transferable\_by\_user  | Whether the function of transferring tokens by contract user is supported                                                                                              | bool    |
+| transfer\_cooldown\_time        | The cooldown time of transfering tokens.  Once a transfer transaction is confirmed, the cooldown time must pass before the transfer transaction can be proposed again. | integer |
+| is\_sponsor\_for\_all\_user     | Whether all users are [sponsored ](../../docs/shu-tu-contract-sponsor.md)in the contract.  Once the function is opened, all users can call the contract free.          | bool    |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -594,7 +573,7 @@ curl --request GET \
 
 ### Query Contract Whitelist
 
-The `Query Contract Whitelist` API provides users to get the whitelist of the specific contract.
+The `Query Contract Whitelist` API provides users to get the whitelist of the specific contract. Only the addresses in the whitelist can call the contract free.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/sponsor/whitelist" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
