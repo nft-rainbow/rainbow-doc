@@ -46,14 +46,14 @@ The `Transfer NFT` provides users with the entry to transfer the NFT.
 | -------------- | ------------------------------------------------------------- | ------- |
 | id             | The id of the storage                                         | integer |
 | app\_id        | The id of the app                                             | integer |
-| chain\_type    | The type of the chain.                                        | integer |
-| chain\_id      | The id of the chain                                           | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH.                                        | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
 | contract       | The address of the contract                                   | string  |
-| contract\_type | The type of the contract                                      | integer |
+| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                                      | integer |
 | token\_id      | The id of the token                                           | string  |
 | transfer\_from | The sender of the sending NFT                                 | string  |
 | transfer\_to   | The receiver of the sending NFT                               | string  |
-| amount         | The amount of the token                                       | integer |
+| amount         | The amount of the sending NFT                                       | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | hash           | The hash of the transaction                                   | string  |
 | tx\_id         | The id of the transaction                                     | integer |
@@ -164,10 +164,10 @@ The response is the array of transferTask construct. The construct is showed in 
 | deleted\_at    | The time of deleting the item in the database                 | string  |
 | id             | The id of the item in the database                            | integer |
 | app\_id        | The id of the app                                             | integer |
-| chain\_type    | The type of the chain.                                        | integer |
-| chain\_id      | The id of the chain                                           | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH.                                        | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
 | contract       | The address of the contract                                   | string  |
-| contract\_type | The type of the contract                                      | integer |
+| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                                      | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | hash           | The hash of the transaction                                   | string  |
 | tx\_id         | The id of the transaction                                     | integer |
@@ -175,7 +175,7 @@ The response is the array of transferTask construct. The construct is showed in 
 | transfer\_to   | The receiver of the sending NFT                               | string  |
 | transfer\_from | The sender of the sending NFT                                 | string  |
 | token\_id      | The id of the token                                           | integer |
-| amount         | The amount of the token                                       | integer |
+| amount         | The amount of the sending NFT                                       | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -277,18 +277,21 @@ The `Obtain transferred NFT list` API provides users with the entry to query the
 | Name  | Meaning                           | Type        |
 | ----- | --------------------------------- | ----------- |
 | count | The number of the tranferred NFTs | integer     |
-| items | The nfts information              | \[]MintTask |
+| items | The nfts information              | \[]TransferTask |
 
-The **`MintTask Struct`** is listed as follow:
+The **`TransferTask Struct`** is listed as follow:
 
 | Name           | Meaning                                                       | Type    |
 | -------------- | ------------------------------------------------------------- | ------- |
-| amount         | The amount of the nft                                         | integer |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
+| amount         | The amount of the sending NFTs                                         | integer |
 | app\_id        | The id of the app                                             | integer |
-| chain\_id      | The id of the chain                                           | integer |
-| chain\_type    | The type of the chain                                         | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH                                         | integer |
 | contract       | The address of the nft                                        | string  |
-| contract\_type | The type of the contract                                      | integer |
+| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                                      | integer |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
 | id             | The id of the storage                                         | integer |
@@ -296,7 +299,6 @@ The **`MintTask Struct`** is listed as follow:
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | token\_id      | The id of the token                                           | string  |
 | transfer\_from | The sender of the sending NFT                                 | string  |
-| tx\_id         | The id of the transaction                                     | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -398,12 +400,15 @@ The `Obtain Detialed NFT Transfer Information` API provides users with the entry
 {% tab title="Response" %}
 | Name           | Meaning                                                       | Type    |
 | -------------- | ------------------------------------------------------------- | ------- |
-| amount         | The amount of the nft                                         | integer |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
+| amount         | The amount of the sending NFTs                                         | integer |
 | app\_id        | The id of the app                                             | integer |
-| chain\_id      | The id of the chain                                           | integer |
-| chain\_type    | The type of the chain                                         | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH                                         | integer |
 | contract       | The address of the nft                                        | string  |
-| contract\_type | The type of the contract                                      | integer |
+| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                                      | integer |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
 | id             | The id of the storage                                         | integer |
@@ -411,7 +416,6 @@ The `Obtain Detialed NFT Transfer Information` API provides users with the entry
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | token\_id      | The id of the token                                           | string  |
 | transfer\_from | The sender of the sending NFT                                 | string  |
-| tx\_id         | The id of the transaction                                     | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}

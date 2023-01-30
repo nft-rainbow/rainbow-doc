@@ -46,9 +46,9 @@ The `Burn NFT by Admin` API helps users to burn the corresponding NFT.
 | deleted\_at    | The time of deleting the item in the database                 | string  |
 | amount         | The amount of the nft                                         | integer |
 | app\_id        | The id of the app                                             | integer |
-| chain\_id      | The id of the chain                                           | integer |
-| chain\_type    | The type of the chain                                         | integer |
-| contract\_type | The type of the contract                                      | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH                                         | integer |
+| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                                      | integer |
 | contract       | The address of the nft                                        | string  |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
@@ -136,9 +136,9 @@ The `Query specific Burning NFT information` API helps users to query burning re
 | deleted\_at    | The time of deleting the item in the database                 | string  |
 | amount         | The amount of the nft                                         | integer |
 | app\_id        | The id of the app                                             | integer |
-| chain\_id      | The id of the chain                                           | integer |
-| chain\_type    | The type of the chain                                         | integer |
-| contract\_type | The type of the contract                                      | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH                                         | integer |
+| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                                      | integer |
 | contract       | The address of the nft                                        | string  |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
@@ -147,8 +147,6 @@ The `Query specific Burning NFT information` API helps users to query burning re
 | token\_id      | The id of the token                                           | string  |
 | user           | The address of the user                                       | string  |
 | tx\_id         | The id of the transaction                                     | integer |
-| mint\_type     | The type of the minting                                       | integer |
-| error          | The error during executing the transaction                    | string  |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -218,9 +216,9 @@ The BurnTask struct is showed in the following.
 | deleted\_at    | The time of deleting the item in the database                 | string  |
 | amount         | The amount of the nft                                         | integer |
 | app\_id        | The id of the app                                             | integer |
-| chain\_id      | The id of the chain                                           | integer |
-| chain\_type    | The type of the chain                                         | integer |
-| contract\_type | The type of the contract                                      | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH                                         | integer |
+| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                                      | integer |
 | contract       | The address of the nft                                        | string  |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
@@ -229,8 +227,6 @@ The BurnTask struct is showed in the following.
 | token\_id      | The id of the token                                           | string  |
 | user           | The address of the user                                       | string  |
 | tx\_id         | The id of the transaction                                     | integer |
-| mint\_type     | The type of the minting                                       | integer |
-| error          | The error during executing the transaction                    | string  |
 {% endtab %}
 
 {% tab title="Response Example" %}

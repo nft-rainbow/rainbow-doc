@@ -47,7 +47,7 @@ The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contr
 | -------------- | ------------------------------------------------------------------------ | ------- |
 | amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
 | app\_id        | The id of the app                                                        | integer |
-| chain\_id      | The id of the chain                                                      | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                      | integer |
 | chain\_type    |  The type of the chain. 1-CFX, 2-ETH                                     | integer |
 | contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                            | integer |
 | contract       | The address of the contract                                              | string  |
@@ -173,7 +173,7 @@ The MintTask construct is showed in the following.
 | deleted\_at    | The time of deleting the item in the database                            | string  |
 | id             | The id of the item in the database                                       | integer |
 | app\_id        | The id of the app                                                        | integer |
-| chain\_type    | The type of the chain.                                                   | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH.                                                   | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                             | integer |
 | contract       | The address of the contract                                              | string  |
 | contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                            | integer |
@@ -313,8 +313,8 @@ The `Mint NFT with file` API provides users with the entry to call the ERC721 or
 | -------------- | ------------------------------------------------------------------------ | ------- |
 | amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
 | app\_id        | The id of the app                                                        | integer |
-| chain\_id      | The id of the chain                                                      | integer |
-| chain\_type    | The type of the chain                                                    | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                       | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH                                                    | integer |
 | contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                            | integer |
 | contract       | The address of the contract.                                             | string  |
 | error          | The error during executing tx                                            | string  |
@@ -325,7 +325,7 @@ The `Mint NFT with file` API provides users with the entry to call the ERC721 or
 | token\_id      | The id of the token                                                      | string  |
 | token\_uri     | The uri of the token                                                     | string  |
 | tx\_id         | The id of the transaction                                                | integer |
-| mint\_type     | The type of the minting                                                  | integer |
+| mint\_type     | The type of the mint. 1-easyMint, 2-customMint, 3-customBatchMint                                                  | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -405,8 +405,8 @@ The `Mint NFT with metadata` provides users with the entry to call the ERC721 or
 | -------------- | ------------------------------------------------------------------------ | ------- |
 | amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
 | app\_id        | The id of the app                                                        | integer |
-| chain\_id      | The id of the chain                                                      | integer |
-| chain\_type    | The type of the chain                                                    | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                       | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH                                                    | integer |
 | contract\_type | The type of the contract                                                 | integer |
 | contract       | The address of the contract                                              | string  |
 | error          | The error during executing tx                                            | string  |
@@ -417,7 +417,7 @@ The `Mint NFT with metadata` provides users with the entry to call the ERC721 or
 | token\_id      | The id of the token                                                      | string  |
 | token\_uri     | The uri of the token                                                     | string  |
 | tx\_id         | The id of the transaction                                                | integer |
-| mint\_type     | The type of the minting                                                  | integer |
+| mint\_type     | The type of the mint. 1-easyMint, 2-customMint, 3-customBatchMint                                                  | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -495,8 +495,8 @@ The **`MintTask Struct`** is listed as follow:
 | -------------- | ------------------------------------------------------------------------ | ------- |
 | amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
 | app\_id        | The id of the app                                                        | integer |
-| chain\_id      | The id of the chain                                                      | integer |
-| chain\_type    | The type of the chain                                                    | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                  | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH                                                    | integer |
 | contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                            | integer |
 | contract       | The address of the contract                                              | string  |
 | error          | The error during executing tx                                            | string  |
@@ -507,7 +507,7 @@ The **`MintTask Struct`** is listed as follow:
 | token\_id      | The id of the token                                                      | string  |
 | token\_uri     | The uri of the token                                                     | string  |
 | tx\_id         | The id of the transaction                                                | integer |
-| mint\_type     | The type of the minting                                                  | integer |
+| mint\_type     | The type of the mint. 1-easyMint, 2-customMint, 3-customBatchMint                                                  | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -574,8 +574,8 @@ The `Query detailed NFT` API provides users with the entry to query the detailed
 | -------------- | ------------------------------------------------------------------------ | ------- |
 | amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
 | app\_id        | The id of the app                                                        | integer |
-| chain\_id      | The id of the chain                                                      | integer |
-| chain\_type    | The type of the chain                                                    | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                      | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH                                                    | integer |
 | contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                            | integer |
 | contract       | The address of the contract                                              | string  |
 | error          | The error during executing tx                                            | string  |
@@ -586,7 +586,7 @@ The `Query detailed NFT` API provides users with the entry to query the detailed
 | token\_id      | The id of the token                                                      | string  |
 | token\_uri     | The uri of the token                                                     | string  |
 | tx\_id         | The id of the transaction                                                | integer |
-| mint\_type     | The type of the minting                                                  | integer |
+| mint\_type     | The type of the mint. 1-easyMint, 2-customMint, 3-customBatchMint                                                 | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
