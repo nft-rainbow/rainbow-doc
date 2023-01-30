@@ -26,7 +26,7 @@ The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contr
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>mint_to_address</td><td>The owner of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>metadata_uri</td><td>The uri of the metadata. It can be created thorugh <a href="metadata.md">create metadata uri</a>.</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the NFTs. The total minted NFTs can not exceed the amount.</td><td>body</td><td>integer</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the NFT, which will be generated randomly if the field in the request is null.</td><td>body</td><td>string</td><td>false</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>mint_to_address</td><td>The owner of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>metadata_uri</td><td>The uri of the metadata. It can be created thorugh <a href="metadata.md">create metadata uri</a>.</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the minted NFTs. For ERC721 contract, this field must be 1. For ERC1155 contract, this field can be greater than 0.</td><td>body</td><td>integer</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -49,7 +49,7 @@ The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contr
 | updated\_at    | The time of updating the item in the database                 | string  |
 | deleted\_at    | The time of deleting the item in the database                 | string  |
 | id             | The id of the item in the database                                         | integer |
-| amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
+| amount         | The amount of the minted NFTs. For ERC721 contract, this field must be 1. For ERC1155 contract, this field can be greater than 0. | integer |
 | app\_id        | The id of the app                                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                      | integer |
 | chain\_type    |  The type of the chain. 1-CFX, 2-ETH                                     | integer |
@@ -132,7 +132,7 @@ The `Batch Mint NFTs` API provides users with the entry to call the ERC721 or ER
 
 The MintItemDto construct is presented in the following.
 
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>string</td><td>false</td></tr><tr><td>mint_to_address</td><td>The owner of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the NFTs. The total minted NFTs can not exceed the amount.</td><td>body</td><td>integer</td><td>false</td></tr><tr><td>metadata_uri</td><td>The uri of the metadata. This uri can be generated through <a href="metadata.md#create-nft-metadata">create metadata</a></td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the NFT, which will be generated randomly if the field in the request is null.</td><td>body</td><td>string</td><td>false</td></tr><tr><td>mint_to_address</td><td>The owner of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the minted NFTs. For ERC721 contract, this field must be 1. For ERC1155 contract, this field can be greater than 0.</td><td>body</td><td>integer</td><td>false</td></tr><tr><td>metadata_uri</td><td>The uri of the metadata. This uri can be generated through <a href="metadata.md#create-nft-metadata">create metadata</a></td><td>body</td><td>string</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -182,8 +182,8 @@ The MintTask construct is showed in the following.
 | contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                            | integer |
 | mint\_to       | The address of the owner                                                 | string  |
 | token\_uri     | The uri of the token                                                     | string  |
-| token\_id      | The id of the token                                                      | string  |
-| amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
+| token\_id      | The id of the NFT, which will be generated randomly if the field in the request is null.                                                      | string  |
+| amount         | The amount of the minted NFTs. For ERC721 contract, this field must be 1. For ERC1155 contract, this field can be greater than 0. | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed            | integer |
 | hash           | The hash of the transaction                                              | string  |
 | tx\_id         | The id of the transaction                                                | integer |
@@ -318,7 +318,7 @@ The `Mint NFT with file` API provides users with the entry to call the ERC721 or
 | updated\_at    | The time of updating the item in the database                 | string  |
 | deleted\_at    | The time of deleting the item in the database                 | string  |
 | id             | The id of the item in the database                                         | integer |
-| amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
+| amount         | The amount of the minted NFTs. For ERC721 contract, this field must be 1. For ERC1155 contract, this field can be greater than 0. | integer |
 | app\_id        | The id of the app                                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                       | integer |
 | chain\_type    | The type of the chain. 1-CFX, 2-ETH                                                    | integer |
@@ -328,7 +328,7 @@ The `Mint NFT with file` API provides users with the entry to call the ERC721 or
 | hash           | The hash of the transaction                                              | string  |
 | mint\_to       | The owner of the nft                                                     | string  |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed            | integer |
-| token\_id      | The id of the token                                                      | string  |
+| token\_id      | The id of the NFT, which will be generated randomly if the field in the request is null.                                                      | string  |
 | token\_uri     | The uri of the token                                                     | string  |
 | tx\_id         | The id of the transaction                                                | integer |
 | mint\_type     | The type of the mint. 1-easyMint, 2-customMint, 3-customBatchMint                                                  | integer |
@@ -413,7 +413,7 @@ The `Mint NFT with metadata` provides users with the entry to call the ERC721 or
 | updated\_at    | The time of updating the item in the database                 | string  |
 | deleted\_at    | The time of deleting the item in the database                 | string  |
 | id             | The id of the item in the database                                         | integer |
-| amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
+| amount         | The amount of the minted NFTs. For ERC721 contract, this field must be 1. For ERC1155 contract, this field can be greater than 0. | integer |
 | app\_id        | The id of the app                                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                       | integer |
 | chain\_type    | The type of the chain. 1-CFX, 2-ETH                                                    | integer |
@@ -423,7 +423,7 @@ The `Mint NFT with metadata` provides users with the entry to call the ERC721 or
 | hash           | The hash of the transaction                                              | string  |
 | mint\_to       | The owner of the nft                                                     | string  |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed            | integer |
-| token\_id      | The id of the token                                                      | string  |
+| token\_id      | The id of the NFT, which will be generated randomly if the field in the request is null.                                                      | string  |
 | token\_uri     | The uri of the token                                                     | string  |
 | tx\_id         | The id of the transaction                                                | integer |
 | mint\_type     | The type of the mint. 1-easyMint, 2-customMint, 3-customBatchMint                                                  | integer |
@@ -506,7 +506,7 @@ The **`MintTask Struct`** is listed as follow:
 | updated\_at    | The time of updating the item in the database                 | string  |
 | deleted\_at    | The time of deleting the item in the database                 | string  |
 | id             | The id of the item in the database                                         | integer |
-| amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
+| amount         | The amount of the minted NFTs. For ERC721 contract, this field must be 1. For ERC1155 contract, this field can be greater than 0. | integer |
 | app\_id        | The id of the app                                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                  | integer |
 | chain\_type    | The type of the chain. 1-CFX, 2-ETH                                                    | integer |
@@ -516,7 +516,7 @@ The **`MintTask Struct`** is listed as follow:
 | hash           | The hash of the transaction                                              | string  |
 | mint\_to       | The owner of the nft                                                     | string  |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed            | integer |
-| token\_id      | The id of the token                                                      | string  |
+| token\_id      | The id of the NFT, which will be generated randomly if the field in the request is null.                                                      | string  |
 | token\_uri     | The uri of the token                                                     | string  |
 | tx\_id         | The id of the transaction                                                | integer |
 | mint\_type     | The type of the mint. 1-easyMint, 2-customMint, 3-customBatchMint                                                  | integer |
@@ -564,7 +564,7 @@ curl --request GET \
 
 ### Query detailed NFT
 
-The `Query detailed NFT` API provides users with the entry to query the detailed NFT information created on a spcific app according to the NFT's id.
+The `Query detailed NFT` API provides users with the entry to query the detailed NFT information created on a specific app according to the NFT's id.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/mints/{id}" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -588,7 +588,7 @@ The `Query detailed NFT` API provides users with the entry to query the detailed
 | updated\_at    | The time of updating the item in the database                 | string  |
 | deleted\_at    | The time of deleting the item in the database                 | string  |
 | id             | The id of the item in the database                                         | integer |
-| amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
+| amount         | The amount of the minted NFTs. For ERC721 contract, this field must be 1. For ERC1155 contract, this field can be greater than 0. | integer |
 | app\_id        | The id of the app                                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                      | integer |
 | chain\_type    | The type of the chain. 1-CFX, 2-ETH                                                    | integer |
@@ -598,7 +598,7 @@ The `Query detailed NFT` API provides users with the entry to query the detailed
 | hash           | The hash of the transaction                                              | string  |
 | mint\_to       | The owner of the nft                                                     | string  |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed            | integer |
-| token\_id      | The id of the token                                                      | string  |
+| token\_id      | The id of the NFT, which will be generated randomly if the field in the request is null.                                                      | string  |
 | token\_uri     | The uri of the token                                                     | string  |
 | tx\_id         | The id of the transaction                                                | integer |
 | mint\_type     | The type of the mint. 1-easyMint, 2-customMint, 3-customBatchMint                                                 | integer |
