@@ -44,7 +44,10 @@ The `Transfer NFT` provides users with the entry to transfer the NFT.
 {% tab title="Response" %}
 | Name           | Meaning                                                       | Type    |
 | -------------- | ------------------------------------------------------------- | ------- |
-| id             | The id of the storage                                         | integer |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | app\_id        | The id of the app                                             | integer |
 | chain\_type    | The type of the chain. 1-CFX, 2-ETH.                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
@@ -286,6 +289,7 @@ The **`TransferTask Struct`** is listed as follow:
 | created\_at    | The time of creating the item in the database                 | string  |
 | updated\_at    | The time of updating the item in the database                 | string  |
 | deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | amount         | The amount of the sending NFTs                                         | integer |
 | app\_id        | The id of the app                                             | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
@@ -294,11 +298,11 @@ The **`TransferTask Struct`** is listed as follow:
 | contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                                      | integer |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
-| id             | The id of the storage                                         | integer |
 | transfer\_to   | The receiver of the sending NFT                               | string  |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | token\_id      | The id of the token                                           | string  |
 | transfer\_from | The sender of the sending NFT                                 | string  |
+| tx\_id         | The id of the transaction                                     | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -403,6 +407,7 @@ The `Obtain Detialed NFT Transfer Information` API provides users with the entry
 | created\_at    | The time of creating the item in the database                 | string  |
 | updated\_at    | The time of updating the item in the database                 | string  |
 | deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | amount         | The amount of the sending NFTs                                         | integer |
 | app\_id        | The id of the app                                             | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
@@ -411,11 +416,11 @@ The `Obtain Detialed NFT Transfer Information` API provides users with the entry
 | contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                                      | integer |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
-| id             | The id of the storage                                         | integer |
 | transfer\_to   | The receiver of the sending NFT                               | string  |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | token\_id      | The id of the token                                           | string  |
 | transfer\_from | The sender of the sending NFT                                 | string  |
+| tx\_id         | The id of the transaction                                     | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}

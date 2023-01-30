@@ -45,6 +45,10 @@ The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contr
 {% tab title="Response" %}
 | Name           | Meaning                                                                  | Type    |
 | -------------- | ------------------------------------------------------------------------ | ------- |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
 | app\_id        | The id of the app                                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                      | integer |
@@ -53,7 +57,6 @@ The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contr
 | contract       | The address of the contract                                              | string  |
 | error          | The error during executing tx                                            | string  |
 | hash           | The hash of the transaction                                              | string  |
-| id             | The id of the storage                                                    | integer |
 | mint\_to       | The owner of the nft                                                     | string  |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed            | integer |
 | token\_id      | The id of the token                                                      | string  |
@@ -311,6 +314,10 @@ The `Mint NFT with file` API provides users with the entry to call the ERC721 or
 {% tab title="Response" %}
 | Name           | Meaning                                                                  | Type    |
 | -------------- | ------------------------------------------------------------------------ | ------- |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
 | app\_id        | The id of the app                                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                       | integer |
@@ -319,7 +326,6 @@ The `Mint NFT with file` API provides users with the entry to call the ERC721 or
 | contract       | The address of the contract.                                             | string  |
 | error          | The error during executing tx                                            | string  |
 | hash           | The hash of the transaction                                              | string  |
-| id             | The id of the storage                                                    | integer |
 | mint\_to       | The owner of the nft                                                     | string  |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed            | integer |
 | token\_id      | The id of the token                                                      | string  |
@@ -403,6 +409,10 @@ The `Mint NFT with metadata` provides users with the entry to call the ERC721 or
 {% tab title="Response" %}
 | Name           | Meaning                                                                  | Type    |
 | -------------- | ------------------------------------------------------------------------ | ------- |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
 | app\_id        | The id of the app                                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                       | integer |
@@ -411,7 +421,6 @@ The `Mint NFT with metadata` provides users with the entry to call the ERC721 or
 | contract       | The address of the contract                                              | string  |
 | error          | The error during executing tx                                            | string  |
 | hash           | The hash of the transaction                                              | string  |
-| id             | The id of the storage                                                    | integer |
 | mint\_to       | The owner of the nft                                                     | string  |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed            | integer |
 | token\_id      | The id of the token                                                      | string  |
@@ -493,6 +502,10 @@ The **`MintTask Struct`** is listed as follow:
 
 | Name           | Meaning                                                                  | Type    |
 | -------------- | ------------------------------------------------------------------------ | ------- |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
 | app\_id        | The id of the app                                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                  | integer |
@@ -501,7 +514,6 @@ The **`MintTask Struct`** is listed as follow:
 | contract       | The address of the contract                                              | string  |
 | error          | The error during executing tx                                            | string  |
 | hash           | The hash of the transaction                                              | string  |
-| id             | The id of the storage                                                    | integer |
 | mint\_to       | The owner of the nft                                                     | string  |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed            | integer |
 | token\_id      | The id of the token                                                      | string  |
@@ -572,6 +584,10 @@ The `Query detailed NFT` API provides users with the entry to query the detailed
 {% tab title="Response" %}
 | Name           | Meaning                                                                  | Type    |
 | -------------- | ------------------------------------------------------------------------ | ------- |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | amount         | The amount of the NFTs. The total minted NFTs can not exceed the amount. | integer |
 | app\_id        | The id of the app                                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                      | integer |
@@ -580,7 +596,6 @@ The `Query detailed NFT` API provides users with the entry to query the detailed
 | contract       | The address of the contract                                              | string  |
 | error          | The error during executing tx                                            | string  |
 | hash           | The hash of the transaction                                              | string  |
-| id             | The id of the storage                                                    | integer |
 | mint\_to       | The owner of the nft                                                     | string  |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed            | integer |
 | token\_id      | The id of the token                                                      | string  |

@@ -44,6 +44,7 @@ The `Burn NFT by Admin` API helps users to burn the corresponding NFT.
 | created\_at    | The time of creating the item in the database                 | string  |
 | updated\_at    | The time of updating the item in the database                 | string  |
 | deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | amount         | The amount of the nft                                         | integer |
 | app\_id        | The id of the app                                             | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
@@ -52,7 +53,6 @@ The `Burn NFT by Admin` API helps users to burn the corresponding NFT.
 | contract       | The address of the nft                                        | string  |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
-| id             | The id of the storage                                         | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | token\_id      | The id of the token                                           | string  |
 | user           | The address of the user                                       | string  |
@@ -134,6 +134,7 @@ The `Query specific Burning NFT information` API helps users to query burning re
 | created\_at    | The time of creating the item in the database                 | string  |
 | updated\_at    | The time of updating the item in the database                 | string  |
 | deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | amount         | The amount of the nft                                         | integer |
 | app\_id        | The id of the app                                             | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
@@ -142,7 +143,6 @@ The `Query specific Burning NFT information` API helps users to query burning re
 | contract       | The address of the nft                                        | string  |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
-| id             | The id of the storage                                         | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | token\_id      | The id of the token                                           | string  |
 | user           | The address of the user                                       | string  |
@@ -214,6 +214,7 @@ The BurnTask struct is showed in the following.
 | created\_at    | The time of creating the item in the database                 | string  |
 | updated\_at    | The time of updating the item in the database                 | string  |
 | deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | amount         | The amount of the nft                                         | integer |
 | app\_id        | The id of the app                                             | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
@@ -222,7 +223,6 @@ The BurnTask struct is showed in the following.
 | contract       | The address of the nft                                        | string  |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
-| id             | The id of the storage                                         | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | token\_id      | The id of the token                                           | string  |
 | user           | The address of the user                                       | string  |

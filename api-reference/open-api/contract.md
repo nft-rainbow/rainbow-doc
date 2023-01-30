@@ -49,6 +49,10 @@ The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 {% tab title="Response" %}
 | Name                            | Meaning                                                                                                                                                                | Type    |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | app\_id        | The id of the app                                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                      | integer |
 | chain\_type    |  The type of the chain. 1-CFX, 2-ETH                                     | integer |
@@ -342,6 +346,10 @@ The **`Contract Struct`** is listed as follow:
 
 | Name                            | Meaning                                                                                                                                                                | Type    |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | app\_id        | The id of the app                                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                      | integer |
 | chain\_type    |  The type of the chain. 1-CFX, 2-ETH                                     | integer |
@@ -428,6 +436,10 @@ The `Query detail contract` API provides users the entry to get the detail contr
 {% tab title="Response" %}
 | Name                            | Meaning                                                                                                                                                                | Type    |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| created\_at    | The time of creating the item in the database                 | string  |
+| updated\_at    | The time of updating the item in the database                 | string  |
+| deleted\_at    | The time of deleting the item in the database                 | string  |
+| id             | The id of the item in the database                                         | integer |
 | app\_id        | The id of the app                                                        | integer |
 | chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                                      | integer |
 | chain\_type    |  The type of the chain. 1-CFX, 2-ETH                                     | integer |
