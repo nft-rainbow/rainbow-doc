@@ -955,6 +955,57 @@
                         "ApiKeyAuth": []
                     }
                 ],
+                "description": "Upload a folder containing the files which can be a video, an image and so on",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Upload folder",
+                "operationId": "UploadFolder",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer openapi_token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "file",
+                        "description": "uploaded folder",
+                        "name": "folder",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/services.UploadFolderResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/files/folder/oss": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "description": "Upload a folder containing the files which can be a video, an image and so on, to oss",
                 "consumes": [
                     "multipart/form-data"
