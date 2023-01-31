@@ -40,13 +40,6 @@
                         "name": "Authorization",
                         "in": "header",
                         "required": true
-                    },
-                    {
-                        "type": "integer",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
                     }
                 ],
                 "responses": {
@@ -108,6 +101,65 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/models.BurnTask"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/burns/customizable/batch": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Batch burn NFT by admin",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Burns"
+                ],
+                "summary": "Batch burn NFT",
+                "operationId": "BurnBatch",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "burn_batch_dto",
+                        "name": "burn_batch_dto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.BurnBatchDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.BurnTask"
+                            }
                         }
                     },
                     "400": {
@@ -532,7 +584,7 @@
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Set the sponsor for a specified contract according to the address",
+                "description": "Set the sponsor for a contract according to the address with specified value(gas-1, storage-50)",
                 "produces": [
                     "application/json"
                 ],
@@ -551,15 +603,27 @@
                     },
                     {
                         "type": "string",
-                        "description": "address",
+                        "description": "Contract address",
                         "name": "address",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "chain",
+                        "name": "chain",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Open auto sponsor or not, for mainnet contract keep user account have enough balance",
+                        "name": "auto_sponsor",
+                        "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Transaction id\"                             \"success",
+                        "description": "Transaction id\"\t\"success",
                         "schema": {
                             "$ref": "#/definitions/services.SetSponsorResp"
                         }
@@ -884,6 +948,57 @@
                 }
             }
         },
+        "/files/folder": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Upload a folder containing the files which can be a video, an image and so on, to oss",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Upload folder to oss",
+                "operationId": "UploadFolderToOSS",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer openapi_token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "file",
+                        "description": "uploaded folder",
+                        "name": "folder",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/services.UploadFolderResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
         "/files/oss": {
             "post": {
                 "security": [
@@ -1181,6 +1296,18 @@
                         "description": "mint_to",
                         "name": "mint_to",
                         "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "status",
+                        "name": "status",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "chain",
+                        "name": "chain",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -1340,13 +1467,28 @@
                         "required": true
                     },
                     {
-                        "description": "easy_mint_file_info",
-                        "name": "easy_mint_file_info",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/services.EasyMintFileDto"
-                        }
+                        "type": "string",
+                        "name": "chain",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "description",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "mint_to_address",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "name",
+                        "in": "formData",
+                        "required": true
                     },
                     {
                         "type": "file",
@@ -2004,6 +2146,9 @@
                 "deleted_at": {
                     "$ref": "#/definitions/gorm.DeletedAt"
                 },
+                "error": {
+                    "type": "string"
+                },
                 "hash": {
                     "type": "string"
                 },
@@ -2335,6 +2480,48 @@
                 }
             }
         },
+        "models.TxState": {
+            "type": "integer",
+            "enum": [
+                -6,
+                -5,
+                -4,
+                -3,
+                -2,
+                -1,
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "x-enum-comments": {
+                "TX_STATE_CONFIRMED": "4",
+                "TX_STATE_EXECUTED": "3",
+                "TX_STATE_EXECUTE_FAILED": "-2",
+                "TX_STATE_INIT": "0",
+                "TX_STATE_PENDING": "2",
+                "TX_STATE_PENDING_RETRY": "-5",
+                "TX_STATE_PENDING_RETRY_UPPER_GAS": "-6",
+                "TX_STATE_POPULATED": "1",
+                "TX_STATE_SEND_FAILED": "-1",
+                "TX_STATE_SEND_FAILED_RETRY": "-3",
+                "TX_STATE_SEND_FAILED_RETRY_UPPER_GAS": "-4"
+            },
+            "x-enum-varnames": [
+                "TX_STATE_PENDING_RETRY_UPPER_GAS",
+                "TX_STATE_PENDING_RETRY",
+                "TX_STATE_SEND_FAILED_RETRY_UPPER_GAS",
+                "TX_STATE_SEND_FAILED_RETRY",
+                "TX_STATE_EXECUTE_FAILED",
+                "TX_STATE_SEND_FAILED",
+                "TX_STATE_INIT",
+                "TX_STATE_POPULATED",
+                "TX_STATE_PENDING",
+                "TX_STATE_EXECUTED",
+                "TX_STATE_CONFIRMED"
+            ]
+        },
         "multipart.FileHeader": {
             "type": "object",
             "properties": {
@@ -2356,6 +2543,43 @@
                     "type": "integer"
                 },
                 "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "services.BurnBatchDto": {
+            "type": "object",
+            "required": [
+                "chain",
+                "contract_address",
+                "contract_type",
+                "items"
+            ],
+            "properties": {
+                "chain": {
+                    "type": "string",
+                    "enum": [
+                        "conflux",
+                        "conflux_test"
+                    ]
+                },
+                "contract_address": {
+                    "type": "string"
+                },
+                "contract_type": {
+                    "type": "string",
+                    "enum": [
+                        "erc721",
+                        "erc1155"
+                    ]
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/services.BurnItemDto"
+                    }
+                },
+                "user": {
                     "type": "string"
                 }
             }
@@ -2397,6 +2621,20 @@
                 }
             }
         },
+        "services.BurnItemDto": {
+            "type": "object",
+            "required": [
+                "token_id"
+            ],
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "token_id": {
+                    "type": "string"
+                }
+            }
+        },
         "services.ContractAdminUpdateDto": {
             "type": "object",
             "required": [
@@ -2413,9 +2651,7 @@
             "type": "object",
             "required": [
                 "chain",
-                "is_sponsor_for_all_user",
                 "name",
-                "owner_address",
                 "symbol",
                 "type"
             ],
@@ -2431,6 +2667,7 @@
                     ]
                 },
                 "is_sponsor_for_all_user": {
+                    "description": "default: true",
                     "type": "boolean"
                 },
                 "name": {
@@ -2523,33 +2760,6 @@
                     "type": "string"
                 },
                 "token_id": {
-                    "type": "string"
-                }
-            }
-        },
-        "services.EasyMintFileDto": {
-            "type": "object",
-            "required": [
-                "chain",
-                "description",
-                "file",
-                "mint_to_address",
-                "name"
-            ],
-            "properties": {
-                "chain": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "file": {
-                    "$ref": "#/definitions/multipart.FileHeader"
-                },
-                "mint_to_address": {
-                    "type": "string"
-                },
-                "name": {
                     "type": "string"
                 }
             }
@@ -2802,7 +3012,7 @@
                     "type": "boolean"
                 },
                 "state_code": {
-                    "type": "integer"
+                    "$ref": "#/definitions/models.TxState"
                 },
                 "state_msg": {
                     "type": "string"
@@ -2822,6 +3032,17 @@
                     "type": "string"
                 },
                 "file_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "services.UploadFolderResponse": {
+            "type": "object",
+            "properties": {
+                "file_num": {
+                    "type": "integer"
+                },
+                "folder_url": {
                     "type": "string"
                 }
             }
