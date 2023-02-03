@@ -226,7 +226,7 @@ curl --request POST \
 {% endtabs %}
 
 {% hint style="info" %}
-**Note:** UP to now, only `conlux_test` network supports `Set sponsor` API.
+**Note:** UP to now, `Set sponsor` API can only be called by users free in testnet. In mainnet, Users need to [recharge their own wallet.](../../tutorials/guides/kong-zhi-tai-he-yue-dai-fu-she-zhi.md)
 {% endhint %}
 
 ### Add Contract Sponsor Users
