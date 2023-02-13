@@ -96,7 +96,7 @@ curl --request POST \
   --url https://api.nftrainbow.cn/v1/mints/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
-  --data '{
+  --data-raw '{
     "chain": "conflux_test",
     "token_id": "123",
     "mint_to_address": "cfxtest:aasr1hmezez1wepvh8ew8sk9p40khhhj1ymxwmpaf0",
@@ -264,7 +264,7 @@ curl --request POST \
   --url https://api.nftrainbow.cn/v1/mints/customizable/batch \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
-  --data '{
+  --data-raw '{
     "chain": "conflux_test",
     "contract_address": "cfxtest:aceng286bm0xnu8s4wdf1xzdchgn0zxxapb1jj597t",
     "mint_items": [
@@ -460,7 +460,7 @@ curl --request POST \
   --url https://api.nftrainbow.cn/v1/mints/easy/urls \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \
-  --data '{
+  --data-raw '{
     "chain": "conflux_test",
     "name": "123",
     "description": "123",

@@ -100,7 +100,7 @@ curl --request POST
 --url https://api.nftrainbow.cn/v1/metadata/ \
 --header 'Authorization: Bearer {JWT}' \
 --header 'Content-Type: application/json' \
---data '{
+--data-raw '{
   "attributes": [
     {
       "attribute_name": "mouse",

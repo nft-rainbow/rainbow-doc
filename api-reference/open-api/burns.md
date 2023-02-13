@@ -90,7 +90,7 @@ curl --request POST \
   --url https://api.nftrainbow.cn/v1/burns/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
-  --data '{
+  --data-raw '{
     "chain{
     "chain": "conflux_test",
     "contract_address": "cfxtest:acg1rr3cxaykwymwrajgat0vbk44wvzsrj0ftk7wb1",

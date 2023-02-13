@@ -93,7 +93,7 @@ curl --request POST \
   --url https://api.nftrainbow.cn/v1/transfers/customizable \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
-  --data '{
+  --data-raw '{
     "chain": "conflux_test",
     "contract_address": "cfxtest:accy6epch754uamc4x55mcv3pzgae8vfvaufj6v4uj",
     "contract_type":"erc1155",
@@ -232,7 +232,7 @@ curl --request POST \
   --url https://api.nftrainbow.cn/v1/transfers/customizable/batch \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \ 
-  --data '{
+  --data-raw '{
     "chain": "conflux_test",
     "contract_address": "cfxtest:accy6epch754uamc4x55mcv3pzgae8vfvaufj6v4uj",
     "contract_type": "erc1155",

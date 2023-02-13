@@ -111,7 +111,7 @@ curl --request POST \
   --url https://api.nftrainbow.cn/v1/contracts/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \
-  --data ' {
+  --data-raw ' {
     "chain": "conflux_test",
     "name": "NFT-name",
     "symbol": "ENFT",
@@ -268,7 +268,7 @@ curl --request POST \
   --url https://api.nftrainbow.cn/v1/contracts/{address}/sponsor/whitelist/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \
-  --data `["cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8"]`
+  --data-raw `["cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8"]`
 ```
 {% endtab %}
 {% endtabs %}
@@ -312,7 +312,7 @@ curl --request DELETE \
   --url https://api.nftrainbow.cn/v1/contracts/{address}/sponsor/whitelist/ \
   --header 'Authorization: Bearer {JWT}' \
   --header 'Content-Type: application/json' \
-  --data `["cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8"]`
+  --data-raw `["cfxtest:aam1eawbm9pzp0dnwv96tts5shnbdfv9nuwu7zgzz8"]`
   
 ```
 {% endtab %}
