@@ -21,6 +21,7 @@
 * [树图Contract Sponsor](docs/shu-tu-contract-sponsor.md)
 * [Terminology](docs/terminology.md)
 * [Prices](docs/price.md)
+* [Common Errors](docs/common-errors.md)
 
 ## Products
 
