@@ -24,7 +24,7 @@ The `Transfer NFT` provides users with the entry to transfer the NFT.
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>contract_type</td><td>The type of the contract</td><td>body</td><td>string</td><td>false</td></tr><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_from_address</td><td>The sender of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_to_address</td><td>The receiver of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the sending NFT</td><td>body</td><td>integer</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>contract_type</td><td>The type of the contract, which includes erc721 and erc1155</td><td>body</td><td>string</td><td>false</td></tr><tr><td>token_id</td><td>The id of the NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>chain</td><td>The chain type. The types include <code>conflux</code> and <code>conflux_test</code></td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_from_address</td><td>The sender of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>contract_address</td><td>The address of the contract</td><td>body</td><td>string</td><td>true</td></tr><tr><td>transfer_to_address</td><td>The receiver of the sending NFT</td><td>body</td><td>string</td><td>true</td></tr><tr><td>amount</td><td>The amount of the sending NFT</td><td>body</td><td>integer</td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Parameter Example" %}
@@ -47,16 +47,16 @@ The `Transfer NFT` provides users with the entry to transfer the NFT.
 | created\_at    | The time of creating the item in the database                 | string  |
 | updated\_at    | The time of updating the item in the database                 | string  |
 | deleted\_at    | The time of deleting the item in the database                 | string  |
-| id             | The id of the item in the database                                         | integer |
+| id             | The id of the item in the database                            | integer |
 | app\_id        | The id of the app                                             | integer |
-| chain\_type    | The type of the chain. 1-CFX, 2-ETH.                                        | integer |
-| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH.                          | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                  | integer |
 | contract       | The address of the contract                                   | string  |
-| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                                      | integer |
+| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
 | token\_id      | The id of the token                                           | string  |
 | transfer\_from | The sender of the sending NFT                                 | string  |
 | transfer\_to   | The receiver of the sending NFT                               | string  |
-| amount         | The amount of the sending NFT                                       | integer |
+| amount         | The amount of the sending NFT                                 | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | hash           | The hash of the transaction                                   | string  |
 | tx\_id         | The id of the transaction                                     | integer |
@@ -167,10 +167,10 @@ The response is the array of transferTask construct. The construct is showed in 
 | deleted\_at    | The time of deleting the item in the database                 | string  |
 | id             | The id of the item in the database                            | integer |
 | app\_id        | The id of the app                                             | integer |
-| chain\_type    | The type of the chain. 1-CFX, 2-ETH.                                        | integer |
-| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH.                          | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                  | integer |
 | contract       | The address of the contract                                   | string  |
-| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                                      | integer |
+| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
 | status         | The status of the transaction. 0-pending, 1-success, 2-failed | integer |
 | hash           | The hash of the transaction                                   | string  |
 | tx\_id         | The id of the transaction                                     | integer |
@@ -178,7 +178,7 @@ The response is the array of transferTask construct. The construct is showed in 
 | transfer\_to   | The receiver of the sending NFT                               | string  |
 | transfer\_from | The sender of the sending NFT                                 | string  |
 | token\_id      | The id of the token                                           | integer |
-| amount         | The amount of the sending NFT                                       | integer |
+| amount         | The amount of the sending NFT                                 | integer |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -277,9 +277,9 @@ The `Obtain transferred NFT list` API provides users with the entry to query the
 {% endtab %}
 
 {% tab title="Response" %}
-| Name  | Meaning                           | Type        |
-| ----- | --------------------------------- | ----------- |
-| count | The number of the tranferred NFTs | integer     |
+| Name  | Meaning                           | Type            |
+| ----- | --------------------------------- | --------------- |
+| count | The number of the tranferred NFTs | integer         |
 | items | The nfts information              | \[]TransferTask |
 
 The **`TransferTask Struct`** is listed as follow:
@@ -289,13 +289,13 @@ The **`TransferTask Struct`** is listed as follow:
 | created\_at    | The time of creating the item in the database                 | string  |
 | updated\_at    | The time of updating the item in the database                 | string  |
 | deleted\_at    | The time of deleting the item in the database                 | string  |
-| id             | The id of the item in the database                                         | integer |
-| amount         | The amount of the sending NFTs                                         | integer |
+| id             | The id of the item in the database                            | integer |
+| amount         | The amount of the sending NFTs                                | integer |
 | app\_id        | The id of the app                                             | integer |
-| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
-| chain\_type    | The type of the chain. 1-CFX, 2-ETH                                         | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                  | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH                           | integer |
 | contract       | The address of the nft                                        | string  |
-| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                                      | integer |
+| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
 | transfer\_to   | The receiver of the sending NFT                               | string  |
@@ -407,13 +407,13 @@ The `Obtain Detialed NFT Transfer Information` API provides users with the entry
 | created\_at    | The time of creating the item in the database                 | string  |
 | updated\_at    | The time of updating the item in the database                 | string  |
 | deleted\_at    | The time of deleting the item in the database                 | string  |
-| id             | The id of the item in the database                                         | integer |
-| amount         | The amount of the sending NFTs                                         | integer |
+| id             | The id of the item in the database                            | integer |
+| amount         | The amount of the sending NFTs                                | integer |
 | app\_id        | The id of the app                                             | integer |
-| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                                           | integer |
-| chain\_type    | The type of the chain. 1-CFX, 2-ETH                                         | integer |
+| chain\_id      | The id of the chain. 1029-mainnet, 1-testnet                  | integer |
+| chain\_type    | The type of the chain. 1-CFX, 2-ETH                           | integer |
 | contract       | The address of the nft                                        | string  |
-| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                                      | integer |
+| contract\_type | The type of the contract. 1-ERC721, 2-ERC1155                 | integer |
 | error          | The error during executing tx                                 | string  |
 | hash           | The hash of the transaction                                   | string  |
 | transfer\_to   | The receiver of the sending NFT                               | string  |
