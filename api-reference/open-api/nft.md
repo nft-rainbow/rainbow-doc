@@ -50,7 +50,6 @@ The `Update NFT token uri` API provides users to update the nft token uri accord
 | EpochHeight             | The epoch height of the transaction                                                                                                  | string |
 | pending_reason             | The pending reason of the transaction                                                                                             | string |
 {% endtab %}
-{% endtabs %}
 
 {% tab title="Response Example" %}
 ```
