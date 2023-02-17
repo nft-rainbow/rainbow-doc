@@ -1,15 +1,17 @@
 # Common Errors
 
-## Mint 失败常见失败及原因
+## Mint 操作失败常见错误及原因
 
-Rainbow 控制台铸造列表和 mints 列表接口均可以看到铸造的状态，如果失败的话，可以看到失败原因。以下是 NFT 铸造时可能遇到的一些错误，及原因，同时给出了可能的解决方法。
+Rainbow 控制台铸造列表和 OpenAPI mints 列表接口均可以看到铸造的状态，如果失败的话，可以看到失败原因。以下是 NFT 铸造时可能遇到的一些错误，及原因，同时给出了可能的解决方法。
 
 ### NotEnoughCash
 
 #### 错误详情
 
 ```text
-estimate error: Can not estimate: transaction execution failed, all gas will be charged (execution error: NotEnoughCash { required: 625000000000000000, got: 0, actual_gas_cost: 0, max_storage_limit_cost: 625000000000000000 }), data: NotEnoughCash { required: 625000000000000000, got: 0, actual_gas_cost: 0, max_storage_limit_cost: 625000000000000000 }
+estimate error: Can not estimate: transaction execution failed, all gas will be charged (
+execution error: NotEnoughCash { required: 625000000000000000, got: 0, actual_gas_cost: 0, max_storage_limit_cost: 625000000000000000 }), 
+data: NotEnoughCash { required: 625000000000000000, got: 0, actual_gas_cost: 0, max_storage_limit_cost: 625000000000000000 }
 ```
 
 #### 原因及解决方法
@@ -32,7 +34,10 @@ estimate error: Can not estimate: transaction execution failed, all gas will be 
 #### 错误详情
 
 ```text
-estimate error: Estimation isn't accurate: transaction is reverted: ERC721: token already minted. Innermost error is at CFX:TYPE.CONTRACT:ACA0P90602FKGS7CVRJ5AGS8830GT7P63PSMJ7G0NU: Vm reverted. ERC721: token already minted., data: CFX:TYPE.CONTRACT:ACA0P90602FKGS7CVRJ5AGS8830GT7P63PSMJ7G0NU: Vm reverted. ERC721: token already minted CFX:TYPE.CONTRACT:ACGVX1PDSWDZGKNTGRG0DV49XS2AC0B8RU06696HX1: Vm reverted. ERC721: token already minted
+estimate error: Estimation isn't accurate: transaction is reverted: ERC721: token already minted.
+ Innermost error is at CFX:TYPE.CONTRACT:ACA0P90602FKGS7CVRJ5AGS8830GT7P63PSMJ7G0NU: Vm reverted. 
+ ERC721: token already minted., data: CFX:TYPE.CONTRACT:ACA0P90602FKGS7CVRJ5AGS8830GT7P63PSMJ7G0NU: Vm reverted. 
+ ERC721: token already minted CFX:TYPE.CONTRACT:ACGVX1PDSWDZGKNTGRG0DV49XS2AC0B8RU06696HX1: Vm reverted. ERC721: token already minted
 ```
 
 #### 原因及解决方法
@@ -46,7 +51,8 @@ estimate error: Estimation isn't accurate: transaction is reverted: ERC721: toke
 #### 错误详情
 
 ```text
-Invalid parameters: tx, data: "Transaction 0xdaba3ea56331e16e45fa0574d43072a76d7da43c473aa7be7a12649214d74ba3 is discarded due to out of balance, needs 13760882000000000 but account balance is 0"
+Invalid parameters: tx, data: "Transaction 0xdaba3ea56331e16e45fa0574d43072a76d7da43c473aa7be7a12649214d74ba3 is 
+discarded due to out of balance, needs 13760882000000000 but account balance is 0"
 ```
 
 #### 原因及解决方法
@@ -60,7 +66,8 @@ Invalid parameters: tx, data: "Transaction 0xdaba3ea56331e16e45fa0574d43072a76d7
 #### 错误详情
 
 ```text
-Invalid parameters: tx, data: "transaction gas 20436888 exceeds the maximum value 15000000, the half of pivot block gas limit"
+Invalid parameters: tx, data: "transaction gas 20436888 
+exceeds the maximum value 15000000, the half of pivot block gas limit"
 ```
 
 #### 原因及解决方法
@@ -74,7 +81,10 @@ Invalid parameters: tx, data: "transaction gas 20436888 exceeds the maximum valu
 #### 错误详情
 
 ```text
-error: estimate error: Estimation isn't accurate: transaction is reverted: AccessControl: account 0x1d6a8330ef25759f92a02d0bf.... Innermost error is at CFXTEST:TYPE.CONTRACT:ACB7UNP488HY4PWC7TAHGMPKXRGKW7XS465P8G9C3U: Vm reverted. AccessControl: account 0x1d6a8330ef25759f92a02d0bf...., data: CFXTEST:TYPE.CONTRACT:ACB7UNP488HY4PWC7TAHGMPKXRGKW7XS465P8G9C3U: Vm reverted. AccessControl: account 0x1d6a8330ef25759f92a02d0bf...
+error: estimate error: Estimation isn't accurate: transaction is reverted: AccessControl: 
+account 0x1d6a8330ef25759f92a02d0bf.... Innermost error is at CFXTEST:TYPE.CONTRACT:ACB7UNP488HY4PWC7TAHGMPKXRGKW7XS465P8G9C3U: 
+Vm reverted. AccessControl: account 0x1d6a8330ef25759f92a02d0bf...., data: CFXTEST:TYPE.CONTRACT:ACB7UNP488HY4PWC7TAHGMPKXRGKW7XS465P8G9C3U: 
+Vm reverted. AccessControl: account 0x1d6a8330ef25759f92a02d0bf...
 ```
 
 #### 原因及解决方法
@@ -87,9 +97,12 @@ error: estimate error: Estimation isn't accurate: transaction is reverted: Acces
 
 #### 错误详情
 
-```
-error: estimate error: Estimation isn't accurate: transaction is reverted: NFT: URI different with previous. Innermost error is at CFX:TYPE.CONTRACT:ACA0E92WW1PPWJFWEYHVXBUEKRU16JNUKPE0EWSG0B: Vm reverted. NFT: URI different with previous., data: CFX:TYPE.CONTRACT:ACA0E92WW1PPWJFWEYHVXBUEKRU16JNUKPE0EWSG0B: Vm reverted. NFT: URI different with previous
-CFX:TYPE.CONTRACT:ACBHEEV04431G3HUPU18BW57K8E5K8TM26PGBV6S0Y: Vm reverted. NFT: URI different with previous
+```text
+error: estimate error: Estimation isn't accurate: transaction is reverted: 
+NFT: URI different with previous. Innermost error is at CFX:TYPE.CONTRACT:ACA0E92WW1PPWJFWEYHVXBUEKRU16JNUKPE0EWSG0B: 
+Vm reverted. NFT: URI different with previous., data: CFX:TYPE.CONTRACT:ACA0E92WW1PPWJFWEYHVXBUEKRU16JNUKPE0EWSG0B: 
+Vm reverted. NFT: URI different with previous CFX:TYPE.CONTRACT:ACBHEEV04431G3HUPU18BW57K8E5K8TM26PGBV6S0Y: 
+Vm reverted. NFT: URI different with previous
 ```
 
 #### 原因及解决方法
@@ -100,8 +113,10 @@ CFX:TYPE.CONTRACT:ACBHEEV04431G3HUPU18BW57K8E5K8TM26PGBV6S0Y: Vm reverted. NFT: 
 
 #### 错误详情
 
-```
-error: estimate error: Estimation isn't accurate: transaction is reverted: ERC1155: transfer to non ERC1155Receiver implement.... Innermost error is at CFXTEST:TYPE.CONTRACT:ACDT6158XGRMEMPRMFFJN4DA5VRKH5M9CESGWBJK8Y: Vm reverted. ., data: CFXTEST:TYPE.CONTRACT:ACDT6158XGRMEMPRMFFJN4DA5VRKH5M9CESGWBJK8Y: Vm reverted.
+```text
+error: estimate error: Estimation isn't accurate: transaction is reverted: ERC1155: transfer to non ERC1155Receiver implement.... 
+Innermost error is at CFXTEST:TYPE.CONTRACT:ACDT6158XGRMEMPRMFFJN4DA5VRKH5M9CESGWBJK8Y: Vm reverted. ., 
+data: CFXTEST:TYPE.CONTRACT:ACDT6158XGRMEMPRMFFJN4DA5VRKH5M9CESGWBJK8Y: Vm reverted.
 CFXTEST:TYPE.CONTRACT:ACAKSW1DP0PK9R8N9ECRD0FR9ZAZKKTTB6TXJ1GKH1: Vm reverted.
 CFXTEST:TYPE.CONTRACT:ACDT6158XGRMEMPRMFFJN4DA5VRKH5M9CESGWBJK8Y: Vm reverted. ERC1155: transfer to non ERC1155Receiver implement...
 CFXTEST:TYPE.CONTRACT:ACAKSW1DP0PK9R8N9ECRD0FR9ZAZKKTTB6TXJ1GKH1: Vm reverted. ERC1155: transfer to non ERC1155Receiver implement...
@@ -117,8 +132,9 @@ CFXTEST:TYPE.CONTRACT:ACAKSW1DP0PK9R8N9ECRD0FR9ZAZKKTTB6TXJ1GKH1: Vm reverted. E
 
 #### 错误详情
 
-```
-error: Invalid parameters: tx, data: "Transaction 0x484dfc2fc6716833cc13b5903a0b12b0521769821a420afc6cecfd738e261772 is discarded due to a too stale nonce"
+```text
+error: Invalid parameters: tx, data: "Transaction 0x484dfc2fc6716833cc13b5903a0b12b0521769821a420afc6cecfd738e261772 is 
+discarded due to a too stale nonce"
 ```
 
 #### 原因及解决方法
@@ -129,7 +145,7 @@ error: Invalid parameters: tx, data: "Transaction 0x484dfc2fc6716833cc13b5903a0b
 
 #### 错误详情
 
-```
+```text
 error: failed to bulk fetch chain infos: Error processing request: block_number is missing for best_hash, data: <nil>
 ```
 
