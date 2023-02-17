@@ -21,7 +21,6 @@
 * [树图Contract Sponsor](docs/shu-tu-contract-sponsor.md)
 * [Terminology](docs/terminology.md)
 * [Prices](docs/price.md)
-* [Common Errors](docs/common-errors.md)
 
 ## Products
 
@@ -46,6 +45,7 @@
   * [Java-SDK](https://github.com/nft-rainbow/rainbow-sdk-java)
   * [Java-SDK-Example](https://github.com/nft-rainbow/rainbow-java-sdk-examples)
   * [Python-SDK](https://github.com/nft-rainbow/rainbow-sdk-python)
+* [Common Errors](docs/common-errors.md)
 
 ## ABOUT THE APIs
 
