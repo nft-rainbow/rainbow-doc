@@ -44,7 +44,6 @@
   * [Go-SDK](https://github.com/nft-rainbow/rainbow-sdk-go)
   * [Java-SDK](https://github.com/nft-rainbow/rainbow-sdk-java)
   * [Java-SDK-Example](https://github.com/nft-rainbow/rainbow-java-sdk-examples)
-  * [Python-SDK](https://github.com/nft-rainbow/rainbow-sdk-python)
 * [Common Errors](docs/common-errors.md)
 
 ## ABOUT THE APIs
