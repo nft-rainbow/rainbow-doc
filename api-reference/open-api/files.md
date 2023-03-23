@@ -108,9 +108,9 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
-### Upload Folder
+### Upload File List
 
-`Upload Folder` API helps users to upload a folder to the server. The files can be a video, a figure and so on.
+`Upload File List` API helps users to upload a folder to the server. The files can be a video, a figure and so on.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/files/folder" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -124,14 +124,14 @@ curl --request POST \
 {% endtab %}
 
 {% tab title="Parameters" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>file</td><td>uploaded file</td><td>multipart/form-data</td><td></td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>folder</td><td>uploaded files</td><td>multipart/form-data</td><td></td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Responses" %}
-| Name       | Meaning                      | Type    |
-| ---------- | ---------------------------- | ------- |
-| file\_num | The number of the uploaed file | integer |
-| folder\_url  | The url of the uploaed folder  | string  |
+| Name        | Meaning                        | Type    |
+| ----------- | ------------------------------ | ------- |
+| file\_num   | The number of the uploaed file | integer |
+| folder\_url | The url of the uploaed folder  | string  |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -155,9 +155,9 @@ curl --request POST \
 {% endtab %}
 {% endtabs %}
 
-### Upload Folder To OSS
+### Upload File List To OSS
 
-`Upload Folder` API helps users to upload a folder to oss. The files in this folder can be a video, a figure and so on.
+`Upload File List To OSS` API helps users to upload a folder to oss. The files in this folder can be a video, a figure and so on.
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/files/folder/oss" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
@@ -171,14 +171,14 @@ curl --request POST \
 {% endtab %}
 
 {% tab title="Parameters" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>file</td><td>uploaded file</td><td>multipart/form-data</td><td></td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>folder</td><td>uploaded files</td><td>multipart/form-data</td><td></td><td>true</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Responses" %}
-| Name       | Meaning                      | Type    |
-| ---------- | ---------------------------- | ------- |
-| file\_num | The number of the uploaed file | integer |
-| folder\_url  | The url of the uploaed folder  | string  |
+| Name        | Meaning                        | Type    |
+| ----------- | ------------------------------ | ------- |
+| file\_num   | The number of the uploaed file | integer |
+| folder\_url | The url of the uploaed folder  | string  |
 {% endtab %}
 
 {% tab title="Response Example" %}
