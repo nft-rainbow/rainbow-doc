@@ -14,7 +14,11 @@ NFTRainbow 在服务设计时就考虑到了一点，并将服务设计的足够
 
 此种方式的优点是用户使用简单，门槛低，体验好。缺点是项目方需要承担私钥的安全，且用户并不实际掌控资产的所有权，不够去中心化。
 
-### Conflux 账户创建示例
+### 自行创建并托管
+
+项目方可以自行创建账户，并将账户私钥保存在自己的数据库中。后续需要进行区块链交互时，只需获取账户私钥进行相应操作即可。
+
+#### Conflux 账户创建示例
 
 为方便项目快速集成，我们提供了主流开发语言的[账户创建示例代码](https://github.com/nft-rainbow/conflux-account-generate-example)，供项目方参考。包括：
 
@@ -25,6 +29,24 @@ NFTRainbow 在服务设计时就考虑到了一点，并将服务设计的足够
 
 项目方创建账户后，只需要将账户私钥，地址妥善保管起来，并同项目自身用户账户关联起来。后续需要进行区块链交互时，只需获取账户私钥进行相应操作即可。
 
+### Rainbow 账户托管解决方案
+
+Rainbow 也开发了账户托管解决方案，基于业界主流 TSS和 MPC 等技术保障私钥的安全。项目方可以直接使用 Rainbow 提供的账户接口创建或获取账户，无需关心私钥的安全问题。
+
+目前支持通过手机号创建或获取账户，符合国内用户习惯，后续会支持邮箱等方式。
+
+```shell
+# 创建账户
+curl --location 'https://api.nftrainbow.cn/v1/accounts' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer YOUR-JWT-KEY' \
+--data '{
+    "phone": "13011221111"
+}'
+```
+
+关于接口调用详细文档，参看 [API 文档](https://docs.nftrainbow.xyz/api-reference/open-api)
+
 ## 集成主流钱包
 
 另外一种方式是在 NFT 项目中集成现有主流钱包。用户在同项目交互时/前，需要先自行安装钱包并创建账户。然后再使用钱包账户同 NFT 应用交互（领取或转移NFT）。
@@ -33,13 +55,21 @@ NFTRainbow 在服务设计时就考虑到了一点，并将服务设计的足够
 
 ### Conflux
 
-目前 Conflux 有两款主流钱包：[AnyWeb](https://anyweb.cc/)，[Fluent](https://fluentwallet.com/)。
+目前 Conflux 主流钱包有：
+
+* [晒啦钱包(Cellar)](https://www.cellar.pub/)
+* [AnyWeb](https://anyweb.cc/)
+* [Fluent](https://fluentwallet.com/)
 
 #### AnyWeb
 
 AnyWeb 是一款强合规区块链资产钱包，统一认证及支付解决方案。它是一款 web2.5 钱包，由 AnyWeb 官方帮助用户创建账户，并使用TSS，MPC等技术保证用户私钥的安全。同时提供多种客户端包括微信小程序，H5，iOS，Android等。用户使用手机号即可注册，使用简单方便。
 
 具体接入流程可[参考 AnyWeb 官方文档](https://wiki.anyweb.cc/)
+
+#### Cellar
+
+晒啦数字藏品管家, 基于主流区块公链藏品应用，聚合、收藏、展览等主流功能, 更好的管理自己的藏品和资源，安全、可靠、易用
 
 #### Fluent
 

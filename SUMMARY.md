@@ -18,7 +18,7 @@
 * [FAQs](FAQs.md)
 * [Changelog](CHANGELOG.md)
 * [RoadMap](ROADMAP.md)
-* [树图Contract Sponsor](docs/shu-tu-contract-sponsor.md)
+* [Conflux Sponsor](docs/shu-tu-contract-sponsor.md)
 * [Terminology](docs/terminology.md)
 * [Prices](docs/price.md)
 
