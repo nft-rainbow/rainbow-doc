@@ -193,7 +193,7 @@ curl --request GET \
 
 ## Obtain Metadata List
 
-`Query metadata list` API helps users to obain the metadata list including the information of the metadata created in the specified app. The `nft_address` is optional. This API returns the array of the result from calling [Query matadata](metadata.md#metadata-metadata\_id).
+`Query metadata list` API helps users to obain the metadata list including the information of the metadata created in the specified app. This API returns the array of the result from calling [Query matadata](metadata.md#metadata-metadata\_id).
 
 {% swagger src="../../.gitbook/assets/swagger.json" path="/metadata/" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
