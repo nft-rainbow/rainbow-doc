@@ -15,9 +15,334 @@
         "version": "1.0"
     },
     "host": "api.nftrainbow.cn",
-    "basePath": "/v1",
     "paths": {
-        "/burns": {
+        "/dashboard/apps/{id}/nft/batch/by-meta-parts": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Batch Mint a NFT by providing a file url to create the metadata",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mints"
+                ],
+                "summary": "Batch Mint NFT with metadata parts",
+                "operationId": "AppBatchMintNFT",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "mint_meta",
+                        "name": "app_batch_mint_meta_info",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/services.AppMintByMetaPartsDto"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.MintTask"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/dashboard/apps/{id}/nft/batch/by-meta-uri": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Batch Mint a NFT by providing tokenIds and metadata urls to create the metadata",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mints"
+                ],
+                "summary": "Batch Mint NFT with metadata uri",
+                "operationId": "AppBatchMintByMetaUri",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "batch_mint_request",
+                        "name": "batch_mint_request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.AppBatchMintByMetaUriDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/dashboard/login": {
+            "post": {
+                "description": "User login to get the JWT according to the email and password",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Login"
+                ],
+                "summary": "User login",
+                "operationId": "UserLogin",
+                "parameters": [
+                    {
+                        "description": "login info, contain app_id and app_secret",
+                        "name": "userLoginInfo",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/middlewares.UserLoginInfo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "auth token",
+                        "schema": {
+                            "$ref": "#/definitions/middlewares.LoginResp"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/dashboard/refresh_token": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Obtain a new JWT",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Refresh JWT",
+                "operationId": "RefreshUserAuth",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer openapi_token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "refreshed auth token",
+                        "schema": {
+                            "$ref": "#/definitions/middlewares.LoginResp"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/accounts": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Query web3 account",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "summary": "Query web3 account",
+                "operationId": "QueryAccount",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "phone",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.AccountDisplayPart"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Insert web3 account",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "summary": "Insert web3 account",
+                "operationId": "InsertAccount",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "insert_account_req",
+                        "name": "insert_account_req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.InsertAccountReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.AccountDisplayPart"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/burns": {
             "get": {
                 "security": [
                     {
@@ -118,7 +443,7 @@
                 }
             }
         },
-        "/burns/customizable/batch": {
+        "/v1/burns/customizable/batch": {
             "post": {
                 "security": [
                     {
@@ -177,7 +502,7 @@
                 }
             }
         },
-        "/burns/{id}": {
+        "/v1/burns/{id}": {
             "get": {
                 "security": [
                     {
@@ -231,7 +556,7 @@
                 }
             }
         },
-        "/contracts/": {
+        "/v1/contracts/": {
             "get": {
                 "security": [
                     {
@@ -287,18 +612,39 @@
                 "security": [
                     {
                         "ApiKeyAuth": []
+                    },
+                    {
+                        "ApiKeyAuth": []
                     }
                 ],
-                "description": "Deploy a ERC721 or ERC1155 contract.",
+                "description": "Deploy a ERC721 or ERC1155 contract.\nDeploy a ERC721 or ERC1155 contract.",
                 "produces": [
+                    "application/json",
                     "application/json"
                 ],
                 "tags": [
+                    "Contract",
                     "Contract"
                 ],
                 "summary": "Deploy contract",
                 "operationId": "DeployContract",
                 "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "contract_info",
+                        "name": "contract_info",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/services.ContractDeployDto"
+                        }
+                    },
                     {
                         "type": "string",
                         "description": "Bearer Open_JWT",
@@ -338,7 +684,61 @@
                 }
             }
         },
-        "/contracts/{address}/admin": {
+        "/v1/contracts/detail/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get Contract info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Contract detail",
+                "operationId": "GetContractInfo",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Contract"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/contracts/{address}/admin": {
             "get": {
                 "security": [
                     {
@@ -465,7 +865,67 @@
                 }
             }
         },
-        "/contracts/{address}/sponsor": {
+        "/v1/contracts/{address}/profile": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get contract runtime profile, contains contract info and currently minted/minting max token id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Get contract runtime profile",
+                "operationId": "GetContractProfile",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "the returned max token id will ignore the token ids",
+                        "name": "ignore_token_ids",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.ContractRuntimeProfile"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/contracts/{address}/sponsor": {
             "get": {
                 "security": [
                     {
@@ -569,7 +1029,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Transaction id\" \"success",
+                        "description": "Transaction id\"\t\"success",
                         "schema": {
                             "$ref": "#/definitions/services.SetSponsorResp"
                         }
@@ -589,7 +1049,7 @@
                 }
             }
         },
-        "/contracts/{address}/sponsor/whitelist": {
+        "/v1/contracts/{address}/sponsor/whitelist": {
             "get": {
                 "security": [
                     {
@@ -792,61 +1252,7 @@
                 }
             }
         },
-        "/contracts/{id}": {
-            "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "Get Contract info",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Contract"
-                ],
-                "summary": "Contract detail",
-                "operationId": "GetContractInfo",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Bearer Open_JWT",
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "integer",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/models.Contract"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid request",
-                        "schema": {
-                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server error",
-                        "schema": {
-                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
-                        }
-                    }
-                }
-            }
-        },
-        "/files/": {
+        "/v1/files/": {
             "get": {
                 "security": [
                     {
@@ -948,7 +1354,7 @@
                 }
             }
         },
-        "/files/folder": {
+        "/v1/files/folder": {
             "post": {
                 "security": [
                     {
@@ -999,7 +1405,7 @@
                 }
             }
         },
-        "/files/folder/oss": {
+        "/v1/files/folder/oss": {
             "post": {
                 "security": [
                     {
@@ -1050,7 +1456,7 @@
                 }
             }
         },
-        "/files/oss": {
+        "/v1/files/oss": {
             "post": {
                 "security": [
                     {
@@ -1101,7 +1507,7 @@
                 }
             }
         },
-        "/login": {
+        "/v1/login": {
             "post": {
                 "description": "Login the app to get the JWT according to the app_id and app_secret",
                 "produces": [
@@ -1119,7 +1525,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/middlewares.appLogin"
+                            "$ref": "#/definitions/middlewares.AppLoginInfo"
                         }
                     }
                 ],
@@ -1139,7 +1545,7 @@
                 }
             }
         },
-        "/metadata/": {
+        "/v1/metadata/": {
             "get": {
                 "security": [
                     {
@@ -1246,7 +1652,7 @@
                 }
             }
         },
-        "/metadata/{metadata_id}": {
+        "/v1/metadata/{metadata_id}": {
             "get": {
                 "security": [
                     {
@@ -1300,23 +1706,71 @@
                 }
             }
         },
-        "/mints/": {
+        "/v1/mints/": {
             "get": {
                 "security": [
                     {
                         "ApiKeyAuth": []
+                    },
+                    {
+                        "ApiKeyAuth": []
                     }
                 ],
-                "description": "Get the NFT list containing the NFTs minted in the specified app",
+                "description": "Get the NFT list containing the NFTs minted in the specified app\nGet the NFT list containing the NFTs minted in the specified app",
                 "produces": [
+                    "application/json",
                     "application/json"
                 ],
                 "tags": [
+                    "Mints",
                     "Mints"
                 ],
                 "summary": "Obtain NFT list",
                 "operationId": "ListMints",
                 "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract",
+                        "name": "contract",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "mint_to",
+                        "name": "mint_to",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "status",
+                        "name": "status",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "chain",
+                        "name": "chain",
+                        "in": "query"
+                    },
                     {
                         "type": "string",
                         "description": "Bearer Open_JWT",
@@ -1431,7 +1885,7 @@
                 }
             }
         },
-        "/mints/customizable/batch": {
+        "/v1/mints/customizable/batch": {
             "post": {
                 "security": [
                     {
@@ -1490,7 +1944,7 @@
                 }
             }
         },
-        "/mints/easy/files": {
+        "/v1/mints/easy/files": {
             "post": {
                 "security": [
                     {
@@ -1571,7 +2025,7 @@
                 }
             }
         },
-        "/mints/easy/urls": {
+        "/v1/mints/easy/urls": {
             "post": {
                 "security": [
                     {
@@ -1601,7 +2055,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/services.EasyMintMetaDto"
+                            "$ref": "#/definitions/services.EasyMintMetaPartsDto"
                         }
                     }
                 ],
@@ -1627,7 +2081,7 @@
                 }
             }
         },
-        "/mints/{id}": {
+        "/v1/mints/{id}": {
             "get": {
                 "security": [
                     {
@@ -1681,7 +2135,144 @@
                 }
             }
         },
-        "/nft/{address}/{token_id}": {
+        "/v1/mints/{id}/reMint": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Reset mint task status to init so that it can be minted again",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mints"
+                ],
+                "summary": "Reset mint task status to init so that it can be minted again",
+                "operationId": "ReMintNFT",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.MintTask"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/nft/count/{address}/{token_id}/{holder}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get NFT hold count by address",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "NFTs"
+                ],
+                "summary": "Get NFT hold count by address",
+                "operationId": "NFTHoldCount",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer Open_JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "token_id",
+                        "name": "token_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "holder address",
+                        "name": "holder",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "contract type erc721, erc1155, default is erc721",
+                        "name": "type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "number",
+                        "description": "epoch height, default is latest_state",
+                        "name": "epoch_height",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "count",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/rainbow_errors.RainbowErrorDetailInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/nft/{address}/{token_id}": {
             "get": {
                 "security": [
                     {
@@ -1742,7 +2333,7 @@
                 }
             }
         },
-        "/nft/{address}/{token_id}/tokenUri": {
+        "/v1/nft/{address}/{token_id}/tokenUri": {
             "put": {
                 "security": [
                     {
@@ -1781,30 +2372,12 @@
                         "required": true
                     },
                     {
-                        "description": "token_uri",
-                        "name": "token_uri",
+                        "description": "req",
+                        "name": "req",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "contract_type",
-                        "name": "contract_type",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "chain",
-                        "name": "chain",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/routers.UpdateTokenUriReq"
                         }
                     }
                 ],
@@ -1824,7 +2397,7 @@
                 }
             }
         },
-        "/refresh_token": {
+        "/v1/refresh_token": {
             "get": {
                 "security": [
                     {
@@ -1839,7 +2412,7 @@
                     "Login"
                 ],
                 "summary": "Refresh JWT",
-                "operationId": "RefreshAuth",
+                "operationId": "RefreshAppAuth",
                 "parameters": [
                     {
                         "type": "string",
@@ -1865,7 +2438,7 @@
                 }
             }
         },
-        "/transfers/": {
+        "/v1/transfers/": {
             "get": {
                 "security": [
                     {
@@ -1918,7 +2491,7 @@
                 }
             }
         },
-        "/transfers/customizable": {
+        "/v1/transfers/customizable": {
             "post": {
                 "security": [
                     {
@@ -1974,7 +2547,7 @@
                 }
             }
         },
-        "/transfers/customizable/batch": {
+        "/v1/transfers/customizable/batch": {
             "post": {
                 "security": [
                     {
@@ -2033,7 +2606,7 @@
                 }
             }
         },
-        "/transfers/{id}": {
+        "/v1/transfers/{id}": {
             "get": {
                 "security": [
                     {
@@ -2087,7 +2660,7 @@
                 }
             }
         },
-        "/tx/{id}": {
+        "/v1/tx/{id}": {
             "get": {
                 "security": [
                     {
@@ -2149,6 +2722,25 @@
         }
     },
     "definitions": {
+        "enums.TransactionBlockReason": {
+            "type": "integer",
+            "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "x-enum-varnames": [
+                "TX_BLOCK_REASON_DB_ERR",
+                "TX_BLOCK_REASON_SPONSORING",
+                "TX_BLOCK_REASON_IO_ERR",
+                "TX_BLOCK_REASON_NOT_ENOUGH_CASH",
+                "TX_BLOCK_REASON_FAILED_GET_SPONSOR_INFO",
+                "TX_BLOCK_REASON_SPONSOR_NOT_ENOUGH"
+            ]
+        },
         "gorm.DeletedAt": {
             "type": "object",
             "properties": {
@@ -2161,18 +2753,7 @@
                 }
             }
         },
-        "middlewares.LoginResp": {
-            "type": "object",
-            "properties": {
-                "expire": {
-                    "type": "string"
-                },
-                "token": {
-                    "type": "string"
-                }
-            }
-        },
-        "middlewares.appLogin": {
+        "middlewares.AppLoginInfo": {
             "type": "object",
             "required": [
                 "app_id",
@@ -2187,6 +2768,46 @@
                 }
             }
         },
+        "middlewares.LoginResp": {
+            "type": "object",
+            "properties": {
+                "expire": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "middlewares.UserLoginInfo": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.AccountDisplayPart": {
+            "type": "object",
+            "properties": {
+                "conflux_mainnet_address": {
+                    "type": "string"
+                },
+                "conflux_testnet_address": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                }
+            }
+        },
         "models.BurnTask": {
             "type": "object",
             "properties": {
@@ -2195,6 +2816,14 @@
                 },
                 "app_id": {
                     "type": "integer"
+                },
+                "block_reason": {
+                    "description": "没有发送到tx engine的原因，比如余额不足或网络错误等",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/enums.TransactionBlockReason"
+                        }
+                    ]
                 },
                 "chain_id": {
                     "type": "integer"
@@ -2270,6 +2899,14 @@
                 "base_uri": {
                     "type": "string"
                 },
+                "block_reason": {
+                    "description": "没有发送到tx engine的原因，比如余额不足或网络错误等",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/enums.TransactionBlockReason"
+                        }
+                    ]
+                },
                 "chain_id": {
                     "type": "integer"
                 },
@@ -2310,9 +2947,6 @@
                 "symbol": {
                     "type": "string"
                 },
-                "tokens_burnable": {
-                    "type": "boolean"
-                },
                 "tokens_transferable_by_admin": {
                     "type": "boolean"
                 },
@@ -2331,6 +2965,17 @@
                 },
                 "updated_at": {
                     "type": "string"
+                }
+            }
+        },
+        "models.ContractRuntimeProfile": {
+            "type": "object",
+            "properties": {
+                "contract": {
+                    "$ref": "#/definitions/models.Contract"
+                },
+                "max_token_id": {
+                    "type": "integer"
                 }
             }
         },
@@ -2387,6 +3032,9 @@
             "properties": {
                 "animation_url": {
                     "type": "string"
+                },
+                "app_id": {
+                    "type": "integer"
                 },
                 "attributes": {
                     "type": "array",
@@ -2480,6 +3128,14 @@
                 },
                 "app_id": {
                     "type": "integer"
+                },
+                "block_reason": {
+                    "description": "没有发送到tx engine的原因，比如余额不足或网络错误等",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/enums.TransactionBlockReason"
+                        }
+                    ]
                 },
                 "chain_id": {
                     "type": "integer"
@@ -2578,6 +3234,14 @@
         "models.Transaction": {
             "type": "object",
             "properties": {
+                "block_reason": {
+                    "description": "没有发送到tx engine的原因，比如余额不足或网络错误等",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/enums.TransactionBlockReason"
+                        }
+                    ]
+                },
                 "chainId": {
                     "type": "integer"
                 },
@@ -2608,6 +3272,12 @@
                 "gas": {
                     "type": "number"
                 },
+                "gasCoveredBySponsor": {
+                    "type": "boolean"
+                },
+                "gasFee": {
+                    "type": "number"
+                },
                 "gasPrice": {
                     "type": "number"
                 },
@@ -2623,8 +3293,23 @@
                 "pending_reason": {
                     "type": "string"
                 },
-                "state": {
+                "pre_hashs": {
+                    "type": "string"
+                },
+                "stage": {
                     "type": "integer"
+                },
+                "state": {
+                    "$ref": "#/definitions/models.TxState"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "storageCollateralized": {
+                    "type": "number"
+                },
+                "storageCoveredBySponsor": {
+                    "type": "boolean"
                 },
                 "storageLimit": {
                     "type": "number"
@@ -2634,6 +3319,9 @@
                 },
                 "to": {
                     "type": "string"
+                },
+                "tryReceiptCnt": {
+                    "type": "integer"
                 },
                 "updated_at": {
                     "type": "string"
@@ -2651,6 +3339,14 @@
                 },
                 "app_id": {
                     "type": "integer"
+                },
+                "block_reason": {
+                    "description": "没有发送到tx engine的原因，比如余额不足或网络错误等",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/enums.TransactionBlockReason"
+                        }
+                    ]
                 },
                 "chain_id": {
                     "type": "integer"
@@ -2714,6 +3410,60 @@
                 }
             }
         },
+        "models.TxState": {
+            "type": "integer",
+            "enum": [
+                -10,
+                -9,
+                -8,
+                -7,
+                -6,
+                -5,
+                -4,
+                -3,
+                -2,
+                -1,
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "x-enum-comments": {
+                "TX_STATE_CONFIRMED": "4",
+                "TX_STATE_EXECUTED": "3",
+                "TX_STATE_EXECUTE_FAILED": "-2",
+                "TX_STATE_INIT": "0",
+                "TX_STATE_PENDING_RETRY": "-5",
+                "TX_STATE_PENDING_RETRY_UPPER_GAS": "-6",
+                "TX_STATE_PENDING_TX_EMPTY_RETRY": "-7",
+                "TX_STATE_PENDING_WAIT": "-10; pending because of notEnoughCash or futureNonce",
+                "TX_STATE_POPULATED": "1",
+                "TX_STATE_READY_OR_INSERTED": "2",
+                "TX_STATE_SEND_FAILED": "-1",
+                "TX_STATE_SEND_FAILED_RETRY": "-3",
+                "TX_STATE_SEND_FAILED_RETRY_UPPER_GAS": "-4",
+                "_RESERVE_1": "-9",
+                "_RESERVE_2": "-8"
+            },
+            "x-enum-varnames": [
+                "TX_STATE_PENDING_WAIT",
+                "_RESERVE_1",
+                "_RESERVE_2",
+                "TX_STATE_PENDING_TX_EMPTY_RETRY",
+                "TX_STATE_PENDING_RETRY_UPPER_GAS",
+                "TX_STATE_PENDING_RETRY",
+                "TX_STATE_SEND_FAILED_RETRY_UPPER_GAS",
+                "TX_STATE_SEND_FAILED_RETRY",
+                "TX_STATE_EXECUTE_FAILED",
+                "TX_STATE_SEND_FAILED",
+                "TX_STATE_INIT",
+                "TX_STATE_POPULATED",
+                "TX_STATE_READY_OR_INSERTED",
+                "TX_STATE_EXECUTED",
+                "TX_STATE_CONFIRMED"
+            ]
+        },
         "multipart.FileHeader": {
             "type": "object",
             "properties": {
@@ -2734,8 +3484,109 @@
                 "code": {
                     "type": "integer"
                 },
+                "data": {
+                    "type": "string"
+                },
                 "message": {
                     "type": "string"
+                }
+            }
+        },
+        "routers.UpdateTokenUriReq": {
+            "type": "object",
+            "required": [
+                "chain",
+                "contract_type"
+            ],
+            "properties": {
+                "chain": {
+                    "type": "string",
+                    "enum": [
+                        "conflux",
+                        "conflux_test"
+                    ]
+                },
+                "contract_type": {
+                    "type": "string",
+                    "enum": [
+                        "erc721",
+                        "erc1155"
+                    ]
+                },
+                "token_uri": {
+                    "type": "string"
+                }
+            }
+        },
+        "services.AppBatchMintByMetaUriDto": {
+            "type": "object",
+            "required": [
+                "chain",
+                "contract_address",
+                "mint_items"
+            ],
+            "properties": {
+                "chain": {
+                    "type": "string",
+                    "enum": [
+                        "conflux",
+                        "conflux_test"
+                    ]
+                },
+                "contract_address": {
+                    "type": "string"
+                },
+                "mint_items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/services.MintItemDto"
+                    }
+                }
+            }
+        },
+        "services.AppMintByMetaPartsDto": {
+            "type": "object",
+            "required": [
+                "chain",
+                "file_url",
+                "mint_to_address",
+                "name"
+            ],
+            "properties": {
+                "amount": {
+                    "description": "amount on same token id, only erc1155 contract could set large than 1, others set null or 1",
+                    "type": "integer"
+                },
+                "animation_url": {
+                    "type": "string"
+                },
+                "attributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ExposedMetadataAttribute"
+                    }
+                },
+                "chain": {
+                    "type": "string"
+                },
+                "contract_address": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "file_url": {
+                    "type": "string"
+                },
+                "mint_to_address": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "number": {
+                    "description": "mint number, everyone with different token id (not conflict with AmountOnSameTokenID)",
+                    "type": "integer"
                 }
             }
         },
@@ -2881,10 +3732,6 @@
                 "symbol": {
                     "type": "string"
                 },
-                "tokens_burnable": {
-                    "description": "default: true",
-                    "type": "boolean"
-                },
                 "tokens_transferable_by_admin": {
                     "description": "default: true",
                     "type": "boolean"
@@ -2964,16 +3811,24 @@
                 }
             }
         },
-        "services.EasyMintMetaDto": {
+        "services.EasyMintMetaPartsDto": {
             "type": "object",
             "required": [
                 "chain",
-                "description",
                 "file_url",
                 "mint_to_address",
                 "name"
             ],
             "properties": {
+                "animation_url": {
+                    "type": "string"
+                },
+                "attributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ExposedMetadataAttribute"
+                    }
+                },
                 "chain": {
                     "type": "string"
                 },
@@ -2987,6 +3842,17 @@
                     "type": "string"
                 },
                 "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "services.InsertAccountReq": {
+            "type": "object",
+            "properties": {
+                "create_if_exists": {
+                    "type": "boolean"
+                },
+                "phone": {
                     "type": "string"
                 }
             }
@@ -3052,6 +3918,9 @@
                     "type": "string"
                 },
                 "token_id": {
+                    "type": "string"
+                },
+                "token_uri": {
                     "type": "string"
                 }
             }
@@ -3212,7 +4081,7 @@
                     "type": "boolean"
                 },
                 "state_code": {
-                    "type": "integer"
+                    "$ref": "#/definitions/models.TxState"
                 },
                 "state_msg": {
                     "type": "string"

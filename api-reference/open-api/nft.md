@@ -10,7 +10,7 @@ description: The nft API provide users the entries to interact with the NFTs.
 
 The `Update NFT token uri` API provides users to update the nft token uri according to the contract address and the token\_id.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/nft/{address}/{token_id}/tokenUri" method="put" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/nft/{address}/{token_id}/tokenUri" method="put" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -101,7 +101,7 @@ curl --request PUT \
 
 The `Query specific NFT of specific account` API provides users to get the nft information according to the contract address and the token\_id.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/nft/{address}/{token_id}" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/nft/{address}/{token_id}" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 

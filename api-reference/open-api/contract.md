@@ -12,7 +12,7 @@ description: >-
 
 The `Deploy contract` API helps users to deploy a ERC721 or a ERC1155 contract.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/contracts/" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -135,7 +135,7 @@ When the api is called successfully, we need to use the `id` in response to call
 
 The `Update contract admin` API provides users the entry to update the admin of the specific contract.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/admin" method="put" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/contracts/{address}/admin" method="put" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -182,7 +182,7 @@ curl --request PUT \
 
 The `Set sponsor` API provides users to set a sponser for a specific contract according to the sponsor' address.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/sponsor" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/contracts/{address}/sponsor" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -231,7 +231,7 @@ curl --request POST \
 
 The `Add Contract Sponsor Users` API provides users to add the address in the whitelist.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/sponsor/whitelist" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/contracts/{address}/sponsor/whitelist" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -275,7 +275,7 @@ curl --request POST \
 
 The `Remove Contract Sponsor Users` API provides users to remove the address from the whitelist.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/sponsor/whitelist" method="delete" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/contracts/{address}/sponsor/whitelist" method="delete" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -322,7 +322,7 @@ curl --request DELETE \
 
 The `Obtain contarct list` API provides users the entry to get the inforamtion of the contracts deployed in a specified app. The parameter `page` and `size` are optional parameters.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/contracts/" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -419,7 +419,7 @@ curl --request GET \
 
 The `Query detail contract` API provides users the entry to get the detail contract information of a specific contract according to the contract's id. The parameter `chain` is optional, which can be used to choose the test or main network of conflux.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{id}" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/contracts/{id}" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -508,7 +508,7 @@ The `Query sponsor` API provides users the entry to get the sponsors of a specif
 **Good to know:** Conflux Network can be divided into the main network and the test network. The later is used to test the developed functions for developers.
 {% endhint %}
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/sponsor" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/contracts/{address}/sponsor" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -569,7 +569,7 @@ SponsorWhitelistControl Contract
 
 The `Query contract admin` API provides users the entry to get the admin of the specific contract.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/admin" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/contracts/{address}/admin" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -606,7 +606,7 @@ curl --request GET \
 
 The `Query Contract Whitelist` API provides users to get the whitelist of the specific contract. Only the addresses in the whitelist can call the contract free.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/contracts/{address}/sponsor/whitelist" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/contracts/{address}/sponsor/whitelist" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 

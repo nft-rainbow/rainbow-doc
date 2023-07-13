@@ -14,7 +14,7 @@ The Mints APIs provide three methods to help users mint NFTs, including the cust
 
 The `Mint NFT` provides users with the entry to call the ERC721 or ERC1155 contract to mint the NFT. Users need to [deploy their own contract](contract.md#deploy-contract) firstly. If the network is `Conflux_test` , [`set sponsor api`](contract.md#set-sponsor) needs to be called beforing minting.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/mints/" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -116,7 +116,7 @@ The token\_id is the number like "123", whose type is string
 
 The `Batch Mint NFTs` API provides users with the entry to call the ERC721 or ERC1155 contract to mint several NFTs once.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/customizable/batch" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/mints/customizable/batch" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -296,7 +296,7 @@ curl --request POST \
 
 The `Mint NFT with file` API provides users with the entry to call the ERC721 or ERC1155 contract to mint the NFT with uploading files. The uploaded files can be images, video and so on.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/easy/files" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/mints/easy/files" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -379,7 +379,7 @@ curl --request POST \
 
 The `Mint NFT with metadata` provides users with the entry to call the ERC721 or ERC1155 contract to mint the NFT with creating metadata by providing a file url.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/easy/urls" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/mints/easy/urls" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -477,7 +477,7 @@ curl --request POST \
 
 The `Obtain NFT list` API provides users with the entry to query the NFTs information created on a spcific app.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/mints/" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -566,7 +566,7 @@ curl --request GET \
 
 The `Query detailed NFT` API provides users with the entry to query the detailed NFT information created on a specific app according to the NFT's id.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/mints/{id}" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/mints/{id}" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 

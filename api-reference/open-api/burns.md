@@ -10,7 +10,7 @@ description: The burns API provide users the entries to burn the NFTs.
 
 The `Burn NFT by Admin` API helps users to burn the corresponding NFT.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/burns" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/burns" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -112,7 +112,7 @@ The token\_id is the number like "123", which type is string
 
 The `Query specific Burning NFT information` API helps users to query burning record according to `id`.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/burns/{id}" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/burns/{id}" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -185,7 +185,7 @@ curl --request get \
 
 The `Query Burning List` API helps users to query burning list.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/burns" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/burns" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
