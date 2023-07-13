@@ -11,7 +11,7 @@ description: >-
 ### Query Transaction Information
 The `Query Transaction Information` API provides users to get the transaction information according to id.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/tx/{id}" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/tx/{id}" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 

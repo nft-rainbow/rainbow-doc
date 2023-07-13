@@ -12,7 +12,7 @@ The Transfer APIs provide two methods to help users transfer NFTs, including the
 
 The `Transfer NFT` provides users with the entry to transfer the NFT.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/transfers/customizable" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/transfers/customizable" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -114,7 +114,7 @@ The token\_id is the number like "123", which type is string
 
 The `Batch Transfer NFTs` API provides users with the entry to transfer several NFTs once.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/transfers/customizable/batch" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/transfers/customizable/batch" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -261,7 +261,7 @@ curl --request POST \
 
 The `Obtain transferred NFT list` API provides users with the entry to query the transferred NFTs information.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/transfers/" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/transfers/" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -386,7 +386,7 @@ curl --request GET \
 
 The `Obtain Detialed NFT Transfer Information` API provides users with the entry to query the transferred NFT information according to its `id`.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/transfers/{id}" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/transfers/{id}" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
