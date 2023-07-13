@@ -419,7 +419,7 @@ curl --request GET \
 
 The `Query detail contract` API provides users the entry to get the detail contract information of a specific contract according to the contract's id. The parameter `chain` is optional, which can be used to choose the test or main network of conflux.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/contracts/{id}" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/contracts/detail/{id}" method="get" expanded="false" fullWidth="false" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
