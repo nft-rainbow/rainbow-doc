@@ -26,29 +26,29 @@ The `Update NFT token uri` API provides users to update the nft token uri accord
 {% endtab %}
 
 {% tab title="Response" %}
-| Name          | Meaning                               | Type    |
-| ------------- | ------------------------------------- | ------- |
-| created\_at    | The time of creating the item in the database                                                                                     | string  |
-| updated\_at    | The time of updating the item in the database                                                                                     | string  |
-| deleted\_at    | The time of deleting the item in the database                                                                                     | string  |
-| id             | The id of the item in the database                                                                                                | integer |
-| TaskType             | The type of the item in the transaction. 1-deploy, 2-mint, 3-batch mint, 4-transfer, 5-batch transfer, 6-burn, 7-batch burn, 8-update admin, 9-sponsor balance, 10-sponsor privilege, 11-update token_uri                                                                                                | integer |
-| ChainType             | The type of the chain, 1-cfx, 2-eth                                                                                                | integer |
-| ChainId             | The type of the chain, 1-testnet, 1029-mainnet                                                                                               | integer |
-| From             | The sender of the transaction                                                                                               | string |
-| To             | The receiver of the transaction                                                                                               | string |
-| Nonce             | The nonce of the transaction                                                                                                  | string |
-| Value             | The value of the transaction                                                                                                | string |
-| Data             | The data of the transaction                                                                                                  | string |
-| Hash             | The hash of the transaction                                                                                                 | string |
-| State             | The state of the transaction                                                                                                  | integer |
-| epoch_number             | The epoch number of the transaction                                                                                                 | integer |
-| error             | The error of the transaction                                                                                                 | string |
-| GasPrice             | The gas price of the transaction                                                                                                   | string |
-| Gas             | The used gas of the transaction                                                                                                 | string |
-| StorageLimit             | The storage limit of the transaction                                                                                                  | string |
-| EpochHeight             | The epoch height of the transaction                                                                                                  | string |
-| pending_reason             | The pending reason of the transaction                                                                                             | string |
+| Name            | Meaning                                                                                                                                                                                                    | Type    |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| created\_at     | The time of creating the item in the database                                                                                                                                                              | string  |
+| updated\_at     | The time of updating the item in the database                                                                                                                                                              | string  |
+| deleted\_at     | The time of deleting the item in the database                                                                                                                                                              | string  |
+| id              | The id of the item in the database                                                                                                                                                                         | integer |
+| TaskType        | The type of the item in the transaction. 1-deploy, 2-mint, 3-batch mint, 4-transfer, 5-batch transfer, 6-burn, 7-batch burn, 8-update admin, 9-sponsor balance, 10-sponsor privilege, 11-update token\_uri | integer |
+| ChainType       | The type of the chain, 1-cfx, 2-eth                                                                                                                                                                        | integer |
+| ChainId         | The type of the chain, 1-testnet, 1029-mainnet                                                                                                                                                             | integer |
+| From            | The sender of the transaction                                                                                                                                                                              | string  |
+| To              | The receiver of the transaction                                                                                                                                                                            | string  |
+| Nonce           | The nonce of the transaction                                                                                                                                                                               | string  |
+| Value           | The value of the transaction                                                                                                                                                                               | string  |
+| Data            | The data of the transaction                                                                                                                                                                                | string  |
+| Hash            | The hash of the transaction                                                                                                                                                                                | string  |
+| State           | The state of the transaction                                                                                                                                                                               | integer |
+| epoch\_number   | The epoch number of the transaction                                                                                                                                                                        | integer |
+| error           | The error of the transaction                                                                                                                                                                               | string  |
+| GasPrice        | The gas price of the transaction                                                                                                                                                                           | string  |
+| Gas             | The used gas of the transaction                                                                                                                                                                            | string  |
+| StorageLimit    | The storage limit of the transaction                                                                                                                                                                       | string  |
+| EpochHeight     | The epoch height of the transaction                                                                                                                                                                        | string  |
+| pending\_reason | The pending reason of the transaction                                                                                                                                                                      | string  |
 {% endtab %}
 
 {% tab title="Response Example" %}
@@ -113,7 +113,7 @@ The `Query specific NFT of specific account` API provides users to get the nft i
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the nft</td><td>Path</td><td>string</td><td>true</td></tr><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>token_id</td><td>The id of the nft</td><td>Path</td><td>string</td><td>true</td></tr><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>true</td></tr><tr><td>type</td><td>The contract type: erc721, erc1155. Default is erc721</td><td>Query</td><td>string</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
@@ -129,7 +129,8 @@ The `Query specific NFT of specific account` API provides users to get the nft i
 {
     "owner": "cfxtest:aakkfzezns4h8ymx1cgmcnd4x3aev6e2he38nnu8sv",
     "contract_address": "cfxtest:acd8eue6shtzvnc7mts66hh88nvw2gtnaez6c4s1a5",
-    "token_id": "17"
+    "token_id": "17",
+    "token_uri": "https://nftrainbow.cn/assets/1.json"
 }
 ```
 {% endtab %}
@@ -145,5 +146,7 @@ curl --request GET \
 {% endtabs %}
 
 {% hint style="info" %}
-The token\_id is the number like "123", which type is string
+The token\_id is a number like "123", which type is string. If the type parameter pass erc1155, the response's owner field will be empty.
 {% endhint %}
+
+### Query NFT Hold count
