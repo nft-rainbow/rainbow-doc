@@ -128,7 +128,7 @@ curl --request POST \
 {% endtabs %}
 
 {% hint style="info" %}
-When the API is called successfully, we need to use the `d` in response to call [Query contract detail ](contract.md#query-detail-contract)API to get the contract address. It takes several seconds that the contract address can be obtained from [Query contract detail ](contract.md#query-detail-contract)API.
+When the API is called successfully, we need to use the id in response to call [Query contract detail ](contract.md#query-detail-contract)API to get the contract address. It takes several seconds that the contract address can be obtained from [Query contract detail ](contract.md#query-detail-contract)API.
 {% endhint %}
 
 ### Update contract admin
