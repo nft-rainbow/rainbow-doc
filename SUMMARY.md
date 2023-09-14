@@ -26,6 +26,7 @@
 
 * [Conflux RPC Bridge](products/rpc-bridge.md)
 * [ERC-6551](./docs/ERC-6551.md)
+* [Web3 Services](products/web3-services.md)
 
 ## API Reference
 
