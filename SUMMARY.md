@@ -12,6 +12,8 @@
 * [Account Solutions](tutorials/account-solution/README.md)
 * [Guides](tutorials/guides/README.md)
   * [控制台合约代付设置](tutorials/guides/kong-zhi-tai-he-yue-dai-fu-she-zhi.md)
+  * [元数据管理](tutorials/guides/metadata-manage.md)
+  * [Rainbow 铸造工具简介](tutorials/guides/common-mint-mode.md)
 
 ## Docs
 

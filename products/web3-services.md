@@ -6,7 +6,7 @@ Web3 Services
 NFTRainbow 致力于推动 Web3 在各行各业应用, 简化 Web3 开发流程和体验. 为此我们不止提供 NFT 铸造相关服务, 还提供了一系列 Web3 服务, 来帮助开发者快速搭建 Web3 应用. 包括:
 
 * 区块链 RPC 服务
-* Scan 数据服务
+* Scan 数据 API
 
 以上服务都同时包含 Conflux Core 空间和 eSpace 空间, 并且同时支持主网和测试网.
 
