@@ -1,12 +1,11 @@
-Web3 Services
-=============
+# Web3 Services
 
 ## 简介
 
 NFTRainbow 致力于推动 Web3 在各行各业应用, 简化 Web3 开发流程和体验. 为此我们不止提供 NFT 铸造相关服务, 还提供了一系列 Web3 服务, 来帮助开发者快速搭建 Web3 应用. 包括:
 
 * 区块链 RPC 服务
-* Scan 数据 API
+* 区块链数据索引服务
 
 以上服务都同时包含 Conflux Core 空间和 eSpace 空间, 并且同时支持主网和测试网.
 
@@ -40,9 +39,12 @@ Rainbow RPC 服务提供灵活且有竞争力的定价方案, 不仅提供免费
 
 加油包请求次数不限制使用时间.
 
-## Scan API 服务
+* [Conflux Core RPC 文档](https://doc.confluxnetwork.org/docs/core/build/json-rpc/json_rpc)
+* [Conflux eSpace RPC 文档](https://ethereum.org/en/developers/docs/apis/json-rpc/)
 
-Scan API 可用于获取解析索引好的区块链数据, 这些数据通常无法直接通过 RPC 服务获取, 例如某地址所持有的 NFT 资产, 及历史所有的转移记录等. 
+## 区块链数据索引服务
+
+区块链数据索引服务可对区块链历史数据进行索引并提供查询服务, 例如 NFT 转移历史, 账户 NFT 资产列表等, 目前该服务接口同 Scan API 完全兼容, 方便用户迁移.
 
 套餐定价如下:
 
@@ -62,14 +64,25 @@ Scan API 可用于获取解析索引好的区块链数据, 这些数据通常无
 
 加油包请求次数不限制使用时间.
 
-Scan 详细接口文档参看如下:
+接口详细文档 可参看 Scan 相关文档:
 
 * [Conflux Core Scan API](https://api.confluxscan.net/doc)
 * [Conflux eSpace Scan API](https://evmapi.confluxscan.net/doc)
 
 ## FAQs
 
-### 如何购买 Web3 服务, 如何获取服务访问 url 及 key?
+### 如何获取服务访问 url 及 key?
 
-可在 Rainbow Console 控制台购买|切换 Web3 服务套餐, 在 Web3Service 项目的详情页可查看服务访问的 Key 及 url. 同时也可以查看服务请求日志和数据.
+可在 Rainbow Console 控制台的`Web3服务页面`查看或创建应用, 每个应用会分配一个访问 Web3 Service 的 key, 在应用详情可查看此 key, 及完整的服务 url
 
+### 如何购买服务?
+
+在 Console 控制台 `Web3服务 -> 我的服务` 页面, 有购买服务的入口, 点击后即可进入购买页面. 在购买页面可切用户当前的服务套餐, 也可购买加油包
+
+### 套餐升级后, 还可以降级回来么?
+
+可以的, 可以取消自动续订功能, 套餐到期后自动切换为免费版, 也可以直接进行套餐切换操作, 切换后立刻生效, 但不会返还费用.
+
+### 套餐的额度是多个项目共用的么?
+
+是的
