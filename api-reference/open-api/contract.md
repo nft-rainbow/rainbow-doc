@@ -194,7 +194,7 @@ The `Set sponsor` API provides users to set a sponser for a specific contract ac
 {% endtab %}
 
 {% tab title="Parameter" %}
-<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Meaning</th><th>Param Type</th><th>Data Type</th><th data-type="checkbox">Required</th></tr></thead><tbody><tr><td>address</td><td>The address of the contract</td><td>Path</td><td>string</td><td>true</td></tr><tr><td>chain</td><td>The blockchain name: conflux, conflux_test(default)</td><td>query</td><td>string</td><td>false</td></tr><tr><td>auto_sponsor</td><td>Whether auto recharge sponsor balance when not enough</td><td>query</td><td>bool</td><td>false</td></tr></tbody></table>
 {% endtab %}
 
 {% tab title="Response" %}
