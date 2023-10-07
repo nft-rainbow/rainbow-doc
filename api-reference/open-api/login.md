@@ -14,7 +14,7 @@ Login actions provide users the entries to call the open APIs including [metadat
 
 `APP login` API helps users to get the JWT according to `app_id` and `app_secret`. JWT can be used to access other open APIs.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/login" method="post" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/login" method="post" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
@@ -71,7 +71,7 @@ curl --request POST \
 
 `Refresh JWT` API helps users to get a new JWT of the specified app.
 
-{% swagger src="../../.gitbook/assets/swagger.json" path="/refresh_token" method="get" %}
+{% swagger src="../../.gitbook/assets/swagger.json" path="/v1/refresh_token" method="get" %}
 [swagger.json](../../.gitbook/assets/swagger.json)
 {% endswagger %}
 
