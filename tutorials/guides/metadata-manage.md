@@ -21,4 +21,4 @@ https://api.nftrainbow.cn/assets/metadata/1/nft/d2511cea559b14e324444a1a459d6b4a
 
 ![](images/rn-metadata2.jpg)
 
-关于 NFT 元数据标准内容参看: https://docs.opensea.io/docs/metadata-standards
+关于 NFT 元数据标准内容参看: [OpenSea 推荐](https://docs.opensea.io/docs/metadata-standards)
