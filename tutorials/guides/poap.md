@@ -4,38 +4,38 @@ Rainbow Activity 主要方便项目方发行一套活动纪念或奖章类的 NF
 
 ## 项目方发行 NFT
 在 NFT 活动页面，点击 “创建活动/创建POAP”
-![](images/2026-07-17-10-46-27.png)
+![](images/rn-activity-create.png)
 
 填写活动详情
-![](images/2026-07-16-16-59-25.png)
+![](images/rn-activity-details.png)
 
 点击管理藏品
-![](images/2026-07-16-17-00-07.png)
+![](images/rn-activity-manage-items.png)
 
 绑定已部署的合约
-![](images/2026-07-16-17-01-27.png)
+![](images/rn-activity-bind-contract.png)
 
 保存后返回，点击活动链接即可打开领取页面
-![](images/2026-07-16-17-02-24.png)
+![](images/rn-activity-link.png)
 
 ## 用户领取 NFT
 用户进入领取页面
-![](images/2026-07-16-17-11-56.png)
+![](images/rn-activity-claim-page.png)
 
 点击连接钱包，输入手机号码登录
-![](images/2026-07-16-17-21-27.png)
+![](images/rn-activity-phone-login.png)
 
 授权账户
-![](images/2026-07-16-17-22-35.png)
+![](images/rn-activity-authorize.png)
 
 右上角可以看到钱包已连接，点击“领取”按钮即可领取 NFT
-![](images/2026-07-16-17-23-29.png)
+![](images/rn-activity-claim.png)
 
 几十秒后领取完成，点击去钱包查看
-![](images/2026-07-17-11-06-20.png)
+![](images/rn-activity-claim-success.png)
 
 登入晒啦钱包，就可以看到刚领取的 NFT 了
-![](images/2026-07-17-11-05-52.png)
+![](images/rn-activity-wallet-nft.png)
 
 <!-- 1. 注册账号
 1. 登录
